@@ -165,45 +165,45 @@
 		<h4>標籤雲</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/虛擬機器/">虛擬機器<span>1</span></a></li>
+			<li><a href="/tags/unity/">unity<span>1</span></a></li>
 		
-			<li><a href="/tags/指令/">指令<span>1</span></a></li>
+			<li><a href="/tags/電腦對局理論/">電腦對局理論<span>2</span></a></li>
 		
 			<li><a href="/tags/git/">git<span>2</span></a></li>
 		
-			<li><a href="/tags/輸入法/">輸入法<span>1</span></a></li>
-		
 			<li><a href="/tags/經濟學/">經濟學<span>1</span></a></li>
 		
-			<li><a href="/tags/emacs/">emacs<span>1</span></a></li>
-		
-			<li><a href="/tags/機器學習/">機器學習<span>4</span></a></li>
-		
-			<li><a href="/tags/lua/">lua<span>1</span></a></li>
-		
-			<li><a href="/tags/regexp/">regexp<span>1</span></a></li>
-		
-			<li><a href="/tags/fcitx/">fcitx<span>1</span></a></li>
-		
-			<li><a href="/tags/技巧/">技巧<span>1</span></a></li>
-		
-			<li><a href="/tags/mapreduce/">mapreduce<span>1</span></a></li>
-		
-			<li><a href="/tags/unity/">unity<span>1</span></a></li>
-		
-			<li><a href="/tags/統計/">統計<span>1</span></a></li>
-		
-			<li><a href="/tags/makefile/">makefile<span>1</span></a></li>
-		
-			<li><a href="/tags/嘸蝦米/">嘸蝦米<span>1</span></a></li>
-		
-			<li><a href="/tags/hexo/">hexo<span>1</span></a></li>
-		
-			<li><a href="/tags/大數/">大數<span>1</span></a></li>
+			<li><a href="/tags/gcc/">gcc<span>1</span></a></li>
 		
 			<li><a href="/tags/computer-architecture/">computer architecture<span>2</span></a></li>
 		
-			<li><a href="/tags/gdb/">gdb<span>2</span></a></li>
+			<li><a href="/tags/網路/">網路<span>2</span></a></li>
+		
+			<li><a href="/tags/distributed-system/">distributed system<span>1</span></a></li>
+		
+			<li><a href="/tags/cpp/">cpp<span>2</span></a></li>
+		
+			<li><a href="/tags/輸入法/">輸入法<span>1</span></a></li>
+		
+			<li><a href="/tags/程式/">程式<span>2</span></a></li>
+		
+			<li><a href="/tags/linux/">linux<span>5</span></a></li>
+		
+			<li><a href="/tags/boost/">boost<span>1</span></a></li>
+		
+			<li><a href="/tags/正規表示式/">正規表示式<span>1</span></a></li>
+		
+			<li><a href="/tags/mapreduce/">mapreduce<span>1</span></a></li>
+		
+			<li><a href="/tags/c/">c<span>2</span></a></li>
+		
+			<li><a href="/tags/vmware-tool/">vmware_tool<span>1</span></a></li>
+		
+			<li><a href="/tags/指令/">指令<span>1</span></a></li>
+		
+			<li><a href="/tags/虛擬機器/">虛擬機器<span>1</span></a></li>
+		
+			<li><a href="/tags/CFR/">CFR<span>1</span></a></li>
 		
 		
 		   <li><a href="/tags">...<span>39</span></a></li>
@@ -276,44 +276,29 @@
   <span>▲</span> 
 </a>
 
-<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
-<script src="<%- config.root %>js/gallery.js"></script>
-<script src="<%- config.root %>js/bootstrap.min.js"></script>
-<script src="<%- config.root %>js/main.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
 
-<% if (theme.duoshuo_shortname) { %>
 <script type="text/javascript">
-  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';
-    ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
-<% } else if (config.disqus_shortname){ %>
-<script type="text/javascript">
-var disqus_shortname = '<%= config.disqus_shortname %>';
+var disqus_shortname = 'githubforqwerty';
 (function(){
   var dsq = document.createElement('script');
   dsq.type = 'text/javascript';
   dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 }());
 </script>
-<% } %>
-<% if (theme.fancybox){ %>
-<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){
   $('.fancybox').fancybox();
 })(jQuery);
 </script>
-<% } %>
 
 
 <!--mathjax-->
@@ -322,12 +307,82 @@ MathJax.Hub.Config({
 tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 });
 </script>
-<script type="text/javascript"
-src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>      
 
 
-
+<!--leancloud page counter-->
+<script>
+function addCount (Counter) {
+        var title = $("page-header").context.title.split('|')[0].trim();
+	var url = "/" + $('.mytitle').context.URL.split("/")[3] + "/";
+        var query=new AV.Query(Counter);
+        //use url as unique idnetfication
+        query.equalTo("url",url);
+        query.find({
+            success: function(results){
+                if(results.length>0)
+                {
+                    var counter=results[0];
+                    counter.fetchWhenSave(true); //get recent result
+                    counter.increment("time");
+                    counter.save();
+                }
+                else
+                {
+                    var newcounter=new Counter();
+                    newcounter.set("title",title);
+                    newcounter.set("url",url);
+                    newcounter.set("time",1);
+                    newcounter.save(null,{
+                        success: function(newcounter){
+                        //alert('New object created');
+                        },
+                        error: function(newcounter,error){
+                        alert('Failed to create');
+                        }
+                        });
+                }
+            },
+            error: function(error){
+                //find null is not a error
+                alert('Error:'+error.code+" "+error.message);
+            }
+        });
+}
+$(function(){
+        var Counter=AV.Object.extend("Counter");
+        //only increse visit counting when intering a page
+	var titleName = $('h1')[0].textContent.trim()
+        if ($('.mytitle').context.URL.split("/")[2] != "localhost:4000" && $('title').length == 1 && titleName != "QWERTY" && titleName != "Categories" && titleName != "Tags" && titleName != "彙整")
+           addCount(Counter);
+        var query=new AV.Query(Counter);
+        query.descending("time");
+        // the sum of popular posts
+        query.limit(10); 
+        query.find({
+            success: function(results){
+				
+                    for(var i=0;i<results.length;i++)    
+                    {
+						//alert(results[i]);
+                        var counter=results[i];
+                        title=counter.get("title");
+                        url=counter.get("url");
+                        time=counter.get("time");
+                        // add to the popularlist widget
+                        showcontent=title+" ("+time+")";
+                        //notice the "" in href
+                        $('.popularlist').append('<li><a href="'+url+'">'+showcontent+'</a></li>');
+                    }
+                },
+            error: function(error){
+                alert("Error:"+error.code+" "+error.message);
+            }
+            }
+        )
+        });
+</script>
 
 </body>
    </html>
