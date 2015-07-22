@@ -1,0 +1,739 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>gdb入門 | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="gdb入門"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> gdb入門</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h3 id="簡介">簡介</h3><p>gdb是FSF下的一個子計畫，目的是提供一個除錯器的實作。只要使用GNU計畫出產的編譯器，就可以用它來進行除錯。<br>gdb可以debug C/C++/Objective-C/Fortran/Java 等語言。<br><a id="more"></a></p>
+<h3 id="基本知識">基本知識</h3><p><strong>function -&gt; frame</strong>  </p>
+<ul>
+<li>正在執行的函數就是 frame 0，而呼叫該函數的就是 frame 1，以此類推  </li>
+<li>在gdb進入另一個frame之前，它會將該frame的一些變數值之類的儲存至堆疊(stack)裡，等到從frame回來後再從這些stack裡把這些變數值取回來  </li>
+</ul>
+<h3 id="除錯程序">除錯程序</h3><ol>
+<li>載入程式</li>
+<li>設中斷點，程式跑到這裡會停下來</li>
+<li>開始跑程式(run)，讓程式停在中斷點上</li>
+<li>慢慢追程式</li>
+<li>檢查一些變數值</li>
+</ol>
+<h4 id="載入程式">載入程式</h4><p><code>-g</code> 可加入除錯資訊</p>
+<pre><code>gcc -g xxx<span class="class">.c</span> -o xxx
+</code></pre><p>這些除錯訊息會使檔案大小差10倍之多，所以一般在發佈應用程式時是不會以<code>-g</code>參數編譯的<br>可以在事後利用 strip 指令清掉應用程式裡的除錯資訊</p>
+<pre><code><span class="keyword">strip </span>./xxx
+</code></pre><p>開始除錯(不要做 optimize，不然程式碼行數會對不上)</p>
+<pre><code>gdb ./xxx
+gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./xxx <span class="comment">##必要時加入-d (dirctory)，指定 source code 的位置</span>
+</code></pre><table>
+<thead>
+<tr>
+<th>gdb參數</th>
+<th>簡寫</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-symbols file_name<br></td>
+<td>-s</td>
+<td>讀取檔案中的除錯表  </td>
+</tr>
+<tr>
+<td>-exec file_name</td>
+<td>-e</td>
+<td>除錯一個執行檔  </td>
+</tr>
+<tr>
+<td>-se file_name</td>
+<td></td>
+<td>上二者的縮寫  </td>
+</tr>
+<tr>
+<td>-core file_name</td>
+<td>-c</td>
+<td>讀入一個core dump檔案(系統當機之後用)  </td>
+</tr>
+<tr>
+<td>-pid process_id</td>
+<td>-p</td>
+<td>啟動attach模式，除錯一個執行中的行程。number是目標行程的pid  </td>
+</tr>
+<tr>
+<td>-directory directory_name</td>
+<td>-d</td>
+<td>將directory加入原始碼的搜尋路行  </td>
+</tr>
+<tr>
+<td>-readnow</td>
+<td>-r</td>
+<td>一次讀取完所有的符號表，這會讓啟動gdb的時間<br>變長，但在執行往後的除錯動作會較快速。</td>
+</tr>
+<tr>
+<td>-quiet/-silent</td>
+<td>-q</td>
+<td>安靜模式，啟動時gdb將不會顯示版權頁。</td>
+</tr>
+<tr>
+<td>-nowindows</td>
+<td>-nw</td>
+<td>如果gdb有編入GUI的話，這個選項會關掉它</td>
+</tr>
+<tr>
+<td>-windows</td>
+<td>-w</td>
+<td>與上一選項相反，這會啟動GUI</td>
+</tr>
+<tr>
+<td>-cd directory_name</td>
+<td></td>
+<td>切換工作目錄為directory而不是現在的目錄</td>
+</tr>
+<tr>
+<td>-tty device_name</td>
+<td>-t</td>
+<td>指定device 為程式的標準輸出入</td>
+</tr>
+<tr>
+<td>—args</td>
+<td></td>
+<td>這個參數要當作命令列的最後一個參數，其後跟隨的參數<br>都會被視為「欲傳給將除錯的程式的參數」</td>
+</tr>
+</tbody>
+</table>
+<h4 id="設中斷點">設中斷點</h4><table>
+<thead>
+<tr>
+<th>參數</th>
+<th>停止時機</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>break [function]</td>
+<td>某函數的進入點</td>
+</tr>
+<tr>
+<td>break offset</td>
+<td>在程式停止位置的前(offset為負)/後第offset行</td>
+</tr>
+<tr>
+<td>break linenum</td>
+<td>指定行號</td>
+</tr>
+<tr>
+<td>break filename:linenum</td>
+<td>在file的指定行號或指定函式(若多型，需額外提供參數)</td>
+</tr>
+<tr>
+<td>break</td>
+<td>在下一個要執行的指令</td>
+</tr>
+<tr>
+<td>break [args] if [cond]</td>
+<td>當[cond]這個運算式為真，設定中斷點<br>args可能是上列的任一種情形</td>
+</tr>
+<tr>
+<td>rbreak [RE]</td>
+<td>符合正規運算式的函式<br>EX:(gdb) rbreak . 這樣每個函式開頭都有中斷點了</td>
+</tr>
+<tr>
+<td>tbreak [args]</td>
+<td>只會生效一次</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>info break(i b)</td>
+<td>列出目前所有的中斷點</td>
+</tr>
+<tr>
+<td>condition</td>
+<td>進一步設中斷點的條件 如果條件為true則中斷</td>
+</tr>
+<tr>
+<td>commands</td>
+<td>在遇到中斷點時要自動執行的指令</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>刪除所在行的中斷點</td>
+</tr>
+<tr>
+<td>delete(d) breakpoint_id</td>
+<td>刪除指定中斷點</td>
+</tr>
+</tbody>
+</table>
+<h4 id="開始跑程式">開始跑程式</h4><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>開啟檔案 (等同於 gdb filename)</td>
+</tr>
+<tr>
+<td>run(r)</td>
+<td>執行程式 (可加餵給程式的命令列參數)</td>
+</tr>
+<tr>
+<td>kill</td>
+<td>終止指令的執行</td>
+</tr>
+<tr>
+<td>set</td>
+<td>設定特定參數(或變數)。如：set env，設定環境變數。</td>
+</tr>
+<tr>
+<td>unset</td>
+<td>取消特定參數。如：unset env，刪除環境變數。</td>
+</tr>
+<tr>
+<td>show</td>
+<td>顯示特定參數。如：show environment，顯示環境變數。</td>
+</tr>
+<tr>
+<td>set/show args</td>
+<td>設定/顯示 命令列的參數</td>
+</tr>
+<tr>
+<td>attach PID</td>
+<td>載入正在執行的程式以進行除錯。PID 可由 ps 指令取得</td>
+</tr>
+<tr>
+<td>detach PID</td>
+<td>釋放已 attach 的程式</td>
+</tr>
+</tbody>
+</table>
+<h4 id="慢慢追程式(step,_next_…)">慢慢追程式(step, next …)</h4><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>info line</td>
+<td>查看正停在哪一行</td>
+</tr>
+<tr>
+<td>frame</td>
+<td>顯示正在執行的行數、副程式、及其所傳送的參數</td>
+</tr>
+<tr>
+<td>where</td>
+<td>顯示目前所在的frame的位置</td>
+</tr>
+<tr>
+<td>backtrace (bt)</td>
+<td>堆疊追蹤。會顯示出上層所有的 frame 的簡略資訊</td>
+</tr>
+<tr>
+<td>next(n)</td>
+<td>直接跑完整個frame，不會進入frame中<br>i.e. 每次執行主程式的一個指令 </td>
+</tr>
+<tr>
+<td>step(s)</td>
+<td>不會直接跑完，而是進入frame中一步一步執行(※註)<br>i.e. 每次執行程式中的一個指令</td>
+</tr>
+<tr>
+<td>until</td>
+<td>直接跑完一個 while 迴圈</td>
+</tr>
+<tr>
+<td>return</td>
+<td>直接中止執行該 frame（視同該 frame 已執行完畢），並返回上個 frame 的呼叫點<br>等同C語言指令<code>return;</code></td>
+</tr>
+<tr>
+<td>finish</td>
+<td>執行完目前的frame。<br>可能必須下達多個 finish 才能回到原來的進入點</td>
+</tr>
+<tr>
+<td>up</td>
+<td>回到上一層frame，frame被呼叫的地方，並顯示其 stack 資訊<br>Ex. up 2: 回到上三層frame</td>
+</tr>
+<tr>
+<td>down</td>
+<td>到下一層frame</td>
+</tr>
+</tbody>
+</table>
+<p>※註：若該函式的除錯資訊沒有編進執行檔裡的話，那step也不會跳進這個函式裡，而是單純的將它看作一行程式碼(如同next的作用)，如標準函式庫(如stdio.h)提供的函式。</p>
+<h4 id="檢查變數值">檢查變數值</h4><h6 id="print(p)">print(p)</h6><p>輸入p/?，?是格式字元，與printf不同的以粗體表示  </p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>格式字元</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>d</td>
+<td>整數</td>
+</tr>
+<tr>
+<td>u</td>
+<td>無號整數(unsigned)</td>
+</tr>
+<tr>
+<td>o</td>
+<td>八進位</td>
+</tr>
+<tr>
+<td><strong>t</strong></td>
+<td>二進位</td>
+</tr>
+<tr>
+<td><strong>a</strong></td>
+<td>位址</td>
+</tr>
+<tr>
+<td>c</td>
+<td>字元</td>
+</tr>
+<tr>
+<td>f</td>
+<td>浮點數</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>whatis</td>
+<td>印出變數的型態</td>
+</tr>
+<tr>
+<td>p arr[1]@5</td>
+<td>印出陣列[1]~[5]</td>
+</tr>
+</tbody>
+</table>
+<h6 id="存取臨時變數">存取臨時變數</h6><pre><code>(gdb) <span class="tag">p</span> <span class="tag">i</span>
+$<span class="number">1</span> = <span class="number">6078</span>
+</code></pre><p>$1 是執行 print 指令後，gdb 產生的一個臨時變數<br>可以直接利用 $1 來取用這個變數</p>
+<p>用於 print 及 disp 的參數名稱</p>
+<pre><code><span class="label">$:</span> 前一次的運算式    
+<span class="label">$$:</span> 兩次前的運算式
+<span class="label">$7:</span> 第七個運算式
+<span class="label">$$7:</span> 倒數第七個運算式
+</code></pre><h6 id="display">display</h6><p>display在中斷點時會自動顯示變數值   </p>
+<table>
+<thead>
+<tr>
+<th>相關指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>info locals</td>
+<td>一次列出所有區域變數的值</td>
+</tr>
+<tr>
+<td>frame frame_num</td>
+<td>切換 frame(印出區域變數時使用)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="顯示資訊">顯示資訊</h4><p>可以顯示某些資訊以利於debug</p>
+<h6 id="列出原始碼">列出原始碼</h6><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list(第一次)</td>
+<td>列出現在執行的位置上下5行</td>
+</tr>
+<tr>
+<td>list(持續輸入)</td>
+<td>繼續印出之後的程式碼(類似page down)</td>
+</tr>
+<tr>
+<td>list -</td>
+<td>印出上一次list的程式碼的前一段程式碼(類似page up)</td>
+</tr>
+<tr>
+<td>list a,b</td>
+<td>印出第 a ~ b 行</td>
+</tr>
+<tr>
+<td>list filename:number</td>
+<td>列出某檔案的第幾行，檔案名可省略</td>
+</tr>
+<tr>
+<td>list [function]</td>
+<td>列出某函數的程式碼</td>
+</tr>
+<tr>
+<td>show listsize</td>
+<td>顯示現在一次印出幾行</td>
+</tr>
+<tr>
+<td>set listsize</td>
+<td>設定一次印出幾行</td>
+</tr>
+<tr>
+<td>disable</td>
+<td>不加參數將會暫時關閉所有設定值</td>
+</tr>
+<tr>
+<td>enable</td>
+<td>再次啟用</td>
+</tr>
+</tbody>
+</table>
+<h6 id="info:_檢視_breakpoint_和_commands_和_display">info: 檢視 breakpoint 和 commands 和 display</h6><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>info frame</td>
+<td>顯示更多的副程式資訊</td>
+</tr>
+<tr>
+<td>info args</td>
+<td>顯示傳給副程式的參數值</td>
+</tr>
+<tr>
+<td>info locals</td>
+<td>顯示該副程式內所有區域變數的值</td>
+</tr>
+<tr>
+<td>info reg</td>
+<td>顯示暫存器的值</td>
+</tr>
+<tr>
+<td>info all-reg</td>
+<td>顯示暫存器的值，包括數學運算暫存器</td>
+</tr>
+<tr>
+<td>info handle</td>
+<td>列出目前 signal 設定的狀態</td>
+</tr>
+<tr>
+<td>info share</td>
+<td>顯示共享函式庫資訊</td>
+</tr>
+</tbody>
+</table>
+<h6 id="信號管理">信號管理</h6><p>預設為 <code>stop</code> <code>print</code> <code>noignore</code>，也就是遇到 signal 時，GDB 會先攔截，並中斷程式<br>必要時可以改為 <code>nostop</code> <code>noprint</code>，讓程式本身去處理 signal<br>若下達 <code>ignore</code> 則是讓程式忽略此 signal</p>
+<pre><code>handle <span class="list">(<span class="keyword">signal</span>)</span> <span class="list">(<span class="keyword">operation</span>)</span>
+</code></pre><h6 id="thread管理">thread管理</h6><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>thread</td>
+<td>查看目前在哪個 thread</td>
+</tr>
+<tr>
+<td>thread 3</td>
+<td>切換至 第三個 thread </td>
+</tr>
+<tr>
+<td>thread apply all bt / thread apply all bt full</td>
+<td>列出所有 thread 的 frame stack</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他指令(括號內為簡寫)">其他指令(括號內為簡寫)</h3><ul>
+<li>quit 結束 (Ctrl + C)</li>
+<li>help(h) 求助 (可加指令名稱)</li>
+<li>shell 執行 Shell 指令</li>
+</ul>
+<h3 id="參考資料">參考資料</h3><p><a href="http://user.frdm.info/ckhung/b/c/gdb.php" target="_blank" rel="external">http://user.frdm.info/ckhung/b/c/gdb.php</a><br><a href="http://tetralet.luna.com.tw/?op=ViewArticle&amp;articleId=187&amp;blogId=1" target="_blank" rel="external">http://tetralet.luna.com.tw/?op=ViewArticle&amp;articleId=187&amp;blogId=1</a><br><a href="http://blog.yslin.tw/2012/08/gdb.html" target="_blank" rel="external">http://blog.yslin.tw/2012/08/gdb.html</a><br><a href="http://www.study-area.org/cyril/opentools/opentools/debug.html" target="_blank" rel="external">http://www.study-area.org/cyril/opentools/opentools/debug.html</a><br><a href="http://www.cis.nctu.edu.tw/~is93007/acd.htm" target="_blank" rel="external">連結已失效</a><br><a href="http://www.gnu.org/software/gdb/" target="_blank" rel="external">GDB的本站</a><br><a href="http://www.gnu.org/software/gdb/documentation/" target="_blank" rel="external">GDB的官方手冊下載區</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/20140923正規表示式筆記/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/MLfoundation1/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-09-19 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/gdb/">gdb<span>2</span></a></li> <li><a href="/tags/自編/">自編<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

@@ -1,0 +1,524 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>正規表示式筆記 | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="正規表示式筆記"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 正規表示式筆記</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>此篇未提及部分請看參考資料</p>
+<h2 id="簡介">簡介</h2><ul>
+<li>Regular Expressions 可簡稱為 regexp 、regex 或 RE  </li>
+<li>常見的翻譯有 「正規表示式」、「正則表達式」、「常規表示式」、「正規運算式」、「規則運算式」等   </li>
+<li>意譯為「字串樣版」，是處理 “有規律的文字檔” 的利器  </li>
+<li><p>Regular Expression經過幾個時期的發展，現在的標準已經被ISO(國際標準組織)批准和被Open Group組織認定(POSIX 1003.2)</p>
+<a id="more"></a>
+<h2 id="用途">用途</h2><p>利用RE指定搜尋的字串樣板，然後從檔案中找出符合該樣板的字串, 再加以處理</p>
+</li>
+<li><p>將檔案中類似的字串取代掉，如 color , colour</p>
+</li>
+<li>搜尋檔案中的單字是否重複繕打，如 Paris in the the Spring</li>
+<li>檢查使用者輸入是否符合指定樣版，如Email格式檢查</li>
+<li>更改日期的顯示格式，如 12/06/2006 =&gt; 2006-12-06</li>
+<li>搜尋指定目錄下是否有符合字串樣版的檔案</li>
+<li>語法剖析方面，如yacc, lex等工具</li>
+<li>搜尋檔案<ul>
+<li><a href="http://www.voidtools.com/" target="_blank" rel="external">everything @ windows</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="注意事項">注意事項</h2><ul>
+<li>處理的資料必須是文字格式，如txt, html, csv,…等開放格式，封閉格式的資料必須該軟體本身有提供RE的支援</li>
+<li>處理的對象儘量是有規律，有軌跡可循，可重複，繁瑣的動作才可完成的事情</li>
+<li>通常以斜線(<code>//</code>)或引號(<code>&quot;&quot;</code>)將RE含括起來</li>
+<li>對中文資料(big5)處理還有問題</li>
+<li>RE有基本型與延伸型，某些工具只支援基本型時，延伸型的語法便不能使用</li>
+<li>Unix like下的工具大都內建RE，Windows下的工具比較少，但也有逐漸增多的趨勢</li>
+</ul>
+<h2 id="哪些工具使用正規表示式？">哪些工具使用正規表示式？</h2><ul>
+<li>UNIX-oriented command：grep , sed , awk , …</li>
+<li>Scripting Languages： perl, python, php, tcl, ruby, guile, Javascript, vbscript , …</li>
+<li>Systems programming：Java , C# , …</li>
+<li>text editors：vi , emacs , ed , Dreamweaver , Crimson Editor , PSPad , EmEditor , Editplus , UltraEdit , textpro …</li>
+<li>open source projects：Apache, Mysql, KDE, Postfix, Analog, and Nmap</li>
+</ul>
+<h2 id="規則">規則</h2><p>特殊字元：用來做特殊符號的字元，若要搜尋這些字元，必須在其前方加上\跳脫字元（Ex. 若要比對 “^” ，使用 <code>\^</code>）</p>
+<p><strong>位置和量詞</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>字元</th>
+<th>說明</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\b</td>
+<td>英文字的邊界(空格，逗號等符號)</td>
+<td><a href="https://www.regex101.com/r/uK6mV1/3" target="_blank" rel="external">Example</a> </td>
+</tr>
+<tr>
+<td>\B</td>
+<td>非邊界</td>
+<td><a href="https://www.regex101.com/r/uK6mV1/5" target="_blank" rel="external">Example</a> </td>
+</tr>
+<tr>
+<td>^</td>
+<td>表示位置在開頭</td>
+<td><code>^A</code> 可比對 「Abcd」 中的 「A」，但不可比對 「aAb」</td>
+</tr>
+<tr>
+<td>$</td>
+<td>表示位置在結尾</td>
+<td><code>A$</code> 可比對 「bcdA」 中的 「A」，但不可比對 「aAb」</td>
+</tr>
+<tr>
+<td>*</td>
+<td>比對前一個字零次或更多次</td>
+<td><code>bo*</code> 可比對 「Good boook」 中的 「booo」，亦可比對 「Good bk」 中的 「b」</td>
+</tr>
+<tr>
+<td>+</td>
+<td>比對前一個字一次或更多次，等效於 {1,}</td>
+<td><code>a+</code> 可比對 「caaandy」 中的 「aaa」，但不可比對 「cndy」</td>
+</tr>
+<tr>
+<td>?</td>
+<td>比對前一個字零次或一次</td>
+<td><code>e?l</code> 可比對 「angel」 中的 「el」，也可以比對 「angle」 中的 「l」</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>表示前面的字元或集合出現的次數</td>
+</tr>
+</tbody>
+</table>
+<p><code>c{5,8}</code>，代表c這個字重複出現5到8次<br><code>.{5, }</code>，代表至少5個字元的字串  </p>
+<p><strong>集合</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>字元</th>
+<th>說明</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ ]</td>
+<td>代表集合中的任一字元</td>
+<td><code>[01256]</code> 代表0,1,2,5,6這個集合中的任何一個字元</td>
+<td></td>
+</tr>
+<tr>
+<td>-</td>
+<td>在中括號內表示「範圍」</td>
+<td><code>[0-9]</code>代表0到9的任一個單一的數字</td>
+</tr>
+<tr>
+<td>^</td>
+<td>在中括號內表示「否定」</td>
+<td><code>[^aeiou]</code> 代表除了a,e,i,o,u這幾個母音之外的字元</td>
+</tr>
+</tbody>
+</table>
+<p><code>[a-zA-Z0-9]</code>的寫法也是可行的<br><code>[a-z&amp;&amp;[^bc]]</code>代表除了b, c以外的小寫英文單字<br>此外，「|」 表示OR，如<code>cat|dog|bird</code>代表cat, dog, bird</p>
+<p><strong>範圍的簡寫</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>字元</th>
+<th>說明</th>
+<th>等價範圍    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\d</td>
+<td>數字</td>
+<td><code>[0-9]</code> </td>
+</tr>
+<tr>
+<td>\D</td>
+<td>非數字</td>
+<td><code>[^0-9]</code></td>
+</tr>
+<tr>
+<td>\w</td>
+<td>數字、字母、底線</td>
+<td><code>[a-zA-Z0-9_]</code></td>
+</tr>
+<tr>
+<td>\W</td>
+<td>非 \w</td>
+<td><code>[^a-zA-Z0-9_]</code></td>
+</tr>
+<tr>
+<td>\n</td>
+<td>換行符號</td>
+<td><code>[\n]</code></td>
+</tr>
+<tr>
+<td>\s</td>
+<td>空白字元(tab, 換行等)</td>
+<td><code>[ \t\n\x0B\f\r]</code></td>
+</tr>
+<tr>
+<td>\S</td>
+<td>非空白字元</td>
+<td><code>[^ \t\n\x0B\f\r]</code></td>
+</tr>
+<tr>
+<td>\w</td>
+<td>數字或是英文字</td>
+<td><code>[a-zA-Z0-9]</code></td>
+</tr>
+<tr>
+<td>\W</td>
+<td>非數字與英文字</td>
+<td><code>[^a-zA-Z0-9]</code></td>
+</tr>
+<tr>
+<td>.</td>
+<td>代表任意一個字（除了換行符號）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>其他</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>字元</th>
+<th>說明</th>
+<th>範例  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(x)</td>
+<td>將x儲存</td>
+<td><code>(a*) and (b*)</code> 可找出「aaa and bb」 中的 「aaa」 和 「bb」，並將其儲存</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>carriage return    </td>
+</tr>
+<tr>
+<td>\t</td>
+<td>定位字元（Tab）    </td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直定位字元（Vertical tab）    </td>
+</tr>
+<tr>
+<td>\ooctal</td>
+<td>八進位，其中octal是八進位數目</td>
+<td><code>\ooctal123</code> 可比對 與 八進位的ASCII中 「123」 所相對應的字元值。</td>
+</tr>
+<tr>
+<td>\xhex</td>
+<td>十六進位，其中hex是十六進位數目</td>
+<td><code>\xhex38</code> 可比對 與 16進位的ASCII中 「38」 所相對應的字元。</td>
+</tr>
+<tr>
+<td>\cX</td>
+<td>控制字元，其中 X 是一個控制字元</td>
+<td><code>\cM</code> 可以比對’control-M’</td>
+</tr>
+</tbody>
+</table>
+<h2 id="範例">範例</h2><ul>
+<li>只能輸入數字或無輸入：<code>^[0-9]*$</code></li>
+<li>只能輸入 m~n 位的數字：<code>^\d{m,n}$</code></li>
+<li>只能輸入零和非零開頭的數字：<code>^0|[1-9][0-9]*$</code></li>
+<li>只能輸入有兩位小數的正實數：<code>^[0-9]+(.[0-9]{2})?$</code></li>
+<li>只能輸入非零的正整數：<code>^\+?[1-9][0-9]*$</code></li>
+<li>只能輸入非零的負整數：<code>^\-[1-9][0-9]*$</code></li>
+<li>只能輸入由 26 個英文字母組成的字符串：<code>^[A-Za-z]+$</code></li>
+<li>只能輸入由數字、26 個英文字母或者下劃線組成的字符串：<code>^\w+$</code>  </li>
+<li>驗證用戶密碼 — 以字母開頭，長度在 6~18 之間，只能包含字符、數字和下劃線：<code>^[a-zA-Z]\w{5,17}$</code></li>
+<li>只能輸入漢字：<code>^[\u4e00-\u9fa5]{0,}$</code></li>
+<li>驗證Email 地址：<code>^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$</code></li>
+<li>驗證 InternetURL：<code>^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$</code>  </li>
+<li>驗證電話號碼：<code>^(\(\d{3,4}-)|\d{3.4}-)?\d{7,8}$</code>  <ul>
+<li>正確格式為：XXX-XXXXXXX、XXXX-XXXXXXXX、XXX-XXXXXXX、XXX-  XXXXXXXX、XXXXXXX和XXXXXXXX    </li>
+</ul>
+</li>
+<li>驗證一年的 12 個月(1~9, 01~09, 10~12)：<code>^(0?[1-9]|1[0-2])$</code></li>
+<li>驗證一個月的 31 天(01～09, 1～31)：<code>^((0?[1-9])|((1|2)[0-9])|  30|31)$</code>    </li>
+</ul>
+<h2 id="應用：以grep搜尋檔案內容">應用：以grep搜尋檔案內容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep [OPTIONS] PATTERN [FILE...]</span><br><span class="line">grep [OPTIONS] [<span class="operator">-e</span> PATTERN | <span class="operator">-f</span> FILE] [FILE...]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在當前目錄尋找包含輸出函式<code>printf</code>或<code>fprintf</code>的檔案: <code>grep -Ern &#39;f?printf&#39; .</code><ul>
+<li><code>-E</code> 使用正規表示式</li>
+<li><code>-r</code> 遞迴搜尋(子目錄)</li>
+<li><code>-n</code> 列出行數 </li>
+<li>加入尋找<code>sprintf</code><ul>
+<li><code>grep -Ern &#39;[sf]?printf&#39; .</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考資料">參考資料</h2><p><a href="http://irw.ncut.edu.tw/peterju/webslide/re/" target="_blank" rel="external">regexp介紹</a><br><a href="http://www.webpage.idv.tw/maillist/maillist4/pro/05/regular1.htm" target="_blank" rel="external">簡易圖片教學</a><br><a href="http://atedev.wordpress.com/2007/11/23/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%A4%BA%E5%BC%8F-regular-expression/" target="_blank" rel="external">轉載自張智星教學網站</a><br><a href="http://bbs.quickbest.net/viewthread.php?tid=5978" target="_blank" rel="external">朱孝國—正規表示式原理及應用</a><br><a href="http://linux.vbird.org/linux_basic/0330regularex.php#basic_regexp" target="_blank" rel="external">鳥哥</a><br><a href="http://openhome.cc/Gossip/JavaGossip-V1/RegularExpression.htm" target="_blank" rel="external">java.util.regex.Pattern支援的正則表示式</a><br><a href="http://user.frdm.info/ckhung/b/re/index.php" target="_blank" rel="external">洪朝貴:字串樣版 Regexp: 兼談長線學習投資</a><br><a href="https://www.regex101.com/" target="_blank" rel="external">regex101 - 線上RE測試</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/20140923mapreduce簡單介紹/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/20140919gdb入門/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-09-23 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/regexp/">regexp<span>1</span></a></li> <li><a href="/tags/正規表示式/">正規表示式<span>1</span></a></li> <li><a href="/tags/筆記/">筆記<span>11</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

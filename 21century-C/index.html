@@ -1,0 +1,386 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>21世紀C語言 | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="21世紀C語言"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 21世紀C語言</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h2 id="演進">演進</h2><p>C語言標準  </p>
+<ul>
+<li>ANSI C89</li>
+<li>ISO C99<ul>
+<li>visual studio 不支援</li>
+</ul>
+</li>
+<li>C11</li>
+</ul>
+<p>POSIX  </p>
+<ul>
+<li>Unix類作業系統的共同標準</li>
+<li>實作<ul>
+<li>BSD(Berkeley Software Distribution)<ul>
+<li>Apple iOS</li>
+<li>clang</li>
+</ul>
+</li>
+<li>GNU(GNU’s Not Unix)<ul>
+<li>gcc</li>
+</ul>
+</li>
+<li>分別有自己的授權系統<a id="more"></a>
+<h2 id="簡化編譯">簡化編譯</h2></li>
+</ul>
+</li>
+</ul>
+<p>套件管理工具  </p>
+<ul>
+<li>Windows: cygwin</li>
+<li>Linux: apt-get, yum</li>
+</ul>
+<p>連結函式庫  </p>
+<ul>
+<li>告知兩次<ul>
+<li><code>#include</code></li>
+<li>編譯器 <code>-l</code></li>
+</ul>
+</li>
+<li>Example<ul>
+<li><code>#include &lt;math.h&gt;</code></li>
+<li><code>-lm</code></li>
+</ul>
+</li>
+<li>標準函式庫不用連結<ul>
+<li>編譯時隱含<code>-lc</code>，連結到libc</li>
+</ul>
+</li>
+<li><p>路徑</p>
+<ul>
+<li>預設為標準函式庫路徑</li>
+<li>include檔路徑 <code>I[path]</code></li>
+<li>函式庫路徑 <code>-L[path]</code></li>
+<li>按照相依順序列出<ul>
+<li><code>-lbroad -lgeneral</code></li>
+<li>在board未對應的函數會在general尋找</li>
+</ul>
+</li>
+<li><p><code>pkg-config</code></p>
+<ul>
+<li>回傳套件的<code>-I</code>和<code>-l</code>, <code>-L</code>參數<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~$ pkg-config --libs openssl <span class="comment"># -l, -L</span></span><br><span class="line">-lssl -lcrypto  </span><br><span class="line">~$ pkg-config --cflags libssl <span class="comment"># -I. In this case, -I isn't needed</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>用backtick括起來，會用命令執行的結果取代命令</p>
+<ul>
+<li><code>pkg-config --libs openssl</code> = <code>-lssl -lcrypto</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="http://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries" target="_blank" rel="external">函式庫類型</a>  </p>
+<ul>
+<li>靜態函式庫(static library)<ul>
+<li>編譯器連結</li>
+</ul>
+</li>
+<li>共享函式庫(shared library)<ul>
+<li>執行期連結</li>
+<li>解法<ol>
+<li>用Libtool打包</li>
+<li>設定LD_LIBRARY_PATH環境變數</li>
+<li><code>-Wl, -R[PATH]</code> <a href="https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dynamic_or_shared.html" target="_blank" rel="external">將-L傳送到linker, -R嵌到執行期</a></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>compiler flag  </p>
+<ul>
+<li><code>-std=gnu11</code><ul>
+<li>gnu99 … </li>
+<li>目前預設是99</li>
+</ul>
+</li>
+<li><code>-O</code><ul>
+<li>最佳化</li>
+</ul>
+</li>
+<li><code>Wall</code><ul>
+<li>顯示所有警告</li>
+</ul>
+</li>
+</ul>
+<h3 id="Makefile">Makefile</h3><p><a href="http://wen00072-blog.logdown.com/posts/171197-using-getopt-parse-command-line-parameter" target="_blank" rel="external">http://wen00072-blog.logdown.com/posts/171197-using-getopt-parse-command-line-parameter</a></p>
+<p><a href="">參考makefile設定</a></p>
+<h3 id="標頭檔(header)">標頭檔(header)</h3><p><a href=""></a></p>
+<h3 id=""> </h3>	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/cpp-boost/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/Emacs-tips/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-05-17 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/筆記/">筆記<span>7</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/c/">c<span>2</span></a></li> <li><a href="/tags/gdb/">gdb<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

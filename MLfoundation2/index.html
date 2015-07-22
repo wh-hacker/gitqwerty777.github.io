@@ -1,0 +1,707 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>機器學習基石(下) | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Chap 9 ~ 12 -- How can machine learn?, Chap 13 ~ 16 -- How can machine learn better?">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="機器學習基石(下)"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 機器學習基石(下)</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+	
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> <p>Chap 9 ~ 12 — How can machine learn?, Chap 13 ~ 16 — How can machine learn better?</p>
+			
+		</div> <!-- alert -->
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h2 id="Chap09_Linear_Regression">Chap09 Linear Regression</h2><ul>
+<li>方法和perceptron相同<ul>
+<li>將w向量(參數)最佳化</li>
+<li>直接用計算出的 Wx<ul>
+<li>perceptron → +1 / -1</li>
+<li>regression → 數字</li>
+</ul>
+</li>
+<li>找最少誤差 <img src="/img/ML/residual.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/ML/einout2.png" alt=""><br>Ein = wx 和 y 的平均誤差<br>Eout = wx 和 y 的誤差期望值<br><a id="more"></a><br>轉換成矩陣形式(最後一行的X, y, w都是矩陣)<br><img src="/img/ML/einmatrix.png" alt=""></p>
+<p>Ein(w)函數性質  </p>
+<ul>
+<li>continuous</li>
+<li>differeniable</li>
+<li>convex(凸)     </li>
+<li>可以找到最低點(Ein微分 = 0) <img src="/img/ML/ein=0.png" alt=""><ul>
+<li>因為A = $X^tX$，必為symmetric matrix，可直接做微分 <img src="/img/ML/vectorwdiff.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>計算W  </p>
+<ul>
+<li>若A invertible，可直接求inverse</li>
+<li>若非，則用X十字架(pseudo inverse)</li>
+<li><img src="/img/ML/invertiblesingular.png" alt=""></li>
+</ul>
+<p>linear regression algorithm(easy)<br><img src="/img/ML/regressionalgo.png" alt="linear regression algorithm"></p>
+<p>Is it “learning algorithm”?    </p>
+<ul>
+<li>No → 直接計算所得的解</li>
+<li><strong>Yes</strong> → good Ein and Eout(finite $d_vc$), pseudo-inverse<ul>
+<li>內部實際是迭代進行</li>
+</ul>
+</li>
+</ul>
+<p>“Simpler-than-VC” Guarantee<br><img src="/img/ML/9-3.png" alt=""><br>預測值 $\hat{y} = Xw = XX^{-1}y = Hy$<br>定義 hat matrix $H = XX^{-1}$ </p>
+<p>Hat Matrix in Geometric  </p>
+<ul>
+<li><img src="/img/ML/9-1.png" alt=""></li>
+<li>預測值 $\hat{y}$ 被限制在spax of X 上 ($\hat{y}$ = WX)</li>
+<li>最小誤差會出現在y - $\hat{y}$ 與 span of X 垂直時</li>
+<li>H matrix : 使向量投影至span of X上</li>
+<li>I - H : 投影至與 span of X 垂直的向量 (即為誤差: y - $\hat{y}$)<ul>
+<li>可以發現 I-H 對角線上的值之和 trace(I - H) = N - (d + 1)</li>
+<li>物理意義上為在N維空間投影至d+1維空間</li>
+</ul>
+</li>
+<li>with noise <img src="/img/ML/9-4.png" alt=""><ul>
+<li>f(x) + noise → y</li>
+<li>noise * (1-H) = y - $\hat{y}$</li>
+<li>可算出Ein和noise的關係 <img src="/img/ML/9-5.png" alt=""> <img src="/img/ML/9-6.png" alt=""></li>
+<li>N變大時, Eout↓, Ein↑, 收斂在σ^2 (noise level) <img src="/img/ML/9-7.png" alt=""> </li>
+</ul>
+</li>
+<li>expected generalization error(Eout - Ein): 2(d+1)/N </li>
+</ul>
+<p>Run Linear Regression Algo(efficient) and set initial w = $w^T_{lin}$ to speed up the perceptron learning     </p>
+<ul>
+<li>總Err(面積): Square Error &gt; 0/1 Error <img src="/img/ML/9-8.png" alt=""></li>
+<li>regression產生的 W 比 classification 的誤差更大 <img src="/img/ML/9-9.png" alt=""><ul>
+<li>但計算時間較短</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chap_10_Logistic_Regression">Chap 10 Logistic Regression</h2><p>Heart attack prediction<br>Not every people with bad condition will have heart attack<br>→ only P(Heart attack | x) probability<br>→ look as error</p>
+<p>f(x): P(+1|X) &gt; 1/2 當成 +1 <img src="/img/ML/10-1.png" alt=""></p>
+<p>‘soft’ binary classification: f(x) = P(+1|x)</p>
+<ul>
+<li>ideal data: probabilty</li>
+<li>data we have: noisy data(+1 or -1)</li>
+<li><strong>the same data as perceptron, different target function</strong><ul>
+<li>target function 為發生的機率  </li>
+</ul>
+</li>
+</ul>
+<p>Logistic Hypothesis   </p>
+<ul>
+<li>smooth, monotonic, sigmoid(S形) function <img src="/img/ML/10-3.png" alt=""> <img src="/img/ML/10-2.png" alt=""><ul>
+<li>0 &lt;= θ(x) &lt;= 1</li>
+<li>θ(x) + θ(-x) = 1 </li>
+<li>θ(-∞) = 0, θ(0) = 0.5, θ(∞) = 1</li>
+<li>$h(x) = θ(w^Tx)$ <img src="/img/ML/10-4.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>Likelihood<br>if h ~= f, [h 產生 y 的機率] 接近 [f 產生 y 的機率(其值通常很大)]<br>g = argmax_h likelihood(h) <img src="/img/ML/10-6.png" alt=""></p>
+<p>Cross-Entropy Error    </p>
+<ul>
+<li>max Π h(ynxn)<ul>
+<li>最高可能性</li>
+<li>Π = 連乘 </li>
+</ul>
+</li>
+<li>= max ln Π θ(ynwxn)<ul>
+<li>轉換成θ，取ln </li>
+</ul>
+</li>
+<li>= max Σ ln θ(ynwxn)<ul>
+<li>ln Π = Σ ln </li>
+</ul>
+</li>
+<li>= min 1/N x Σ -lnθ(ynwxn) <img src="/img/ML/10-7.png" alt=""><ul>
+<li>乘1/N, min 和 負號抵消  </li>
+</ul>
+</li>
+<li>代入θ公式, Ein <img src="/img/ML/10-8.png" alt=""></li>
+<li>Cross-Entropy Error <img src="/img/ML/10-9.png" alt=""></li>
+</ul>
+<p>find ∇Ein(w) = 0 to find min(Ein) <img src="/img/ML/10-11.png" alt="">  </p>
+<ol>
+<li>θ項都為0<ul>
+<li>only if all ynWxn &gt;&gt; 0</li>
+<li>需要linear-seqerable data</li>
+</ul>
+</li>
+<li>Σ(-ynxn) = 0<ul>
+<li>non-linear equation of w</li>
+</ul>
+</li>
+<li>都不好算 </li>
+</ol>
+<p>solve it by PLA  </p>
+<ul>
+<li>若有錯則更新，正確則 $w^t = w^{t+1}$ <img src="/img/ML/10-12.png" alt=""><ul>
+<li>(xn, yn) contributes to the gradient by an amount of $θ(-y_nw^Tx_n)$</li>
+</ul>
+</li>
+<li>加入參數η，為更新的幅度倍率(本來為1) <img src="/img/ML/10-13.png" alt=""><ul>
+<li>v 為原本的式子</li>
+</ul>
+</li>
+</ul>
+<p>PLA smoothing <img src="/img/ML/10-14.png" alt="">   </p>
+<ul>
+<li>更新時<ul>
+<li>往Ein較低的方向走</li>
+<li>v為方向, η為幅度 </li>
+</ul>
+</li>
+<li>Greedy<ul>
+<li>每次更新時調整η, 使Ein最小 <img src="/img/ML/10-17.png" alt=""><ul>
+<li>η夠小的時候，可用泰勒展開式 <img src="/img/ML/10-15.png" alt=""></li>
+<li>估算出的greedy更新公式 <img src="/img/ML/10-16.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Gradient Descent <img src="/img/ML/10-18.png" alt="">   <ul>
+<li>最優的v是與梯度相反的方向，如果一條直線的斜率k&gt;0，說明向右是上升的方向，應該向左走 </li>
+<li>距離谷底較遠（位置較高）時，步幅(η)大些比較好；接近谷底時，步幅小些比較好<ul>
+<li>梯度的數值大小間接反映距離谷底的遠近 <img src="/img/ML/10-19.png" alt=""></li>
+<li>希望步幅與梯度大小成正比<ul>
+<li>wt+1 ← wt - η∇Ein(wt)</li>
+<li>和上圖不同，不用除∇Ein(wt)長度</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Update Time  </p>
+<ul>
+<li>decide wt+1 by all data → O(N) time</li>
+<li>Can logistic regression with O(1) time per iteration(like PLA)?<ul>
+<li>→ expectation ε instead of Σ</li>
+<li>→ use one of data instead of ε</li>
+<li>→ <strong>Stochastic Gradient Descent</strong></li>
+</ul>
+</li>
+</ul>
+<p>Stochastic Gradient Descent (SGD) <img src="/img/ML/11-7.png" alt="stochastic gradient descent">    </p>
+<ul>
+<li>隨機選其中一筆資料來獲取「梯度」，以此對 w 進行更新</li>
+<li>進行足夠多的更新後，平均的隨機梯度與平均的真實梯度近似相等</li>
+<li>η often use 0.1</li>
+<li>compare PLA and SGD <img src="/img/ML/11-8.png" alt=""><ul>
+<li>SGD looks like more flexible PLA</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chap_11_Linear_Models">Chap 11 Linear Models</h2><p>can linear regression or logistic regression help linear classification? </p>
+<p><img src="/img/ML/11-1.png" alt=""><br><img src="/img/ML/11-2.png" alt=""> ys: classification correctness score</p>
+<p>Error functions <img src="/img/ML/11-3.png" alt="">  </p>
+<ul>
+<li>small err0/1 $\nRightarrow$ smallSQR  </li>
+<li>small errSQR → small err0/1</li>
+<li>small errSCE(scaled cross entropy) ↔ small err0/1</li>
+<li>small Ece → small E0/1<ul>
+<li>cross entropy error implies small classification error <img src="/img/ML/11-4.png" alt=""> <img src="/img/ML/11-5.png" alt=""> </li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/ML/11-6.png" alt="">   </p>
+<ol>
+<li>PLA<ol>
+<li>優點：在數據線性可分時高效且準確</li>
+<li>缺點：只有在數據線性可分時才可行，否則需要借助POCKET算法（沒有理論保證）</li>
+</ol>
+</li>
+<li>線性回歸<ol>
+<li>優點：最簡單的優化（直接利用矩陣運算工具）</li>
+<li>缺點：ys 的值較大時，與0/1 error 相差較大</li>
+<li>線性回歸得到的結果w可作為其他算法的初始值</li>
+</ol>
+</li>
+<li>logistic回歸<ol>
+<li>優點：比較容易優化（梯度下降）</li>
+<li>缺點：ys 是非常小的負數時，與0/1 error 相差較大</li>
+<li>實際中，logistic回歸用於分類的效果優於線性回歸的方法和POCKET算法</li>
+</ol>
+</li>
+</ol>
+<h3 id="Multiclass_Classification_-_meta_algorithms">Multiclass Classification - meta algorithms</h3><ol>
+<li>One-Versus-All (OVA) Decomposition<ol>
+<li>對每個分類做logistic regression(共N個)，選分數y最高的</li>
+<li>優點：prediction有效率，學習時可平行處理</li>
+<li>缺點：output種類很多時，數據往往非常不平衡(x 遠大於 o)，會嚴重影響訓練準確性</li>
+<li><a href="https://en.wikipedia.org/wiki/Multinomial_logistic_regression" target="_blank" rel="external">multinomial logistic regression</a> 考慮了這個問題</li>
+</ol>
+</li>
+<li>One versus One (OVO) <img src="/img/ML/11-9.png" alt=""><ol>
+<li>共有 N(N-1)/2 個 perceptron，投票決定</li>
+<li>優點： training有效率(每個perceptron較小), can be coupled with any binary classification approaches</li>
+<li>缺點： use O(K^2) space, slower prediction, more training</li>
+</ol>
+</li>
+</ol>
+<h2 id="Chap_12_Nonlinear_Transformation">Chap 12 Nonlinear Transformation</h2><p>座標系轉換  </p>
+<ul>
+<li>將非線性的h(x)轉成線性 <img src="/img/ML/12-2.png" alt=""> </li>
+<li>circular separable in X → linear separable in Z <img src="/img/ML/12-1.png" alt=""> <ul>
+<li>lines in Z-space ↔ special quadratic curves(圓錐曲線) in X-space</li>
+</ul>
+</li>
+<li>可在X做出任何二次曲線的Z <img src="/img/ML/12-3.png" alt=""></li>
+<li>transform data from X to Z to train <img src="/img/ML/12-4.png" alt=""><ul>
+<li>(xn, yn) → (zn = ϕ(xn), yn)</li>
+<li>train w by (z, y)</li>
+<li>g(x) = sign(ϕ(x)w) (= sign(wz))</li>
+</ul>
+</li>
+<li>代價<ul>
+<li>O(Q^d) //Q次方座標系, d個參數(x, y)</li>
+<li>$d_{vc}$ 隨 Q 成長</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>力量(the force)愈強，代價愈大(可能會overfit)(見Chap13)</p>
+</blockquote>
+<p>有效學習的條件</p>
+<ol>
+<li>Ein(g) 約等於 Eout(g)</li>
+<li>Ein(g)足夠小</li>
+</ol>
+<p>當模型很簡單時（dvc 很小），我們更容易滿足1. 而不容易滿足2. ；反之，模型很複雜時（dvc很大），更容易滿足2. 而不容易滿足1.<br>→ 次方愈高，hypothesis set 包含愈多、愈複雜，Eout更偏離，也對數據擬合得更充分，Ein 更小 <img src="/img/ML/12-5.png" alt=""> <img src="/img/ML/12_1.png" alt=""> </p>
+<p>安全的方法: 先算低次方, 若結果已足夠好就不用繼續尋找<br>實務上的機器學習，通常都不會使用太高維度的learning</p>
+<blockquote>
+<p>linear model first: simple, efficient, safe, and workable!</p>
+</blockquote>
+<p><a href="http://zh.wikipedia.org/zh-tw/%E5%8B%92%E8%AE%A9%E5%BE%B7%E5%A4%9A%E9%A1%B9%E5%BC%8F" target="_blank" rel="external">Legendre Polynomials Transform</a>: 互為正交的函式(?)，用來做transform效果較好</p>
+<h2 id="Chap_13_Overfitting">Chap 13 Overfitting</h2><p>overfitting: <strong>lower Ein, higher Eout </strong><br><img src="/img/ML/13_01.png" alt=""><br>右側為overfitting, 左側為underfitting</p>
+<h3 id="Case_Study">Case Study</h3><p>target function <img src="/img/ML/12_4.png" alt=""><br>try 2nd order and 10th order function <img src="/img/ML/12_5.png" alt="">     </p>
+<ul>
+<li>左側： H10 performance is not good even if original function is 10th-order</li>
+<li>右側： even if no noise, there are still overfitting in H10<ul>
+<li>hypothesis complexity acts like noise</li>
+</ul>
+</li>
+<li>philosophy: 以退為進<ul>
+<li>絕聖棄智，其效百倍，絕巧棄利，error無有</li>
+</ul>
+</li>
+</ul>
+<p>雖然H10在N大的時候Eout較低，但在N小的時候Eout非常大 <img src="/img/ML/12_6.png" alt=""><br>→ 資料不夠多(N小)的時候，不能用太複雜的hypothesis</p>
+<p>實驗 noise 對 overfit 的影響  </p>
+<ul>
+<li>noise ε with variance σ^2<ul>
+<li>normal distributed iid</li>
+<li>red area has more overfit <img src="/img/ML/13_1.png" alt=""></li>
+</ul>
+</li>
+<li>造成overfit的原因  </li>
+</ul>
+<ol>
+<li>deterministic noise<ol>
+<li>最好的hypothesis和target function的差異(depends on H)</li>
+<li>hypothesis complexity愈大，deterministic noise愈小</li>
+</ol>
+</li>
+<li>stochastic noise<ol>
+<li>N改變時，noise level對noise的影響  </li>
+<li>不是固定值、不能改善</li>
+<li>example: sample error</li>
+</ol>
+</li>
+</ol>
+<p>overfit的四個原因  </p>
+<ol>
+<li>data size ↓</li>
+<li>stochastic noise ↑</li>
+<li>deterministic noise ↑</li>
+<li>hypothesis set的power ↑<ul>
+<li>如同教小孩微積分</li>
+</ul>
+</li>
+</ol>
+<p>類比成開車 <img src="/img/ML/13-2.png" alt=""></p>
+<p><strong>Overfit是很常發生的！</strong></p>
+<p>Data Cleaning/Pruning:<br>對於有些”奇怪”的data   </p>
+<ol>
+<li>改成自己認為是對的output (data cleaning)</li>
+<li>移除資料 (data pruning)</li>
+</ol>
+<p>Data Hinting:<br>用已有的知識處理原有的data，產生新的data(不是偷看！)，適合於資料量不足時(Ex. 手寫辨識，可稍微旋轉、平移)，要注意新data的比例是否符合現實情況</p>
+<h2 id="Chap14_Regularization">Chap14 Regularization</h2><p>Regularization： 設條件(constraint) 降低 hypothesis set 的 complexity</p>
+<table>
+<thead>
+<tr>
+<th>對H10改動(= H2’)</th>
+<th>complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>w3~w10為0</td>
+<td>H2’ == H2</td>
+</tr>
+<tr>
+<td>w0~w10其中3個不為0</td>
+<td>H2 &lt; H2’ &lt; H10   </td>
+</tr>
+<tr>
+<td>wi的和小於一固定值  H(C)=sum(w^2)&lt;=C</td>
+<td>soft and smooth structure, e.g. H(0) &lt; H(11.26) &lt; H(∞) = H10</td>
+</tr>
+</tbody>
+</table>
+<p>限制參數大小： NP-hard to solve <img src="/img/ML/13-3.png" alt=""></p>
+<p>Lagrange Multiplier <img src="/img/ML/13-4.png" alt="">   </p>
+<ul>
+<li>min(Ein)：朝梯度的反方向<ul>
+<li>-▽Ein(W)為更新的向量</li>
+</ul>
+</li>
+<li>W為原點到指定點的向量</li>
+<li>只找出在紅色圓(限制)內的最佳解，即紅色圓上與$W_{lin}$最近的點<ul>
+<li>$W_{lin}$為linear regression的解</li>
+<li>W與-▽Ein(W)平行的時候 <img src="/img/ML/13-5.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>可以藉由設不同的 λ 來產生 W，此時 λ 和 H(C) 的 C 相似，用來限制參數    </p>
+<ul>
+<li>Ridge Regression (similar to linear regression) <img src="/img/ML/13-6.png" alt=""></li>
+<li>Augmented Error  <ul>
+<li>solve min(Eaug) (unconstrained) is easier than solve min(Ein)(constrained) </li>
+<li>積分後得到regularizer$w^Tw$ <img src="/img/ML/13-01.png" alt=""></li>
+<li>wREG = argmin(w) Eaug(w)</li>
+<li>weight-decay<ul>
+<li>Penalize large weights using penalties</li>
+<li>λ↑ → perfer shorter w → effective C↓</li>
+</ul>
+</li>
+<li>λ 對應到 C <img src="/img/ML/13-9.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>只需一點regularization就有效 <img src="/img/ML/13-8.png" alt=""> </p>
+<p>regularizer只限制單一hypothesis的complexity，不像VC bound整個hypothesis set都限制，所以Eaug比Ein更接近Eout <img src="/img/ML/14-1.png" alt=""></p>
+<p>Effective VC Dimension of Eaug  </p>
+<ul>
+<li>dVC(H) = d + 1 </li>
+<li>實際的 dvc 更小(被λ限制)，但不好證明 <img src="/img/ML/14-2.png" alt=""></li>
+</ul>
+<p>General Regularizers: 限制hypothesis的「方向」 <img src="/img/ML/14-3.png" alt="">    </p>
+<ul>
+<li>target-dependent<ul>
+<li>用target function的性質來限制</li>
+</ul>
+</li>
+<li>plausible(合理的)<ul>
+<li>預期比較平滑、簡單的hypothesis，因為noise是較不平滑的</li>
+<li>L1(sparsity regularizer): regularizer = Σ|wq|</li>
+</ul>
+</li>
+<li>friendly(easy to use)<ul>
+<li>L2(weight-decay regularizer): regularizer = Σ$w_q^2$</li>
+</ul>
+</li>
+<li>comparison: error → user-dependent, plausible, friendly</li>
+<li>augmented error = error + regulizer</li>
+</ul>
+<p><img src="/img/ML/14-4.png" alt="L1 and L2"> L1 useful when need sparse solution(有許多零的w, 因w最終會落到正方形的頂點)，L1即表示限制函數為一次方 </p>
+<p>noise愈多，需要的regularization愈多 ↔ more bumpy road, putting brakes more <img src="/img/ML/14-5.png" alt=""></p>
+<p>Conclusion:<br>正規化用來減少hypothesis的complexity，避免overfit，用wTw作regulizer(L2)，以λ為參數調整正規化的程度(即L2圓的大小，L1正方形的大小)，通常λ不會太大</p>
+<h2 id="Chap15_Validation">Chap15 Validation</h2><p>So Many Models can choose, so use validation to check which is good choice</p>
+<p>selecting by E_in is dangerous(can’t reflect Eout)<br>selecting by E_test is infeasible and cheating(not easy to get test data)</p>
+<p>$E_{val}$: legal cheating     </p>
+<ul>
+<li>將data分成train和validation二部分</li>
+<li>用train學習，用valid測試</li>
+</ul>
+<p>在許多切割(fold)之中，找$E_{val}$最小的hypothesis，並用這個hypothesis和<strong>全部的data</strong>算出g <img src="/img/ML/15-1.png" alt="">   </p>
+<ul>
+<li>$g_m^{-}$ 為 validation data 算出的g <img src="/img/ML/14-7.png" alt=""> </li>
+<li>find balance of validation data size <img src="/img/ML/15-2.png" alt=""><ul>
+<li>leave-one-out cross validation ($E_{loocv}$)<ul>
+<li>每次只用一個資料作validation(K = 1)</li>
+<li>often called ‘almost unbiased estimate of Eout’ <img src="/img/ML/15-3.png" alt="">  </li>
+<li>缺點：計算太多(一個model要train N次, N為資料個數)</li>
+<li>改善：切成n塊(通常5fold, 10fold)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>選擇 - 先選要測試的models，再用validation選出最好的     </p>
+<ol>
+<li>all training models: select among hypotheses(初賽)</li>
+<li>all validation schemes: select among finalists(複賽)</li>
+<li>all testing methods: just evaluate</li>
+<li>Still use <strong>test result(之前沒用過的test data算出的結果)</strong> for final benchmark, not best validation result</li>
+</ol>
+<h2 id="Chap16_Three_Learning_Principles">Chap16 Three Learning Principles</h2><h3 id="Occam’s_Razor">Occam’s Razor</h3><p>An explanation of the data should be made as simple as possible, but no simpler<br>用最簡單且有效的方法解釋資料<br><img src="/img/ML/16-1.png" alt=""><br>因為愈簡單的H 愈難分資料 → 可以分開資料時，有顯著性(若是用複雜模型，分開是很容易的)<br>→ linear first, always ask whether overfitting</p>
+<h3 id="Sampling_Bias">Sampling Bias</h3><p>抽樣誤差：抽樣非真正隨機<br>Ex. 1948電話民調，但電話當時昂貴<br>movie recommend system: When data have time sequential, should emphasize later data, do not use random data</p>
+<h3 id="Data_Snooping">Data Snooping</h3><p>偷看資料(機器學習 → 人腦學習)，會包含大腦所花的complexity <img src="/img/ML/16-2.png" alt=""> <img src="/img/ML/16-3.png" alt=""> </p>
+<p>paper1: H1 works well on data D<br>paper2: find H2 and <strong>publish if better than H1 on D</strong><br>….<br>→ bad generalization, cause overfit (if you torture the data long enough, it will confess)<br>→ 解決方法：不要先看paper，先提出自己的方法，再和已發表的方法比較</p>
+<h3 id="Conclusion">Conclusion</h3><p>Three Related Fields<br><img src="/img/ML/16-4.png" alt=""><br>Three Theoretical Bounds<br><img src="/img/ML/16-5.png" alt=""><br>Three Linear Models<br><img src="/img/ML/16-6.png" alt=""><br>Three Key Tools: Feature Transform, Regularization, Validation<br><img src="/img/ML/16-7.png" alt=""><br>Three Future Directions(in <a href="http://gitqwerty777.github.io/MLtechnique/">ML techniques</a>)<br><img src="/img/ML/16-8.png" alt="">  </p>
+<p>End~~</p>
+<h2 id="Reference">Reference</h2><p><a href="http://www.douban.com/doulist/3381853/" target="_blank" rel="external">http://www.douban.com/doulist/3381853/</a><br><a href="http://www.csie.ntu.edu.tw/~htlin/course/ml14fall/" target="_blank" rel="external">HTLin講義</a><br><a href="https://class.coursera.org/ntumlone-002" target="_blank" rel="external">Coursera</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/MLtechnique/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/computer-gaming/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-10-31 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/機器學習/">機器學習<span>4</span></a></li> <li><a href="/tags/筆記/">筆記<span>11</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

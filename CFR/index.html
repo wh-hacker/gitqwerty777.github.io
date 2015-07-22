@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CFR(Counterfactual Regret Minimization) algorithm 簡介 | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="CFR(Counterfactual Regret Minimization) algorithm 簡介"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> CFR(Counterfactual Regret Minimization) algorithm 簡介</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>參考作者在Quora上的解釋<br>  <a id="more"></a></p>
+<h2 id="Introduction">Introduction</h2><p>self-learning algorithm  </p>
+<ul>
+<li>learns strategy by repeatedly playing against itself</li>
+<li>initialized with uniformly random<ul>
+<li>play every action at every decision point with equal probability</li>
+<li>simulates playing games against itself</li>
+<li>it gets closer and closer towards an optimal strategy: a strategy that can do no worse than tie against any opponent</li>
+</ul>
+</li>
+</ul>
+<h2 id="Implementation">Implementation</h2><ul>
+<li>Summing total regret for each action at each decision point<ul>
+<li>regret: how much better if just always played this one action at this decision, instead of mixture actions?<ul>
+<li>Positive regret means that we would have done better if we had taken that action more often</li>
+<li>Negative regret means that we would have done better by not taking that action at all</li>
+</ul>
+</li>
+<li>After each game, it update new regret values <ul>
+<li>actions with probabilities proportional to their positive regret</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Counter-intuitively, sequence of strategies <strong>does not necessarily converge to anything useful</strong><ul>
+<li><strong>in a two-player zero-sum game</strong>, if you compute the average strategy over those billions of strategies in the sequence, then that average strategy will converge towards <strong>Nash equilibrium</strong> of the game</li>
+</ul>
+</li>
+</ul>
+<h2 id="Nash_equilibrium(納許均衡)">Nash equilibrium(納許均衡)</h2><ul>
+<li>It can do no worse than tie against any other strategy</li>
+<li>Plays perfect defence<ul>
+<li>Just wins when the opponent makes mistakes<ul>
+<li>since attempting to find and exploit an opponent’s mistakes usually makes it possible for an even smarter opponent to exploit your new strategy</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>exploitability(利用度)<ul>
+<li>maximum expectation that a perfect counter-strategy could win </li>
+<li>exploitability = 0 when Nash equilibrium</li>
+<li>CFR can make average strategy’s exploitability converges towards zero</li>
+</ul>
+</li>
+</ul>
+<h2 id="Result">Result</h2><ul>
+<li>best poker programs started beating the world’s best human players in heads-up limit hold’em in 2008, even though there were still massively exploitable by this worst-case measure</li>
+<li>In January 2015, we’ve essentially weakly solved the game<ul>
+<li>a strategy with such a low exploitability (0.000986 big blinds per game) that it would take more than a human lifetime of play<ul>
+<li>for anyone to have 95% statistical confidence that they were actually winning against it</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Example_Code">Example Code</h2><h2 id="Summary">Summary</h2><h2 id="參考資料">參考資料</h2><ul>
+<li><a href="http://poker.cs.ualberta.ca/publications/NIPS07-cfr.pdf" target="_blank" rel="external">Regret Minimization in Games with Incomplete Information</a></li>
+<li><a href="http://arxiv.org/pdf/1407.5042.pdf" target="_blank" rel="external">Solving Large Imperfect Information Games Using CFR+</a></li>
+<li><a href="http://www.quora.com/What-is-an-intuitive-explanation-of-counterfactual-regret-minimization" target="_blank" rel="external">Explanation of CFR by inventor himself</a></li>
+<li><a href="http://spectrum.ieee.org/robotics/artificial-intelligence/pokerplaying-ais-today-skynet-tomorrow" target="_blank" rel="external">poker AI news</a></li>
+<li><a href="http://spectrum.ieee.org/tech-talk/computing/software/computers-conquer-texas-holdem-poker-for-first-time" target="_blank" rel="external">poker AI news2</a></li>
+<li><a href="http://poker.cs.ualberta.ca/open_cfr.html" target="_blank" rel="external">openCFR</a></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/cleancode/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/economics/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-02-25 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/CFR/">CFR<span>1</span></a></li> <li><a href="/tags/電腦對局理論/">電腦對局理論<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

@@ -1,0 +1,709 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Emacs常用指令表 | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Emacs常用指令表"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Emacs常用指令表</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h2 id="基本">基本</h2><ul>
+<li>C → Ctrl</li>
+<li>M → Alt or escape</li>
+<li>S → Shift</li>
+<li>[Ret] → return(enter)</li>
+<li>例 C-c → Ctrl + c</li>
+<li>「hello.c」的自動儲存檔案的檔名就是「#hello.c#」。儲存檔案後，自動儲存檔就會被刪除</li>
+<li>Ctrl 通常是 編輯/移動 一個字， Alt 通常是 編輯/移動 一個詞</li>
+</ul>
+<a id="more"></a>
+<h3 id="移動">移動</h3><p><img src="/img/Other/emacs-move.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-v, C-v</td>
+<td>前翻/後翻一頁</td>
+</tr>
+<tr>
+<td>M-b, M-f</td>
+<td>往前/往後 移動一個詞</td>
+</tr>
+<tr>
+<td>M-a, M-e</td>
+<td>移動到一句的開始/結尾</td>
+</tr>
+<tr>
+<td>C-l</td>
+<td>移動視窗(遊標分別在中間、最上方、最下方)</td>
+</tr>
+<tr>
+<td>M-g M-g</td>
+<td>跳至指定行(= M-g g) </td>
+</tr>
+</tbody>
+</table>
+<h3 id="編輯">編輯</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-j</td>
+<td>換行並自動縮排(newline-and-indent) </td>
+</tr>
+<tr>
+<td>C-x h</td>
+<td>全選</td>
+</tr>
+<tr>
+<td>C-SPC</td>
+<td>選取文字(再按一次結束選取)</td>
+</tr>
+<tr>
+<td>C-w, M-w</td>
+<td>剪下/複製 選取文字</td>
+</tr>
+<tr>
+<td>C-y</td>
+<td>貼上選取文字</td>
+</tr>
+<tr>
+<td>M-y</td>
+<td>選擇貼上的文字(從之前剪下/複製過的文字中)</td>
+</tr>
+<tr>
+<td>C-d</td>
+<td>同<code>delete</code>鍵(刪除後一個字)</td>
+</tr>
+<tr>
+<td>M-d</td>
+<td>刪除後一個詞</td>
+</tr>
+<tr>
+<td>C-g</td>
+<td>取消尚未完成的指令</td>
+</tr>
+</tbody>
+</table>
+<p><code>C-k</code> : 刪除從游標到「行尾」間的字元<br>單獨的 C-k 會把一行的內容殺掉<br>而第二個 C-k 則會殺掉那一行本身(‘\n’)。使所有其他的行向上移動</p>
+<p><code>C-x u</code> : 還原<br>(1) 沒有改變文字的指令不算（移動游標和視窗等）<br>(2) 自行鍵入的字元 一次最多還原20個  </p>
+<h3 id="重複">重複</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹</th>
+<th>示範</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-u [數字] [指令or字元]</td>
+<td>重複執行</td>
+<td>C-u 8 a → aaaaaaaa </td>
+</tr>
+</tbody>
+</table>
+<h3 id="搜尋">搜尋</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-s</td>
+<td>往後搜尋(再按一次：找下一個)</td>
+</tr>
+<tr>
+<td>C-r</td>
+<td>往前搜尋</td>
+</tr>
+<tr>
+<td>M-C-s</td>
+<td>正規表示式搜尋</td>
+</tr>
+<tr>
+<td>M-% !</td>
+<td>取代</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>y</code>：置換目前游標所在的字串，並且移到下一個可被置換的字串。</li>
+<li><code>n</code>：跳過目前游標所在的字串。移到下一個可被置換的字串。</li>
+<li><code>!</code>：將整個檔案一次置換完畢，不進行任何詢問。</li>
+<li><code>ESC</code>：結束置換模式。</li>
+<li><code>.</code>：將目前的字串置換後，即離開置換模式。</li>
+<li><code>^</code>：回到前一個符合置換的地方。</li>
+</ul>
+<h3 id="分割">分割</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-x 0</td>
+<td>關閉目前分割</td>
+</tr>
+<tr>
+<td>C-x 1</td>
+<td>關閉其他分割(只留下目前的分割)</td>
+</tr>
+<tr>
+<td>C-x 2</td>
+<td>新增水平分割</td>
+</tr>
+<tr>
+<td>C-x 3</td>
+<td>新增垂直分割</td>
+</tr>
+<tr>
+<td>C-x o</td>
+<td>跳到別的分割</td>
+</tr>
+<tr>
+<td>C-x 5 2</td>
+<td>開新視窗(frame)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="檔案">檔案</h3><h4 id="檔案切換">檔案切換</h4><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-x C-b</td>
+<td>列出檔案清單(<em>Buffer List</em>)</td>
+</tr>
+<tr>
+<td>C-x b</td>
+<td>切換至其他開啟的檔案</td>
+</tr>
+<tr>
+<td>C-x k</td>
+<td>關閉目前編輯的檔案，不存檔</td>
+</tr>
+</tbody>
+</table>
+<h4 id="檔案指令">檔案指令</h4><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-x C-f</td>
+<td>開新檔案，開啟舊檔</td>
+</tr>
+<tr>
+<td>C-x 4 f</td>
+<td>在新分割開啟檔案</td>
+</tr>
+<tr>
+<td>C-x C-s</td>
+<td>儲存檔案</td>
+</tr>
+<tr>
+<td>C-x s</td>
+<td>全部檔案儲存</td>
+</tr>
+<tr>
+<td>C-x C-w</td>
+<td>另存新檔</td>
+</tr>
+<tr>
+<td>C-x d</td>
+<td>開啟資料夾(Dired)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="系統">系統</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-x C-c</td>
+<td>結束 Emacs</td>
+</tr>
+<tr>
+<td>C-z</td>
+<td>暫時離開Emacs(Suspend)</td>
+</tr>
+</tbody>
+</table>
+<p>用<code>fg</code>或<code>%emacs</code>恢復 Emacs</p>
+<h3 id="函式">函式</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-x [function]</td>
+<td>執行名為[function]的功能</td>
+</tr>
+<tr>
+<td>M-x compile</td>
+<td>開啟<em>compilation</em>分割進行compile </td>
+</tr>
+<tr>
+<td>M-x recompile</td>
+<td>重覆執行上次執行過的compile </td>
+</tr>
+<tr>
+<td>C-x `</td>
+<td>跳到下一個有編譯錯誤的地方</td>
+</tr>
+<tr>
+<td>M-x gdb</td>
+<td>用gdb除錯 </td>
+</tr>
+<tr>
+<td>M-x shell</td>
+<td>進入 shell</td>
+</tr>
+</tbody>
+</table>
+<p>需要在 Shell 下的慣用命令前加上 C-c<br>如 <code>C-c C-c</code> 為中止程式; <code>C-c C-z</code> 為暫停程式等</p>
+<h3 id="幫助">幫助</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-h ?</td>
+<td>開啟<em>Help</em>分割</td>
+</tr>
+<tr>
+<td>C-h c [指令]</td>
+<td>在命令列顯示簡短解釋</td>
+</tr>
+<tr>
+<td>C-h k [指令]</td>
+<td>在新分割顯示詳細解釋</td>
+</tr>
+<tr>
+<td>C-h f [函數]</td>
+<td>在新分割顯示說明文件</td>
+</tr>
+<tr>
+<td>C-h m</td>
+<td>瀏覽現在模式的文件(C, C++, text…)</td>
+</tr>
+<tr>
+<td>C-h a</td>
+<td>列出所有「含有此關鍵字」的全部函式（Command Apropos）</td>
+</tr>
+<tr>
+<td>C-h i</td>
+<td>開啟 <em>info</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他">其他</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-C-\</td>
+<td>選擇區塊自動縮排(indent-region)</td>
+</tr>
+<tr>
+<td>M-;</td>
+<td>在句尾加入註解</td>
+</tr>
+</tbody>
+</table>
+<h2 id="技巧">技巧</h2><h3 id="移動至定義(goto_declaration)">移動至定義(goto declaration)</h3><ol>
+<li><p>建立tag檔</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for c, c++ file</span></span><br><span class="line">find . | grep <span class="string">".*\.\(c\|h\|cpp\)"</span> | xargs etags <span class="operator">-f</span> tags <span class="comment"># output filename "tags"</span></span><br><span class="line"><span class="comment"># for python file </span></span><br><span class="line">find . -type f -name <span class="string">'*.py'</span> | xargs etags <span class="operator">-f</span> tags</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在emacs中用<code>M-.</code>進行搜尋</p>
+</li>
+</ol>
+<p><code>M-*</code> 回到前一個定義的位置  </p>
+<h3 id="回到之前的遊標位置">回到之前的遊標位置</h3><p>在搜尋或尋找定義之後很好用<br><code>C-u C-space</code></p>
+<h2 id="設定檔">設定檔</h2><p>通常是家目錄的<code>.emacs</code></p>
+<a href="!--
+http://stackoverflow.com/questions/11043004/emacs-compile-buffer-auto-close
+https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-text-across-multiple-files.html
+http://www.gnu.org/software/emacs/manual/html_node/emacs/Marks-vs-Flags.html
+--">!--
+http://stackoverflow.com/questions/11043004/emacs-compile-buffer-auto-close
+https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-text-across-multiple-files.html
+http://www.gnu.org/software/emacs/manual/html_node/emacs/Marks-vs-Flags.html
+--</a>
+<h2 id="Emacs_+_Markdown_Mode">Emacs + Markdown Mode</h2><p><a href="https://linuxtoy.org/archives/emacs-markdown-mode.html" target="_blank" rel="external">Emacs Markdown模式</a></p>
+<p>基本上直接輸入比較快…  </p>
+<ul>
+<li>C-c C-t [N] 插入第N級的標題</li>
+<li>C-c C-a l 插入鏈接，格式為 <a href="url">text</a></li>
+<li>C-c C-i i 插入圖像，格式為 <img src="url" alt="text"></li>
+<li>C-c - 插入水平線</li>
+</ul>
+<p>S-Tab 在大綱視圖、目錄視圖、及正常視圖間切換</p>
+<p>C-c C-c m 預覽HTML<br>C-c C-c p 在瀏覽器中預覽</p>
+<!--
+
+    * 放大字體: Ctrl-x Ctrl-+ 或 Ctrl-x Ctrl-=
+    * 縮小字體: Ctrl-x Ctrl–
+    * 重置字體: Ctrl-x Ctrl-0
+
+更酷的是，如果要放大或縮小多次，在第二次直接按 ＋，－，0 就可以了，比如，放大 3 次： Ctrl-x Ctrl-= = = 。另外，Shift + 鼠標左鍵 也能喚出調整字體大小的彈出菜單。
+Tagstags是一個很有用的工具，他可以幫助您將source檔案中所有function定義，及 typedef的定義，全部收集成為一個資料庫，讓你可以很輕易的跳到您要的函數定義。在使用emacs的tags機制之前，您需要先將有關的tag的資 料庫建構出來。建構的方法如下：
+% etags -tlist_of_source_file
+
+ESC .  尋找函數的定義。你可以透過這個命令來找尋你要的函數。輸入此命令後，emacs會提示訊息，要求你輸入要找尋的函數名稱。或是typedef的定義。
+Ctrl-x 4 .      功能同ESC .。但是會把找到的函數定義顯示在另外一個視窗。
+ESC x visit-tags-table  使用其他的TAGS檔案
+ESC x tags-search       以regular expression的方式來找尋函數名稱。
+ESC ,   輸入ESC x tags-search之後，可以用這個來進行尋找下一個的動作。
+ESC x tags-query-replace        以regular expression的方式來置換函數名稱。
+
+
+
+    * 一些不是特別常用的函數綁定到前綴 C-x 上。例如 C-x C-c 退出 Emacs， C-x 2 水平分割當前 window 。
+    * 與某個 mode 相關的的函數被綁定到前綴 C-c 上。
+    * 最不常用的函數根本沒有鍵綁定，而是使用 M-x 然後輸入函數名來調用他們。
+    * 前綴 C-x 4 被保留作操作另外一個 window 用的函數，例如 C-x 4 C-f 在另 外一個 window 裡面打開文件。類似的， C-x 5 被綁定到操縱其他frame 的 函數上面： C-x 5 C-f 才另外一個 frame 裡面打開文件。注意到這兩個函 數與 C-x C-f (打開文件) 有同樣的鍵綁定，只是在中間插入了 4 或者 5， 這並不是一個巧合。
+
+
+被殺掉的可以拉回，而被刪除的則不能。
+將被殺掉的文字回復的動作稱為「拉回（ yanking ）」。
+
+拉回數次同樣的文字，以複製。
+如果您連續地做了數次 C-k，所有被殺掉的文字都會被儲存在一起，因此做一次C-y 就會把所有這些行都拉回來。
+
+C-y 會把最近殺掉的拉回來，但是先前的文字並沒有消失，您可以用 M-y 來回到它。當您已經使用 C-y 把最近殺掉的拉回來之後，再鍵入 M-y 來把這些拉回來的文字替換為先前所殺掉的。一次又一次地鍵入 M-y 會把先前再先前所殺掉的文字帶回來。當您到了您想找的文字時，您不需要做任何事來保存它，只要繼續您的編輯，把這些已拉回的文字留在那裡就好。
+如果您想的話，您可以試著給 M-y 正的或是負的參數
+
+您鍵入 C-s 時，「I-search」出現在回應區。
+Emacs 搜尋指令是「漸進的（ incremental ）」，搜尋發生在遊標後。
+現在如果您鍵入『u』，游標會移動到「cu」的第一次出現位置。將「u」從搜尋字串中消除，游標會移回到「c」的第一次出現位置。
+
+有時候您會進入所謂的「遞迴編輯階層」。它是由位在狀態行的方括弧所指明，並且包含住以小括弧來指明的模式名稱。舉例來說，您可能會看到[(Fundamental)]，而不是 (Fundamental)。
+要離開遞迴編輯階層，請鍵入 ESC ESC ESC。這是個全功能的「離開」指令。您也可以使用它來除去多餘的窗格，並且離開小緩衝區。您無法使用 C-g 來離開遞迴編輯階層。這是因為 C-g 是用來取消指令以及「位於」遞迴編輯階層中的「引數（arguments ）」之故。
+>> 鍵入 M-x 以進入小緩衝區；然後鍵入 ESC ESC ESC 離開。
+===========================================================================
+
+
+大全： http://clipthat.blogspot.tw/2010/01/emacs.html
+http://lifegoo.pluskid.org/wiki/Emacs.html
+
+
+-->
+<h3 id="Emacs作為IDE使用">Emacs作為IDE使用</h3><p>function <code>compile</code> 執行編譯命令(make, g++ …)<br>function <code>recompile</code> 重復之前的編譯命令<br><!--bind到按鍵--></p>
+<p>function <code>shell</code> 開啟shell<br><a href="http://lifegoo.pluskid.org/wiki/EmacsSmartCompile.html" target="_blank" rel="external">http://lifegoo.pluskid.org/wiki/EmacsSmartCompile.html</a></p>
+<h2 id="進階功能">進階功能</h2><p><a href="http://lifegoo.pluskid.org/wiki/Emacs.html" target="_blank" rel="external">參考 http://lifegoo.pluskid.org/wiki/Emacs.html</a><br><a href="http://lifegoo.pluskid.org/wiki/EmacsTip.html" target="_blank" rel="external">http://lifegoo.pluskid.org/wiki/EmacsTip.html</a><br>rot13</p>
+<p>rot13 是一種很簡單的凱撒位移加密方法，普遍用於各種迷題後面所附的答案等 的加密上，目的是讓你並不能一下子「不小心」看到了答案，同時又讓你在需要知 道答案的時候能夠方便地進行解密。</p>
+<p>rot13 的加密和解密的方法都非常簡單，就是把每個字母往後移動 13 個即可。 因為剛好二十六個字母，所以加密和解密都使用同樣的方法。雖然也可以採用手 工加解密的方法，但是自動完成通常更方便。在 UNIX 系統上，可以直接用 tr 實用程序來完成這個工作：</p>
+<p>tr A-Za-z N-ZA-Mn-za-m</p>
+<p>大多數新聞閱讀器都帶有自動加解密的功能，Emacs 也有一個 rot13-region 的 命令可以方便地使用。</p>
+<p>不過，當然，這種只對英文字母進行轉換的加密，對於中文來說沒有任何作用呢。</p>
+<p>矩形操作</p>
+<p>在 Emacs 裡面可以進行方便的矩形操作，複製、剪切、粘貼以及一個矩形塊等。 Emacs 裡面的矩形塊一開始看上去也許不太直觀，其實熟悉之後是很簡單的，上 下和左右邊界都分別有 pointer 和 mark 限制起來的就是一個矩形，如圖：</p>
+<p>如果不習慣，可以使用 rect-mark.el ，它可以直觀地把矩形顯示出來。例如， 上面的這個區域，使用 rect-mark.el 的 rm-exchange-point-and-mark 命令 (作為和綁定到 C-x C-x 的 exchange-point-and-mark 對應起來，我們可以把 他綁定到 C-x r C-x 上)把他變成一個直觀的矩形區域：</p>
+<p>還可以使用 rm-set-mark 命令標記 mark 然後隨著光標移動動態顯示出來當前 的矩形塊。不過熟悉之後，就幾乎不會用到這個東西了。</p>
+<h3 id="hippie">hippie</h3><h3 id="快速切換到_shell_並_cd_到當前文件所在的目錄">快速切換到 shell 並 cd 到當前文件所在的目錄</h3><h3 id="Emacs_+_Git">Emacs + Git</h3><p><a href="http://www.cnblogs.com/holbrook/archive/2012/04/26/2470923.html" target="_blank" rel="external">http://www.cnblogs.com/holbrook/archive/2012/04/26/2470923.html</a></p>
+<h3 id="畫簡單的ASCII圖">畫簡單的ASCII圖</h3><p><a href="http://emacser.com/artist-mode.htm" target="_blank" rel="external">http://emacser.com/artist-mode.htm</a><br><a href="http://emacser.com/emacs-ditaa.html" target="_blank" rel="external">http://emacser.com/emacs-ditaa.html</a></p>
+<h2 id="Reference">Reference</h2>	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/21century-C/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/20141007NLP/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-05-02 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/記錄/">記錄<span>5</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/emacs/">emacs<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

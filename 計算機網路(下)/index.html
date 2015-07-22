@@ -1,0 +1,610 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>計算機網路(下) | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="計算機網路(下)"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 計算機網路(下)</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h2 id="Chap04_Network_Layer">Chap04 Network Layer</h2><p>transport layer: between two processes<br>network layer: between two hosts and router (may also involve intervening routers in case of VCs)<br><a id="more"></a></p>
+<ul>
+<li>routing protocols<ul>
+<li>path selection</li>
+<li>RIP, OSPF, BGP</li>
+</ul>
+</li>
+<li>IP protocol<ul>
+<li>addressing conventions</li>
+<li>datagram format</li>
+<li>packet handling conventions</li>
+</ul>
+</li>
+<li>ICMP protocol<ul>
+<li>error reporting</li>
+<li>router </li>
+<li>signaling</li>
+</ul>
+</li>
+</ul>
+<p>routing: 決定packet傳送的路徑<br>forwarding: 實際傳送<br>router has forwarding table </p>
+<p>Different from TCP/UDP(transport layer protocol)</p>
+<ol>
+<li>service:host-to-host</li>
+<li>no choice:network provides one or the other</li>
+<li>implemented in network core</li>
+</ol>
+<h3 id="network_layer_service">network layer service</h3><p>datagram network: network-layer connectionless service<br>virtual-circuit network: network-layer connection service</p>
+<ol>
+<li>Virtual-Circuit Networks<ol>
+<li>包含<ul>
+<li>路徑</li>
+<li>VC number</li>
+<li>路徑上所有router的forwarding table index</li>
+</ul>
+</li>
+<li>performance-wise</li>
+<li>三個階段:  <ol>
+<li>VC建立:傳送端的傳輸層會聯繫網路層，指定接收端的位址，並等待網路建立 VC。網路層會決定傳送端到接收端之間的路徑，也會為路徑上所有的連結決定其VC編號，在路徑每一台router的轉送表中都加入一筆項目。</li>
+<li>資料傳輸</li>
+<li>VC斷線</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Datagram Networks(資料封包網路)          <ul>
+<li>using destination address(IP)</li>
+<li>longest prefix matching: goto longest address prefix that matches destination address <ul>
+<li>110010000001011100010<strong><strong><em>**</em></strong></strong> -&gt; send to 1 </li>
+<li>1100100000010111000100001<strong><em>**</em></strong> -&gt; send to 2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>比較  <ul>
+<li>Internet (datagram)<ul>
+<li>no setup, routers do not remember state</li>
+<li>“elastic” service, no strict timing request</li>
+<li>many link types: uniform service difficult</li>
+<li>“smart” end systems (computers)<ul>
+<li>can adapt, perform control, error recovery</li>
+<li>simple inside network, complexity at “edge”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ATM (VC)<ul>
+<li>human conversation: strict timing, reliability requirements</li>
+<li>need for guaranteed service</li>
+<li>“dumb” end systems<ul>
+<li>telephones</li>
+<li>complexity inside network</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="Router_architecture">Router architecture</h3><p>Usage  </p>
+<ol>
+<li>routing protocol (RIP, OSPF, BGP)(software)</li>
+<li>forwarding datagrams(hardware)</li>
+</ol>
+<p>Structure</p>
+<ol>
+<li>Input Ports<ul>
+<li>physical layer(bit level)</li>
+<li>datalink layer(Ethernet)(receive)</li>
+<li>decentralized switching</li>
+</ul>
+</li>
+<li>Switching Fabric<ul>
+<li>transfer packet from input buffer to appropriate output buffer  </li>
+<li>router內部的網路</li>
+<li>實作<ol>
+<li>memory(慢):查詢轉送表，找出適當的輸出埠，然後將該封包複製到該輸出埠的緩衝區</li>
+<li>bus:同一時間內只能傳輸一個封包</li>
+<li>crossbar(棋盤式):2N bus，將n格輸入埠連接到n個輸出埠</li>
+<li><img src="" alt="crossbar"></li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Output Ports: input port反過來</li>
+<li>Queue Management:<br>佇列前端攔阻(Head-of-the-line (HOL) blocking): </li>
+</ol>
+<p>Total overhead = 20 bytes of TCP + 20 bytes of IP + app layer overhead</p>
+<h3 id="IP:_Internet_Protocol">IP: Internet Protocol</h3><h4 id="IPV4">IPV4</h4><ol>
+<li>標頭<ul>
+<li>標頭長度(HEADER LENGTH)</li>
+<li>協定(protocol):只有當ip資料段達到最後目的端時，才會使用這個欄位，值為TCP或UDP。</li>
+<li>標頭檢查(Header checksum)</li>
+<li>TTL(Time-to-live):確保資料封包不會在網路中無窮循環，每經過一個router，TTL的值就會遞減1</li>
+</ul>
+</li>
+<li>Datagram Fragmentation<ul>
+<li>MTU(maximum transfer size): 控制IP的封包長度  <ul>
+<li>Ex. 4000 byte datagram, MTU = 1500 bytes, real data = 1480bytes -&gt; 1480 + 1480 + 11xx  </li>
+</ul>
+</li>
+<li>be “reassembled” only at final destination</li>
+</ul>
+</li>
+<li>IPv4 Addressing <ul>
+<li>address為host/router和physical layer的連接</li>
+<li>Subnet: 高位元相同的ip集合，不用router就可以連接 <ul>
+<li><img src="" alt="subnets"></li>
+</ul>
+</li>
+<li>CIDR(Classless InterDomain Routing)<ul>
+<li>Ex. 11001000 ,00010111 ,0001000 | 0, 00000000</li>
+<li>200.23.16.0/23(23 is number of subnet bits)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Get IP address<ul>
+<li>ISP向ICANN(Internet Corporation for Assigned Names and Numbers)申請IP address, 記錄domain name至DNS上</li>
+<li>hard-coded by system admin in a file<ul>
+<li>Windows: control-panel-&gt;network-&gt;configuration-&gt;tcp/ip-&gt;properties</li>
+<li>UNIX: /etc/rc.config</li>
+</ul>
+</li>
+<li>DHCP(Dynamic Host Configuration Protocol)<ul>
+<li>IP address的分配 </li>
+<li>get address while connected on<ul>
+<li>sent to DHCP: 255.255.255.255, 67</li>
+<li>listen from DHCP: 255.255.255.255, 68</li>
+</ul>
+</li>
+<li>四階段<ul>
+<li>host broadcasts “DHCP discover” [optional]</li>
+<li>DHCP server responds with “DHCP offer” [optional]</li>
+<li>host requests IP address: “DHCP request”</li>
+<li>DHCP server sends address: “DHCP ack”</li>
+</ul>
+</li>
+<li>DHCP server can also return useful information<ul>
+<li>address of first-hop router for client</li>
+<li>name and IP address of DNS sever</li>
+<li>network mask (indicating network versus host portion of address)</li>
+</ul>
+</li>
+<li>Real action<ul>
+<li>DHCP request encapsulated in UDP, encapsulated in IP, encapsulated in 802.1 Ethernet</li>
+<li>Ethernet frame broadcast (dest: FFFFFFFFFFFF) on LAN</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>NAT(Network Address Translation)(網路位址轉譯)<ul>
+<li>產生local network, 可自定義ip address, 再交由NAT轉譯成正確IP</li>
+<li>可避免攻擊，便於管理。</li>
+<li><a href="http://www.cs.nccu.edu.tw/~lien/Writing/NGN/firewall.htm" target="_blank" rel="external">http://www.cs.nccu.edu.tw/~lien/Writing/NGN/firewall.htm</a></li>
+<li>violates end-to-end argument</li>
+<li>NAT traversal problem: 在外面的user如何連到未知(不知道ip)的server<ol>
+<li>固定ip(失去保護作用)</li>
+<li>UPnP(通用型隨插即用）: 應用程式將獲得共用的Public IP地址及Port做點對點的傳輸。</li>
+<li>relaying (used in Skype) <ul>
+<li>以relay server 作為 bridge</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>NAT possibility must be taken into account by app designers, e.g., P2P applications</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>ICMP: 回報錯誤</li>
+</ol>
+<h4 id="IPv6">IPv6</h4><ol>
+<li>簡介<ul>
+<li>因應大量的IP位址空間需求<ul>
+<li>IP位址長度從32位元增加到128位元</li>
+</ul>
+</li>
+<li>新的位址型態: 任意點位址(anycast adress)，它允許含有任意點位址的資料段，可以傳送到一群主機中的任一台主機</li>
+<li>固定長度的40個位元組標頭, 加快資料處理</li>
+<li>no fragmentation allowed</li>
+<li>資料流標記和優先權</li>
+</ul>
+</li>
+<li>IPv6 Datagram 格式<ul>
+<li>版本號碼(Version): ip的版本號碼</li>
+<li>轉送次數限制(Hop limit):每當路由器轉送資料段後，就會將資料段此欄位的內容遞減1。如果hop limit計數減到0時，就會捨棄這個資料段</li>
+<li>checksum: removed in IPV6 to reduce processing time</li>
+<li>ICMPv6:new version of ICMP</li>
+</ul>
+</li>
+<li>從 IPv4 到 IPv6<ol>
+<li>雙堆疊(dual-stack)法:其中的ipv6節點也實作了完整的ipv4，也就是這種結點能夠傳送和接收ipv6及ipv4兩種的資料段。<br>ipv6/ipv4節點必須同時擁有ipv6和ipv4的位址，也需要能夠決定其它結點是否可以執行ipv6的功能。這個問題可以使用DNS解決，如果結點名稱解析為可使用IPV6功能，則它會傳回IPV6位址;否則它會傳回IPV4位址。    在雙堆疊法中，如果傳送端或接收端其中一方只能使用IPV4功能，則必須使用IPV4資料段，有可能會發生兩個可以執行ipv6功能的節點不使用ipv6，而是彼此送出ipv4資料段。這會造成IPV6的資料欄位在轉換成IPV4的型式時發生欄位遺失，最後在傳送到目的地時，不會是原始的ipv6    資料段的所有欄位。</li>
+<li>建立通道(tunneling): 中間有中介的ipv4路由器，稱為通道(tunnel)。通道傳送端的將整個ipv6資料(含標頭檔)放入ipv4，當作資料傳送。起點和終點均為ipv6 router</li>
+</ol>
+</li>
+</ol>
+<h3 id="Routing_Algorithm">Routing Algorithm</h3><ol>
+<li>Link-State (LS)<ul>
+<li>global: all routers have complete topology, link cost info  </li>
+<li>Dijkstra: 放入想算的點U至N，找!N距U最近，將其放入N，LOOP<ul>
+<li>!N: 若經過[最新放入的N值的點]走更近，更新值</li>
+<li>O(nlogn)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Distance-Vector (DV)<ul>
+<li><img src="" alt=""></li>
+<li>decentralized: router only knows link costs to neighbors </li>
+<li>each node maintains distance vector</li>
+<li>When link cost changes: update, if DV change, notify neighbors<ul>
+<li>bad news travels slow</li>
+<li>Poisoned reverse<ul>
+<li>防止路由迴圈(Routing loop)出現</li>
+<li>If Z routes through Y to get to X(use time much over than expect) : Z tells Y its (Z’s) distance to X is infinite (so Y won’t route to X via Z) </li>
+<li>當Router A發現Network X的中斷後, 將其跳躍數Hop count變更為Maximum+1, 其他router收到更新時會立刻知道Network X為Inaccessible，加快網絡收斂的速度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Bellman-Ford equation<ul>
+<li>dx(y) = argmin(v) {c(x,v) + dv(y)} </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>比較<ul>
+<li>speed of convergence<ul>
+<li>LS:O(n) algorithm requires O(nE) msgs<ul>
+<li>may have oscillations<ul>
+<li>若經過的封包愈多，花費愈高</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DV:convergence time varies<ul>
+<li>may be routing loops</li>
+<li>count-to-infinity problem(??)</li>
+<li>惡意router散播假消息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Hierachical Routing<ul>
+<li>aggregate routers into regions,“autonomous systems”(AS)</li>
+<li>AS(Autonomous System)：一群路由器在一位管理者之下, 使用IGPs去互相傳送封包的系統</li>
+</ul>
+</li>
+</ol>
+<h3 id="Routing_Protocols">Routing Protocols</h3><ul>
+<li>IGP(interior gateway protocols): use in same AS(“intra-AS”)<ul>
+<li>RIP(Routing Information Protocol): DV<ul>
+<li>Included in BSD-UNIX Distribution in 1982</li>
+<li>對自己的neighbor要求Routing Table，並計錄最短的。<ul>
+<li>use route-d (application level) to manage, sent in UDP packets</li>
+<li>用hop為路徑的選擇量度。最大為15 hops</li>
+<li>RIP每次更新預設為30sec</li>
+</ul>
+</li>
+<li>if no advertisement heard after 180 sec —&gt; assume neighbor/link declared dead -&gt; invalidate route from this neighbor</li>
+</ul>
+</li>
+<li>OSPF(Open Shortest Path First): LS<ul>
+<li>透過一套演算公式，所以它的路由效率會比較好些</li>
+<li>Shortest path first</li>
+<li>Dijkstra’s algorithm</li>
+<li>features not in RIP<ul>
+<li>multiple same-cost paths</li>
+<li>security: all OSPF messages authenticated</li>
+</ul>
+</li>
+<li>Hierarchical OSPF(分層)<ul>
+<li>each nodes know full of local area, and shortest path to other areas</li>
+<li>saves table size, reduced update traffic</li>
+<li><img src="" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BGP((Border Gateway Protocol)): between different AS(“inter-AS”)<ul>
+<li>information from neighbors(BGP會談(BGP session))</li>
+<li>使用port179的半永久性TCP連線來交換資訊 </li>
+<li>iBGPs(Interior Gateway Protocols), eBGPs(Exterior Gateway protocols)</li>
+<li>Prefix + attributes = “route”<ul>
+<li>BGP attributes<ul>
+<li>AS-path：表示到達某一AS所必須經過的路由</li>
+<li>Next-hop ：specific internal-AS router to next AS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BGP Route Selection(按順序)<ol>
+<li>local preference(當本地AS中有多個路由可以到達某一AS，則路由選擇的優先權於與最近路由器相連接之AS開始。偏好原則)</li>
+<li>shortest AS-PATH(經過最少AS)</li>
+<li>closest NEXT-HOP router: hot potato routing(經過最少internal router)</li>
+<li>additional criteria(其他)</li>
+</ol>
+</li>
+<li>Routing Policy: do not want to provide informations not relevalent to its own customer</li>
+</ul>
+</li>
+</ul>
+<h3 id="broadcast_and_multicast_routing">broadcast and multicast routing</h3><p> Source-duplication<br>in-network duplication: enefficient, do not know send to whom</p>
+<ol>
+<li>flooding: 當節點接到一個廣播封包,他會複製該封包在傳送給相鄰節點</li>
+<li>RPF(reversed path forwarding): <ol>
+<li> if (datagram received on incoming link on shortest path back to center)<br> then flood datagram onto all outgoing links<br> else ignore datagram</li>
+</ol>
+</li>
+<li>Spanning Tree<br>方法：定義集結點。節點以單點傳播送至集結點,定義出樹的分支</li>
+<li>IGMP (Internet Group Management Protocol): Soft State<br>運作於主機和其直接連結的router間<br>換句話說,我們可以將直接連結的router,當成到達區域網路外部任何其他主機的路徑上第一站轉送router或是到達該主機的任意路徑上最後一站轉送router</li>
+<li>DVMRP(Distance-Vector Multicast Routing Protocol) vs. PIM(Protocol-Independent Multicast)</li>
+</ol>
+<h2 id="Reference">Reference</h2><p>宅學習(輔大)</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/無聊的效能知識/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/計算機結構(下)/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-01-12 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/筆記/">筆記<span>11</span></a></li> <li><a href="/tags/網路/">網路<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

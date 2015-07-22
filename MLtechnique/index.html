@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>機器學習技法 | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="機器學習技法"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 機器學習技法</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <ul>
+<li>尚未補圖</li>
+<li>從這裡開始我就不太行了…<a id="more"></a>
+<h2 id="Chap01_SVM">Chap01 SVM</h2></li>
+</ul>
+<p>All line is the same using PLA, but WHICH line is best? <img src="/img/ML/bestline.png" alt=""><br>→ 可以容忍的誤差愈大愈好(最近的點與分隔線的距離愈遠愈好) <img src="/img/ML/circle.png" alt=""><br>→ fat hyperplane (large <strong>margin</strong>)(分隔線可以多寬) <img src="/img/ML/fat.png" alt=""></p>
+<p>若只有兩個點，必通過兩點連線之中垂線 <img src="/img/ML/funtime1.png" alt=""> </p>
+<h3 id="Standard_large-margin_hyperplane_problem">Standard large-margin hyperplane problem</h3><p>max fatness(w) (max margin)<br>= min distance($x_n$, w) (n = 1 ~ N)<br>= min distance($x_n$, b, w) — (1)<br>因為 w0 不列入計算(w0 = 常數項參數 = 截距b, x0 必為 1)</p>
+<p><img src="/img/ML/wtxx.png" alt=""><br>$w^tx$ = 0 → x除去x0成為x’ → $w^tx’$ + b = 0<br>設x’, x’’都在$w^tx’$ + b = 0平面上，$w^tx’$ = -b, $w^tx’’$ = -b → $w^t(x’’-x’)$ = 0<br>$w^t$ 垂直於 $w^tx’$ + b = 0平面<br>distance(x, b, w) = x 到 平面的距離 <img src="/img/ML/distancexbw.png" alt="">   </p>
+<p>單一data的distance: 因 $y_n(w^t x_n + b) &gt; 0$<br>$distance(x_n, b, w) = (1/|w|) * y_n(w^t x_n + b)$ — (2)  </p>
+<p>specialize<br>令 $min y_n(w^t x_n + b) = 1$<br>→ $distance(x_n, b, w) = 1/|w|$<br>由式子(1),(2)可得 max margin = min distance(x_n, b, w) = 1/|w|<br>條件為 $min y_n(w^t x_n + b) = 1$</p>
+<p>放鬆條件<br>$y_n(w_t x_n + b) &gt;= 1$ is necessary constraints for $ min y_n(w_t x_n + b) = 1$<br>if all y_n(w_t x_n + b) &gt; p &gt; 1 -&gt; can generate more optimal answer (b/p, w/p) -&gt; distance 1/|w| is smaller<br>so y_n(w_t x_n + b) &gt;= 1 → y_n(w_t x_n + b) = 1  </p>
+<p>max 1/|w| -&gt; min 1/2 <em> w_t </em>  w</p>
+<p><img src="" alt="standard min bw"></p>
+<p>can solve w by solve N inequality</p>
+<h3 id="Support_Vector_Machine(SVM)">Support Vector Machine(SVM)</h3><p>只須找最近的點即可算出w<br>support vector: bounary data(胖線的邊界點)</p>
+<p>gradient? : not easy with constraints<br>but we have:</p>
+<ul>
+<li>(convex) quadratic objective function(b, w)</li>
+<li>linear constraints (b, w)</li>
+</ul>
+<p>can use quadratic programming (QP, 二次規劃): easy </p>
+<p><img src="" alt="bw"><br><img src="" alt="QP"><br><img src="" alt="QP value"></p>
+<p>Linear Hard-Margin(all wxy &gt; 0) SVM<br><img src="" alt="regular"><br>the same as ‘weight-decay regularization’ within Ein = 0</p>
+<p>Restricts Dichotomies(堅持胖的線): if margin &lt; p, no answer<br>fewer dichotomies -&gt; small VC dim -&gt; better generalization</p>
+<p><img src="" alt="circle"><br>最大胖度有極限：在圓上，最大 根號3/2<br><img src="" alt="dvc ap"></p>
+<p><img src="" alt="compare"><br>can be good with transform<br>控制複雜度的方法！</p>
+<h3 id="Chap02_dual_SVM">Chap02 dual SVM</h3><p>if d_trans is big, or infinite?(非常複雜的轉換)<br>find: SVM without dependence of d_trans<br>去除計算(b, w)與轉換函式複雜度的關係<br>(QP of d_trans+1 variables -&gt; N variables)    </p>
+<p>Use lagrange multiplier: Dual SVM: 將lambda視為變數來解<br><img src="" alt="lagrange function"><br><img src="" alt="SVM="><br>若不符條件，則L()的sigma部分是正的，MaxL()為無限大<br>若符條件，則L()的sigma部分最大值為0 -&gt; MaxL() = 1/2w^tw<br>所以Min(MaxL()) = Min(1/2w^tw)</p>
+<p>交換max min的位置，可求得原問題的下限<br><img src="" alt=""></p>
+<p>可以得到strong duality(強對偶關係，=)？<br>若在二次規劃滿足constraint qualification  </p>
+<ol>
+<li>convex</li>
+<li>feasible(有解)</li>
+<li>linear constraints</li>
+</ol>
+<p>則存在 primal-dual 最佳解(對左右邊均是最佳解)</p>
+<p>Dual SVM 最佳解為？<br><img src="" alt="微分b=0"><br>b可以被消除(=0)<br><img src="" alt="微分wi=0"><br>w代入得<br><img src="" alt="w="></p>
+<p>Karush-Kuhn-Tucker (KKT) conditions<br><img src="" alt="KKT"><br>primal-inner -&gt; an = 0 或 1-yn(wtzn+b) = 0(complementary slackness)<br>=&gt; at optimal all ‘Lagrange terms’ disappear</p>
+<p>用KKT求得a(原lambda)之後，即可得原來的(b, w)<br>w = sigma anynzn<br>b 僅有邊界(primal feasible)，但b = yn - wtzn when an &gt; 0 (primal-inner，代表必在SVM邊界上)</p>
+<p>重訂support vector的條件(a_n &gt;0)<br><img src="" alt="sv &lt; sv"><br>=&gt; b, w 都可以只用SV求到</p>
+<p>SVM:找到有用的點(SV)</p>
+<h4 id="Standard_hard-margin_SVM_dual">Standard hard-margin SVM dual</h4><p>經過整理<br><img src="" alt="min 1/2"><br>現在有N個a, 並有N+1個條件了</p>
+<p><img src="" alt="QP"><br>when N is big, qn,m is dense array and very big(N &gt;30000, use &gt;3G ram)<br>use special QP solver</p>
+<h4 id="SVM_和_PLA_比較">SVM 和 PLA 比較</h4><p><img src="" alt="pla"><br>w = linear combination of data =&gt; w represented by data<br>SVM: represent w by only SV</p>
+<p><img src="" alt="dual"><br>Primal: 對(b,w)做特別縮放<br>Dual: 找到SV 和其 lagrange multiplier</p>
+<p>問題：q_n,m 需要做O(d_trans)的運算，如何避免？</p>
+<h3 id="Chap03_Kernel_SVM">Chap03 Kernel SVM</h3><p>(z_n^T)(z_m)如何算更快</p>
+<p>轉換+內積 -&gt; Kernel function<br><img src="" alt="xxxxxxx"><br>use O(d) instead of O(d^2)</p>
+<p><img src="" alt="kernel"><br><img src="" alt="b="><br><img src="" alt="gsvm ="><br>用kernel簡化！(gsvm -&gt; 無w)</p>
+<h4 id="Kernel_Hard-Margin_SVM">Kernel Hard-Margin SVM</h4><p><img src="" alt="kernel svm algo"></p>
+<h4 id="polynomial_Kernel">polynomial Kernel</h4><p>簡化的kernel: 對應到同等大小，不同幾何特性(如內積)的空間<br><img src="" alt="kernel"><br>r影響SV的選擇<br><img src="" alt="SELECTED sv"></p>
+<p><img src="" alt="high dim"><br>可以快速做高次轉換(和二次相同複雜度)</p>
+<p>特例: linear只需用 K1 = (0+1xtx)^1</p>
+<h4 id="infinite_Kernel">infinite Kernel</h4><p>taylor展開<br><img src="" alt="k(x,x&#39;)"></p>
+<p>無限維度的Gaussian Kernel (Radial Basis Funtion(RBF))<br><img src="" alt="g"></p>
+<p><img src="" alt="support vector mechanism"><br>large =&gt; sharp Gaussians =&gt; ‘overfit’?<br><img src="" alt="overfit "></p>
+<h4 id="Kernel選擇">Kernel選擇</h4><p>linear kernel: 等於沒有轉換，linear first, 計算快<br>polynomial: 轉換過，限制小，strong physical control, 維度太大K會趨向極端值<br>-&gt; 平常只用不大的維度<br>infinite dimension:<br>most powerful<br>less numerical difficulty than poly(僅兩次式)<br>one parameter only<br>cons: mysterious — no w , and too powerful</p>
+<p>define new kernel is hard:<br>Mercer’s condition:<br><img src="" alt="mercer"></p>
+<h3 id="Chap04_Soft-Margin_SVM">Chap04 Soft-Margin SVM</h3><p>overfit reason: transform &amp; hard-margin(全分開)</p>
+<p>Soft-Margin — 容忍錯誤，有錯誤penalty，只有對的需要符合條件<br><img src="" alt="soft1"></p>
+<p>缺點：<br>No QP anymore<br>error大小:離fat boundary的距離 </p>
+<p>改良：求最小(犯錯的點與boundary的距離和)(linear constraint, can use QP)<br><img src="" alt="soft2"></p>
+<p>parameter C: large when want less violate margin<br>small when want large margin, tolerate some violation</p>
+<p>Soft-margin Dual: 將條件加入min中<br><img src="" alt="dual"><br>化簡後得到和dual svm相同的式子(不同條件)<br><img src="" alt="化簡後"><br>C is exactly the upper bound of an</p>
+<h3 id="Kernel_Soft_Margin_SVM">Kernel Soft Margin SVM</h3><p>more flexible: always solvable<br><img src="" alt="algo"></p>
+<p>(3)-&gt;solve b:<br>若as &lt; C(unbounded, free), 則b的求法和hard-margin一樣<br><img src="" alt="compare b = "></p>
+<p>但soft-margin還是會overfit…</p>
+<p>physical meaning<br><img src="" alt=""><br>not SV(an = 0): C-an != 0 -&gt; En = 0<br>unbounded SV(0 &lt; an &lt; C，口) -&gt; En = 0 -&gt; on fat boundary<br>bounded SV(an = C, △) -&gt; En &gt;= 0(有違反，不在boundary上)<br>-&gt; 只有bounded SV才可違反</p>
+<p>difficult to optimize(C, r)</p>
+<h4 id="SVM_validation">SVM validation</h4><p>leave-one-out error &lt;= #SV/N<br>若移除non-SV的點，則得出的g不變<br>-&gt; 可以靠此特性做參數選擇(不選#SV太大的)</p>
+<h3 id="Chap05_Kernel_Logistic_SVM">Chap05 Kernel Logistic SVM</h3><p>實用library: linear:LIBLINEAR nonlinear:LIBSVM  </p>
+<p>將E替代 -&gt; 像是 L2 regularization<br><img src="" alt=""><br><img src="" alt=""></p>
+<p>缺點：不能QP, 不能微分(難解)</p>
+<p><img src="" alt="compare"><br>large margin &lt;=&gt; fewer choices &lt;=&gt; L2 regularization of short w<br>soft margin &lt;=&gt; special err<br>larger C(in soft-margin or in regularization) &lt;=&gt; smaller lagrange multiplier &lt;=&gt; less regularization  </p>
+<p>We can extend SVM to other learning models!</p>
+<p>look (wtzn + b) as linear score(f(x) in PLA)<br><img src="" alt="red-blue"><br>we can have Err_svm is upper bound of Err0/1<br>(hinge error measure)<br><img src="" alt="three graph"></p>
+<p><img src="" alt="errwsce"><br>Err_sce: 與svm相似的一個logistic regression<br><img src="" alt="errbound"></p>
+<p><img src="" alt="three compare"><br>L2 logistic regression is similar to SVM,<br>所以SVM可以用來approximate Logistic regression?<br>-&gt; SVM當作Log regression的起始點? 沒有比較快(SVM優點)<br>-&gt; 將SVM答案當作Log的近似解(return theta(wx + b))? 沒有log reg的意義(maximum likelyhood)<br>=&gt; 加兩個自由度，return theta(A*(wx+b) + B)<br>-&gt; often A &gt; 0(同方向), B~=0(無位移)<br><img src="" alt="NEW LOGREG"><br>將原本的SVM視為一種轉換</p>
+<p>Platt’s Model<br><img src="" alt="PLATT"><br>kernel SVM在Z空間的解 — 用Log Reg微調後 —&gt; 用來近似Log Reg在Z空間的解(並不是在z空間最好的解)</p>
+<p>solve LogReg to get(A, B)</p>
+<p>能使用kernel的關鍵：w為z的線性組合<br><img src="" alt="svm pla logreg by sgd"></p>
+<p>Representer Theorem: 若解L2-正規化問題，最佳w必為z的線性組合<br>將w分為(與z垂直)+(與z平行), 希望w<em>垂直 = 0<br>證：(原本的w) 和 (與z平行的w) 所得的err是一樣的(因為w</em>垂直 * z = 0)<br>且w平行比較短<br>所以min w 必(與z平行)<br><img src="" alt=""><br>結果：L2的linear model都可以用kernel解！</p>
+<p>將w = sum(B*z) = sum(B*Kernel)代入logistic regression<br>-&gt; 解B</p>
+<p>Kernel Logistic Regression(KLR)<br>= linear model of B<br><img src="" alt="special regularizer"><br>把 kernel當作轉換, kernel當作regularizer<br>= linear model of w<br>with embedded-in-kernel transform &amp; L2 regularizer<br>把 kernel內部(z)當作轉換(?), L2-regularizer</p>
+<p>警告：算出的B不會有很多零</p>
+<p>soft margin SVM ~= L2 LOG REG, special error measure:hinge<br>在z空間解log reg -&gt; 用representor theorem 轉換為一般log reg, 有代價</p>
+<h2 id="Chap_06_Support_Vector_Regression(SVR)">Chap 06 Support Vector Regression(SVR)</h2><p>ridge regression : 有regularized的regression<br>如何加入kernel?</p>
+<p>Kernel Ridge Regression<br><img src="" alt="solve ridge"><br>用representor theorem代入後得到regularization term 和 regression term</p>
+<p><img src="" alt="梯度"><br><img src="" alt="B="><br>因為kernal必為為psd，所以B必有解 O(N^3)</p>
+<p>g(x) = wz = sum(bz)z = sum(bk)</p>
+<p>與linear的比較：<br>kernel自由度高<br>linear為O(d^3+d^2N)<br>kernel和資料量有關，為O(N^3)，檔案大時不快</p>
+<p>LS(least-squares)SVM = kernel ridge regression:<br>和一般regression boundary差不多，但SV很多(B dense)<br>=&gt; 代表計算時間長<br>=&gt; 找一個sparse B?</p>
+<p>tube regression:<br><img src="" alt="tube"><br>insensitive error:容忍一小段的差距(在誤差內err = 0，若超過, err只算超過的部分)<br>error增加的速度變慢</p>
+<p>學SVM，解QP, 用DUAL, KKT-&gt;sparse<br><img src="" alt="mimicking"><br>regulizer 和 超過tube上界的值，超過tube下界的值</p>
+<p>參數：C(violation重視程度), tube範圍</p>
+<p>作dual: lagrange multiplier + KKT condition<br><img src="" alt="dual --"></p>
+<p>在tube裡面的點：B=0<br>=&gt; 只要tube夠寬，B為sparse</p>
+<h3 id="Linear,_SVM_Summary">Linear, SVM Summary</h3><p><img src="" alt="linear"></p>
+<p><img src="" alt="SVM"><br>first row: less used due to worse performance<br>third row: less used due to dense B<br>fourth row: popular in LIBSVM</p>
+<h2 id="Chap07_Blending_and_Bagging">Chap07 Blending and Bagging</h2><p>Selection: rely on only once hypothesis<br>Aggregation: mix or combine hypothesiss<br>select trust-worthy from their usual performance<br>=&gt; validation<br>mix the prediction =&gt; vote with different weight of ballot<br>combine predictions conditionally(when some situation, give more ballots to friend t)</p>
+<p><img src="" alt="real function"></p>
+<p>Aggregation可做到：</p>
+<ol>
+<li>feature transform(?), 將hypothesis變強</li>
+<li>regularization(?)<br>控制 油門 和 煞車<br><img src="" alt="two lines"></li>
+</ol>
+<p>uniform blending: 一種model一票，取平均<br>證明可以比原本的Eout小: <img src="" alt=""></p>
+<p>一個演算法A的表現，可以用其hypothesis set中的”共識”來表示，等於共識的表現，加上共識的變異數，uniform blending就是將某些在A的hypothesis取平均(變成新的演算法A’)來減少A’的變異數<br>expected performance of A = expected deviation to consensus + performance of consensus</p>
+<p>linear blending: 加權(線性)平均，權重&gt;0<br><img src="" alt="linear bledning for regression"><br>求類似linear regression的式子: 兩段式學習，先算出許多g，再做  linear regression -&gt; 得到答案G<br>限制：權重a&gt;0 -&gt; 將error rate大的model反過來用(error rate = 99%, 取其相反答案即可將error rate = 1%)   </p>
+<p>any blending(stacking): 可用non-linear model(???)</p>
+<pre><code>算出g1-, g2- ...   
+phi-<span class="number">1</span> = (g1-, g2-, ...)   
+<span class="attribute">transform</span> validation data to Z = (<span class="function"><span class="title">phi-1</span><span class="params">(x)</span></span>, y)   
+compuate g = <span class="function"><span class="title">AnyModel</span><span class="params">(Z, Y)</span></span>   
+return G = <span class="function"><span class="title">g</span><span class="params">(phi(x)</span></span>)
+phi = (g1, g2 ... )
+</code></pre><p>比較：linear blending</p>
+<pre><code>compuate a = AnyModel<span class="list">(<span class="keyword">Z</span>, Y)</span>   
+return G = a * phi<span class="list">(<span class="keyword">x</span>)</span>
+</code></pre><p>learning: 邊學邊合，</p>
+<p>bootstrapping: 從有限的資料模擬出新的資料<br>bootstrap data: 從原本資料選擇N筆資料(可重複)<br>Virtual aggregation<br>bootstrap aggregation(bagging): 由bootstrap data訓練g，而非原資料<br>-&gt; meta algorithm for [base algorithm(可使用不同演算法)]</p>
+<p><img src="" alt="BAGGING pocket in action"></p>
+<h2 id="Chap08_Adaptive_Boosting">Chap08 Adaptive Boosting</h2><p>教小學生辨認蘋果:<br>由一個演算法提供[會混淆的資料]<br>由其他hypothesis提出一個不同的小規則來區分</p>
+<p>給不同的data權重，會混淆的占較大比例，取min Ein = avg(Wn * err(xn, yn))，可用SVM, lin_reg, log_reg解Wn</p>
+<p>gt = argmin(sum(ut <em> err))<br>gt+1 = argmin(sum(ut+1 </em> err))</p>
+<p>找完gt後，gt+1應該要找和gt不相似的-&gt;找ut+1使gt的err rate接近0.5(隨機)。<br><img src="" alt="construct to make gt random-like"></p>
+<p>err rate = 錯誤資料權重和 / (錯誤資料權重和 + 正確資料權重和) = 1/2<br>=&gt; 希望 正確資料權重和 = 錯誤資料權重和<br>在gt中正確的資料, 權重要乘(err rate)<br>在gt中錯誤的資料, 權重要乘(1-err rate)<br>如此一來兩者之和將會相等</p>
+<p>若scale factor = S = sqrt((1-err rate) / err rate)<br>incorrect <em>= S<br>correct </em>= 1/S<br>若 S&gt;1:<br>→ err rate &lt;= 1/2<br>→ incorrect↑, correct↓, close to 1/2</p>
+<p><img src="" alt="preliminary algorithm"><br>u1 可設所有為1/N，得到min Ein<br>G 設uniform會使成績變差</p>
+<p>Adaptive Boosting(皮匠法)<br><img src="" alt="ADA BOOST"><br>邊做邊算at</p>
+<p>希望愈好的gt，at愈大<br>-&gt; 設at = ln(St) (S = scale)<br>if(err rate == 1/2) -&gt; St = 1 -&gt; at = 0<br>if(err rate == 0) -&gt; St = inf -&gt; at = inf</p>
+<p>只要err rate &lt; 1/2 , 就可以參與投票：群眾的力量</p>
+<p>adapative boosting 的 algorithm 選擇(不需強演算法):<br>decision stump: 三個參數：which feature, threshold(線), direction(ox)，可以使Ein &lt;= 1/2</p>
+<h2 id="Chap09_Decision_Tree">Chap09 Decision Tree</h2><p><img src="" alt=""></p>
+<p>Traditional learning model that realize conditional aggregation<br>模仿人類決策過程</p>
+<p>Path View:<br>G = sum(q * g)<br>q = condition (is x on this path?)<br>g = base hypothesis, only constant, leaf in tree</p>
+<p>Recursive View:<br>G(x) = sum([b(x) == c] * Gc(x))<br>G: full tree<br>b: branching criteria<br>Gc: sub-tree hypothesis</p>
+<p>advantage: human-explainable, simple, efficient, missing feature handle, categorical features easily, multiclass easily<br>disadvantage: heuristic, little theoretical<br>Ex. C&amp;RT, C4.5, J48…</p>
+<p><img src="" alt="basic decision tree algo"><br>four choices: number of branches, branching<br>criteria, termination criteria, &amp; base hypothesis</p>
+<p>C&amp;RT(Classification and Regression Tree):<br>Tree which is fully-grown with constant leaves<br>C = 2(binary tree)，可用decision stump<br>gt(x) = 在此分類下output最有可能(出現最多次的yn or yn平均)<br>-&gt; 分得愈純愈好(同一類的output皆相同)</p>
+<p><img src="" alt="more simple choices - argmin"><br>impurity = 變異數 or 出現最多次的yn的比率<br><img src="" alt="for classification error"><br>popular to use :<br>Gini for classification<br>regression error for regression</p>
+<p><img src="" alt="basic C&amp;RT"><br>terminate criteria:</p>
+<ol>
+<li>all yn is the same: impurity = 0</li>
+<li>all xn the same: cannot cut</li>
+</ol>
+<p>if all xn different: Ein = 0<br>low-level tree built with small D -&gt; overfit </p>
+<p>regularizer: number of leaves<br>argmin(Ein(G) + c * number of leaves(G))<br>實作：一次剪一片葉子，選最好的  </p>
+<p>相較數字的feature, 處理類型問題較簡單  </p>
+<p>Surrogate(代理) branch:<br>找一些與最好切法相近的，若data features missing, 則使用之</p>
+<p><img src="" alt="圖"><br>與adaboost相比：片段切割，只在自身subtree切</p>
+<h2 id="Chap10_Random_Forest">Chap10 Random Forest</h2><p>Random Forest = bagging + fully-grown random-subspace random-combination C&amp;RT decision tree</p>
+<p>highly parallel, 減少 decision tree的variance  </p>
+<h3 id="增加decision_tree_diversity">增加decision tree diversity</h3><ol>
+<li><p>random sample features from x(random subspace of X)<br>-&gt; efficient, can be used for any learning models<br>10000個features, 只用100個維度來learn</p>
+</li>
+<li><p>將 x 作 低維度random projection -&gt; 產生新的feature(斜線切割), random combination</p>
+</li>
+</ol>
+<h3 id="Out-of-bag">Out-of-bag</h3><p>out-of-bag: not sampled after N drawings<br>N個data抽N次，沒被抽到機率 ~= 1/e<br>=&gt; 將沒抽到的DATA作g的validation(通常不做，因為g只為G的其中之一)<br>=&gt; 將沒抽到的DATA作G的validation，Eoob = sum(err(G-(xn))) (G-不包含用到xn的g)<br><img src="" alt="Eoob(G)"><br>Eoob: self-validation</p>
+<h3 id="Feature_Selection">Feature Selection</h3><p>want to remove redundant, irrelevant features…</p>
+<p><strong>learn a subset-transform</strong> for the final hypothesis</p>
+<p>advantage: interpretability, remove ‘feature noise’, efficient<br>disadvantage: total computation time increase, ‘select feature overfit’, mis-interpretability(過度解釋)</p>
+<p>decision tree: built-in feature selection</p>
+<p>idea: rate importance of every features<br>linear model: 看w的大小<br>non-linear model: not easy to estimate</p>
+<p>idea: random test<br>put some random value into feature, check performance↓，下降愈多代表愈重要</p>
+<p>random value </p>
+<ul>
+<li>by original P(X = x)</li>
+<li>bootstrap, <strong>permutation</strong></li>
+</ul>
+<p>performance: 算很久<br>importance(i) = Eoob(G, D) - Eoob(G, Dp) (Dp = data with permutation in xn_i)</p>
+<p><img src="" alt="strength-correlation"><br>strength-correlation decomposition<br>s = average voting margin(投票最多-投票第二多…) with G<br>p = gt之間的相似度<br>bias-variance decomposition</p>
+<h2 id="Chap11_Gradient_Boost_Decision_Tree">Chap11 Gradient Boost Decision Tree</h2><h2 id="Chap12_Neural_Network">Chap12 Neural Network</h2>	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/lua錯誤記錄/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/MLfoundation2/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-11-21 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/筆記/">筆記<span>7</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/機器學習/">機器學習<span>4</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

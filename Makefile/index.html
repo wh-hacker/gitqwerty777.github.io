@@ -1,0 +1,544 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>建立Makefile | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="建立Makefile"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 建立Makefile</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p><a href="http://hsian-studio.blogspot.tw/2008/09/makefile_08.html" target="_blank" rel="external">原文</a><br>此篇文章十分清楚易懂，可作為初學之用<br><a id="more"></a></p>
+<h3 id="使用make好處">使用make好處</h3><ul>
+<li>方便專案管理</li>
+<li>會透過檔案比對，依照相依性來編譯，不會全都編浪費時間</li>
+<li>可以同時編譯函式庫或是檔案</li>
+</ul>
+<h3 id="make常用指令">make常用指令</h3><ul>
+<li><code>make -k</code>: 會讓make在遇到錯誤的時候仍然運行，而不會在第一個問題中斷</li>
+<li><code>make -n</code>: 只印出將會進行的工作，而不會真的執行</li>
+<li><code>make -f makefile_name</code>: make預設使用檔案名稱為makefile的檔案作編譯，此命令可指定makefile檔案名稱和位置</li>
+<li><code>#</code>: 註解  </li>
+</ul>
+<h3 id="make指令格式">make指令格式</h3><pre><code><span class="tag">make</span> <span class="attr_selector">[option]</span> <span class="attr_selector">[target]</span>  
+</code></pre><p>target不寫的話預設是all<br>Example:<br>    make -n all clean<br>    make install<br>    make<br>    make -f makefile2 install</p>
+<h3 id="撰寫makefile檔案">撰寫makefile檔案</h3><p>makefile是由一堆「目標」和其「相依性檔案」還有「法則」所組成的    </p>
+<ul>
+<li>[target] 目標 - 產生出來的東西<ul>
+<li>若該目標並非檔案，則為 fake 項目。建議利用 <code>.PHONY</code> 來指定該項目為 fake 項目</li>
+<li><code>.PHONY: clean</code>：因為利用了 <code>.PHONY</code> 來指定 clean 為 fake 項目，所以 make 不會去檢查目錄中是否存在了一個名為 clean 的檔案。如此也可以提昇 make 的執行效率。</li>
+</ul>
+</li>
+<li>[dependency] 相依性項目 - 若相依檔案改變，則重新產生目標</li>
+<li>[rule] 法則 - 如何產生目標<ul>
+<li>只能使用Tab作為開頭</li>
+<li>需寫在同一行(用 <code>\</code> 換行)</li>
+<li>使用 Shell Script 語法</li>
+</ul>
+</li>
+</ul>
+<pre><code>[<span class="link_reference">target</span>]:<span class="link_url"> [dependency] [dependency]</span>
+[<span class="link_label">TAB</span>][<span class="link_reference">rule</span>]\
+[<span class="link_label">TAB</span>][<span class="link_reference">rule</span>]
+[<span class="link_reference">target</span>]:<span class="link_url"> [dependency]</span>
+[<span class="link_label">TAB</span>][<span class="link_reference">rule</span>]
+</code></pre><p>Example:  </p>
+<pre><code>all: myapp app<span class="class">.doc</span>
+myapp: main<span class="class">.o</span> <span class="tag">a</span><span class="class">.o</span> <span class="tag">b</span><span class="class">.o</span>
+[tab]gcc main<span class="class">.o</span> <span class="tag">a</span><span class="class">.o</span> <span class="tag">b</span><span class="class">.o</span> -o myapp
+main<span class="class">.o</span>: main<span class="class">.c</span> <span class="tag">a</span><span class="class">.h</span>
+[tab]gcc -c main<span class="class">.c</span>
+<span class="tag">a</span><span class="class">.o</span>: <span class="tag">a</span><span class="class">.c</span> <span class="tag">a</span><span class="class">.h</span>
+[tab]gcc -c <span class="tag">a</span><span class="class">.c</span>
+<span class="tag">b</span><span class="class">.o</span>: <span class="tag">b</span><span class="class">.c</span> <span class="tag">b</span><span class="class">.h</span>
+[tab]gcc -c <span class="tag">b</span>.c
+</code></pre><p>首先執行make的時候都會執行all這個目標，如果沒有設定all這個目標，它就會拿第一個目標來產生<br>在這邊看到要產生all的話，需要兩個檔案myapp和app.doc(主程式和說明檔)，make開始會去找尋如何產生myapp和 app.doc的方法，所以myapp會成為下一個要產生出來的目標<br>myapp需要有main.o, a.o, b.o這三個檔連結在一起。法則有寫要使用gcc main.o a.o b.o -o myapp來產生…… 以此類推</p>
+<p>相依性順序是很重要的。</p>
+<h3 id="多重target(目標)">多重target(目標)</h3><p>目標就是我們所定最後要產生的結果，所以我們可以定一些目標，讓shell script幫我們做很多事情，而常用makefile裡面會寫的目標如    </p>
+<ul>
+<li>install 產生完可執行檔之後怎麼將程式安裝到指定位置</li>
+<li>clean 只想產生執行檔，剩下的目的檔不需要可以刪除</li>
+<li>uninstall 從系統之中整個移除你安裝的所有檔案</li>
+</ul>
+<pre><code>all: myapp <span class="keyword">app</span>.doc
+...
+install: myapp <span class="keyword">app</span>.doc   #安裝套件
+[<span class="keyword">tab</span>]cp myapp <span class="keyword">app</span>.doc /usr/<span class="keyword">local</span>/myapp/
+clean:    #刪除產生出來的目的檔
+[<span class="keyword">tab</span>]<span class="keyword">rm</span> -f *.o
+</code></pre><h3 id="make的變數和巨集(macro)">make的變數和巨集(macro)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CC=gcc <span class="comment"># 兩側不可有空格</span></span><br><span class="line">CFLAGS=<span class="string">"-g -Wall"</span> <span class="comment"># 值有空格須括住   </span></span><br><span class="line">$(CC) <span class="comment"># equals to "gcc"</span></span><br></pre></td></tr></table></figure>
+<p>設定變數的方法  </p>
+<ul>
+<li>在shell中設定變數 <code>export CC=gcc</code></li>
+<li>將export命令放在shell啟動script <code>.bashrc</code>或<code>.zshrc</code>…<ul>
+<li>每次登入都有正確的變數</li>
+</ul>
+</li>
+<li>在執行命令前設定 <code>CC=gcc | grep CC</code><ul>
+<li>針對特定命令的變數</li>
+<li>設定變數需要在實際命令之前</li>
+</ul>
+</li>
+<li><code>make</code>可以直接設定變數<ul>
+<li><code>make CFLAGS=&quot;-g -Wall&quot;</code></li>
+<li><code>CFLAGS=&quot;-g -Wall&quot; make</code></li>
+</ul>
+</li>
+</ul>
+<p><code>?=</code>：若變數未定義，則替它指定新的值。否則，採用原有的值。<br><code>FOO ?= bar</code>： 若 FOO 未定義，則 FOO = bar；若 FOO 已定義，則 FOO 的值維持不變。</p>
+<p>還可以改變副檔名  </p>
+<pre><code><span class="variable">SRC =</span> a.c b.c
+<span class="variable">OBJ =</span> $(SRC:.<span class="variable">c=</span>.o) <span class="comment"># equals to a.o b.o</span>
+</code></pre><p>有幾個特別的內部巨集，讓makeifle更加簡明</p>
+<ul>
+<li><code>$?</code> 代表需要重建(更新過)的相依性項目，也就是 dependencies 中，比 targets 還新的值。</li>
+<li><code>$@</code> 目前的target</li>
+<li><code>$*</code> 不含副檔名的target</li>
+<li><code>$&lt;</code> 第一個 dependency</li>
+</ul>
+<p>還有兩個有用的特別字元，可以加在要執行的命令之前。</p>
+<ul>
+<li><code>-</code> 即使該行指令出錯，也不會中斷執行</li>
+<li><p><code>@</code> 不會在terminal顯示該行命令</p>
+<p>  CC = gcc<br>  CFLAGS = -Wall -ansi -g<br>  OBJS = main.o a.o b.o<br>  INSTALL_PATH = /usr/local/myapp/</p>
+<p>  all: myapp app.doc<br>  myapp: $(OBJS)<br>  [tab]$(CC) $(OBJS) -o $@<br>  main.o: main.c a.h<br>  [tab]$(CC) $(CFLAGS) -c -o $@ $&lt;<br>  a.o: a.c a.h<br>  [tab]$(CC) $(CFLAGS) -c -o $@ $&lt;<br>  b.o: b.c b.h<br>  [tab]$(CC) $(CFLAGS) -c -o $@ $&lt;<br>  install: myapp app.doc<br>  [tab]cp myapp app.doc $(INSTALL_PATH)</p>
+</li>
+</ul>
+<h3 id="make隱性法則">make隱性法則</h3><pre><code>CC = gcc
+CFLAGS = -Wall -ansi -g
+OBJS = main<span class="class">.o</span> <span class="tag">a</span><span class="class">.o</span> <span class="tag">b</span><span class="class">.o</span>
+
+all: myapp app<span class="class">.doc</span>
+myapp: $(OBJS)
+[tab]$(CC) $(OBJS) -o $@
+main<span class="class">.o</span>: main<span class="class">.c</span> <span class="tag">a</span><span class="class">.h</span>
+<span class="tag">a</span><span class="class">.o</span>: <span class="tag">a</span><span class="class">.c</span> <span class="tag">a</span><span class="class">.h</span>
+<span class="tag">b</span><span class="class">.o</span>: <span class="tag">b</span><span class="class">.c</span> <span class="tag">b</span>.h
+</code></pre><p>make會幫我們做<code>gcc -Wall -ansi -g -c -o main.o main.c</code>的工作(a.o b.o也一樣)  </p>
+<p>若dependency為c：<code>$(CC) $(CPPFLAGS) $(CFLAGS) -c</code><br>若dependency為c++：<code>$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c</code><br>若dependency為object：，為<code>$(CC) $(LDFLAGS) &lt;filename&gt;.o $(LOADLIBES) $(LDLIBS)</code>  </p>
+<p><a href="https://www.gnu.org/software/make/manual/html_node/Catalogue-of-Rules.html#Catalogue-of-Rules" target="_blank" rel="external">隱性法則列表</a></p>
+<h3 id="make檔尾法則">make檔尾法則</h3><p>使用檔尾的延伸檔名作為法則，格式 <code>.[old_suffix].[new_suffix]</code>  </p>
+<pre><code>.c.<span class="symbol">o:</span>
+[tab]<span class="variable">$(</span><span class="constant">CC</span>) <span class="variable">$(</span><span class="constant">CFLAGS</span>) -c -o <span class="variable">$@</span> <span class="variable">$&lt;</span>
+.cpp.<span class="symbol">o:</span>
+[tab]g++ -c <span class="variable">$&lt;</span>
+
+<span class="constant">INCLUDE_PATH</span> = <span class="keyword">include</span>
+
+<span class="symbol">all:</span> myapp.exe app.doc
+myapp.<span class="symbol">exe:</span> <span class="variable">$(</span><span class="constant">OBJS</span>)
+[tab]<span class="variable">$(</span><span class="constant">CC</span>) <span class="variable">$(</span><span class="constant">OBJS</span>) -o <span class="variable">$@</span>
+.c.<span class="symbol">o:</span>
+[tab]<span class="variable">$(</span><span class="constant">CC</span>) -<span class="constant">I</span><span class="variable">$(</span><span class="constant">INCLUDE_PATH</span>) <span class="variable">$(</span><span class="constant">CFLAGS</span>) -c -o <span class="variable">$@</span> <span class="variable">$&lt;</span>
+</code></pre><p>檔尾法則只可以用在本目錄</p>
+<p>這目錄下面所有的.c檔變成.o檔，而法則就是去編譯它，而如果你想更懶一點的話還可以完全不寫，直接使用內建的法則，這樣也可以直接把目錄下面的所有檔都編好，為什麼呢？因為你要編出myapp的時候需要使用到$(OBJS)所以，就算你不寫.c.o或是任何的法則，make預設都會自己產生.o檔讓你可以連結出主程式。  </p>
+<p>makefile也有支援萬用字元  </p>
+<pre><code><span class="variable">%.</span>o: <span class="variable">%.</span>c
+[tab]<span class="variable">$(</span>CC) -I<span class="variable">$(</span>INCLUDE_PATH) <span class="variable">$(</span>CFLAGS) -c -o <span class="variable">$@</span> <span class="variable">$&lt;</span>
+</code></pre><p>萬用字元法則比較適合用於編譯一個大型的函式庫，而檔尾法則適合編譯一個目錄下面所有的檔案。</p>
+<h3 id="專案討論1">專案討論1</h3><p>專案目錄配置如下：</p>
+<ul>
+<li>include (目錄)<ul>
+<li>a.h</li>
+<li>b.h</li>
+<li>c.h</li>
+<li>d.h</li>
+</ul>
+</li>
+<li>main.c</li>
+<li>a.c</li>
+<li>b.c</li>
+<li>Makefile</li>
+</ul>
+<p>檔案相依如下：</p>
+<ul>
+<li>main.c include a.h d.h</li>
+<li>a.c include a.h</li>
+<li>b.c include b.h</li>
+</ul>
+<p>建立要求如下：</p>
+<ul>
+<li>建立二元檔main</li>
+<li>clean target移除全部目的檔</li>
+</ul>
+<pre><code>CC = gcc
+CFLAGS = -Wall -ansi -g
+H_PATH = include
+SRCS = main<span class="class">.c</span> <span class="tag">a</span><span class="class">.c</span> <span class="tag">b</span><span class="class">.c</span>
+OBJS = $(SRCS:.c=.o)
+
+all: main
+main: $(OBJS)
+[tab]$(CC) $(OBJS) -o $@
+<span class="class">.c</span><span class="class">.o</span>:
+[tab]$(CC) $(CFLAGS) -I$(H_PATH) -c -o $@ $&lt;
+main<span class="class">.o</span>: main<span class="class">.c</span> $(H_PATH)/<span class="tag">a</span><span class="class">.h</span> $(H_PATH)/d<span class="class">.h</span>
+<span class="tag">a</span><span class="class">.o</span>: <span class="tag">a</span><span class="class">.c</span> $(H_PATH)/<span class="tag">a</span><span class="class">.h</span>
+<span class="tag">b</span><span class="class">.o</span>: <span class="tag">b</span><span class="class">.c</span> $(H_PATH)/<span class="tag">b</span><span class="class">.h</span>
+clean:
+[tab]-rm -f *.o
+</code></pre><p>如果就可以成功的依照makefile所寫的內容一步步的把程式產生出來了，當然你也可以用喜歡萬用字元來做把.c.o改成%.o: %.c就可以了。</p>
+<h3 id="專案討論2">專案討論2</h3><p>這邊我們要編譯不同目錄裡面的檔案，來建立我們自己的函式庫，而且將它移動到某個目錄之中，這是有點困難的。</p>
+<p>專案目錄配置如下：</p>
+<ul>
+<li>include (目錄)<ul>
+<li>gear_calendar.h</li>
+<li>gear_io.h</li>
+<li>gear_color.h</li>
+<li>gear_string.h</li>
+<li>trax_file.h</li>
+<li>trax_name.h</li>
+</ul>
+</li>
+<li>source (實作檔)<ul>
+<li>gear_calendar.c</li>
+<li>gear_io.c</li>
+<li>gear_string.c</li>
+<li>trax_file.c</li>
+<li>trax_name.c</li>
+</ul>
+</li>
+<li>library (放函式庫的目錄)</li>
+<li>Makefile</li>
+</ul>
+<p>檔案相依如下：</p>
+<ul>
+<li>gear_calendar.c include gear_calendar.h</li>
+<li>gear_io.c include gear_io.h</li>
+<li>gear_string.c include gear_string.h</li>
+<li>trax_file.c include trax_file.h</li>
+<li>trax_name.c include trax_name.h</li>
+</ul>
+<p>建立要求如下：</p>
+<ul>
+<li>建立libtrax.a, libgear.a兩個函式庫</li>
+<li>clean target移除全部目的檔</li>
+<li>install target移動函式庫到library目錄下</li>
+</ul>
+<p>因為目前要編的是函式庫，而且還不單只有一個函式庫，所以我們把標頭檔全都放在同一個資料夾裡面，而且屬於那個函式庫的檔案就以函式庫名稱為檔名的第一部份命名，如此我們方便分類我們的檔案，而實作檔就放在另一個目錄裡面，而且以其對應的標頭檔來命名實作檔，目錄檔案分配好之後我們就可以開始設計 makefile了。</p>
+<p>用萬用字元法則吧！</p>
+<pre><code>CC = gcc
+CFLAGS = -Wall -ansi -s
+LIBRARY_PATH = library
+INCLUDE_PATH = include
+SOURCE_PATH = <span class="keyword">source</span>
+ALL_LIB = libgear.a libtrax.a
+GEAR_OBJS = gear_calendar.o gear_io.o gear_string.o
+TRAX_OBJS = trax_name.o trax_file.o
+
+all: <span class="variable">$(</span>ALL_LIB)
+libgear.a: <span class="variable">$(</span>GEAR_OBJS)
+[tab]ar rcs <span class="variable">$@</span> <span class="variable">$(</span>GEAR_OBJS)
+libtrax.a: <span class="variable">$(</span>TRAX_OBJS)
+[tab]ar rcs <span class="variable">$@</span> <span class="variable">$(</span>TRAX_OBJS)
+
+<span class="variable">%.</span>o: <span class="variable">$(</span>SOURCE_PATH)/<span class="variable">%.</span>c <span class="variable">$(</span>INCLUDE_PATH)/<span class="variable">%.</span>h
+[tab]<span class="variable">$(</span>CC) -I<span class="variable">$(</span>INCLUDE_PATH) <span class="variable">$(</span>CFLAGS) -c -o <span class="variable">$@</span> <span class="variable">$&lt;</span>
+
+install: <span class="variable">$(</span>ALL_LIB)
+[tab]-cp <span class="variable">$(</span>ALL_LIB) <span class="variable">$(</span>LIBRARY_PATH)
+clean:
+[tab]-rm -f <span class="variable">$(</span>GEAR_OBJS) <span class="variable">$(</span>ALL_LIB)
+</code></pre><p>我們先來看看<code>%.o: $(SOURCE_PATH)/%.c $(INCLUDE_PATH)/%.h</code><br>以這個相依來說，make會先看看本目錄有沒有gear_calendar.o檔，如果沒有的話，會相依於我們同檔名在source/和include/的實作檔和介面檔，所以make可以找到實作檔且將它編譯出來。而%代表所有目錄下的檔名，在這裡有的檔名是 gear_calendar.o gear_io.o gear_string.o trax_name.o trax_file.o這些包在＄(GEAR_OBJS)和＄(TRAX_OBJS)兩個巨集裡面。</p>
+<p>最後在透過ar指示將產生出來的.o檔依造我們設定的＄(GEAR_OBJS)和＄(TRAX_OBJS)兩個巨集，包在不同的static library之中</p>
+<p><code>install: $(ALL_LIB)</code> 和 <code>install: all</code><br>效果是一樣的，所以寫makefile最重要的是對此專案要很了解需要編什麼檔，什麼函式庫等等，而拿到別人的source通常也是透過看makefile可以了解它整個專案是怎麼產生出來，什麼介面和實作有相依性。</p>
+<h3 id="專案討論3">專案討論3</h3><p>這邊我們寫了一個檔案來測試我們先前建立的函式庫，使用我們自己的介面</p>
+<p>專案目錄配置如下：</p>
+<ul>
+<li>libgear (函式庫)<ul>
+<li>include (介面標頭檔)</li>
+<li>source (介面實作檔)</li>
+<li>library (函式庫使用檔)</li>
+</ul>
+</li>
+<li>space.c</li>
+<li>Makefile</li>
+</ul>
+<p>檔案相依如下：</p>
+<ul>
+<li>space.c include gear_io.h gear_color.h gear_string.h</li>
+</ul>
+<p>建立要求如下：</p>
+<ul>
+<li>建立space執行檔</li>
+<li>clean target移除全部目的檔</li>
+<li>如果函式庫還沒有建立的話，要自動建立函式庫</li>
+</ul>
+<pre><code><span class="constant">CC</span> = gcc
+<span class="constant">CFLAGS</span> = -<span class="constant">Wall</span> -ansi -g
+<span class="constant">INCLUDE_PATH</span> = libgear/<span class="keyword">include</span>
+<span class="constant">LIBRARY_PATH</span> = libgear/library
+<span class="constant">USE_LIB</span> = <span class="variable">$(</span><span class="constant">LIBRARY_PATH</span>)/libgear.a <span class="variable">$(</span><span class="constant">LIBRARY_PATH</span>)/libtrax.a
+<span class="constant">OBJECTS</span> = space.o
+
+<span class="symbol">all:</span> space
+<span class="symbol">space:</span> <span class="variable">$(</span><span class="constant">OBJECTS</span>) <span class="variable">$(</span><span class="constant">USE_LIB</span>)
+[tab]<span class="variable">$(</span><span class="constant">CC</span>) <span class="variable">$(</span><span class="constant">OBJECTS</span>) <span class="variable">$(</span><span class="constant">USE_LIB</span>) -o <span class="variable">$@</span>
+
+<span class="variable">$(</span><span class="constant">USE_LIB</span>)<span class="symbol">:</span>
+[tab]cd libgear; make install
+
+space.<span class="symbol">o:</span> space.c
+[tab]<span class="variable">$(</span><span class="constant">CC</span>) -<span class="constant">I</span><span class="variable">$(</span><span class="constant">INCLUDE_PATH</span>) <span class="variable">$(</span><span class="constant">CFLAGS</span>) -c -o <span class="variable">$@</span> <span class="variable">$&lt;</span>
+<span class="symbol">clean:</span>
+[tab]rm -f <span class="variable">$(</span><span class="constant">OBJECTS</span>)
+</code></pre><p>這邊最重要的就是確認有沒有libgear.a libtrax.a這兩個函式庫，沒有的話一切都不用搞了，所以設了一個巨集＄(USE_LIB)因為路徑不一樣，所以要自己設定好，而在連結的時候需要＄(USE_LIB)如果它不存在的話，就成為一個目標了，而這個目標就是叫libgear目錄下面的makefile去做</p>
+<h2 id="Make_Simple_Makefile_with_Release_and_Debug_build">Make Simple Makefile with Release and Debug build</h2><p><a href="http://stackoverflow.com/questions/792217/simple-makefile-with-release-and-debug-builds-best-practices" target="_blank" rel="external">http://stackoverflow.com/questions/792217/simple-makefile-with-release-and-debug-builds-best-practices</a><br><a href="http://stackoverflow.com/questions/1079832/how-can-i-configure-my-makefile-for-debug-and-release-builds" target="_blank" rel="external">http://stackoverflow.com/questions/1079832/how-can-i-configure-my-makefile-for-debug-and-release-builds</a></p>
+<h3 id="其他參考資料">其他參考資料</h3><p><a href="http://tetralet.luna.com.tw/?op=ViewArticle&amp;articleId=185" target="_blank" rel="external">http://tetralet.luna.com.tw/?op=ViewArticle&amp;articleId=185</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/gcc-usage/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/無聊的效能知識/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-02-22 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/linux/">linux<span>5</span></a></li> <li><a href="/tags/makefile/">makefile<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

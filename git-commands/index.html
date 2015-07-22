@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Git常用指令 | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Git常用指令"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Git常用指令</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>主要參考此書：<a href="http://www.books.com.tw/products/0010574090" target="_blank" rel="external">版本控制：使用Git</a><br><a id="more"></a></p>
+<h2 id="Git基本觀念">Git基本觀念</h2><table>
+<thead>
+<tr>
+<th>檔案階段</th>
+<th>檔案所在工作區</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>已修改</td>
+<td>Working Directory(目前的目錄)</td>
+<td>實際進行檔案修改的地方</td>
+</tr>
+<tr>
+<td>已暫存</td>
+<td>Staging area(暫存區)</td>
+<td>下次要提交的變動清單</td>
+</tr>
+<tr>
+<td>已提交</td>
+<td>Repository(容器)</td>
+<td>包含已提交的檔案及變動記錄</td>
+</tr>
+</tbody>
+</table>
+<p>其他檔案  </p>
+<ul>
+<li>被忽略： 在名為<code>.gitignore</code>的檔案中修改想忽略的檔案，如暫存檔、log、或編譯後的產物、筆記<ul>
+<li>每個目錄都可以有自己的<code>.gitignore</code>檔，以較接近檔案的目錄為準</li>
+<li>可以用<code>git add</code>強制將被忽略的檔案加入暫存區</li>
+</ul>
+</li>
+<li>觀看檔案的狀態: <code>git status</code></li>
+</ul>
+<p>提交(commit，送交)  </p>
+<ul>
+<li>容器變動的單位</li>
+<li>不一定所有檔案都要提交<ul>
+<li>只要不將檔案加入staging area，就不會被提交</li>
+</ul>
+</li>
+<li>提交時機<ul>
+<li>處於穩定狀態<ul>
+<li>測試完成</li>
+<li>移動函式至另一個檔案</li>
+</ul>
+</li>
+<li>結束工作前</li>
+</ul>
+</li>
+</ul>
+<p>辨識碼    </p>
+<pre><code>-<span class="ruby"> 所有物件都有一個獨特的辨識碼
+</span>    -<span class="ruby"> <span class="constant">SHA1</span> hash
+</span>    -<span class="ruby"> 包含commit, tag, 檔案……
+</span>-<span class="ruby"> 通常取前幾碼</span>
+</code></pre><p>基本流程: 修改檔案 =&gt; 將修改的檔案加入 staging area (<code>git add</code>) =&gt; 提交變更 (<code>git commit</code>) =&gt; 繼續修改其他檔案<br>可以在線上容器和本機容器間進行同步</p>
+<h3 id="設定">設定</h3><p>第一次安裝git之後，先設定自己的名字與信箱，因為Git用名字與信箱來分辨貢獻者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"First Last"</span> </span><br><span class="line"><span class="comment"># 設定使用者名稱(加上引號)</span></span><br><span class="line">git config --global user.email <span class="string">"user@example.com"</span> </span><br><span class="line"><span class="comment"># 設定使用者電子郵件(加上引號)</span></span><br><span class="line">git config --global color.ui <span class="literal">true</span> </span><br><span class="line"><span class="comment"># 開啟顏色，使git內容不會只有單一白色</span></span><br><span class="line">git config --global core.editor <span class="string">"emacs"</span> </span><br><span class="line"><span class="comment"># 設定預設編輯器(提交時會用到)</span></span><br><span class="line">git config --global alias.st status </span><br><span class="line"><span class="comment"># 設定指令的縮寫(將git st設為git status的簡寫)</span></span><br><span class="line">git config <span class="operator">-l</span> </span><br><span class="line"><span class="comment"># 列出所有設定值</span></span><br></pre></td></tr></table></figure>
+<p>若不加<code>--global</code>則設定只會在該容器生效</p>
+<p>設定commit的template(預設訊息格式)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 直接設定</span></span><br><span class="line">git config --global commit.template <span class="variable">$HOME</span>/.git-template</span><br><span class="line"><span class="comment"># 2. 在 .gitconfig 中設定</span></span><br><span class="line">[commit]</span><br><span class="line">template = /home/frank/.git-template</span><br></pre></td></tr></table></figure>
+<h3 id="實作範例">實作範例</h3><p>初始化一個空白專案<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init <span class="comment"># 初始化，使當前目錄成為git目錄</span></span><br><span class="line">touch README.md <span class="comment"># 加上專案的說明文件(非必要)</span></span><br><span class="line">git add README.md <span class="comment"># 加入暫存區</span></span><br><span class="line">git commit -m <span class="string">"initial commit"</span> <span class="comment"># 提交</span></span><br></pre></td></tr></table></figure></p>
+<p>將本地的repository上傳到遠端(如github)的repository<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># at git repository directory</span></span><br><span class="line">git remote add origin &lt;URL&gt; <span class="comment"># 遠端容器的網址</span></span><br><span class="line">git push -u origin master <span class="comment">#sync local master with origin/master</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Git常用指令">Git常用指令</h2><h3 id="Git檔案操作">Git檔案操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add [filename] <span class="comment"># 將檔案加入staging area</span></span><br><span class="line">git add -u <span class="comment"># 只把「修改/刪除」的檔案放入staging area，「新增」的檔案不加入</span></span><br><span class="line">git add -i <span class="comment"># 進入互動模式</span></span><br><span class="line">git add -p <span class="comment"># 部分暫存：Git會詢問哪些檔，然後逐個顯示被選中檔案的每一個差異部分，</span></span><br><span class="line"><span class="comment"># 並詢問你是否希望暫存他們。(= git add --patch)</span></span><br></pre></td></tr></table></figure>
+<p>要從Git刪除或移動檔案，需要將變動加入staging area(暫存區)<br>(<strong>直接刪除/移動不會影響版本中的檔案，因為這項變動沒有提交</strong>)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm filename <span class="comment"># 在新版本移除，並刪除檔案</span></span><br><span class="line">git rm --cache filename <span class="comment"># 在新版本移除，但不刪除檔案</span></span><br><span class="line">git mv filename new-filename <span class="comment"># 改名、搬移檔案</span></span><br></pre></td></tr></table></figure>
+<h3 id="Git版本更動">Git版本更動</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br><span class="line">-m <span class="string">'commit message'</span> <span class="comment"># 提交訊息</span></span><br><span class="line"><span class="operator">-a</span> </span><br><span class="line">	將所有修改過的檔案直接 commit, 不包含新增的檔案</span><br><span class="line">		等同 add -u; commit</span><br><span class="line">-v</span><br><span class="line">	列出檔案哪些內容有被更改</span><br></pre></td></tr></table></figure>
+<p>存取遠端容器</p>
+<pre><code><span class="preprocessor"># 需要先透過 git remote add &lt;url&gt; 設定容器連結</span>
+git <span class="keyword">push</span> origin master <span class="preprocessor">#  從本地上傳至遠端</span>
+git pull origin master <span class="preprocessor">#  從遠端更新到本地</span>
+</code></pre><p>pull機制：先 fetch 遠端的 branch，然後與本地端的 branch 做 merge，<strong>會多產生一個 merge commit</strong> </p>
+<h3 id="Git分支(branch)">Git分支(branch)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="comment">#  列出本地分支(前方有星號的為目前所在分支)</span></span><br><span class="line">git branch -r <span class="comment">#  列出遠端分支</span></span><br><span class="line">git branch <span class="operator">-a</span> <span class="comment">#  列出所有分支(本地+遠端)</span></span><br><span class="line">git show-branch <span class="comment"># 列出所有分支所在的commit和包含的commit</span></span><br><span class="line"><span class="comment"># 列出到所有branch的共有commit停止</span></span><br><span class="line">git branch [branchname] [commit] <span class="comment"># 在指定commit上建立分支</span></span><br><span class="line">git branch <span class="operator">-d</span> branch_name <span class="comment"># 刪除指定分支</span></span><br><span class="line">git branch -m old-name new-name <span class="comment"># 重新命名分支	</span></span><br><span class="line">git branch new-branch old-branch <span class="comment"># 由old-branch複製出新分支</span></span><br><span class="line"></span><br><span class="line">git checkout [branch] <span class="comment"># 切換到指定分支</span></span><br><span class="line"><span class="comment"># git checkout 也可以切換到任何commit，此時可能不在分支上</span></span><br><span class="line"><span class="comment"># 用 git branch 查看時，會在 (no branch)</span></span><br><span class="line">git checkout -b [new-branch] <span class="comment"># 建立並切換到該分支</span></span><br><span class="line">git checkout -m [branch] <span class="comment"># 將工作目錄的變動和分支合併，並切換到該分支</span></span><br><span class="line"><span class="comment"># git checkout 時也會合併，但不允許衝突。 衝突時用 git checkout -m</span></span><br></pre></td></tr></table></figure>
+<h3 id="Git_Tag(標籤)">Git Tag(標籤)</h3><pre><code>git <span class="keyword">tag</span> [tagname] [commit] <span class="comment"># 新增tag至commit(可為中文) </span>
+git <span class="keyword">tag</span> -d tagname <span class="comment"># 刪除tag</span>
+</code></pre><h3 id="Git合併(merge)分支<!-vv->">Git合併(merge)分支<!--vv--></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge [branch/commit] <span class="comment"># 將指定的版本合併到目前所在的分支</span></span><br><span class="line"><span class="comment"># 只有目前的分支會被影響！</span></span><br></pre></td></tr></table></figure>
+<p>產生衝突時：先用git diff/status查看<br>衝突的地方為如下格式</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><br><span class="line"><span class="header">...</span><br><span class="line">========</span></span><br><span class="line"><span class="bullet">...</span><br><span class="line"></span>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>分別是兩個版本的差異。<br><code>git diff --ours/--theirs</code> 可以查看原版本和衝突版本的差異(ours→合併的, theirs→被合併的)  </p>
+<blockquote>
+<p>warning: git diff 用在衝突檔案時只會顯示衝突的部分，而不會顯示只有一邊修改的部分</p>
+</blockquote>
+<p>將其修改後即可 add &amp; commit ，產生合併提交</p>
+<ul>
+<li>Straight merge<ul>
+<li>預設的合併模式</li>
+<li>保留被合併的 branch commits 記錄 加上一個 merge-commit</li>
+<li>看線圖會有兩條 Parents 線，並保留所有 commit log</li>
+</ul>
+</li>
+<li>Squashed commit<ul>
+<li>壓縮成只有一個 merge-commit，不會有被合併的 log</li>
+</ul>
+</li>
+<li>cherry-pick<ul>
+<li>只合併其中一個commit</li>
+<li>git cherry-pick [commit]</li>
+<li>如果要合併多個，可以加上 -n 指令就不會先幫你 commit，這樣可以多選幾個要合併的commit，最後再 git commit即可</li>
+<li>用途<ul>
+<li>將某個送交送到另一個分支。如：有時多個branch都有同一個bug，可用cherry-pick將debug的送交合併到其他branch</li>
+<li>重新排列commit(一個一個送)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="rebase:重新指定送交的基礎位置">rebase:重新指定送交的基礎位置</h4><p>機制：找到要合併的兩個 branch 的共同祖先，先commit要被merge的branch，再commit目前branch<br>Original:<br>master A → B→C→D→E<br>  |      ↘<br>debug      F→G→H  </p>
+<p>After rebase:<br>master A → B→C→D→E<br>  |               ↘<br>debug               F→G→H       </p>
+<pre><code>git checkout debug
+<span class="header">git rebase master #  debug rebase on master
+------------------</span>
+<span class="header">git rebase master debug #  debug rebase on master
+===========================</span>
+git rebase --onto master [From commit] [To commit] #  使用onto可以將一段提交移植到完全不同的分支上
+</code></pre><ul>
+<li>優點：可以不產生分支線和merge commit</li>
+<li>危險：<strong>等於改變提交記錄，僅適合還沒上傳的local branch</strong></li>
+</ul>
+<p><code>git rebase develop -i</code><br>可進行重新排序，編輯，移除，擠壓，拆散提交，是個強大的指令  </p>
+<p>集大成：rebase + merge <!--vv--><br>(假設我們要將 feature branch 合併回主幹 develop)</p>
+<ol>
+<li>先在 feature branch 做 git rebase develop -i</li>
+<li>(反覆整理直到滿意) git rebase 分岔點 -i</li>
+<li>再從 develop branch 做 git merge feature —no-ff</li>
+<li>超級乾淨，每一次的 merge commit 就代表一個功能完成</li>
+<li>rebase之後的feature branch就不要再push出去了</li>
+<li>如果有遠端的 feature branch，合併完也砍掉</li>
+</ol>
+<p>rebase —onto # 指定從哪裡開始rebase</p>
+<pre><code>git <span class="operator"><span class="keyword">merge</span> &lt;branch_name&gt; # 合併另一個branch到現在的branch，若沒有衝突(conflict)會直接 <span class="keyword">commit</span>。若需要解決衝突則會再多一個 <span class="keyword">commit</span>。
+
+git <span class="keyword">merge</span> <span class="comment">--squash &lt;branch_name&gt;</span></span>
+</code></pre><ul>
+<li>將被merge 的 branch 的 commit 合併為一筆</li>
+<li>特別適合需要做實驗的 fixes bug 或 new feature，最後只留結果</li>
+<li>合併完不會幫你先 commit。</li>
+</ul>
+<h3 id="Git還原">Git還原</h3><!--vv-->
+<!--
+    git ls-files -d #  **查看已刪除的檔案** 
+    git ls-files -d | xargs git checkout #  **將已刪除的檔案還原**
+-->
+<h4 id="amend:修改上一次的commit">amend:修改上一次的commit</h4><ul>
+<li>取出暫存區資料並<strong>合併到最後一次的提交</strong>  </li>
+<li>只要在最後一次提交後沒有做過任何修改（例如：在上一次提交後，馬上執行此命令），那麼唯一有更動的是提交時的訊息</li>
+<li>使用時機  <ul>
+<li>commit message的修改</li>
+<li>忘記add/多add檔案 的時候</li>
+<li>發現最後一個版本的<strong>小錯誤</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Ex. 上一個commit有typo，想要重新commit</span></span><br><span class="line">git add &lt;filename&gt; <span class="comment"># 修改錯誤後加入暫存</span></span><br><span class="line">git commit --amend</span><br><span class="line"></span><br><span class="line">git commit --amend &lt;file1&gt; &lt;file2&gt; ... <span class="comment">#  直接將檔案加入上一次commit </span></span><br><span class="line">git commit --amend --reset-author <span class="comment">#  將上次commit的作者資訊更新</span></span><br></pre></td></tr></table></figure>
+<h4 id="reset:移動至指定版本">reset:移動至指定版本</h4><p>將HEAD視為指標，平常是指向最新的一次提交。但git reset可以移動HEAD到指定的提交版本<br>(附註：checkout, commit 等指令都會改變HEAD指標的位置)</p>
+<pre><code>git <span class="operator"><span class="keyword">reset</span> [<span class="keyword">commit</span>] [<span class="comment">--hard/--soft/--mixed] #  還原到指定提交的狀態</span>
+<span class="comment">--soft 只移動HEAD指針，其他不變    </span>
+<span class="comment">--mixed 暫存區也被改變，但工作目錄不變 (預設值) </span>
+<span class="comment">--hard 暫存區和工作目錄都被改變 </span>
+git <span class="keyword">reset</span> HEAD filename # 將檔案從staging area移除 (= 將暫存區的這個檔案還原到HEAD時的狀態)</span>
+</code></pre><h4 id="checkout<!-vv->">checkout<!--vv--></h4><p><strong>使檔案還原到指定提交時的狀態</strong>      </p>
+<p>使用時機：<br>發現檔案改錯，用<code>git checkout (HEAD) filename</code>把檔案還原到最近的版本</p>
+<pre><code>git checkout [HEAD<span class="regexp">/commit前四碼/</span>--] filename <span class="comment"># 檔案會被還原到指定的commit時的檔案</span>
+</code></pre><h4 id="revert:新增「還原」的提交">revert:新增「還原」的提交</h4><p>新增一筆commit，做相反的變更以還原至指定版本<br>使用時機：<br>你的送交已經上傳，別人有相同的一份記錄，所以你無法修改歷史記錄(<code>git reset</code>, <code>git commit --amend</code>)。  </p>
+<pre><code><span class="keyword">git</span> revert<span class="sqbracket"> [commit]</span>
+</code></pre><h3 id="Git比較">Git比較</h3><p>遞迴比較不同版本的目錄中，每個檔案的不同</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">git diff <span class="comment"># 比較當前目錄與暫存區(staging area)的不同</span></span><br><span class="line"><span class="comment"># 檢查還沒有加入stage area的變更</span></span><br><span class="line">git diff [branch/commit] <span class="comment"># 比較當前目錄和指定版本(預設是HEAD)的差別</span></span><br><span class="line">git diff --cached/--staged [branch/commit] </span><br><span class="line"><span class="comment"># 比較暫存區(staging area)與指定版本(預設是HEAD)的不同，常作為commit前檢查用</span></span><br><span class="line">git diff [branch/commit] [branch/commit] <span class="comment"># 比較兩個版本的差別</span></span><br><span class="line">git diff [...] Name <span class="comment"># 只列出路徑包含Name的檔案差異</span></span><br><span class="line">git diff -S[string] <span class="comment"># 只列出變更包含string的檔案差異</span></span><br><span class="line">git diff --stat <span class="comment"># 查看哪些檔案不同(只顯示檔名和行數)</span></span><br><span class="line">git diff -w <span class="comment"># 不將空白視為變更</span></span><br><span class="line">git diff --color <span class="comment"># 上色，新增和移除的顏色不同   </span></span><br><span class="line">git diff tag1:file1 tag2:file2 <span class="comment"># 比較 tag1的file1 與 tag2的file2</span></span><br></pre></td></tr></table></figure>
+<h3 id="Git提交記錄">Git提交記錄</h3><p>git log 可以用來查詢提交的歷史記錄及其細節，有很多參數可以用，建議用GUI(<code>gitk</code>, <code>git gui</code>)比較清楚</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> [commit/branch] <span class="comment"># 列出[指定的提交及其祖先]/[分支內容]</span></span><br><span class="line">git <span class="built_in">log</span> [commitA]..[commitB] <span class="comment"># 列出從A到B的提交(不含A, 含B) </span></span><br><span class="line">git <span class="built_in">log</span> ^[commitA] <span class="comment"># A之後的提交(不列出A之前的提交，不含A)</span></span><br><span class="line">git <span class="built_in">log</span> -[num] <span class="comment"># 最近[num]筆的提交紀錄	</span></span><br><span class="line">git <span class="built_in">log</span> --no-merges <span class="comment"># 不顯示合併的提交</span></span><br><span class="line">git <span class="built_in">log</span> --graph <span class="comment"># 顯示樹狀結構圖，GUI的替代品</span></span><br><span class="line">git <span class="built_in">log</span> --stat <span class="comment"># 列出修改行數</span></span><br><span class="line">git <span class="built_in">log</span> --author [username] <span class="comment"># 指定使用者的提交</span></span><br><span class="line">git <span class="built_in">log</span> --since=<span class="string">"2 weeks ago"</span> <span class="comment"># 近2週內</span></span><br><span class="line">git <span class="built_in">log</span> --follow [filename] <span class="comment"># 列出該檔案的歷史變動(包含改名前)</span></span><br><span class="line"></span><br><span class="line">git show <span class="comment"># 同時列出該提交的詳細修改內容(= git log -p -1)</span></span><br><span class="line">git show [commit]:[filename] <span class="comment"># 顯示該提交的指定檔案</span></span><br></pre></td></tr></table></figure>
+<!-- git log A...B # 相對差異，只可由A到達或只可由B到達 -->
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --pretty [...] <span class="comment"># 調整記錄的格式</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline <span class="comment"># 一個commit一行</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=short <span class="comment"># 簡短</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=format:<span class="string">'%h was %an, %ar, message: %s'</span></span><br><span class="line"><span class="comment"># %s: 提交訊息, %h: 辨識碼(hash), %an: 作者, %ar: 時間</span></span><br></pre></td></tr></table></figure>
+<h3 id="尋找提交:_bisect,_blame">尋找提交: bisect, blame</h3><p>找尋發生問題的提交</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git bisect start <span class="comment"># 用二分搜尋法，git會依照你提供的資訊改變目前的工作目錄，以方便測試</span></span><br><span class="line"><span class="comment"># 註：原本工作目錄的修改會遺失，所以可先commit</span></span><br><span class="line">git bisect good [commit] <span class="comment"># 告知到此commit之前是好的</span></span><br><span class="line">git bisect bad [commit] <span class="comment"># 告知此commit仍有錯誤</span></span><br><span class="line">git bisect <span class="built_in">log</span> <span class="comment"># good, bad記錄</span></span><br><span class="line">git bisect visualize <span class="comment"># 顯示在搜尋範圍的commit</span></span><br><span class="line">git bisect reset <span class="comment"># 找到錯誤的提交後，還原至原本的分支</span></span><br></pre></td></tr></table></figure>
+<p>用檔案尋找提交</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git blame [filename] <span class="comment"># 顯示檔案的每一行最後是被哪個commit修改的</span></span><br><span class="line">git <span class="built_in">log</span> -S [string] [filename] <span class="comment"># 顯示變動包含string字串的commit</span></span><br></pre></td></tr></table></figure>
+<h3 id="Git_stash_<!-vv->">Git stash <!--vv--></h3><p>把目前工作區的東西丟到stash裡，等之後在回來拿。</p>
+<p>使用時機：  </p>
+<ol>
+<li>你不得不修改一個緊急Bug，你可以先把目前工作狀況丟到stash，這時候你的工作區和上次剛提交內容的狀況是一樣，等到修完Bug後再把stash中剛剛做到一半的東西叫回來繼續</li>
+<li>今天的工作時間結束後，還有未完成的部分 </li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git stash [file] <span class="comment"># 丟進stash</span></span><br><span class="line">git stash list <span class="comment"># 列出所有在stash的檔案</span></span><br><span class="line">git stash apply <span class="comment"># 取出最新的一筆檔案</span></span><br><span class="line">git stash pop <span class="comment"># 取出最新的一筆檔案,並從stash中移除</span></span><br><span class="line">git stash clear <span class="comment"># 清空stash</span></span><br></pre></td></tr></table></figure>
+<h2 id="不常用的指令_<!-vv->">不常用的指令 <!--vv--></h2><h3 id="Git遠端目錄操作">Git遠端目錄操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="comment"># 列出加入遠端儲存庫時指定的名稱</span></span><br><span class="line">git remote show <span class="comment"># 顯示現在有多少Remote Repository</span></span><br><span class="line">git remote add remote-name remote-url <span class="comment"># 加入一個remote repository</span></span><br><span class="line">//(和本地的repository連結)</span><br><span class="line">git remote update <span class="comment"># 更新Repository的所有branch</span></span><br><span class="line">git remote rm branch-name <span class="comment">#  刪除遠端分支</span></span><br><span class="line">git push origin :foobar <span class="comment">#  刪除遠端分支</span></span><br><span class="line">git push --tags <span class="comment"># push tags 資訊(預設不會)</span></span><br><span class="line"></span><br><span class="line">git push git@github.com:xxx/xxx.git branch-name <span class="comment"># 上傳分支</span></span><br><span class="line">git push git@github.com:xxx/xxx.git :branch-name <span class="comment"># 刪除遠端分支</span></span><br></pre></td></tr></table></figure>
+<p>fetch, clone</p>
+<pre><code>git <span class="built_in">clone</span> [URL/<span class="built_in">local</span>RepositoryName] [newRepositoryPath] <span class="comment"># 複製指定容器</span>
+git fetch branch-name <span class="comment"># 抓取遠端容器的branch到本地的同名branch</span>
+git fetch origin -p <span class="comment">#  讓本地端更新遠端被刪除的branch    </span>
+</code></pre><h3 id="Git_clean">Git clean</h3><p>清除不包含在版本控制中的檔案(被gitignore忽略的檔案不會被清除)     </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clean -n <span class="comment">#  列出會被清掉的檔案</span></span><br><span class="line">git clean <span class="operator">-f</span> <span class="comment">#  執行清除</span></span><br><span class="line">git clean <span class="operator">-d</span> <span class="comment">#  清除資料夾</span></span><br><span class="line">git clean -x <span class="comment">#  連 gitignore 裡列的檔案也清掉</span></span><br></pre></td></tr></table></figure>
+<h3 id="Git_維護">Git 維護</h3><p>gc(garbage collect)：收集所有沒有被指到並且已存在一段時間的物件刪除      </p>
+<pre><code><span class="preprocessor"># 整理前和整理後的差異, 可由: git count-objects 看到</span>
+git gc 
+git gc --<span class="keyword">auto</span> <span class="preprocessor">#  執行 auto gc 命令</span>
+</code></pre><h2 id="參考資料">參考資料</h2><ul>
+<li><a href="http://www.books.com.tw/products/0010574090" target="_blank" rel="external">版本控制：使用Git</a>  </li>
+<li><a href="http://git-scm.com/book/zh-tw/v1" target="_blank" rel="external">Git scm</a></li>
+<li><a href="http://gogojimmy.net/2012/02/29/git-scenario/" target="_blank" rel="external">Git情境劇系列</a>  </li>
+<li><a href="http://blog.longwin.com.tw/2009/05/git-learn-initial-command-2009/" target="_blank" rel="external">Git初學筆記</a>  </li>
+<li><a href="https://ihower.tw/git/rebase.html" target="_blank" rel="external">ihower: 還沒push前可以做的(壞)事</a></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/MLfoundation1/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/linux-tips/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-09-16 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/筆記/">筆記<span>7</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/git/">git<span>2</span></a></li> <li><a href="/tags/指令/">指令<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

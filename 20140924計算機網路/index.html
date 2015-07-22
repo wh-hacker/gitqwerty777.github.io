@@ -1,0 +1,801 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>計算機網路(上) | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="計算機網路(上)"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 計算機網路(上)</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h1 id="Chap01_Introduction">Chap01 Introduction</h1><h2 id="Terminologies">Terminologies</h2><p><strong>connected computing devices</strong><br>hosts: end systems<br>running network apps<br>sends packets of data<br>breaks message into smaller chunks, known as packets<br><strong>transmission rate</strong>: bandwidth<br><strong>Packet switches</strong>: forward packets (chunks of data) routers and switches<br><strong>protocols</strong>: define format, order of msgs sent and received<br>and actions taken on msg transmission and receive<br>e.g., TCP, IP, HTTP, Skype, 802.11<br><img src="/img/CN/UHFBvAO.png" alt=""><br><a id="more"></a><br><strong>Internet standards</strong><br>RFC: Request for comments<br>IETF: Internet Engineering Task Force</p>
+<p><strong>Others</strong><br>link capacity(maximum rate)<br>link bandwidth(available rate)</p>
+<h2 id="What’s_Internet?">What’s Internet?</h2><ul>
+<li><strong>network of networks</strong>  </li>
+<li><strong>Interconnected ISPs</strong>  </li>
+<li><strong>Infrastructure that provides services to applications</strong>:<br>Web, VoIP, email, games…  </li>
+<li><strong>provides programming interface to apps</strong>  </li>
+</ul>
+<h2 id="Network_Structure">Network Structure</h2><ul>
+<li>network edge<ul>
+<li>hosts: clients and servers(often in data centers)</li>
+</ul>
+</li>
+<li>access networks, physical media:<ul>
+<li>wired, wireless communication links</li>
+</ul>
+</li>
+<li>network core: <ul>
+<li>interconnected routers, network of networks  </li>
+</ul>
+</li>
+</ul>
+<h2 id="Access_Net">Access Net</h2><h3 id="digital_subscriber_line_(DSL)">digital subscriber line (DSL)</h3><p>DSL透過電話線的附加頻段在話音訊帶上傳送大量資料<br>typically (&lt; 1 Mbps/&lt; 10 Mbps)<br><img src="/img/CN/7kYoUyA.png" alt="">    </p>
+<h3 id="cable_network">cable network</h3><p>unlike DSL, which has dedicated access to central offic<br><img src="/img/CN/wonLAB8.png" alt=""><br>frequency division multiplexing: different channels transmitted<br>in different frequency bands<br>將多路基頻訊號調製到不同頻率載波上再進行疊加形成一個複合訊號<br><img src="/img/CN/H5z9oXy.png" alt=""><br>HFC: hybrid fiber coax(混合式光纖同軸電纜)<br>其主幹是光纖（Fiber）網路(fiber attaches homes to ISP router)，末端枝幹是雙向同軸電纜線（Coaxial Cable）<br>在主幹網路上，每條光纖採用環狀結構連接，確保一條網路斷線時，另外一條網路仍能傳遞資料，以光波傳輸訊號，傳輸距離長，提供高速連接至光纖節點（Fiber node），由光接收機將光訊號轉為電視訊號，再改經同軸電纜傳送至用戶終端。HFC 網路的頻寬達750MHz，以6MHz來劃分整體的頻道，可容納高達110個類比視訊頻道，或1000個數位節目。</p>
+<p>asymmetric: up to 30Mbps/2 Mbps<br>homes share access network to cable headend</p>
+<h3 id="home_network">home network</h3><p><img src="/img/CN/oIEjJsN.png" alt=""></p>
+<h3 id="Enterprise_access_networks_(Ethernet)">Enterprise access networks (Ethernet)</h3><p><img src="/img/CN/LebfyMI.png" alt=""></p>
+<ul>
+<li>一種電腦區域網路組網技術(IEEE 802.3)，它規定了包括實體層的連線、電訊號和介質存取層協定的內容</li>
+<li>typically used in companies, universities</li>
+<li>today, end systems typically connect into Ethernet switch</li>
+</ul>
+<h3 id="Wireless_access_networks">Wireless access networks</h3><p>connect via base station aka “access point”</p>
+<ul>
+<li>wireless LANs:<ul>
+<li>within building (100 ft)</li>
+<li>802.11b/g (WiFi): 11/54 Mbps transmission rate</li>
+</ul>
+</li>
+<li>wide-area wireless access<ul>
+<li>provided by telco (cellular蜂巢式) operator, 10’s km and 1~10 Mbps  </li>
+<li>3G, 4G(速度，範圍): LTE</li>
+</ul>
+</li>
+</ul>
+<h2 id="Physical_media">Physical media</h2><ul>
+<li>twisted pair (TP, 雙絞線): two insulated copper wires<br>Category 5: 100 Mbps, 1 Gpbs Ethernet<br>Category 6: 10Gbps<br>是由兩條相互絕緣的導線按照規格互相纏繞在一起而製成，屬於資訊通訊網路傳輸介質。</li>
+<li>coaxial cable(同軸電纜):<ul>
+<li>two concentric(同心) copper conductors  </li>
+<li>bidirectional   </li>
+<li>broadband(寬帶): multiple channels on cable</li>
+</ul>
+</li>
+<li>HFC　Hybrid Fiber Coaxial(as above)    </li>
+<li>fiber optic cable: glass fiber carrying light pulses  <ul>
+<li>high-speed(10’s-100’s Gpbs) point-to-point transmission   </li>
+<li>low error rate: immune to electromagnetic noise</li>
+</ul>
+</li>
+<li>radio<ul>
+<li>no physical wire , bidirectional</li>
+<li>propagation(傳播) environment effects:<ul>
+<li>reflection </li>
+<li>obstruction(妨礙) by objects</li>
+<li>interference</li>
+</ul>
+</li>
+<li>radio link types:<ul>
+<li>terrestrial(地面波) microwave - up to 45 Mbps channels</li>
+<li>LAN (e.g., WiFi) - 11Mbps, 54 Mbps</li>
+<li>wide-area (e.g., cellular) - 3G cellular: ~ few Mbps</li>
+<li>satellite - Kbps to 45Mbps channel (or multiple smaller channels) <ul>
+<li>270 msec end-end delay</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="The_network_core:_interconnected_routers">The network core: interconnected routers</h2><p>packet-switching: hosts break <strong>application-layer messages</strong> into packets    </p>
+<p>forward packets from one router to the next, across links on path from source to destination</p>
+<h3 id="Two_key_network-core_functions">Two key network-core functions</h3><p>routing: <strong>determines source-destination route</strong> taken by packets<br>routing algorithms<br>forwarding: <strong>move packets</strong> from router’s input to appropriate router output</p>
+<h3 id="circuit_switching">circuit switching</h3><p>電路交換要求必須首先在通信雙方之間建立連接通道。在連接建立成功之後，雙方的通信活動才能開始。<br>通信活動的過程中，連接將始終佔用著通信系統分配給它的資源（通道、頻寬、時隙、碼字等等）(no sharing)<br>circuit segment idle if not used by call (no sharing)<br>Commonly used in traditional telephone networks<br>多工：FDM &amp; TDM<br><img src="/img/CN/AyQHQy9.png" alt=""></p>
+<h3 id="packet_switching">packet switching</h3><p>封包在節點間單獨路由，不需要在傳輸前先建立通訊路徑<br>store and forward: entire packet must arrive at router before it can be transmitted on next link<br>If arrival rate exceeds transmission rate of link:</p>
+<ol>
+<li>packets will queue, wait to be transmitted on link </li>
+<li>packets will be lost if memory(buffer) fills up</li>
+</ol>
+<h3 id="why_packet_switching_better_than_circuit_switching">why packet switching better than circuit switching</h3><ol>
+<li>packet switching allows more users to use network!<br>Ex.<br>1 Mb/s link<br>each user is [100 kb/s when “active”] and [active 10% of time]<br>with 35 users, probability &gt; 10 active at same time is less than .0004(計算的機率)</li>
+<li>great for bursty data(resource sharing)</li>
+<li>excessive congestion possible: packet delay and loss<ul>
+<li>need protocols needed for reliable data transfer, congestion control</li>
+</ul>
+</li>
+</ol>
+<p>Q: How to provide circuit-like behavior?<br>bandwidth guarantees needed for audio/video apps</p>
+<h2 id="Internet_structure:_network_of_networks">Internet structure: network of networks</h2><p>End systems connect to Internet via access ISPs (Internet Service Providers)<br>ISPs must be interconnected</p>
+<p><img src="/img/CN/WB7uwMH.png" alt=""><br><img src="/img/CN/BeFXQC2.png" alt=""><br>IXP Internet exchange point</p>
+<p><img src="/img/CN/u2H7X7p.png" alt=""><br>“tier-1” commercial ISPs (e.g., Level 3, Sprint, AT&amp;T, NTT), national &amp; international coverage<br>content provider network (e.g, Google): private network that connects it data centers to Internet, often bypassing tier-1, regional ISPs</p>
+<h2 id="packet_delay">packet delay</h2><h3 id="Four_sources_of_packet_delay">Four sources of packet delay</h3><p><img src="/img/CN/RifdgHR.png" alt=""><br>dproc: noda processing<br>check bit errors<br>determine output link<br>typically &lt; msec</p>
+<p>dqueue: queueing delay<br><img src="/img/CN/7r4M1Q5.png" alt=""><br>dtrans: transmission delay(檔案傳輸)(受限於頻寬，一次只能傳送一定大小)<br>L: packet length (bits)<br>R: link bandwidth (bps)<br>dtrans = L/R</p>
+<p>dprop: propagation delay(傳輸速度(約光速))<br>d: length of physical link<br>s: propagation speed in medium (~2x108 m/sec)<br>dprop = d/s</p>
+<p>traceroute program: provides delay measurement from source to router along end-end Internet path towards destination</p>
+<p>throughput: rate (bits/time unit) at which bits transferred between sender/receiver<br>instantaneous: rate at given point in time<br>average: rate over longer period of time<br>link on end-end path that constrains  end-end throughput(被最慢的部分限制)</p>
+<h2 id="Protocol_“layers”">Protocol “layers”</h2><p><img src="/img/CN/AfKoIko.png" alt="AIR TRAVEL"></p>
+<p>layers: each layer implements a service<br>via its own internal-layer actions<br>relying on services provided by layer below</p>
+<ol>
+<li>explicit structure allows identification, relationship of complex system’s pieces</li>
+<li>modularization eases maintenance, updating of system<br>change of implementation of layer’s service transparent to rest of system(不互相影響)<br>e.g., change in gate procedure doesn’t affect rest of system</li>
+</ol>
+<p><img src="/img/CN/pYLYYrA.png" alt="layer model"><br><strong>Layer Model</strong>  </p>
+<ul>
+<li>application: supporting network applications<ul>
+<li>FTP, SMTP, HTTP</li>
+</ul>
+</li>
+<li>transport: process-process data transfer<ul>
+<li>TCP, UDP</li>
+</ul>
+</li>
+<li>network: routing of datagrams from source to destination<ul>
+<li>IP, routing protocols</li>
+</ul>
+</li>
+<li>link: data transfer between neighboring  network elements<ul>
+<li>Ethernet, 802.11 (WiFi), PPP</li>
+</ul>
+</li>
+<li>physical: bits “on the wire”</li>
+</ul>
+<p><img src="/img/CN/delHpJN.png" alt="iso layer model"><br><strong>ISO/OSI layer model (7 layers)</strong><br>additional 2 layers  </p>
+<ul>
+<li>presentation: allow applications to interpret meaning of data<ul>
+<li>encryption, compression, machine-specific conventions</li>
+</ul>
+</li>
+<li>session: synchronization, checkpointing, recovery of data exchange</li>
+</ul>
+<p>Internet stack “missing” these layers!<br>these services, <strong>if needed</strong>, must be implemented in application</p>
+<h2 id="Encapsulation">Encapsulation</h2><p>包裝好(加上header)，運送，再拆封包<br><img src="/img/CN/" alt="Encapsulation"></p>
+<h2 id="Security">Security</h2><p>網路本無考慮安全性<br>本來的想法： 「互相相信的使用者組成的透明網路」</p>
+<p>Bad guys: put malware into hosts via Internet</p>
+<ul>
+<li>virus: self-replicating infection by receiving/executing object (e.g., e-mail attachment)<ul>
+<li>會感染其他檔案，其他人</li>
+<li>須人為開啟</li>
+</ul>
+</li>
+<li>worm: self-replicating infection by passively receiving object that gets itself executed<ul>
+<li>找作業系統或是特定程式的漏洞來鑽</li>
+<li>可自行傳播(不須做特定動作)</li>
+</ul>
+</li>
+<li>spyware: can record keystrokes, web sites visited, upload info to collection site</li>
+</ul>
+<p>被感染的電腦可當作botnet(彊屍電腦)，用來寄垃圾郵件，或進行DDoS攻擊</p>
+<p>Denial of Service (DoS): 控制多台電腦，持續提出要求，使伺服器癱瘓<br>attackers make resources (server, bandwidth) unavailable to legitimate traffic by overwhelming resource with bogus traffic</p>
+<p>packet “sniffing ”(追蹤)<br>從 broadcast media (shared ethernet, wireless) 拿取目的地非自己的封包，以獲得資訊。(正常情況：丟棄)</p>
+<p>IP spoofing(謊報)<br>send packet with false source address(假造他人名義送出封包)</p>
+<h2 id="History">History</h2><p>1961-1972: Early packet-switching principles<br>1972:<br>NCP (Network Control Protocol) first host-host protocol<br>first e-mail program<br>ARPAnet has 15 nodes</p>
+<p>1974:Cerf and Kahn - architecture for interconnecting networks<br>Cerf and Kahn’s internetworking principles define today’s Internet architecture:</p>
+<ul>
+<li>minimalism, autonomy - no internal changes required to interconnect networks</li>
+<li>best effort service model</li>
+<li>stateless routers</li>
+<li>decentralized control</li>
+</ul>
+<p>1983:deployment of TCP/IP<br>1983:DNS defined for name-to-IP-address translation<br>1985:ftp protocol defined</p>
+<p>early 1990s:Web<br>hypertext [Bush 1945, Nelson 1960’s]<br>HTML, HTTP: Berners-Lee<br>1994: Mosaic, later Netscape</p>
+<p>late 1990’s: commercializationof the Web<br>instant messaging, P2P file sharing<br>network security to forefront</p>
+<p>2005-present<br>Service providers (Google, Microsoft) create their own networks<br>Bypass Internet, providing “instantaneous”access to search, emai, etc.</p>
+<h1 id="Chap02_Application_Layer">Chap02 Application Layer</h1><p><img src="/img/CN/proto.png" alt="protocol"></p>
+<p>使程式更加好寫<br>不需要從網路核心開始實作，直接call function</p>
+<p>優勢：<br>可在不同裝置(end-system)上運行<br>網路通訊  </p>
+<p>註：網路核心程式不會主動執行</p>
+<h2 id="structure">structure</h2><p>client-server structure  </p>
+<ul>
+<li>server:<ul>
+<li>always-on host</li>
+<li>permanent IP address</li>
+<li>data centers for scaling</li>
+</ul>
+</li>
+<li><p>clients:</p>
+<ul>
+<li>communicate with server</li>
+<li>may have dynamic IP addresses</li>
+<li>do not communicate directly with each other(client間互相不知道)<br>peer-to-peer (P2P) structure  </li>
+</ul>
+</li>
+<li><p>no always-on server</p>
+<ul>
+<li><strong>arbitrary end systems directly communicate</strong></li>
+</ul>
+</li>
+<li>peers both request services and provide services</li>
+<li>self scalability(可擴展) – new peers bring new service capacity, as well as new service demands(愈多人加入，service功能相對應愈強)</li>
+<li><strong>complex management</strong>(not easy to implement)</li>
+</ul>
+<h2 id="Socket">Socket</h2><ul>
+<li>process sends/receives messages to/from its socket, by transport infrastructure</li>
+<li><img src="/img/CN/socket.png" alt=""></li>
+</ul>
+<p>Addressing processes<br>host device has unique 32-bit IP address<br>identifier (IP address and port numbers)<br>example port numbers:<br>HTTP server: 80<br>mail server: 25</p>
+<h2 id="Application_layer_protocol">Application layer protocol</h2><p>define: when and how processes transfer messages</p>
+<ul>
+<li>types of messages exchanged: e.g., request, response</li>
+<li>message syntax: fields(欄位) in messages</li>
+<li>message semantics: meaning of information in fields  </li>
+</ul>
+<p>Ex. HTTP, SMTP, Skype</p>
+<p>transport service  </p>
+<ul>
+<li>data integrity(file transfer)</li>
+<li>timing</li>
+<li>throughput<ul>
+<li>multimedia vs elastic(有彈性的) apps</li>
+</ul>
+</li>
+<li>security</li>
+</ul>
+<h2 id="transport_protocols_services">transport protocols services</h2><p>TCP(transport layer)</p>
+<ul>
+<li>reliable transport</li>
+<li>flow control: sender won’t overwhelm receiver</li>
+<li>congestion control(擁塞控制, 網路處理過多封包):throttle sender when network overloaded</li>
+<li>connection-oriented(須先建立連接):setup required between client and server processes<br>does not provide:<br>timing, throughput, security , </li>
+</ul>
+<p>UDP(transport layer)</p>
+<ul>
+<li>does not provide all of the service,  </li>
+<li>far faster than TCP</li>
+<li>used in multimedia, internet telephone</li>
+</ul>
+<p>SSL(app layer) </p>
+<ul>
+<li>encrypted TCP connection</li>
+<li>data integrity</li>
+<li>end-point authentication</li>
+<li>SSL socket API</li>
+</ul>
+<h2 id="HTTP">HTTP</h2><ul>
+<li>hypertext transfer protocol</li>
+<li>客戶端終端（用戶）和伺服器端（網站）請求和應答的標準,使用Web瀏覽器、網路爬蟲或者其它的工具  </li>
+<li>each object is addressable by a URL, include host name and path name  </li>
+<li>use TCP to send HTTP messages</li>
+<li>stateless: server maintain no information about client</li>
+<li>RTT(Round-trip delay time): time for a small packet to travel from client to server and back(來回時間)</li>
+<li>non-persistent HTTP: one TCP connection send at most one object, connection close right after server responsed<ul>
+<li>one RTT build TCP connection + one RTT for HTTP request + file transmission time</li>
+</ul>
+</li>
+<li>persistent HTTP: send multiple object at one TCP connection<ul>
+<li>one RTT build TCP connection + one RTT for request x N files + file transmission time</li>
+</ul>
+</li>
+</ul>
+<p>HTTP Request message format<br><img src="/img/CN/2-1.png" alt="http message"></p>
+<ul>
+<li>request line(method, URL, version..)<ul>
+<li>method field</li>
+<li><code>POST</code>: modify file in specified URL</li>
+<li><code>URL</code>: use <code>GET</code></li>
+<li><code>GET</code>: get file content in specified URL</li>
+<li><code>PUT</code>: replace file in specified URL</li>
+<li><code>HEAD</code>: get information about a resource</li>
+</ul>
+</li>
+<li>header lines(fields) </li>
+<li>body(context)</li>
+</ul>
+<p>HTTP Response message format<br><img src="/img/CN/2-2.png" alt="reponse"></p>
+<ul>
+<li>status line<ul>
+<li>protocol </li>
+<li>status code</li>
+<li>status phrase</li>
+</ul>
+</li>
+</ul>
+<p>status code</p>
+<ul>
+<li>200 OK</li>
+<li>301 Moved Permanently<ul>
+<li>requested object moved, new location will send later in this msg (Location:)(重定向)</li>
+</ul>
+</li>
+<li>400 Bad Request<ul>
+<li>request msg not understood by server</li>
+</ul>
+</li>
+<li>404 Not Found<ul>
+<li>requested document not found</li>
+</ul>
+</li>
+<li>505 HTTP Version Not Supported</li>
+</ul>
+<p>try connect HTTP</p>
+<pre><code>telnet [host <span class="property">name</span>] <span class="number">80</span>
+GET [path <span class="property">name</span>] HTTP/<span class="number">1.1</span>
+</code></pre><h3 id="User-server_state:_cookies">User-server state: cookies</h3><p>help server keep states  </p>
+<p>Ex.<br>when initial HTTP requests arrives at site, site creates:<br>unique ID<br>entry in backend database for ID<br>cookie file kept on user’s host</p>
+<p>Help for interaction<br><a href="http://zh.wikipedia.org/wiki/Cookie#.E7.94.A8.E9.80.94" target="_blank" rel="external">cookie</a></p>
+<h3 id="cache_for_proxy_server">cache for proxy server</h3><p>for any request, check it is in cache or not,<br>if it is, return cache</p>
+<p>typically cache is installed by ISP (university, company, residential ISP)<br>reduce response time and traffic</p>
+<p>Conditional GET: if client has up-to-update object, no need to send again<br>client send request: if-modified-since:<date></date></p>
+<h2 id="FTP">FTP</h2><p>file transfer protocol<br>using TCP<br>ftp: RFC 959<br>(1)control connection：(port 21)<br>(2)data connection：(port 20)<br>Out-of-band (頻帶外)Control  </p>
+<p>server receives file transfer command, server opens 2nd TCP data connection (for file) to client<br>after transferring one file, server closes data connection</p>
+<p>maintain state: current directory and earlier authentication</p>
+<p>FTP 命令(Command)與回應(Reply)</p>
+<p>(1).命令(command)：從Client端到Server端</p>
+<p>常見命令如下:</p>
+<p> USER username :把使用者代號傳給伺服器<br> PASS password :把使用者密碼傳給伺服器<br> LIST :要求server傳回目前遠端目錄下的檔案列表 此檔案列表會透過資料連線(新建立且non-persistent) 而非control connection連線來傳送<br> RETR filename : 用來擷取遠端主機目前目錄下的某個檔案 此命令會使遠端主機開一筆data connection傳送請求的檔案<br> STOR filename : 把某個檔案存到遠端主機目前目錄下<br>(2).回應(Reply)：從Server端到Client端</p>
+<p>常見回應如下:</p>
+<p>331 Username OK,password require<br>125 Data connection already open;transfer starting<br>425 Can’t open data connection<br>452 Error writing file<br>(3)<br>不管是Command或Reply都會送出7-bit ASCII值的control connection</p>
+<h2 id="EMAIL">EMAIL</h2><ol>
+<li>SMTP(Simple Mail Transfer Protocol) </li>
+</ol>
+<p>mail agent, mail box(in), message queue(out)</p>
+<p>The client SMTP will establish a TCP connection to port 25 at the server SMTP.<br>persistent connections</p>
+<p>three phases of transfer</p>
+<ul>
+<li>handshaking (greeting)</li>
+<li>transfer of messages</li>
+<li>closure</li>
+</ul>
+<p>commands:ASCII text<br>response:status code and phrase<br>messages must be in 7-bit ASCI</p>
+<p>SMTP是push protocol,即TCP連線是由想要送出檔案的主機所建立<br>HTTP是pull protocol,即TCP連線是由想要接收檔案的主機所建立</p>
+<pre><code>telnet URL <span class="number">25</span>
+<span class="string">S:</span> <span class="number">220</span> hamburger.edu
+<span class="string">C:</span> HELO crepes.fr
+<span class="string">S:</span> <span class="number">250</span> Hello crepes.fr, pleased to meet you
+<span class="string">C:</span> MAIL <span class="string">FROM:</span> &lt;alice<span class="annotation">@crepes</span>.fr&gt;
+<span class="string">S:</span> <span class="number">250</span> alice<span class="annotation">@crepes</span>.fr... Sender ok
+<span class="string">C:</span> RCPT <span class="string">TO:</span> &lt;bob<span class="annotation">@hamburger</span>.edu&gt;
+<span class="string">S:</span> <span class="number">250</span> bob<span class="annotation">@hamburger</span>.edu ... Recipient ok
+<span class="string">C:</span> DATA
+<span class="string">S:</span> <span class="number">354</span> Enter mail, end with <span class="string">"."</span> on a line by itself
+<span class="string">C:</span> Do you like ketchup?
+C: How about pickles?
+C: .
+<span class="string">S:</span> <span class="number">250</span> Message accepted <span class="keyword">for</span> delivery
+<span class="string">C:</span> QUIT
+<span class="string">S:</span> <span class="number">221</span> hamburger.edu closing connection
+</code></pre><p>RFC 822: standard for text message format</p>
+<p><img src="/img/CN/2-3.png" alt="header body"><br>header lines, e.g.,<br>To:<br>From:<br>Subject:<br>Body: the “message”<br>ASCII characters only</p>
+<p>mail access protocol: get mail from user</p>
+<p>POP:Post Office Protocol [RFC 1939]<br>authorization + download<br>authorization phase + transaction phase<br>download and keep</p>
+<p>IMAP:Internet Mail Access Protocol [RFC 1730]:<br>  比POP更進一步,除了download郵件外還可以在server上管理目錄,可以做更多的動作,<br>  像郵件目錄的搬移等都得靠IMAP<br>keep all message at server<br>keep state</p>
+<p>HTTP:gmail, Hotmail, Yahoo! Mail, etc.</p>
+<h2 id="DNS">DNS</h2><p>DNS(domain name system)，透過 DNS，我們不需要知道主機的 IP ，只要知道該主機的名稱就能連線</p>
+<p>distributed hierarchical database 樹狀查詢<br>DNS 將主機名稱的管理分配在不同層級的 DNS 伺服器當中，有 IP 異動時也容易修改，而不用透過上層 ISP 的維護。</p>
+<p>IPv4 已經接近發送完畢的階段，因此已逐漸拓展到 128bits 的 IPv6 。可以透過主機名稱就解析到 IP 的 DNS 服務，此外，目前全世界的 WWW 主機名稱也都是透過 DNS 系統在處理 IP 的對應，所以，當 DNS 掛點時，我們將無法透過主機名稱來連線，那就幾乎相當於沒有 Internet 了。</p>
+<ol>
+<li>DNS (domain name system)服務:nslookup</li>
+</ol>
+<p><img src="/img/CN/2-4.png" alt="tree like"><br>服務:把主機名稱轉成ip位置<br>Host aliasing(主機別名):一台主機可有多個別名(當然也有正規主機名稱canonical hostname 通常不好記)<br>dns可用別名查詢得到正規主機名稱及ip<br>Mail server aliasing<br>Load distribution:一個網站可能有多台伺服器 每個伺服器的ip和主機名稱不同 有要求傳送過來時 dns會一直改變回傳的伺服器的主機名稱及ip 這樣就不會有許多要求都由同一伺服器回應 可達到分配效果</p>
+<ol>
+<li>DNS伺服器架構<br>root DNS servers: 13 (labeled A through M)<br>Top-level domain (TLD) servers: 負責Top-level domain 如com, org, net, edu 也負責國家級的Top-level domain如uk, fr, ca, jp<br>Authoritative DNS servers: organization’s own DNS server</li>
+</ol>
+<p>Local DNSname server<br>not strictly belong to hierarchy<br>each ISP (residential ISP, company, university) has one<br>also called “default name server”<br>when host makes DNS query, query is sent to its local DNS server<br>has local cache of recent name-to-address translation pairs (but may be out of date!)<br>acts as proxy, forwards query into hierarchy</p>
+<p>iterated query:<br>“I don’t know this name, but ask this server”<br><img src="/img/CN/2-5.png" alt="asking"><br>recursive query<br>don’t temperaly return to local DNS server<br><img src="/img/CN/2-6.png" alt=""></p>
+<p>cache entries timeout (disappear) after some time (TTL)<br>TLD servers typically cached in local name servers<br>   thus root name servers not often visited<br>cached entries may be out-of-date</p>
+<p>record<br>resource records (RR) 格式: (name, value, type, TTL)</p>
+<p>TTL(time to live)<br>欄位中name和value由type決定<br>Type=A :<br>name 是正規主機名稱 , value 是正規主機名稱為name的IP address<br>ex:(relay1.bar.foo.com , 145.37.9.126 , A)</p>
+<p>Type=CNAME :<br>name 是主機別名 , value 是別名為name的正規主機名稱<br>ex:(foo.com , relay1.bar.foo.com ,CNAME)</p>
+<p>Type=NS :<br>name 是 domain(網域名稱), value 是 domain 為name的Authoritative(官方) DNS server 名稱,此Authoritative(官方) DNS server會去取得該網域內的主機ip位置<br>ex:(foo.com , dns.foo.com , NS)</p>
+<p>Type=MX : name 是主機別名 ,value 是主機別名為 name 的 mail server正規名稱<br>ex:(foo.com , mail.bar.foo.com , MX) </p>
+<p>DNS registrar(網域販賣商)</p>
+<p>queryand replymessages, both with same message format</p>
+<ol>
+<li>DNS Vulnerabilities(弱點)</li>
+</ol>
+<p>DDoS:發出大量的DNS查詢(ex ICMP ping) 使封包多到塞滿link 讓大多數使用者發出的合法DNS查詢因ink塞滿得不到答案 服務無法被使用<br>Not useful in root server(cache in TLD), but useful at TLD</p>
+<p>DoS(Denial-of-Service) 為一種網路攻擊 讓網路 主機等 無法被合法使用者使用</p>
+<p>man-in-the-middle attack<br>DNS poisoning — send incorrect file to DNS server, which cache</p>
+<h2 id="P2P">P2P</h2><p>p2p &gt; client server when there are a lot of user<br><img src="/img/CN/2-7.png" alt="p2pgraph"></p>
+<p>(1) Client-server archtecture</p>
+<p>設一個server要傳給n個client 檔案大小為f 上傳速度為us</p>
+<p>上傳給n個點每個點一份f 故上傳時間為 nf/us</p>
+<p>dmin 為n台電腦中下載速度最小的  故下載時間最多為f/dmin</p>
+<p>distribution time &gt;= MAX{nf/us , f/dmin} 只要N夠大 則時間會隨著N的數量線性增加</p>
+<p>(2) P2P architecture</p>
+<p>設一個server要傳給n個client 檔案大小為f 上傳速度為us<br>只有伺服器有檔案 伺服器必須把檔案放入LINK中一次 最低上傳時間為 f/us</p>
+<p>同Client-server archtecture , dmin 為n台電腦中下載速度最小的  故下載時間最多為f/dmin</p>
+<p>整個系統上傳總容量為us(第一個點)+u1+u2+….+un  上傳給n個對等點  共上傳nf   時間為nf/(us(第一個點)+u1+u2+….+un )</p>
+<p>distribution time &gt;= MAX{f/us , f/dmin , nf/(us+u1+u2+….+un)} </p>
+<h3 id="Structure">Structure</h3><p>file divided into 256Kb chunks<br><strong>peers</strong> in torrent send/receive file chunks</p>
+<p>tracker:tracks peers<br>participating in torrent</p>
+<p>torrent:group of peers exchanging chunks of a file</p>
+<p>peer joining torrent registers with tracker to get list of peers, connects to subset of peers (“neighbors”)</p>
+<p>churn(流失):peers may come and go</p>
+<p>requests missing chunks from peers, rarest first<br>sending chunks: tit-for-tat</p>
+<p>Alice sends top four peers which send to her.<br>other peers are choked by Alice every 30 seconds(receive only one chunk from her)<br>re-evaluate top 4 every10 secs</p>
+<p>想要獲得更快的下載速度，就應該先將檔案分享給別人。Optimistic Unchoking是說，每個人每30秒就挑網路中任意一個人，將檔案上傳給他。這麼作的用意是發掘網路上未知的潛力檔案提供者：假如A與K之前並未有檔案的往來，但其實這兩個人住得很近，網路互傳的速度比其他人快。今天A透過Optimistic Unchoking隨機給K上傳了一些檔案片段，讓K驚覺A的上傳速度很快，進而允許A從K處下載檔案片段。如果A與K之間的連線速度很慢，那麼過30秒之後，A會停止提供檔案給K，而去別處尋找下一個候選人</p>
+<p><a href="http://mmdays.com/2007/04/06/bt1/" target="_blank" rel="external">http://mmdays.com/2007/04/06/bt1/</a></p>
+<p>Distributed Hash Table<br>(key, value)<br>key: movie title value: IP address</p>
+<p>put (key,value) pair in the peer that is closest(successor) to the key</p>
+<p>Circular DHT with shortcuts<br>possible to design shortcuts so O(log N) neighbors, O(log N) messages in query<br>建捷徑於與目前key差一個bit的數- &gt; =&gt; 一次至少可以縮短一半的距離<br><img src="/img/CN/2-8.png" alt="circular DHT"></p>
+<p>each peer knows address of its two successors<br>each peer periodically pings its two successors to check aliveness<br>if immediate successor leaves, choose next successor as new immediate successor</p>
+<h2 id="Chap03_Transport_Layer">Chap03 Transport Layer</h2><p>transport layer: logical communication between processes<br>=&gt; breaks app messages into segments, passes to network layer  </p>
+<h3 id="UDP">UDP</h3><ul>
+<li>streaming multimedia apps (loss tolerant, rate sensitive)</li>
+<li>DNS</li>
+<li>SNMP</li>
+</ul>
+<p>small header size<br>no congestion control: UDP can blast away as fast as desired</p>
+<p>reliable transfer over UDP<br>add reliability at <strong>application layer</strong> to get application-specific error recovery</p>
+<p>no connection establishment (which can add delay)</p>
+<ul>
+<li>simple: no connection state at sender, receiver</li>
+<li>small header size</li>
+<li>no congestion control: UDP can blast away as fast as desired</li>
+</ul>
+<p>UDP segment format</p>
+<p>source port , dest port<br>length checksum<br>data</p>
+<p>use checksum to detect error<br><img src="/img/CN/3-1.png" alt=""></p>
+<hr>
+<h3 id="Reliable_data_transfer">Reliable data transfer</h3><p>top-10 important network topic<br>=&gt; <strong>unreliable channel</strong> with <strong>reliable data transfer(RDT) protocol</strong></p>
+<p><img src="" alt="using unreliable data transfer channel"></p>
+<p>RDT 2.0: bit error -&gt; use ctrl msgs<br>checksum to detect bit errors<br>acknowledgements (ACKs), negative acknowledgements (NAKs)</p>
+<p>RDT 2.1: ctrl msg error -&gt; use seq number<br>seq number prevent duplicate data, resend when corrupt<br>two seq (0,1) is enough</p>
+<p>RDT 2.2: no NAK, resend when ACKs with the same seq num</p>
+<p>RDT 3.0: lose packet -&gt; add wait time, resend when timeout<br><img src="" alt="3.0 sender"></p>
+<p>rdt3.0雖然確保了資料的可靠性，可是它採用Stop-and-Wait機制，效能很低<br>utilization of sender = 0.008(transmit time) / 30.008(transmit time+RTT) = 0.00027</p>
+<h3 id="Pipelined_Protocol">Pipelined Protocol</h3><p>可以讓傳送端同時傳送多個封包不需等待確認。必須增加封包的暫存空間與序列號碼。<br>暫存的區域中存在著窗格大小(Window Size)，存放著各種封包(已確認、已送出但未收到ACK、未送出的封包等等)</p>
+<h4 id="Go-Back-N(GBN)">Go-Back-N(GBN)</h4><p><img src="" alt="type"><br><img src="" alt="gbn"><br><img src="" alt="gbn sender"><br>SENDER:  </p>
+<ol>
+<li>nothing when receive corrupt response</li>
+<li>move window when receive ACK response</li>
+<li>send all packets in window when oldest packet in window timeout </li>
+</ol>
+<p><img src="" alt="gbn receiver"><br>RECEIVER: </p>
+<ol>
+<li>永遠送出ACK，為目前收到的最高序號</li>
+<li>只收比目前收到的最高序號多一號的packet</li>
+</ol>
+<h4 id="Selective_Repeat(SR)">Selective Repeat(SR)</h4><p><img src="" alt="SR"><br>每個packet各自傳送，各自有timer  </p>
+<p>max seq# = window size * 2<br>假想有限序號0,1,2,3 窗格大小為3, 接收端收到0,1,2, 所以接收端的觀點應為：0,1,2,[3,0,1],2 當接收端回傳給傳送端的ACK遺失時, 將導致傳送端逾時而重送0,1,2 然而接收端想要的是第二批的0,1 而傳送端所傳送的封包卻是第一批的0,1。</p>
+<h3 id="TCP">TCP</h3><ul>
+<li>reliable, in-order byte steam<ul>
+<li>no “message boundaries”</li>
+</ul>
+</li>
+<li>pipelined</li>
+<li>congestion and flow control<ul>
+<li>決定 window size</li>
+</ul>
+</li>
+<li>full duplex data(雙方皆可傳)</li>
+<li>MSS(maximum segment size): 傳送的segment最大長度</li>
+<li>connection-oriented<ul>
+<li>handshaking (exchange of control msgs) </li>
+</ul>
+</li>
+</ul>
+<p><img src="" alt="segment"><br>sequence numbers(Seq): 送過去的packet的起始編號(0, 1)<br>acknowledge number(ACK): 預期對方會送來的編號<br><img src="" alt="telnet "><br>對A來講前一個收到B傳回來的資料Seq為78,下一個期待收到的為79,所以傳回ACK=79,而data為’C’這和ACK,Seq都沒關聯<br>A所傳的Seq是42,對B來講下一個應該要收到43,於是傳回ACK=43,而A在ACK=79中告訴B下一個應該送79過去,於是B傳Seq=79</p>
+<ul>
+<li>TCP傳送端  <ul>
+<li>逾時重送封包  </li>
+<li><img src="" alt="cumulative ACK">  </li>
+<li><img src="" alt="TCP sender"></li>
+</ul>
+</li>
+<li>TCP接收端<ul>
+<li>預期封包抵達事件<ul>
+<li>回傳期望下一次收到的封包之序號ACK</li>
+</ul>
+</li>
+<li>非預期封包抵達事件<ul>
+<li>暫存封包, 送出期望收到的封包之序號ACK</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Estimate_best_timeout_value">Estimate best timeout value</h4><p>SampleRTT: record the time of last transmission<br>exponential weighted average let value smoother<br>EstimatedRTT = (1- a) x EstimatedRTT + a x SampleRTT (typical a = 0.125)  </p>
+<p><img src="" alt="devrtt"><br>將變異數納入考慮: TimeoutInterval = EstimatedRTT + 4*DevRTT</p>
+<p>TCP fast retransmit: 收到三次相同ACK，傳送端就會立刻傳送接收端所預期的封包  </p>
+<p>Flow Control (流量控制): 讓reiceiver buffer不致overflow<br>記錄buffer剩餘的空間有多少(rcvWindow)<br>當rcvWindow=0時，傳送端會持續傳送一個1byte的區段給接收端以確認緩衝區可否繼續接收資料</p>
+<h4 id="TCP_Connection_Management_(連線管理)">TCP Connection Management (連線管理)</h4><p><a href="http://www-sop.inria.fr/members/Vincenzo.Mancuso/ReteInternet/06_tcp_part2.pdf" target="_blank" rel="external">http://www-sop.inria.fr/members/Vincenzo.Mancuso/ReteInternet/06_tcp_part2.pdf</a></p>
+<p>防止delay duplicate problem</p>
+<p>3-way handshake:(open connection)<br>一方傳SYN, 另一方回傳ACK/SYN, 一方回傳ACK。</p>
+<p>4-way handshake:(close connection)<br>一方傳FIN, 另一方回傳ACK。另一方傳FIN, 一方回傳ACK。(可以handle同時想結束的情形)</p>
+<h4 id="congestion_control(擁塞控制)">congestion control(擁塞控制)</h4><p>保持在網路上的封包數量，不讓整體效能下降(buffer overflow, queueing in router)  </p>
+<ul>
+<li>End-to-End (implicit)<ul>
+<li>依據往返延遲時間來降低視窗大小  </li>
+<li>TCP採用此種方式     </li>
+</ul>
+</li>
+<li>Network-assisted (explicit) <ul>
+<li>Router會依據網路壅塞情況，提供傳送端明確的網路壅塞狀態且回報  </li>
+<li>回饋傳送給傳送端 或 在封包中的某個欄位記錄</li>
+</ul>
+</li>
+</ul>
+<p>cwnd(send window size)  </p>
+<ol>
+<li>AIMD (Additive-Increase, Multiplicative-Decrease): cwnd一次增加一定(+1)值，loss時成比例減少(/2)</li>
+<li>Slow Start: cwnd呈次方成長(*2)</li>
+</ol>
+<h4 id="TCP_Sender_Congestion_Control">TCP Sender Congestion Control</h4><p>grows by slowstart to <strong>threshold</strong>, then grows linearly  </p>
+<ul>
+<li>loss by timeout <ul>
+<li>cwnd = 1</li>
+</ul>
+</li>
+<li>loss by 3 duplicate ACKs: <ul>
+<li>TCP Tahoe - cwnd = 1</li>
+<li>TCP RENO - cwnd /= 2, threshold = cwnd   </li>
+</ul>
+</li>
+</ul>
+<p>Average throughout = (1 + 0.5)/2 = 0.75W/RTT</p>
+<h4 id="TCP_Fairness">TCP Fairness</h4><p>有相同需求的兩端會在bandwidth share附近震盪兩邊互相影響下是公平的</p>
+<p>但是UDP在的話就不太公平了,如多媒體。現在像youtube會在UDP上加上一些TCP friendly</p>
+<p>開多個TCP connection: 速度加快…</p>
+<p><strong>Summary</strong>  </p>
+<ul>
+<li>TCP creates rdt service on top of IP’s unreliable service<ul>
+<li>pipelined segments</li>
+<li>cumulative acks</li>
+<li>single retransmission timer</li>
+</ul>
+</li>
+<li>retransmissions triggered by<ul>
+<li>timeout events</li>
+<li>duplicate acks</li>
+</ul>
+</li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/computer-gaming/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/20140924計算機結構/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-09-24 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/筆記/">筆記<span>11</span></a></li> <li><a href="/tags/網路/">網路<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

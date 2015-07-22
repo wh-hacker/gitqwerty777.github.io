@@ -1,0 +1,2177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>人工智慧 | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Introduction, Agents, Search, Informed Search,  Beyond Classical Search, Adversarial Search(game), Constraint Satisfaction Problems(CSP), Logical Agents, First-Order Logic">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="人工智慧"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 人工智慧</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+	
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> <p>Introduction, Agents, Search, Informed Search,  Beyond Classical Search, Adversarial Search(game), Constraint Satisfaction Problems(CSP), Logical Agents, First-Order Logic</p>
+			
+		</div> <!-- alert -->
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h2 id="Introduction">Introduction</h2><p>What is AI? → What is definition of Intelligence?  </p>
+<ul>
+<li>Artificial Intelligence(A.I.) or WALL.E</li>
+<li>human-like or robot with intelligence</li>
+<li>there are various defintion of AI</li>
+<li>goal of AI : To create intelligent machines<a id="more"></a></li>
+<li><p>Multiple Dimensions of Intelligence(多元智能)  </p>
+<ul>
+<li>Linguistic(語言), Logico-mathematical, Spatial, Musical, Kinesthetic(動作), Intrapersonal, Interpersonal</li>
+</ul>
+</li>
+<li><p>Intelligent Behavior  </p>
+<ul>
+<li>The ability to solve complex problems</li>
+<li>Learning from experience</li>
+<li>Adaptability(適應性)</li>
+<li>Self-awareness(自我意識)</li>
+<li>Dealing with incomplete information</li>
+<li>Action under time pressure</li>
+<li>Creativity</li>
+<li>Common sense reasoning etc. (really hard to teach computer)</li>
+</ul>
+</li>
+<li><p>Fundamental Elements of Intelligence  </p>
+<ul>
+<li><strong>Prediction</strong> – Imagining how things might turn out rather than having to try them explicitly</li>
+<li><strong>Response to change</strong> – Responding with intelligent action instead of inalterable instinct or conditional reflexes</li>
+<li><strong>Intentional action</strong> – Having a goal and selecting actions appropriate to achieving the goal</li>
+<li><strong>Reasoning</strong> – starting with some collection of facts and adding to it by any inference method</li>
+</ul>
+</li>
+</ul>
+<h3 id="Turing_Test">Turing Test</h3><p><a href="http://gitqwerty777.github.io/%E9%9B%BB%E8%85%A6%E5%B0%8D%E5%B1%80%E7%90%86%E8%AB%96/#turing-test-">The Turing Test</a>  </p>
+<ul>
+<li>“Can machines <strong>behave</strong> intelligently?”</li>
+<li>now it is <strong>not criteria of AI</strong>(You can use database or some way to “cheat”)</li>
+</ul>
+<p>Alan Turing (1912-1954)  </p>
+<ul>
+<li>1936: The Turing machine, computability, universal machine</li>
+<li>1950: The Turing Test for machine intelligence</li>
+</ul>
+<h3 id="Taxonomy_of_AI">Taxonomy of AI</h3><p><img src="/img/AI/1-1.png" alt="AI classess"></p>
+<p>Acting rationally  </p>
+<ul>
+<li>do the right thing  <ul>
+<li>be expected to <strong>maximize goal achievement</strong>, given the <strong>available(limited) information</strong></li>
+</ul>
+</li>
+<li><strong>Doesn’t necessarily involve thinking</strong><ul>
+<li>blinking reflex</li>
+</ul>
+</li>
+</ul>
+<h3 id="The_History_of_AI">The History of AI</h3><ul>
+<li>The gestation of AI (1943-1956)</li>
+<li>Dartmouth conference (Summer of 1956)<ul>
+<li>Participants: McCarthy, Minsky, Shannon, Rochester, More(Princeton), Newell, Simon (CMU), Solomonoff, Selfridge(MIT), Samuel (IBM)</li>
+<li>“AI” first be named </li>
+</ul>
+</li>
+<li>Early enthusiasm and expectations (1952-1969)</li>
+<li>A dose of reality (1966-1974)</li>
+<li>Shakey the Robot (1966-1972)<ul>
+<li>the first mobile robot to reason about its actions<ul>
+<li>can do perception, world-modeling, and acting</li>
+</ul>
+</li>
+<li>often shakes</li>
+</ul>
+</li>
+<li>Knowledge-based systems (1969-1979)</li>
+<li>AI (expert systems) becomes an industry (1980-1988)</li>
+<li>The return of neural networks (1986-1995)</li>
+<li>Broader technical development: probability, ALife, GA, soft computing (1988-)</li>
+<li>Machine learning and data mining (1990- )</li>
+<li>Intelligent agents (1995- )</li>
+<li>Bayesian probabilistic reasoning</li>
+</ul>
+<h3 id="Historical_Achievements">Historical Achievements</h3><ul>
+<li>Deep Blue defeated the reigning world chess champion Garry Kasparov in 1997</li>
+<li>Proved a mathematical conjecture (Robbins conjecture)unsolved for decades</li>
+<li>No hands across America (driving autonomously 98% of the time from Pittsburgh to San Diego)<ul>
+<li>Autonomous Land Vehicle In a Neural Network(ALVINN)<ul>
+<li>a perception system which learns to control the NAVLAB vehicles by watching a person drive.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>During the 1991 Gulf War, US forces deployed an AI logistics planning and scheduling program that involved up to 50,000 vehicles, cargo, and people</li>
+<li>NASA’s on-board autonomous planning program controlled the scheduling of operations for a spacecraft<ul>
+<li>Mars: Spirit, Opportunity</li>
+</ul>
+</li>
+<li>Proverb solves crossword puzzles better than most humans</li>
+<li>Stanley drove 132 miles to win the Grand Challenge<ul>
+<li>DARPA(美國國防遠景研究規劃局) give 1 million in 2004</li>
+<li>investment in competition is far better than in research of university</li>
+</ul>
+</li>
+</ul>
+<h3 id="Other_Usage_of_AI">Other Usage of AI</h3><ul>
+<li>on market<ul>
+<li>floor-cleaning</li>
+</ul>
+</li>
+<li>for fun<ul>
+<li>soccer</li>
+<li>pet</li>
+</ul>
+</li>
+<li>human-like<ul>
+<li>QRIO(sony)</li>
+<li>Asimo(Honda)</li>
+</ul>
+</li>
+<li>in art: “Aaron”<ul>
+<li>Inspired by the scribbling behavior of young children<ul>
+<li>construction of simple core-figures</li>
+<li>a simple strategy for tracing a path around them</li>
+</ul>
+</li>
+<li>Online auction for &gt; $2000 a piece</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chap02_Agents">Chap02 Agents</h2><p><img src="/img/AI/1-2.png" alt="agent">   </p>
+<ul>
+<li>take information from environment through sensors</li>
+<li>do reaction that would probably change the environment through actuators</li>
+<li>Human agent  <ul>
+<li>Sensors: eyes, ears, and other organs</li>
+<li>Actuators: hands, legs, mouth, and other body parts</li>
+</ul>
+</li>
+</ul>
+<h3 id="Agents_and_environments">Agents and environments</h3><p>“do the right thing” is the one that will cause the agent to be most successful   </p>
+<ul>
+<li>Performance measure<ul>
+<li>An objective criterion for success of an agent’s behavior</li>
+<li>affects what agent behaves  </li>
+</ul>
+</li>
+<li>agent function<ul>
+<li>agent (function) = architecture + program</li>
+<li>in order to maximize the performance</li>
+</ul>
+</li>
+</ul>
+<h3 id="Rationality">Rationality</h3><ul>
+<li>Rationality is distinct from omniscience (all knowing with infinite knowledge，全知)</li>
+<li>Rationality is distinct from clairvoyant(know every information)<ul>
+<li>Action outcomes may not be as expected</li>
+</ul>
+</li>
+<li>Rationality is exploration, learning, autonomy(自治)<ul>
+<li>perform actions to obtain useful information</li>
+<li>learn and adapt</li>
+<li><strong>actions are determined by its own experience</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="Task_Environment:_PEAS">Task Environment: PEAS</h3><ul>
+<li>High-Level Descriptions of AI Agents   <ul>
+<li>Including <strong>Performance measure, Environment, Actuators, Sensors</strong></li>
+</ul>
+</li>
+<li>specify the setting for intelligent agent design</li>
+</ul>
+<p>Ex. <a href="https://www.youtube.com/watch?v=Fy4QaOlNfcs" target="_blank" rel="external">CubeStormer3</a>, which is a rubik cube solver:   </p>
+<ul>
+<li>Performance measure: Time(= number of steps that agent uses), correctness</li>
+<li>Environment: different patterns of rubik cube</li>
+<li>Actuators: various robotic arms, smart phone screen</li>
+<li>Sensors: camera</li>
+</ul>
+<h3 id="Environment_types">Environment types</h3><p>Fully observable (vs. partially observable): Sensors can access all environment at each point in time</p>
+<p>Deterministic (vs. stochastic): next environment is completely determined by the current state and agent’s action<br>If <strong>next environment is determined by actions of all agents</strong>, it’s called strategic(戰略的)</p>
+<p>Episodic (vs. sequential): choice of action in each episode depends only on the episode itself<br><strong>Sequential environments require memory</strong> of past actions to determine the next best action. Episodic environments are a series of one-shot actions    </p>
+<p>Static (vs. dynamic): The environment is unchanged while agent is thinking<br>The environment is semi-dynamic if the environment itself does not change with the passage of time but the agent’s performance score does<br>Ex. Taxi driver: Dynamic, Image analysis: Semi</p>
+<p>Discrete (vs. continuous): A limited number of distinct, clearly defined perception area<br>Ex. Driving: continuous, chess games: discrete</p>
+<p>Single agent (vs. multi-agent): An agent operating by itself in an environment</p>
+<p>The real world is <strong>partially observable, stochastic, sequential, dynamic, continuous, multi-agent</strong></p>
+<p><img src="/img/AI/2-1.png" alt="chess and taxi environment"></p>
+<h3 id="Agent_types">Agent types</h3><ul>
+<li>Table-Lookup Agent(reflex agent)<ul>
+<li>has many drawbacks</li>
+<li>huge table</li>
+<li>time-wasting to build the table</li>
+<li>no autonomy</li>
+</ul>
+</li>
+<li>Condition-Action Agent<ul>
+<li>four types(generality from low to high)</li>
+<li>Simple reflex agents <img src="/img/AI/2-2.png" alt=""><ul>
+<li>Always Infinite Loop</li>
+</ul>
+</li>
+<li>Model-based reflex agents <img src="/img/AI/2-3.png" alt=""> <ul>
+<li>Know how world evolves</li>
+</ul>
+</li>
+<li>Goal-based agents <img src="/img/AI/2-4.png" alt=""><ul>
+<li>use knowledge about goal to achieve it</li>
+</ul>
+</li>
+<li>Utility-based agents <img src="/img/AI/2-5.png" alt=""><ul>
+<li>utility: value of happiness</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Learning agents <img src="/img/AI/2-6.png" alt=""><ul>
+<li>learning element modifies performance element base on feedback of critic<ul>
+<li>critic: how the agent is doing</li>
+<li>performance element select proper action</li>
+</ul>
+</li>
+<li>Problem generator<ul>
+<li>Tries to solve the problem differently instead of optimizing</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>Knowledge Navigator (Apple, 1987)</li>
+<li>IBM Watson</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chap03_Search">Chap03 Search</h2><p>Search is a <strong>universal problem solving mechanism</strong> that     </p>
+<ul>
+<li>Systematically explores the alternatives</li>
+<li>Finds the sequence of steps toward a solution</li>
+<li><p><strong>Search in a problem space</strong> is claimed to be a <strong>completely general model of intelligence</strong></p>
+</li>
+<li><p>problem space: area that needs to be examined to solve a problem</p>
+<ul>
+<li>the number of the leaf nodes in search tree when there is solution</li>
+</ul>
+</li>
+<li>state space: the set of values which a process can take<ul>
+<li>the number of the legal positions in a game</li>
+</ul>
+</li>
+</ul>
+<h3 id="Problem-solving_agents">Problem-solving agents</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* s is sequence of actions */</span></span><br><span class="line">repeat &#123;</span><br><span class="line">	percept = observeWorld();</span><br><span class="line">	state = updateState(state, p);</span><br><span class="line">	<span class="keyword">if</span> s is empty then &#123;</span><br><span class="line">		goal = formulateGoal(state);</span><br><span class="line">		prob = formulateProblem(state, goal);</span><br><span class="line">		s = search(prob);</span><br><span class="line">	&#125;</span><br><span class="line">	action = first(s);</span><br><span class="line">	s = remainder(s);</span><br><span class="line">&#125;</span><br><span class="line">until <span class="keyword">false</span>; <span class="comment">/* i.e., forever */</span></span><br></pre></td></tr></table></figure>
+<p>Formulate goal → Formulate problem(state, action) → Find solution by search</p>
+<h3 id="Problem_types">Problem types</h3><ul>
+<li>single-state problem<ul>
+<li>Deterministic, fully observable</li>
+</ul>
+</li>
+<li>sensorless problem<ul>
+<li>Non-observable</li>
+</ul>
+</li>
+<li>contingency(可能性) problem<ul>
+<li>Nondeterministic and/or partially observable</li>
+<li>percepts provide new information about current state</li>
+</ul>
+</li>
+<li>exploration problem<ul>
+<li>Unknown state space</li>
+</ul>
+</li>
+</ul>
+<h3 id="Problem_formulation">Problem formulation</h3><p>A problem is defined by four items     </p>
+<ol>
+<li>initial state</li>
+<li>actions or successor function</li>
+<li>goal test function</li>
+<li>path cost (optional)</li>
+</ol>
+<p>A solution is a sequence of actions from initial state to  goal state</p>
+<h3 id="Problem_Domains">Problem Domains</h3><p>Real-world problems   </p>
+<ul>
+<li>Route-finding</li>
+<li>Touring: travelling <ul>
+<li>salesperson problem</li>
+</ul>
+</li>
+<li>VLSI layout</li>
+<li>Automatic assembly sequencing</li>
+<li>Scheduling &amp; planning</li>
+<li>Protein design</li>
+</ul>
+<h3 id="Implementation:_States_vs-_Nodes">Implementation: States vs. Nodes</h3><ul>
+<li>A state is physical configuration(座標，位置，盤面)</li>
+<li>A node is a data structure constituting part of a search tree<ul>
+<li>includes <strong>state</strong>, parent node, action, path cost g(x), depth</li>
+</ul>
+</li>
+</ul>
+<h3 id="Search_Property">Search Property</h3><p>Strategies are evaluated by  </p>
+<ul>
+<li>completeness: does it always find a solution if one exists?</li>
+<li>time complexity: number of nodes generated</li>
+<li>space complexity: maximum number of nodes in memory</li>
+<li>optimality: does it always find a least-cost solution?</li>
+</ul>
+<h3 id="Type_of_Search">Type of Search</h3><p>可參考<a href="http://gitqwerty777.github.io/%E9%9B%BB%E8%85%A6%E5%B0%8D%E5%B1%80%E7%90%86%E8%AB%96/">電腦對局理論</a>，兩者的complexity算法不同</p>
+<h4 id="Uninformed_search_(blind_search)">Uninformed search (blind search)</h4><p>use only the information available in the problem definition</p>
+<p><img src="/img/AI/3-2.png" alt=""></p>
+<ul>
+<li>Breadth-first search<ul>
+<li>Expand shallowest unexpanded node</li>
+<li><strong>fringe</strong> is a queue</li>
+</ul>
+</li>
+<li>Uniform-cost search <ul>
+<li>used when “cost != depth”</li>
+<li>Expand least cost(g(n), cost from start to this node) unexpanded node</li>
+<li>Time Complexity: # of nodes with g ≤ cost of optimal solution <ul>
+<li>$O(b^{ceiling(\frac{C*}{ε})})$</li>
+<li>C* is the cost of the optimal solution</li>
+<li>ε is small constant</li>
+<li>How does it compare with $b^d$?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Depth-first search<ul>
+<li>Expand deepest unexpanded node</li>
+<li><strong>frontier</strong> is a stack</li>
+<li><strong>not complete</strong> when there are loops or there are infinite nodes</li>
+</ul>
+</li>
+<li>Depth-limited search<ul>
+<li><strong>Preferred uninformed search method</strong></li>
+<li>Iterative deepening search<ul>
+<li>uses only linear space </li>
+<li>take a little more time</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Graph_Search">Graph Search</h4><p>Graph Search vs. Tree Search  </p>
+<ul>
+<li>Graph Search always need to record closed list to prevent loop</li>
+<li>Dijkstra’s Shortest Path Algorithm <ul>
+<li>find the shortest path between each pair of nodes</li>
+<li>Order nodes in priority queue to <strong>minimize actual distance from the start</strong></li>
+<li>Generalizes BFS that edges can have different lengths/weights</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chap03b_Informed_Search">Chap03b Informed Search</h2><p>Best-First Search  </p>
+<ul>
+<li>use evaluation function f(n) for each node</li>
+<li>Expand <strong>most desirable</strong>(lowest cost in total) unexpanded node</li>
+<li>Order nodes in priority queue to <strong>minimize estimated distance to the goal = h(n)</strong> </li>
+<li>Special cases<ul>
+<li>greedy best-first search<ul>
+<li>expands the node that <strong>appears to be closest to goal</strong></li>
+</ul>
+</li>
+<li>A* search</li>
+</ul>
+</li>
+<li>Property<ul>
+<li>Complete? No – can get stuck in loops</li>
+<li>Time? O(bm), but a <strong>good heuristic can give a lot of improvement</strong></li>
+<li>Space? O(bm) — keeps all nodes in memory</li>
+<li>Optimal? No</li>
+<li>visits far fewer nodes, but may not provide optimal solution</li>
+</ul>
+</li>
+</ul>
+<p>A* Search  </p>
+<ul>
+<li><strong>avoid expanding paths that are already expensive</strong></li>
+<li>Evaluation function f(n) = g(n) + h(n) <ul>
+<li>f(n) = estimated total cost of path through n to goal</li>
+<li>g(n) = cost so far to reach n</li>
+<li>h(n) = estimated cost from n to goal</li>
+<li>expands nodes <strong>in order of increasing f value</strong></li>
+</ul>
+</li>
+<li><strong>Theorem: If h(n) is admissible, A* using TREESEARCH is optimal</strong><ul>
+<li>proof : <img src="/img/AI/3-3.png" alt="PROOF1"></li>
+<li><img src="/img/AI/3-4.png" alt="PROOF2"></li>
+</ul>
+</li>
+<li><strong>Theorem: The search space of A* grows exponentially unless the error in the heuristic function(real cost from n to goal - h(n)) grows no faster than the logarithm of the actual path cost</strong></li>
+<li>Property<ul>
+<li>Complete? Yes (unless there are infinitely many nodes with f ≤ f(G) )</li>
+<li>Time? Exponential</li>
+<li>Space? Keeps all nodes in memory</li>
+<li>Optimal? Yes</li>
+<li>Efficient? A<em> is <em>*optimally efficient</em></em> for any heuristic function<ul>
+<li>no other optimal algorithm is guaranteed to expand fewer nodes than A*</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Iterative deepening A*(IDAstar)  </p>
+<ul>
+<li>Cutoff by f-cost<ul>
+<li>upper bound of f(n)</li>
+<li>If don’t find solution<ul>
+<li>Increase the bound to</li>
+<li>the minimum of the f-values that exceeded the previous bound</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>?? Not suitable for real-valued costs</li>
+<li>Advantage: Linear space</li>
+</ul>
+<p>Recursive best-first search(RBFS)  </p>
+<ul>
+<li><strong>only keep track of total cost of the best alternative path</strong></li>
+<li>if best node exceeds alternative f(n)<ul>
+<li>unwinds back to the alternative path</li>
+</ul>
+</li>
+<li>Back up value of dropped node to its parent<ul>
+<li>if all other paths are worse than it, we should use it again</li>
+</ul>
+</li>
+<li>Advantage: Linear space</li>
+</ul>
+<p>disadvantage of IDA* and RBFS  </p>
+<ul>
+<li>not good for graphs<ul>
+<li>can’t check for repeated states other than those on current path</li>
+</ul>
+</li>
+<li>use too little memory<ul>
+<li>can’t use full memory</li>
+</ul>
+</li>
+</ul>
+<p>Simplified Memory-bounded A*(SMA star)  </p>
+<ul>
+<li><strong>Expand</strong> the best <strong>leaf until memory is full</strong></li>
+<li>When memory full<ul>
+<li>Drop the worst(highest f-value) leaf node </li>
+</ul>
+</li>
+<li>Back up value of dropped node to its parent</li>
+<li>Property<ul>
+<li>use full of the memory usage</li>
+<li>complete when meory is enough to store the shallowest solution</li>
+<li>optimal when meory is enough to store the shallowest optimal solution</li>
+</ul>
+</li>
+</ul>
+<p>A heuristic is <strong>consistent</strong> if for every node n, f(n) is non-decreasing along all paths<br><strong>Theorem: If h(n) is consistent, A* using GRAPHSEARCH is optimal</strong><br>(every consistent function is admissible)</p>
+<h3 id="Inventing_Better_Heuristic_Functions">Inventing Better Heuristic Functions</h3><p>quality of heuristic: effective branching factor b<em><br>If h2(n) ≥ h1(n) for all n (both admissible), then <em>*h2 dominates h1(far better than)</em></em></p>
+<ul>
+<li>Relaxed problems<ul>
+<li>problem with fewer restrictions<ul>
+<li>admissible and consistent<ul>
+<li>exact cost of problem → consistent</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Original: move any tile to adjacent empty squares<ul>
+<li>Relaxed: Move from A to B, if A is adjacent to B → Manhattan distance</li>
+<li>Relaxed: Move from A to B, if B is empty → Gaschnig’s heuristic (1979)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Composite heuristics<ul>
+<li>h(n) = max (h1(n),…,hm(n))</li>
+</ul>
+</li>
+<li>Weighted evaluation function<ul>
+<li>fw(n) = (1-w)g(n) + w h(n)</li>
+</ul>
+</li>
+<li>Linear combination of features<ul>
+<li>h(n) = c1x1(n) + … + ckxk(n)</li>
+<li>no assure admissible or consistent</li>
+</ul>
+</li>
+<li>Statistical information</li>
+<li>Search cost<ul>
+<li>Good heuristic function should be computed efficiently</li>
+</ul>
+</li>
+<li>Sub-Problems<ul>
+<li>solution cost of a sub-problem of a given problem</li>
+</ul>
+</li>
+<li>Example<ul>
+<li>Linear Conflict Heuristic<ul>
+<li>Given two tiles in their goal row, but reversed in position, additional vertical moves can be added to Manhattan distance</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="http://gitqwerty777.github.io/%E9%9B%BB%E8%85%A6%E5%B0%8D%E5%B1%80%E7%90%86%E8%AB%96/#disjoint-pattern">Adding Pattern Database Heuristics</a>      </p>
+<ul>
+<li>pattern database<ul>
+<li>store exact solution costs of subproblems</li>
+</ul>
+</li>
+<li>How to make sure heuristic function can add with admissible? → do not affect each other <img src="/img/AI/3-add.png" alt="7,8"><ul>
+<li>disjoint pattern database</li>
+</ul>
+</li>
+<li>The 7-tile database contains 58 million entries<ul>
+<li>20 moves needed to solve red tiles</li>
+</ul>
+</li>
+<li>The 8-tile database contains 519 million entries<ul>
+<li>25 moves needed to solve blue tiles</li>
+</ul>
+</li>
+<li>Overall heuristic is 20+25=45 moves</li>
+<li>On 15 puzzle, IDA<em> with pattern database heuristics is about <em>*10 times faster than with Manhattan distance</em></em>(Culberson and Schaeffer, 1996)</li>
+<li>can also be applied to Rubik’s Cube</li>
+</ul>
+<h3 id="Summary:_all_informed_algorithms">Summary: all informed algorithms</h3><p><img src="/img/AI/3-ex.png" alt=""></p>
+<h2 id="Chap04_Beyond_Classical_Search">Chap04 Beyond Classical Search</h2><h3 id="Local_Search_Algorithms">Local Search Algorithms</h3><p><strong>Used when the path to the goal does not matter</strong></p>
+<p>State space: the set of all <strong>states reachable from initial state</strong>  </p>
+<p>local search algorithms    </p>
+<ul>
+<li>iterative improvement<ul>
+<li>keep a single “current” state and try to improve it</li>
+</ul>
+</li>
+<li>advantage<ul>
+<li>use constant space</li>
+<li>useful to solve optimization problems(最佳化問題)</li>
+</ul>
+</li>
+</ul>
+<p>Example  </p>
+<ul>
+<li>Traveling Salesperson Problem  <ul>
+<li>use 1% additional cost than optimal solution</li>
+<li>solved very quickly with thousands of cities  </li>
+</ul>
+</li>
+<li>N-queen problem<ul>
+<li>can solve N = 1000000 quickly <img src="/img/AI/4-1.png" alt="nqueen"></li>
+</ul>
+</li>
+<li>Widely used in VLSI layout, airline scheduling, etc</li>
+</ul>
+<p>Three algorithms  </p>
+<ul>
+<li>hill climbing</li>
+<li>simulated annealing</li>
+<li>genetic algorithms</li>
+</ul>
+<h4 id="Hill_climbing(爬山)">Hill climbing(爬山)</h4><ul>
+<li>greedy local search<ul>
+<li>grab the best neighbor as successor</li>
+</ul>
+</li>
+<li>若所有鄰居的值都比現值小，則認為現值是最大值 <img src="/img/AI/4-hc.png" alt=""> </li>
+<li>可能會走到Local maxima <img src="/img/AI/4-2.png" alt="">   </li>
+<li>走到平地的時候<ul>
+<li>限制走平地的步數</li>
+</ul>
+</li>
+</ul>
+<p>變形  </p>
+<ul>
+<li>Stochastic hill-climbing<ul>
+<li>choose uphill moves by 斜度 as probability</li>
+</ul>
+</li>
+<li>First-Choice hill-climbing<ul>
+<li>generating successor until it is better than parent</li>
+</ul>
+</li>
+<li>Random-restart hill-climbing<ul>
+<li>random generate initial state until goal is found</li>
+</ul>
+</li>
+</ul>
+<h4 id="Simulated_annealing">Simulated annealing</h4><ul>
+<li>escape local maxima<ul>
+<li><strong>allowing some “bad” moves</strong></li>
+<li>gradually decrease their frequency &amp; size <img src="/img/AI/4-sa.png" alt=""></li>
+<li>this probability reach Boltzman distribution<ul>
+<li>If T decreases slowly enough, then simulated annealing search will find a <strong>global optimum</strong> with probability approaching</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Local_Beam_Search">Local Beam Search</h4><ul>
+<li>Keep track of <strong>(top) k states</strong> rather than just one</li>
+<li>useful information is passed among all parallel search threads</li>
+<li>Problem: all k states possibly end up on same local hill<ul>
+<li>Stochastic Local Beam Search<ul>
+<li><strong>choose k successors randomly, biased towards good ones(successor that has better score has more probability to be choosed)</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Genetic_algorithms"><a href="http://www.me.sju.edu.tw/jimrong/FuzzyControl/B1/%E7%AC%AC9%E5%96%AE%E5%85%83%20%E5%9F%BA%E5%9B%A0%E6%BC%94%E7%AE%97%E6%B3%95%E7%B0%A1%E4%BB%8B.pdf" target="_blank" rel="external">Genetic algorithms</a></h4><ul>
+<li>Stochastic local beam search + generate successors from pairs</li>
+<li>Population<ul>
+<li>Start with k randomly individuals</li>
+</ul>
+</li>
+<li>Individual(state)<ul>
+<li><strong>represented as a string</strong> by finite symbols (often a string of 0s and 1s)</li>
+<li>substring must be meaningful</li>
+</ul>
+</li>
+<li>Fitness function: evaluation of the “goodness” of a given state<ul>
+<li>N-queen: number of non-attacking queens pairs (min = 0, max = 8 × 7 / 2 = 28)</li>
+</ul>
+</li>
+<li>Produce successors<ul>
+<li>selection, crossover(交配, combine two parents), and mutation(突變)</li>
+</ul>
+</li>
+<li>Schema<ul>
+<li>8-Queen: 2468xxxx → 24681357, 24681753 …</li>
+<li>if average fitness value of schema is better than mean, instances of schema will grow </li>
+</ul>
+</li>
+<li><img src="/img/AI/4-ga.png" alt="">   </li>
+</ul>
+<h3 id="Local_search_in_continuous_spaces">Local search in continuous spaces</h3><ul>
+<li>Most of real-world environments are continuous</li>
+<li>Example: Airport Site Planning      <ul>
+<li>6-D state space (x1,y1),(x2,y2),(x3,y3)</li>
+<li>Objective function f(x1,y1,x2,y2,x3,y3) = sum of squared distances from each city to its nearest airport</li>
+</ul>
+</li>
+<li>Successor function would return infinitely many states    <ul>
+<li>Solution<ul>
+<li>Discretization(離散化)</li>
+<li>Gradient of the objective function <img src="/img/AI/4-gra.png" alt="gradient"><ul>
+<li>Empirical(經驗主義) gradient<ul>
+<li>take a little change in each coordinate to fit discretization</li>
+</ul>
+</li>
+<li>Line search<ul>
+<li>repeatly double the size of updating until the value descrease(下坡)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E6%B3%95" target="_blank" rel="external">Newton-Raphson method</a><ul>
+<li>solve ∇f(x) = 0</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Searching_with_nondeterministic_actions">Searching with nondeterministic actions</h3><ul>
+<li>solution is not sequence, but a contingency plan(strategy)</li>
+<li>Unreliable Vacuum World<ul>
+<li>sometimes can not action will fail</li>
+</ul>
+</li>
+<li>Solutions(nested if-then-else statements) <ul>
+<li>AND-OR Search Tree <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Andortree.png/796px-Andortree.png" alt=""><ul>
+<li>P if ((Q&amp;R) | S)</li>
+<li>Q if (T | U) </li>
+<li>and → environment’s choice(fail or not)</li>
+<li>or → your own choice</li>
+</ul>
+</li>
+<li>returns a set of possible outcome states</li>
+</ul>
+</li>
+<li>Ex. Slippery Vacuum World<ul>
+<li>Movement actions sometimes fail</li>
+<li>use cyclic plans <img src="/img/AI/4-andor.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h3 id="Searching_with_partial_observations">Searching with partial observations</h3><p>Slippery Vacuum World without global sensor   </p>
+<ul>
+<li>don’t know where it is</li>
+<li>use Belief-State Space (possible physical states) <img src="/img/AI/4-bss.png" alt=""></li>
+<li>$O(N)$ → $O(2^N)$</li>
+</ul>
+<p>Incremental Belief-State Search  </p>
+<ul>
+<li>find a solution that works for state 1</li>
+<li>check if it works for another state<ul>
+<li>If not, go back and find an alternative solution for state 1</li>
+</ul>
+</li>
+<li>similar to AND-OR search</li>
+</ul>
+<h3 id="Online_Search">Online Search</h3><ul>
+<li>combine computation and action</li>
+<li>Works good in<ul>
+<li>Dynamic or semi-dynamic domains</li>
+<li>Stochastic domains</li>
+<li>Exploration problem in unknown environments</li>
+</ul>
+</li>
+<li>impossible to take into account all possible contingencies(可能性，意外)</li>
+<li>The agent maintains a map of the environment    <ul>
+<li>Updated based on percept input</li>
+<li>use map to decide next action</li>
+<li>difference with e.g. A*<ul>
+<li>online search can only expand the node it is in local map</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Example: Maze   </p>
+<ul>
+<li>reach a goal with minimal cost</li>
+<li>Competitive ratio<ul>
+<li>compare the cost of the solution path if search space is known</li>
+</ul>
+</li>
+<li>Can be infinite <ul>
+<li>agent accidentally reaches dead ends</li>
+</ul>
+</li>
+<li>Assume Safely explorable<ul>
+<li>some goal state is reachable from every reachable state</li>
+</ul>
+</li>
+<li>No algorithm can avoid dead ends in all state spaces <img src="/img/AI/4-adversary.png" alt=""></li>
+</ul>
+<p>Online DFS <img src="/img/AI/4-online-dfs.png" alt="">  </p>
+<ul>
+<li>Untried: action not yet tried</li>
+<li>Unbacktracked: state not yet backtracked(尚未走回去過的state)  </li>
+<li>Worst case each node is visited twice<ul>
+<li>online iterative deepening approach solves this problem</li>
+</ul>
+</li>
+</ul>
+<p>Online Local Search  </p>
+<ul>
+<li>Hill-climbing is already online<ul>
+<li>only store one state</li>
+</ul>
+</li>
+<li>Bad performance due to local maxima<ul>
+<li>can not random restart in online version</li>
+</ul>
+</li>
+<li>Solution<ul>
+<li>Random walk introduces exploration<ul>
+<li>time complexity is exponential</li>
+</ul>
+</li>
+<li>Learning real-time A<em> (LRTA</em>) <img src="/img/AI/4-lrta-star.png" alt=""><ul>
+<li>Add memory to hill climbing</li>
+<li>Store current best estimate H(s) of cost to reach goal</li>
+<li>H(s) is initially = h(s), the least possible cost<ul>
+<li>updated with experience <img src="/img/AI/4-online-heu.png" alt=""> </li>
+</ul>
+</li>
+<li>O(n^2) </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chap05_Adversarial_Search(game)">Chap05 Adversarial Search(game)</h2><ul>
+<li>In 1948, Turing met Donald Michie and competed with him in writing a simple chess-­playing algorithm</li>
+<li>The Historical Match in 1997<ul>
+<li>Kasparov vs. Deep Blue     </li>
+</ul>
+</li>
+<li><strong>Games are idealization of worlds</strong><ul>
+<li>the world state is fully accessible</li>
+<li>the (small number of) actions are well­‐defined </li>
+<li>uncertainty exists due to moves of the opponent</li>
+</ul>
+</li>
+<li>Minimax <img src="/img/AI/5-minimax.png" alt="MiniMax"></li>
+<li><a href="http://gitqwerty777.github.io/%E9%9B%BB%E8%85%A6%E5%B0%8D%E5%B1%80%E7%90%86%E8%AB%96/#nega-max-formulation">MaxMax(negamax)</a><ul>
+<li>Advantage of over MiniMax   <ul>
+<li><strong>Consistent view</strong>: maximize scores</li>
+<li>Subroutine <strong>Min is not required</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Implementation of Pruning   </p>
+<ol>
+<li>Pass the current best score to child nodes</li>
+<li>Stop searching and return when a branch exceeds the score from the parent</li>
+</ol>
+<p>Alpha-Beta search <img src="/img/AI/5-ab.png" alt="">  </p>
+<ul>
+<li>only use about $O(b^(d/2))$ time</li>
+</ul>
+<p>Improvement of A-B search</p>
+<ul>
+<li>Search good move first<ul>
+<li>Heuristic move ordering<ul>
+<li>Checkmate </li>
+<li>Killer <ul>
+<li><strong>The move that results in beta pruning earlier</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Iterative deepening<ul>
+<li>good moves in the search depth = N are usually good in depth = N+1</li>
+</ul>
+</li>
+<li>Principle variation search<ul>
+<li>NegaScout</li>
+</ul>
+</li>
+<li>Zero‐window search<ul>
+<li>expect returned value = -3 with beta pruning</li>
+<li>if return -4, real value is between [4, ∞], search again </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Reuse scores for duplicate nodes<ul>
+<li>Transposition table<ul>
+<li>save board layout and score in hash table</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Risky estimation of best score <ul>
+<li>Null-move search<ul>
+<li>give up a move once </li>
+<li>returned score serves as an estimate value for pruning</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Extend the depth for some leaf nodes<ul>
+<li>Score may not be acccurate if the board situation is not quiescent(靜止，即交換棋子的過程告一段落)   <ul>
+<li>A series of recapture moves</li>
+<li>Checkmates</li>
+</ul>
+</li>
+<li>Horizon Effect<ul>
+<li>threat will be happened in the <strong>deep</strong> depth</li>
+</ul>
+</li>
+<li>Singular Extension<ul>
+<li>give more depth to some nodes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>prune without further consideration<ul>
+<li>Forward Pruning</li>
+<li>Probabilistic Cut<ul>
+<li>pruning nodes which are merely possible to be good move</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>End Game<ul>
+<li>retrograde(倒推)<ul>
+<li>reverse the rules to chess to do unmoves </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Stochastic game  </p>
+<ul>
+<li>Chance Layer added to search tree<ul>
+<li>possible states after stochastic action</li>
+</ul>
+</li>
+<li>expect value<ul>
+<li>sum all values in chance layer with probability</li>
+<li>$(4 \times 0.5 + 6 \times 0.5) \div 2 = 5$</li>
+</ul>
+</li>
+</ul>
+<p>Bridge  </p>
+<ul>
+<li>inperfect information<ul>
+<li>belief state</li>
+</ul>
+</li>
+<li>GIB program<ul>
+<li>monte-carlo(handle randomness well)</li>
+<li>explaination-based generalization<ul>
+<li>only consider high-card or low-card</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>evaluation function has error  </p>
+<ul>
+<li>error is not independent(probably all children)</li>
+<li>consider mean and variance</li>
+</ul>
+<p>Time-limited search  </p>
+<ul>
+<li>if utility of node expansion is not higher than their cost(time), do not expand </li>
+</ul>
+<h2 id="Chap06_Constraint_Satisfaction_Problems(CSP)">Chap06 Constraint Satisfaction Problems(CSP)</h2><ul>
+<li>specialization of general search</li>
+<li><p>state is defined by <strong>variables</strong> with values from <strong>domain</strong></p>
+</li>
+<li><p>Example: Map-Coloring</p>
+<ul>
+<li>Variables = set of regions</li>
+<li>Domains = {red,green,blue}</li>
+<li>Constraints: adjacent regions must have different colors</li>
+</ul>
+</li>
+<li>Solutions are <strong>complete and consistent</strong> assignments<ul>
+<li>consistent: assignment that does not violate any constraint</li>
+</ul>
+</li>
+<li>Binary CSP: each constraint relates only two variables<ul>
+<li>Constraint graph: vertexs are variables, edges are constraints</li>
+</ul>
+</li>
+</ul>
+<p>CSP types    </p>
+<ul>
+<li>Discrete variables<ul>
+<li>finite domains<ul>
+<li>n variables, domain size d → $O(d^n)$ complete assignments</li>
+<li>Ex. Boolean CSPs(NP-complete)</li>
+</ul>
+</li>
+<li>infinite domains(integers, strings, …)<ul>
+<li>use constraint language, e.g., x1 + 5 ≤ x3</li>
+<li>Ex. job scheduling, variables are start/end days for each job</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Continuous variables<ul>
+<li>linear constraints solvable in polynomial time by <a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92" target="_blank" rel="external">linear programming</a><ul>
+<li>Ex. quadratic programming</li>
+</ul>
+</li>
+<li>Ex. start/end times for observations</li>
+</ul>
+</li>
+<li>No algorithm exist for solving general nonliear constraints</li>
+</ul>
+<p>constraint types  </p>
+<ul>
+<li>Unary constraints involve a single variable<ul>
+<li>SA ≠ red</li>
+</ul>
+</li>
+<li>Binary constraints involve pairs of variables,<ul>
+<li>SA ≠ WA</li>
+</ul>
+</li>
+<li>3 or more variables<ul>
+<li>cryptarithmetic(覆面算，用英文字母來取代0至9的數字) column constraints</li>
+</ul>
+</li>
+<li>Preferences (soft constraints)<ul>
+<li>green is better than red</li>
+</ul>
+</li>
+</ul>
+<p>Real-World CSPs  </p>
+<ul>
+<li>Assignment problems<ul>
+<li>who teaches what class</li>
+</ul>
+</li>
+<li>Timetabling problems<ul>
+<li>which class is offered when and where</li>
+</ul>
+</li>
+<li>Transportation scheduling</li>
+</ul>
+<p>Standard Search Formulation (Incrementally)</p>
+<ol>
+<li>Every solution will be found in depth n → prefer to use depth-first search</li>
+<li>Path is irrelevant, so can also use complete-state formulation of local search</li>
+<li>b = (n-l)d at depth = l, hence $n! \times dn$ leaves</li>
+</ol>
+<h3 id="Backtracking_Search">Backtracking Search</h3><ul>
+<li><strong>depth-first search</strong> for CSPs with <strong>assigning one variable per action</strong></li>
+<li>basic uninformed algorithm for CSP</li>
+<li>by wiki: 回溯法採用試錯的思想，它嘗試分步的去解決一個問題。在分步解決問題的過程中，當它通過嘗試發現現有的分步答案不能得到有效的正確的解答的時候，它將取消上一步甚至是上幾步的計算，再通過其它的可能的分步解答再次嘗試尋找問題的答案 <img src="/img/AI/4-bt.png" alt=""></li>
+<li>Can solve n-queens for n ≈ 25</li>
+</ul>
+<p>Improve Backtracking  </p>
+<ul>
+<li>General-purpose methods can give huge gains in speed<ul>
+<li>variable assignment order<ul>
+<li>Most constrained variable(minimum remaining values (MRV) heuristic)<ul>
+<li>choose the variable with the <strong>fewest legal values</strong></li>
+</ul>
+</li>
+<li>Most constraining variable(degree heuristic)<ul>
+<li>choose the variable with <strong>the most constraints</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>value assignment order<ul>
+<li>Least Constraining Value<ul>
+<li>choose the value that <strong>make the fewest values be deleted in the remaining variables</strong></li>
+<li>give the most flexibility</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>detect inevitable failure early  <ul>
+<li>Forward Checking  <ul>
+<li>Keep track of <strong>legal values for unassigned variables</strong></li>
+<li>Terminate search when any variable has no legal value</li>
+<li>Only consider arc-consistency<ul>
+<li>the graph already has arc-consistency need not do this</li>
+</ul>
+</li>
+<li>Maintain Arc consistency (MAC) </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Combining these heuristics can solve n-queens for n ≈ 1000</li>
+</ul>
+<p>Intelligent Backtracking  </p>
+<ul>
+<li>Chronological Backtracking<ul>
+<li>when the search fails, back up to the preceding <strong>decision point(多選題)</strong><ul>
+<li>the most recent decision point is revisited</li>
+</ul>
+</li>
+<li>equals to DFS</li>
+</ul>
+</li>
+<li>Backjumping<ul>
+<li>backtracks to the most recent variable in the <strong>conflict set(variables that caused the failure)</strong></li>
+</ul>
+</li>
+</ul>
+<p>Constraint Propagation(傳播限制)</p>
+<ul>
+<li>early detection for all failures</li>
+<li>local consistency(graph)<ul>
+<li>variable: node, binary constraint: arc</li>
+</ul>
+</li>
+<li>transform all n-ary constraints to binary one</li>
+<li>Node consistency(1-consistency)<ul>
+<li>all values in domain satisfy unary constraints</li>
+</ul>
+</li>
+<li>Arc consistency(2-consistency)<ul>
+<li>all values in domain satisfy binary constraints</li>
+<li>Algorithm: AC3</li>
+</ul>
+</li>
+<li>Path consistency<ul>
+<li>若xi, xj的domain，可以使第三個variable xk的domain滿足{xi, xk}和{xj, xk}的consistency</li>
+</ul>
+</li>
+<li>If variable X loses a value, <strong>neighbors of X</strong> need to be rechecked (detect inconsistency)<ul>
+<li>Ex. Arc Consistency </li>
+<li>REMOVE-INCONSISTENT-VALUE: 如果Xi的Domain中，有無法達成 Xi↔Xj 這個條件的值，則刪除　<img src="/img/AI/6-arc.png" alt="arc algo"></li>
+</ul>
+</li>
+</ul>
+<p>k-Consistency  </p>
+<ul>
+<li>for any set of k-1 variables and for any consistent assignment to those variables, a consistent value can always be assigned to the k-th variable</li>
+<li>只要有任何k-1個確定值的變數，必有一確定值可以放在第k個變數</li>
+<li>A graph is <strong>strongly k-consistent</strong> if it is k-consistent and is also (k-1)-consistent, (k-2)-consistent, … 1-consistent<ul>
+<li>guarantee to find solution in O(n^2d)</li>
+<li>but establishing strongly k-consistent graph take exponential time</li>
+</ul>
+</li>
+<li>commonly use 2 or 3 consistency in pratice </li>
+</ul>
+<p>Subproblem  </p>
+<ul>
+<li>suppose each subproblem has c variables, total n variables</li>
+<li>worst-case cost: $\frac{n}{c}\times d^{c}$</li>
+<li>cost is far better<ul>
+<li>n = 80, d = 2, c =20 → $2^80$ → $4 \times 2^{20}$ </li>
+</ul>
+</li>
+</ul>
+<p>Local Search for CSPs   </p>
+<ul>
+<li>allow unsatisfied states</li>
+<li>value selection by min-conflicts heuristic<ul>
+<li>h(n) = total number of violated constraints</li>
+</ul>
+</li>
+<li>Evaluation function of N-queen  <ul>
+<li>h = number of pairs of queens that are attacking each other</li>
+<li>can solve n-queens for n ≈ 10000000 (O(n) = constant) with high probability</li>
+</ul>
+</li>
+<li>variant<ul>
+<li>allow variable move to the same score</li>
+<li>prevent to select recently choosed variables</li>
+</ul>
+</li>
+<li>Critial Ratio of local search for CSP   <ul>
+<li>In certain ratio, it’s hard to solve CSP by local search <img src="/img/AI/6-ratio.png" alt=""></li>
+<li>剛剛好的限制條件(答案數過少)→數獨題目</li>
+</ul>
+</li>
+<li>Advantage<ul>
+<li>can easily change into online setting </li>
+</ul>
+</li>
+</ul>
+<!-- Waltz Labeling Algorithm    
+- used for Edge Labeling ![](/img/AI/6-waltz.png)
+- 4 ways to label a line, 16 labelings for two line intersects like 「L」 , 64 labelings for two line intersects like 「fork, arrow, or T」
+- there are some rules to make the labels possible
+
+Edge Labeling as CSP  
+- variable: vertexs
+- domain: label set of the corresponding junction 
+- constraint: rules of label relationship
+
+Waltz’s Algorithm  
+1. Label each vertex with all possible labelings
+2. Pick a vertex V, for each neighboring vertex, N:  
+    1. If N and V agree on the label for the line between them, do nothing ; Otherwise, remove the inconsistent labelings 
+    2. Propagate the constraint by repeating the process for all neighboring vertices
+3. Termination condition:
+    1. Every vertex has been visited at least once
+    2. There are no more constraints to propagate 
+-->
+<p>Theorem of Tree-Structed CSP      </p>
+<ul>
+<li>if the constraint graph has no loops, CSP can be solve in $O(nd^2)$ time, which is far better than general CSP($O(d^n)$)<ol>
+<li>make problem arc-consistent O(n)</li>
+<li>assign value O(d^2)</li>
+</ol>
+</li>
+<li>Algorithm<ol>
+<li>transform problem to a tree</li>
+<li>for i = n to 2, do REMOVE-INCONSISTENT-VALUE(Parent(Xi), Xi)</li>
+<li>for i = 1 to n, assign Xi consistently</li>
+</ol>
+</li>
+</ul>
+<p>Graph reduced to tree  </p>
+<ul>
+<li>constraint graph <ul>
+<li>given fixed value for some of the nodes to make remaining a tree</li>
+<li>if small cut is found, it is efficient</li>
+</ul>
+</li>
+<li>tree decomposition<ul>
+<li>把一部分的圖形變成一個大的node，把這些大的node合成一顆樹</li>
+<li>規則<ol>
+<li>若兩個variables本來有相連，他們必須出現在同一個subgraph至少一次</li>
+<li>若一個variable出現多次，則那些subgraph要彼此相連</li>
+<li>每個variable至少要出現一次</li>
+</ol>
+</li>
+<li>make subgraph as small as possible<ul>
+<li>tree width: size of the largest subproblem</li>
+</ul>
+</li>
+<li>$O(nd^{w+1})$, w = tree width</li>
+</ul>
+</li>
+</ul>
+<p>Breaking symmetry  </p>
+<ul>
+<li>reduce search space by n! by breaking symmetry<ul>
+<li>A: red, B: blue ↔ A:blue, B:red</li>
+<li>set A &lt; B<ul>
+<li>only one solution A:blue, B:red \</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Summary  </p>
+<ul>
+<li>CSPs are a special kind of problem<ul>
+<li>states defined by values of a fixed set of variables</li>
+<li>goal test defined by constraints on variable values</li>
+</ul>
+</li>
+<li>Variable ordering and value selection heuristics help significantly</li>
+<li><strong>Iterative min-conflicts</strong> is usually <strong>effective in practice</strong></li>
+</ul>
+<h2 id="Chap07_Logical_Agents">Chap07 Logical Agents</h2><p>Can agent prove theorems?</p>
+<p>David Hilbert (1862-1943)   </p>
+<ul>
+<li>“Hilbert’s Program” [1920]<ul>
+<li><strong>mechanize mathematics</strong></li>
+<li><strong>The consistency of more complicated systems, such as real analysis, could be proven by simpler systems</strong></li>
+<li>consistency of all of mathematics could be reduced to basic arithmetic</li>
+<li>所有數學應用一種統一的嚴格形式化的語言，並且按照一套嚴格的規則來使用</li>
+</ul>
+</li>
+<li>Gödel showed that this is <strong>impossible</strong></li>
+<li>Automatic theorem proving simply tries to mechanize what can be mechanized</li>
+</ul>
+<h3 id="Gödel’s_Incompleteness_Theorem_(Kurt_Gödel,_1931)">Gödel’s Incompleteness Theorem (Kurt Gödel, 1931)</h3><ol>
+<li>In any consistent formalization of mathematics that is sufficiently strong to define the concept of <strong>natural numbers</strong>, one can construct a statement that can be <strong>neither proved nor disproved</strong> within that system(任何相容的形式系統，只要蘊涵皮亞諾算術公理，就可以在其中構造在體系中不能被證明的真命題，因此通過推演不能得到所有真命題（即體系是不完備的）。)</li>
+<li>No consistent system can be used to prove its own consistency (can not simultaneously be true and false) 任何相容的形式系統，只要蘊涵皮亞諾算術公理，它就不能用於證明它本身的相容性</li>
+</ol>
+<p><a href="http://episte.math.ntu.edu.tw/articles/mm/mm_15_4_11/index.html" target="_blank" rel="external">《戈德爾不完備定理》，董世平</a><br>任一個證明，都必須從某一個公設系統出發。對於自然數我們最常用的公設系統就是皮亞諾公設 (Peano Axioms)， 這些公設中最複雜而且困難的，（不僅對一般的高中，大學生如此，對邏輯學家亦如此），就是大名鼎鼎的「數學歸納法」。藉著數學歸納法及其他的公設， 我們可證明「質數有無窮多個」，問題是「是否所有有關自然數的敘述，只要是對的，就可由皮亞諾公設出發，而得到證明呢？」也就是「皮亞諾公設是否完備?」 若皮亞諾公設具有完備性，那麼所有有關自然數的敘述，若是對的， 就可由皮亞諾公設證明。<br>由戈德爾不完備定理而得的一個結論，就是「皮亞諾公設是不完備的！」有些關於自然數的敘述是對的，但皮亞諾公設無法證明它，戈德爾的證明也的確告訴我們如何找到這個敘述。事實上，由戈德爾的證明，我們可得一個算則，給我們一個公設系統，我們就可按此算則，而得到一個算術句型，再經過適當的編譯 (compile)，即可成為此系統內的一個句型，而此句型在此系統內為真，卻無法在此系統內被證明，所以也許我們會覺得皮亞諾公設不具有完備性，這是它的缺點，我們應當找另一個具有完備性的公設系統來代替它，但不完備定理告訴我們，「任何一個具有一致性的公設化系統皆是不完備的！」這也就是為什麼雖然大家明知皮亞諾公設是不完備的，但這個公設系統仍是被普遍的使用，因為任何其他系統，也都是不完備的。也許我們再退一步，皮亞諾公設固然不具有完備性，我們至少可要求它具有一致性吧！也就是皮亞諾公設所證明的，一定是真的，可惜，這一點也做不到，由不完備定理可得另一個結論就是「在皮亞諾公設系統內將無法證明它的一致性！」從某一方面來說，你須要假設比「皮亞諾公設是一致的」更強或相等的假設，你才能證明皮亞諾公設的一致性，當然我們若須要更強的假設，也就須要更大的信心去相信它是對的。同樣的，皮亞諾公設也沒那麼特殊，就像不完備性的結果一樣，由戈德爾不完備定理，任一個足夠強的公設系統，皆無法證明它本身的一致性。</p>
+<ul>
+<li>第一不完備定理<ul>
+<li>任何一個足夠強的一致公設系統，必定是不完備的</li>
+<li>即除非這個系統很簡單，(所以能敘述的不多)，或是包含矛盾的， 否則必有一真的敘述不能被證明</li>
+</ul>
+</li>
+<li>第二不完備定理<ul>
+<li>任何一個足夠強的一致公設系統，必無法證明本身的一致性</li>
+<li>所以除非這個系統很簡單，否則你若在此系統性，證明了本身的一致性，反而已顯出它是不一致的</li>
+</ul>
+</li>
+</ul>
+<p>哥德爾證明：任何無矛盾的公理體系，只要包含初等算術的陳述，則必定存在一個不可判定命題，用這組公理不能判定其真假。也就是說，「無矛盾」和「完備」是不能同時滿足的！這便是聞名於世的哥德爾不完全性定理。</p>
+<p><a href="http://programmermagazine.github.io/201403/htm/focus4.html#從程式人的角度證明哥德爾不完備定理" target="_blank" rel="external">從程式人的角度證明「哥德爾不完備定理」</a></p>
+<h3 id="knowledge-based_agents">knowledge-based agents</h3><p>use logical sentences(邏緝式) to infer conclusions about the world</p>
+<p>KnowledgeBase Agent  </p>
+<ul>
+<li>processes of reasoning that operate on representation of knowledge</li>
+<li>knowledge base <ul>
+<li>set of sentences (axioms)<ul>
+<li>given without derived from other sentences</li>
+</ul>
+</li>
+<li>tell agent how to operate in this environment</li>
+</ul>
+</li>
+<li>inference<ul>
+<li>derive new sentences from old</li>
+</ul>
+</li>
+</ul>
+<!-- Declarative Description of Knowledge-Based Agent    
+- Knowledge level
+    - Specify what the agent knows
+        - The golden gate bridge connects San Francisco with Marin County
+- Logical level
+    - Specify **sentences encoding** that the agent knows
+        - Links(GGBridge, SF, Marin)
+- Implementation level
+    - Specify **physical representation** of the sentences at the logical level
+        - ''Links(GGBridge, SF, Marin)''
+-->
+<h3 id="Terminology">Terminology</h3><ul>
+<li>α ╞ β: α entails β<ul>
+<li>if there is a model that α is true, β is also true</li>
+<li>α is a stronger assertion than β</li>
+<li>x = 0 ╞ xy = 0   </li>
+</ul>
+</li>
+<li>An interpretation is a model for a theory if it assigns true to each formula in the set</li>
+<li>A formula is satisfiable if it is true in at least one model<ul>
+<li>m satisfies α → m is a model of α</li>
+</ul>
+</li>
+<li>A formula is valid if<ul>
+<li>it is true under all possible interpretations</li>
+<li>Its negation is not satisfiable</li>
+</ul>
+</li>
+</ul>
+<p>Validity and Satisfiability    </p>
+<ul>
+<li><img src="/img/AI/7-validansatis.png" alt=""></li>
+<li>演繹定理聲稱如果公式 F 演繹自 E，則蘊涵 E → F 是可證明的(就是或它可以自空集推導出來)。用符號表示，如果  $E \vdash F$ ，則  $\vdash E \rightarrow F $<ul>
+<li>KB ╞ α if and only if (KB → α) is valid</li>
+</ul>
+</li>
+<li>Relation to Inference<ul>
+<li>KB ╞ α if and only if (KB → ~α) is unsatisfiable</li>
+</ul>
+</li>
+</ul>
+<p>Inference Rules    </p>
+<ul>
+<li>modus ponenes(推論法則) <img src="/img/AI/7-modusponens.png" alt=""></li>
+<li>and-elimination <img src="/img/AI/7-andemi.png" alt=""></li>
+<li>Propositional Rule of Inference <img src="/img/AI/7-propositionalInference.png" alt=""></li>
+</ul>
+<h3 id="Propositional_Logic">Propositional Logic</h3><p>Syntax and Semantics  </p>
+<ul>
+<li>symbol<ul>
+<li>assigned by true or false</li>
+<li>literal: symbol or ~symbol</li>
+<li>constants: True(always true), False(always false)</li>
+</ul>
+</li>
+<li>connectives<ul>
+<li>or(disjunction), and(conjunction)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Proof_Methods">Proof Methods</h3><ul>
+<li>Application of inference rules<ul>
+<li>generation proof sentence by inference</li>
+<li>Proof = a sequence of inference rule applications<ul>
+<li>Can use inference rules as operators in a standard search algorithm</li>
+</ul>
+</li>
+<li>Typically require transformation</li>
+</ul>
+</li>
+<li>Model checking<ul>
+<li>truth table enumeration<ul>
+<li>exponential time</li>
+</ul>
+</li>
+<li>improved backtracking<ul>
+<li>e.g., Davis-Putnam-Logemann-Loveland (DPLL)</li>
+</ul>
+</li>
+<li>heuristic search in model space (sound but incomplete)<ul>
+<li>e.g., min-conflicts-like hill-climbing algorithms</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Conjunctive Normal Form  </p>
+<ul>
+<li>any propositional formula can be transform to conjunctive normal form</li>
+<li>(or or …) and (or or …) and (or or …) …</li>
+<li>each () is a clause</li>
+<li>Convert normal formula to CNF<ul>
+<li><img src="/img/AI/7-cnf-convert.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>Example: <a href="https://zh.wikipedia.org/wiki/Hunt_the_Wumpus" target="_blank" rel="external">Wumpus</a>  </p>
+<ul>
+<li>Using Resolution(歸結) inference rule<ul>
+<li>$\frac{\Gamma_1 \cup\left{ \ell\right} \,\,\,\, \Gamma_2 \cup\left{ \overline{\ell}\right} }{\Gamma_1 \cup\Gamma_2}|\ell|$</li>
+</ul>
+</li>
+</ul>
+<h3 id="Testing_Validity">Testing Validity</h3><ul>
+<li>truth tables<ul>
+<li>exponential time</li>
+</ul>
+</li>
+<li>Resolution</li>
+<li>Forward &amp; backward chaining</li>
+<li>DPLL</li>
+<li>Local Search Methods<ul>
+<li>Complete backtracking search algorithms <ul>
+<li>DPLL algorithm (Davis, Putnam, Logemann, Loveland)</li>
+</ul>
+</li>
+<li>Incomplete local search algorithms<ul>
+<li>WalkSAT algorithm</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Resolution">Resolution</h3><ul>
+<li>Sound<ul>
+<li>inference that derives only entailed sentences</li>
+<li>if KB is true, then any sentence α derived from KB by sound inference is also true</li>
+</ul>
+</li>
+<li>Completeness<ul>
+<li>if it can derive any sentence that is entailed</li>
+</ul>
+</li>
+</ul>
+<p>Resolution refutation is sound(可靠) and refutation complete(完備) for propositional logic  </p>
+<ul>
+<li>If we derive a contradiction, then the conclusion follows from the axioms</li>
+<li>If we can’t apply any more, then the conclusion cannot be proved from the axioms</li>
+<li><p>A formal system S is refutation-complete if it is able to derive false from every unsatisfiable set of formulas</p>
+</li>
+<li><p>KB ╞ α if and only if (KB → ~α) is unsatisfiable</p>
+<ul>
+<li>proof KB ╞ α by showing (KB ^ ~α) is unsatisfiable</li>
+</ul>
+</li>
+</ul>
+<p>Binary Resolution Step<br>For any two clauses C1 and C2  </p>
+<ul>
+<li>Find a literal L1 in C1 that is complementary to a literal L2 in C2</li>
+<li>Delete L1 and L2 from C1 and C2 respectively</li>
+<li>Construct the disjunction of the remaining clauses</li>
+<li>The constructed clause is a resolvent of C1 and C</li>
+<li>Ex. $\frac{a \vee b, \quad \neg a \vee c}{b \vee c}$</li>
+<li>put P1,2 into clause set to check whether “~P1,2 is in KB” <img src="/img/AI/7-resolution.png" alt=""><ul>
+<li>Proof by contradiction：The derivation of [] indicates that the database of clauses is inconsistent<ul>
+<li>P1,2 <strong>is</strong> in KB</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Resolution algorithm <img src="/img/AI/7-resolution-algo.png" alt=""></p>
+<h3 id="Propositional_Horn_Clauses">Propositional Horn Clauses</h3><ul>
+<li>At most one positive literal</li>
+<li>Satisfiability can be tested in linear time</li>
+<li>Resolution is fast for Horn clauses, and very slow in non-Horn clauses<ul>
+<li>resolve two horns → one horn</li>
+</ul>
+</li>
+<li>Basis of Prolog<ul>
+<li>Head:-body</li>
+</ul>
+</li>
+<li>inference done by forward and backward chaining</li>
+</ul>
+<h4 id="Forward_and_Backward_Chaining">Forward and Backward Chaining</h4><ul>
+<li>Horn Form (restricted)<ul>
+<li>KB = conjunction of Horn clauses</li>
+</ul>
+</li>
+<li>Horn clause = <ul>
+<li>proposition symbol, or</li>
+<li>(conjunction of symbols) =&gt; symbol</li>
+</ul>
+</li>
+<li><p>Modus Ponens(肯定前件)(for Horn Form): complete for Horn KBs</p>
+<ul>
+<li>used with forward chaining or backward chaining</li>
+<li>run in linear time</li>
+</ul>
+</li>
+<li><p>Forward Chaining</p>
+<ul>
+<li>fire any rule whose premises are satisfied in the KB, add its conclusion to the KB, until query is found</li>
+<li><img src="/img/AI/7-forward-chaining.png" alt=""></li>
+</ul>
+</li>
+<li>Backward chaining    <ul>
+<li>work backwards from the query q to prove q by BC, check if q is known already, or prove all premises of q</li>
+<li>Avoid loops<ul>
+<li>check if new subgoal is already on the goal stack</li>
+</ul>
+</li>
+<li>Avoid repeated work<ul>
+<li>check new subgoal</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Forward vs. backward chaining  </p>
+<ul>
+<li>both sound and complete for Horn KB</li>
+<li>FC is data-driven, automatic, unconscious processing<ul>
+<li>e.g., object recognition, routine decisions</li>
+<li>May do <strong>lots of work that is irrelevant to the goal</strong></li>
+</ul>
+</li>
+<li>BC is goal-driven, appropriate for problem-solving,<ul>
+<li>e.g., Where are my keys? How do I get into a PhD program?</li>
+<li>Complexity of BC can be much less than linear in size of KB</li>
+</ul>
+</li>
+</ul>
+<h3 id="Davis-Putnam_Procedure(DPLL)">Davis-Putnam Procedure(DPLL)</h3><ul>
+<li>Introduced by Davis &amp; Putnam in 1960</li>
+<li>Modified by Davis, Logemann &amp; Loveland in 1962 [DPLL]<ul>
+<li>Resolution rule replaced by splitting rule</li>
+<li>Trades space for time</li>
+</ul>
+</li>
+</ul>
+<p>DPLL</p>
+<ul>
+<li>recursive, depth-first enumeration of possible models <ul>
+<li>determine if an input CNF is satisfiable with the following </li>
+</ul>
+</li>
+</ul>
+<p>Improvements  </p>
+<ul>
+<li>Early termination<ul>
+<li>A clause is true if any literal is true(用or相連)</li>
+<li>A sentence is false if any clause is false(因為用and相連)</li>
+</ul>
+</li>
+<li>Unit clause heuristic<ul>
+<li>only one non-false literal in the clause<ul>
+<li>The only literal in a unit clause must be true</li>
+</ul>
+</li>
+<li>a clause with just one literal (i.e. all other literals are assigned false)</li>
+</ul>
+</li>
+<li>Pure symbol heuristic<ul>
+<li>a symbol that always appears with the same sign in all clauses</li>
+<li>Ex. A and ~A would not both appear in a sentence if A  is pure </li>
+<li>Make a pure symbol literal true<ul>
+<li>在全設成true時, KB自然是true</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>DPLL(continue)</p>
+<ul>
+<li>Unit propagation</li>
+<li>Example <img src="/img/AI/7-dpll.png" alt=""></li>
+<li><img src="/img/AI/7-dpll-algo.png" alt=""></li>
+<li><strong>backtracking search</strong> for a model of the formula</li>
+<li>Interpretations are examined in a <strong>sequential</strong> manner<ul>
+<li>DPLL(KB, p←TRUE) is testing interpretations if p is TRUE</li>
+<li>DPLL(KB, p←FALSE) is testing interpretations if p is FALSE</li>
+</ul>
+</li>
+<li>For each interpretation, a reason is found that the formula is false in it<br>•Such a sequential search of interpretations is very fast<br>–DPLL is much faster than propositional resolution for non-Horn clauses<br>•Very fast data structures developed<br>•Popular for hardware verification</li>
+</ul>
+<h2 id="Chap08_First-Order_Logic">Chap08 First-Order Logic</h2><p>How Do Humans Process Knowledge?  </p>
+<ul>
+<li>people process the words to form some kind of nonverbal representation, which we call <strong>memory</strong></li>
+<li>Logic as a representation of the World <img src="/img/AI/8-logic-representation.png" alt=""></li>
+</ul>
+<p>Sapir-Whorf Hypothesis  </p>
+<ul>
+<li>The language we speak profoundly influences the way in which we think and make decisions <ul>
+<li>setting up the category structure by which we divide up the world into different sorts of objects<ul>
+<li>Eskimos have many words for snow and thus experience snow in a different way</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Two way to think(??)<ul>
+<li>aware of the distinctions only by learning the words </li>
+<li>distinctions emerge from individual experience and become matched with the words<br><img src="/img/AI/8-inference-procedure.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>Logics  </p>
+<ul>
+<li>A logic consists of the following:<ul>
+<li>A formal system describing states of affairs<ul>
+<li>Syntax </li>
+<li>Semantics</li>
+</ul>
+</li>
+<li>proof theory – a set of rules for deducing the entailments of a set of sentences</li>
+</ul>
+</li>
+<li>Ontological commitments<ul>
+<li>FOL: facts, objects, relations</li>
+<li>Probability theory: facts</li>
+</ul>
+</li>
+<li>Epistemological commitments<ul>
+<li>What an agent believes about facts, e.g. FOL: true/false/unknown probability theory: degree of belief [0..1]</li>
+</ul>
+</li>
+</ul>
+<p>Logical Truth and Belief</p>
+<ul>
+<li>Ontological Commitment: What exists in the world — TRUTH</li>
+<li>Epistemoligical Commitment: What an agent believes about facts — BELIEF</li>
+<li><img src="/img/AI/8-logic-table.png" alt=""></li>
+</ul>
+<p>(重複？)<br>Terminology  </p>
+<ul>
+<li>Propositional constants: true, false</li>
+<li>Interpretation<ul>
+<li>Truth assignments to propositional symbols</li>
+<li>Truth-functional meaning of logical connectives</li>
+</ul>
+</li>
+<li>Theory: a set of formulas in logic</li>
+<li>An interpretation is a model for a theory if it assigns true to each formula in the set.<ul>
+<li>A formula is satisfiable if it has (at least) a model</li>
+<li>A formula is valid if </li>
+<li>It is true under all possible interpretations<br>– Its negation is not satisfiable.</li>
+</ul>
+</li>
+</ul>
+<p>Propositional Logic  </p>
+<ul>
+<li>Propositional logic is declarative</li>
+<li>Propositional logic allows partial/disjunctive/negated information<ul>
+<li>(unlike most data structures and databases)</li>
+</ul>
+</li>
+<li>Propositional logic is compositional:<ul>
+<li>meaning of B1,1 ∧ P1,2 is derived from meaning of B1,1 and of P1,2</li>
+</ul>
+</li>
+<li>Meaning in propositional logic is context-independent<ul>
+<li>(unlike natural language, where meaning depends on context)</li>
+</ul>
+</li>
+<li><strong>Propositional logic has very limited expressive power</strong><ul>
+<li>unlike natural language</li>
+<li>E.g., cannot say “pits cause breezes in adjacent squares“<ul>
+<li>except by writing one sentence for each square</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>wumpus-world agent using propositional logic<br>→ 64 distinct proposition symbols, 155 sentences<br>contains “physics” sentences for every single square<br>a lot of clauses</p>
+<p>First-Order Logic</p>
+<ul>
+<li>propositional logic assumes the world contains facts</li>
+<li>first-order logic assumes the world contains<ul>
+<li>Objects: people, houses, numbers, colors, baseball games, wars, …</li>
+<li>Relations: red, round, prime, brother of, bigger than, part of, comes between, …</li>
+<li>Functions: father of, best friend, one more than, plus, …</li>
+</ul>
+</li>
+</ul>
+<p>Syntax of FOL: Basic elements</p>
+<ul>
+<li>Constants <ul>
+<li>KingJohn, 2, NUS,…</li>
+</ul>
+</li>
+<li>Predicates <ul>
+<li>Brother, &gt;,…</li>
+</ul>
+</li>
+<li>Functions <ul>
+<li>Sqrt, LeftLegOf,…</li>
+</ul>
+</li>
+<li>Variables <ul>
+<li>x, y, a, b,…</li>
+</ul>
+</li>
+<li>Connectives <ul>
+<li>¬, ⇒, ∧, ∨, ⇔</li>
+</ul>
+</li>
+<li>Equality <ul>
+<li>=</li>
+</ul>
+</li>
+<li>Quantifiers <ul>
+<li>∀, ∃</li>
+</ul>
+</li>
+</ul>
+<p>Atomic sentences  </p>
+<ul>
+<li>Atomic sentence = predicate (term1,…,termn) or term1 = term2</li>
+<li>Term = function (term1,…,termn) or constant or variable</li>
+<li>Examples<ul>
+<li>King John is the brother of Richard the Lion Heart    <ul>
+<li>Brother(KingJohn,RichardTheLionheart)</li>
+</ul>
+</li>
+<li>Richard’s left leg is longer than King John’s <ul>
+<li>Greater-than(Length(LeftLegOf(Richard)),Length(LeftLegOf(KingJohn)))</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Complex sentences</p>
+<ul>
+<li>Complex sentences are made from atomic sentences using connectives<ul>
+<li>¬S,S1 ∧ S2,S1 ∨ S2,S1 ⇒ S2,S1 ⇔ S2</li>
+</ul>
+</li>
+<li>Examples<ul>
+<li>Sibling(KingJohn,Richard) ⇒ Sibling(Richard,KingJohn)</li>
+</ul>
+</li>
+</ul>
+<p>Truth in First-Order Logic(??)  </p>
+<ul>
+<li>Sentences are true with respect to a model and an interpretation</li>
+<li>Model<ul>
+<li>objects (domain elements)</li>
+<li>relations among objects</li>
+</ul>
+</li>
+<li>Interpretation specifies referents for<ul>
+<li>constant symbols → objects</li>
+<li>predicate symbols → relations</li>
+<li>function symbols → functional relations</li>
+</ul>
+</li>
+<li>An atomic sentence predicate(term1,…,termn) is true iff the objects referred to by term1,…,termn are in the relation referred to by predicate</li>
+</ul>
+<p>Models for FOL</p>
+<ul>
+<li>We can enumerate the models for a given KB vocabulary<ul>
+<li>For each number of domain elements n from 1 to ∞</li>
+</ul>
+</li>
+<li>Computing entailment by enumerating the models is not easy</li>
+<li><img src="/img/AI/8-fol-model.png" alt=""></li>
+</ul>
+<p>Knowledge Engineering in FOL  </p>
+<ol>
+<li>Identify the task</li>
+<li>Assemble the relevant knowledge</li>
+<li>Decide on a vocabulary of predicates, functions, and constants</li>
+<li>Encode general knowledge about the domain</li>
+<li>Encode a description of the specific problem instance</li>
+<li>Pose queries to the inference procedure and get answers</li>
+<li>Debug the knowledge base</li>
+</ol>
+<p>Domain: Electronic Circuits(Adder)  </p>
+<ul>
+<li>Identify the task<ul>
+<li>Does the circuit actually add properly?</li>
+</ul>
+</li>
+<li>Assemble the relevant knowledge<ul>
+<li>Composed of wires and gates</li>
+<li>Types of gates (AND, OR, XOR, NOT)</li>
+<li>Connections between terminals</li>
+<li>Irrelevant: size, shape, color, cost of gates</li>
+</ul>
+</li>
+<li>Decide on a vocabulary<ul>
+<li>Alternatives<ul>
+<li>Type(X1) = XOR</li>
+<li>Type(X1, XOR)</li>
+<li>XOR(X1)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>General Domain Knowledge<ul>
+<li>∀t1,t2 Connected(t1, t2) ⇒ Signal(t1) = Signal(t2)</li>
+<li>∀t Signal(t) = 1 ∨ Signal(t) = 0</li>
+<li>1 ≠ 0</li>
+<li>∀t1,t2 Connected(t1, t2) ⇒ Connected(t2, t1)</li>
+<li>∀g Type(g) = OR ⇒ Signal(Out(1,g)) = 1 ⇔ ∃n Signal(In(n,g)) = 1</li>
+<li>∀g Type(g) = AND ⇒ Signal(Out(1,g)) = 0 ⇔ ∃n Signal(In(n,g)) = 0</li>
+<li>g Type(g) = XOR ⇒ Signal(Out(1,g)) = 1 ⇔ Signal(In(1,g)) ≠ Signal(In2,g))</li>
+<li>∀g Type(g) = NOT ⇒ Signal(Out(1,g)) ≠ Signal(In(1,g))</li>
+</ul>
+</li>
+<li>Specific Problem Instance<ul>
+<li>Type(X1) = XOR Type(X2) = XOR</li>
+<li>Type(A1) = AND Type(A2) = AND</li>
+<li>Type(O1) = OR</li>
+<li>Connected(Out(1,X1),In(1,X2)) Connected(In(1,C1),In(1,X1))</li>
+<li>Connected(Out(1,X1),In(2,A2)) Connected(In(1,C1),In(1,A1))</li>
+<li>Connected(Out(1,A2),In(1,O1)) Connected(In(2,C1),In(2,X1))</li>
+<li>Connected(Out(1,A1),In(2,O1)) Connected(In(2,C1),In(2,A1))</li>
+<li>Connected(Out(1,X2),Out(1,C1)) Connected(In(3,C1),In(2,X2))</li>
+<li>Connected(Out(1,O1),Out(2,C1)) Connected(In(3,C1),In(1,A2))</li>
+</ul>
+</li>
+<li>Query<ul>
+<li>What are the possible sets of values of all the terminals for the adder circuit?</li>
+<li>∃i1,i2,i3,o1,o2 Signal(In(1,C_1)) = i1 ∧ Signal(In(2,C1)) = i2 ∧ Signal(In(3,C1)) = i3 ∧ Signal(Out(1,C1)) = o1 ∧ Signal(Out(2,C1)) = o2</li>
+</ul>
+</li>
+</ul>
+<p>Domain: Kinship(親屬關係)  </p>
+<ul>
+<li>Brothers are siblings<ul>
+<li>∀x,y Brother(x,y) ⇔ Sibling(x,y)</li>
+</ul>
+</li>
+<li>One’s mother is one’s female parent<ul>
+<li>∀m,c Mother(c) = m ⇔ (Female(m) ∧ Parent(m,c))</li>
+</ul>
+</li>
+<li>“Sibling” is symmetric<ul>
+<li>∀x,y Sibling(x,y) ⇔ Sibling(y,x)</li>
+</ul>
+</li>
+<li>A first cousin is a child of a parent’s sibling<ul>
+<li>∀x,y FirstCousin(x,y) ⇔ ∃p,ps Parent(p,x) ∧ Sibling(ps,p) ∧ Parent(ps,y)</li>
+</ul>
+</li>
+</ul>
+<p>Domain: Set   </p>
+<ul>
+<li>∀s Set(s) ⇔ (s = {} ) ∨ (∃x,s2 Set(s2) ∧ s = {x|s2})</li>
+<li>¬∃x,s {x|s} = {}</li>
+<li>∀x,s x ∈ s ⇔ s = {x|s}</li>
+<li>∀x,s x ∈ s ⇔ [ ∃y,s2} (s = {y|s2} ∧ (x = y ∨ x ∈ s2))]</li>
+<li>∀s1,s2 s1 ⊆ s2 ⇔ (∀x x ∈ s1 ⇒ x ∈ s2)</li>
+<li>∀s1,s2 (s1 = s2) ⇔ (s1 ⊆ s2 ∧ s2 ⊆ s1)</li>
+<li>∀x,s1,s2 x ∈ (s1 ∩ s2) ⇔ (x ∈ s1 ∧ x ∈ s2)</li>
+<li>∀x,s1,s2 x ∈ (s1 ∪ s2) ⇔ (x ∈ s1 ∨ x ∈ s2)</li>
+</ul>
+<p>Universal Qantification  </p>
+<ul>
+<li>∀<variables> <sentence><ul>
+<li>Everyone at NTU is smart<ul>
+<li>∀x At(x,NTU) ⇒ Smart(x)</li>
+</ul>
+</li>
+</ul>
+</sentence></variables></li>
+<li>equivalent to the conjunction of instantiations(例證來源) of P<ul>
+<li>At(KingJohn,NTU) ⇒ Smart(KingJohn) ∧ At(Richard,NTU) ⇒ Smart(Richard) ∧ At(Mary,NTU) ⇒ Smart(Mary) …</li>
+</ul>
+</li>
+<li>Common Mistake<ul>
+<li>Typically, ⇒ is the main connective with ∀</li>
+<li>Wrong: using ∧ as the main connective with ∀</li>
+<li>∀x At(x,NTU) ∧ Smart(x) means “Everyone is at NTU and everyone is smart”</li>
+</ul>
+</li>
+</ul>
+<p>Existential Quantification</p>
+<ul>
+<li>∃<variables> <sentence><ul>
+<li>Someone at NTU is smart<ul>
+<li>∃x At(x,NTU) ∧ Smart(x)</li>
+</ul>
+</li>
+</ul>
+</sentence></variables></li>
+<li>equivalent to the disjunction of instantiations of P<ul>
+<li>At(KingJohn,NTU) ∧ Smart(KingJohn) ∨ At(Richard,NTU) ∧ Smart(Richard) ∨ At(Mary,NTU) ∧ Smart(Mary) ∨ …</li>
+</ul>
+</li>
+<li>Typically, ∧ is the main connective with ∃<ul>
+<li>Common mistake: using ⇒ as the main connective with ∃</li>
+<li>∃x At(x,NTU) ⇒ Smart(x) <strong>is true if there is anyone who is not at NTU!</strong></li>
+</ul>
+</li>
+</ul>
+<p>Properties of Quantifiers  </p>
+<ul>
+<li>∀x ∀y = ∀y ∀x</li>
+<li>∃x ∃y = ∃y ∃x</li>
+<li>∃x ∀y ≠ ∀y ∃x<ul>
+<li>∃x ∀y Loves(x,y)<ul>
+<li>“There is a person who loves everyone in the world”</li>
+</ul>
+</li>
+<li>∀y ∃x Loves(x,y)<ul>
+<li>“Everyone in the world is loved by at least one person”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Quantifier duality<ul>
+<li>each can be expressed using the other</li>
+<li>∀x Likes(x,IceCream) ↔ ¬∃x ¬Likes(x,IceCream)</li>
+<li>∃x Likes(x,Broccoli) ↔ ¬∀x ¬Likes(x,Broccoli)</li>
+</ul>
+</li>
+</ul>
+<p>Unification</p>
+<ul>
+<li>To unify Knows(John,x) and Knows(y,z)<ul>
+<li>MGU = { y/John, x/z }</li>
+</ul>
+</li>
+<li>There is a single most general unifier (MGU) that is unique up to renaming of variables</li>
+<li>We can get the inference immediately if we can find a substitution θ such that King(x) and Greedy(x) match King(John) and Greedy(y)</li>
+<li>Unify(α,β) = θ if αθ = βθ</li>
+<li><img src="/img/AI/8-unification.png" alt=""></li>
+<li><img src="/img/AI/8-unify-algo.png" alt=""></li>
+<li>Standardizing apart eliminates overlap of variables<ul>
+<li>Knows(z17,OJ)</li>
+</ul>
+</li>
+</ul>
+<p>Conversion to CNF  </p>
+<ul>
+<li>Everyone who loves all animals is loved by someone</li>
+<li>∀x [∀y Animal(y) ⇒ Loves(x,y)] ⇒ [∃y Loves(y,x)]</li>
+</ul>
+<ol>
+<li>Eliminate biconditionals and implications<br>∀x [¬∀y ¬Animal(y) ∨ Loves(x,y)] ∨ [∃y Loves(y,x)]</li>
+<li>Move ¬ inwards: ¬∀x p ≡ ∃x ¬p, ¬ ∃x p ≡ ∀x ¬p<br>∀x [∃y ¬(¬Animal(y) ∨ Loves(x,y))] ∨ [∃y Loves(y,x)]<br>∀x [∃y ¬¬Animal(y) ∧ ¬Loves(x,y)] ∨ [∃y Loves(y,x)]<br>∀x [∃y Animal(y) ∧ ¬Loves(x,y)] ∨ [∃y Loves(y,x)]</li>
+<li>Standardize variables: each quantifier should use a different one<br>∀x [∃y Animal(y) ∧ ¬Loves(x,y)] ∨ [∃z Loves(z,x)]<br>3.</li>
+<li>Skolemize: a more general form of existential instantiation<br>Each existential variable is replaced by a Skolem function of the enclosing universally quantified variables<br>∀x [Animal(F(x)) ∧ ¬Loves(x,F(x))] ∨ Loves(G(x),x)</li>
+<li>Drop universal quantifiers<br>[Animal(F(x)) ∧ ¬Loves(x,F(x))] ∨ Loves(G(x),x)</li>
+<li>Distribute ∨ over ∧<br>[Animal(F(x)) ∨ Loves(G(x),x)] ∧ [¬Loves(x,F(x)) ∨ Loves(G(x),x)]</li>
+</ol>
+<p>First-order logic   </p>
+<ul>
+<li>objects and relations are semantic</li>
+<li>syntax: constants, functions, predicates, equality, quantifiers</li>
+<li>Increased expressive power: sufficient to define wumpus world</li>
+</ul>
+<h2 id="Reference">Reference</h2><ul>
+<li>Jane Hsu 上課講義</li>
+<li>Artificial Intelligence: A Modern Approach</li>
+<li><a href="http://aima.cs.berkeley.edu/instructors.html" target="_blank" rel="external">http://aima.cs.berkeley.edu/instructors.html</a></li>
+<li><a href="http://www.cs.ubc.ca/~hkhosrav/ai/310-2011.html" target="_blank" rel="external">http://www.cs.ubc.ca/~hkhosrav/ai/310-2011.html</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Artificial_Intelligence" target="_blank" rel="external">https://en.wikibooks.org/wiki/Artificial_Intelligence</a></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/economics/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/gcc-usage/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-02-25 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/artificial-intelligence/">artificial intelligence<span>1</span></a></li> <li><a href="/tags/筆記/">筆記<span>11</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>

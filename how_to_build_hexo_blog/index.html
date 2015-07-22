@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用hexo建立一個部落格 | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="用hexo建立一個部落格"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 用hexo建立一個部落格</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h2 id="簡介">簡介</h2><p>hexo是一個可以使用<a href="http://markdown.tw/" target="_blank" rel="external">markdown</a>語法產生靜態頁面的部落格工具。<br>可以配合github快速建立一個部落格。<br><a id="more"></a><br>安裝環境：linux(ubuntu12.4)</p>
+<h3 id="安裝nvm和hexo">安裝nvm和hexo</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nvm   </span><br><span class="line">sudo nvm install hexo -g</span><br><span class="line"><span class="code">```</span>       </span><br><span class="line"> </span><br><span class="line"><span class="strong">**可能會遇到的問題**</span>:[<span class="link_label">node或nvm版本過低</span>](<span class="link_url">http://stackoverflow.com/a/19584407/2678970</span>) </span><br><span class="line"><span class="header">###初始化hexo</span></span><br><span class="line">&gt;hexo init [folder]</span><br><span class="line"> </span><br><span class="line">若不加\[folder\]則在當前目錄 </span><br><span class="line"><span class="header">###常用命令</span></span><br></pre></td></tr></table></figure>
+<p>hexo n<br>hexo new [layout] [title]<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Layout |<span class="string"> 存放資料夾 </span>|<span class="string"> 格式 </span>|<span class="string"> 範例 </span><br><span class="line">-------</span>|<span class="string">----------</span>|<span class="string">---------</span>|<span class="string">-------</span><br><span class="line">post (預設) </span>|<span class="string"> source/_posts </span>|<span class="string"> 動態頁面 </span>|<span class="string"> source/_posts/new-post.md</span><br><span class="line">page </span>|<span class="string"> source </span>|<span class="string"> 靜態頁面 </span>|<span class="string"> source/new-page/index.html</span><br><span class="line">draft </span>|<span class="string"> source/_drafts </span>|<span class="string"> 草稿 </span>|<span class="string"> source/_drafts/new-draft.md</span><br><span class="line">  </span><br><span class="line">靜態頁面用於不常更改，不希望受theme影響的頁面  </span><br><span class="line">.md格式代表使用markdown語法</span></span><br></pre></td></tr></table></figure></p>
+<p>hexo g (= hexo generate)</p>
+<h1 id="用於建造網頁的時候，hexo會將markdown格式編譯成html格式">用於建造網頁的時候，hexo會將markdown格式編譯成html格式</h1><p>hexo g —watch  </p>
+<h1 id="使用此命令後，重開hexo，可以使hexo偵測檔案變更，並自動generate">使用此命令後，重開hexo，可以使hexo偵測檔案變更，並自動generate</h1><p>hexo s (= hexo server)</p>
+<h1 id="在本地預覽網站_-_預設在http://localhost:4000/">在本地預覽網站 - 預設在<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></h1><p>hexo s -d</p>
+<h1 id="在預覽的時候同時看到在草稿的文章">在預覽的時候同時看到在草稿的文章</h1><p>hexo d (hexo deploy) </p>
+<h1 id="發佈網站至設定的網址，網站會真正更新">發佈網站至設定的網址，網站會真正更新</h1><p>hexo g -d      </p>
+<h1 id="先generate再deploy">先generate再deploy</h1><p>hexo publish [filename] (= hexo p [filename])</p>
+<h1 id="將檔案(從草稿)移至/post">將檔案(從草稿)移至/post</h1><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">##設定檔更改</span></span><br><span class="line">於初始化資料夾中的`_config.yml`   </span><br><span class="line">此為YAML格式，不可使用tab字元</span><br><span class="line"></span><br><span class="line">僅列出重要的設定，[全部設定內容](http://ibruce.info/2013/11/22/hexo-your-blog/)  </span><br><span class="line"></span><br><span class="line"><span class="comment">###Site</span></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>title<span class="keyword">*</span><span class="keyword">*</span> 部落格標題  </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>subtitle<span class="keyword">*</span><span class="keyword">*</span> 副標題  </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>description<span class="keyword">*</span><span class="keyword">*</span> 關於此部落格</span><br><span class="line"><span class="comment">###URL</span></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>url<span class="keyword">*</span><span class="keyword">*</span> 你的部落格網址  </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>permalink<span class="keyword">*</span><span class="keyword">*</span> 文章的子網址格式，預設為:year/:month/:day/:title/  [參考變數名](http://hexo.io/docs/permalinks.html)  </span><br><span class="line"><span class="comment">###Writing</span></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>new_post_name<span class="keyword">*</span><span class="keyword">*</span> 新建立的post名稱格式，個人使用:year:month:day:title.md  </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>auto_spacing<span class="keyword">*</span><span class="keyword">*</span> 在亞州文字和西方文字之間加上空白  </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>highlight<span class="keyword">*</span><span class="keyword">*</span> 程式的高亮加註</span><br><span class="line"><span class="comment">###Archives</span></span><br><span class="line">開啟/關閉 archive, category, tag 的換頁功能   </span><br><span class="line"><span class="comment">###Pagination</span></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>per\_page<span class="keyword">*</span><span class="keyword">*</span> 一頁幾篇文章(0 = 不分頁)</span><br><span class="line"><span class="comment">### Markdown  </span></span><br><span class="line">hexo markdown parser 支援 github 語法(GitHub Flavored Markdown)   </span><br><span class="line"><span class="variable">&lt;https://help.github.com/articles/github-flavored-markdown/&gt;</span>  </span><br><span class="line"><span class="comment">###Extensions</span></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>theme<span class="keyword">*</span><span class="keyword">*</span> 主題名稱</span><br><span class="line"><span class="comment">###Deploy</span></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>type<span class="keyword">*</span><span class="keyword">*</span>: 發佈的目標格式，目前使用github  </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>repository<span class="keyword">*</span><span class="keyword">*</span>: git<span class="comment">@github.com: [github帳號]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##主題</span></span><br><span class="line"><span class="comment">###套用主題(pacman)</span></span><br><span class="line">&gt;git clone git<span class="comment">@github.com:A-limon/pacman.git themes/pacman  </span></span><br><span class="line"></span><br><span class="line">同時_config.yml也要更新</span><br><span class="line">&gt; theme: pacman  </span><br><span class="line"></span><br><span class="line">註：pacman已停止更新，現在有[jacman](http://wuchong.me/blog/2014/11/20/how-to-use-jacman/)替代</span><br><span class="line"></span><br><span class="line"><span class="comment">###更新主題</span></span><br><span class="line">```cd themes/pacman  </span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>需先備份設定檔<code>_config.yml</code>  </p>
+<h3 id="修改主題">修改主題</h3><p>自行修改主題後, 要先清除原有主題，style.css才會正確<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  </span><br><span class="line">hexo generate  </span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">## 擴充功能</span><br><span class="line"></span><br><span class="line">###為Hexo增加Google Analytics</span><br><span class="line">在Analytics中添加自己的網站域名，獲得JS追蹤代碼。  </span><br><span class="line">把JS代碼Copy到Hexo的after_footer文件中，after_footer是Hexo主題頁腳的JS代碼文檔，具體位置在`/themes/[themename]/layout/_partial ` </span><br><span class="line">然後重新生成、發佈Hexo。數據統計不會立即生效，需要等待幾個小時，之後登錄Google Analytics就可以查看你的Blog的數據</span><br><span class="line"></span><br><span class="line">### 瀏覽量  </span><br><span class="line"><span class="tag">&lt;<span class="title">http:</span>//<span class="attribute">crescentmoon.info</span>/<span class="attribute">2014</span>/<span class="attribute">12</span>/<span class="attribute">11</span>/<span class="attribute">popular-widget</span>/&gt;</span>  </span><br><span class="line">在pacman的主題下，after_footer.ejs 需要修改成：</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line"><span class="comment">&lt;!--page counter part--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addCount</span> <span class="params">(Counter)</span> </span>&#123;</span><br><span class="line">        url=$(<span class="string">'.mytitle'</span>).attr(<span class="string">'href'</span>).trim();</span><br><span class="line">        title = $(<span class="string">'.article-title'</span>).text().trim();</span><br><span class="line">        <span class="keyword">var</span> query=<span class="keyword">new</span> AV.Query(Counter);</span><br><span class="line">        <span class="comment">//use url as unique idnetfication</span></span><br><span class="line">        query.equalTo(<span class="string">"url"</span>,url);</span><br><span class="line">        query.find(&#123;</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span><span class="params">(results)</span></span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(results.length&gt;<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">var</span> counter=results[<span class="number">0</span>];</span><br><span class="line">                    counter.fetchWhenSave(<span class="literal">true</span>); <span class="comment">//get recent result</span></span><br><span class="line">                    counter.increment(<span class="string">"time"</span>);</span><br><span class="line">                    counter.save();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">var</span> newcounter=<span class="keyword">new</span> Counter();</span><br><span class="line">                    newcounter.<span class="keyword">set</span>(<span class="string">"title"</span>,title);</span><br><span class="line">                    newcounter.<span class="keyword">set</span>(<span class="string">"url"</span>,url);</span><br><span class="line">                    newcounter.<span class="keyword">set</span>(<span class="string">"time"</span>,<span class="number">1</span>);</span><br><span class="line">                    newcounter.save(<span class="literal">null</span>,&#123;</span><br><span class="line">                        success: <span class="function"><span class="keyword">function</span><span class="params">(newcounter)</span></span>&#123;</span><br><span class="line">                        <span class="comment">//alert('New object created');</span></span><br><span class="line">                        &#125;,</span><br><span class="line">                        error: <span class="function"><span class="keyword">function</span><span class="params">(newcounter,error)</span></span>&#123;</span><br><span class="line">                        alert(<span class="string">'Failed to create'</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                        &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            error: <span class="function"><span class="keyword">function</span><span class="params">(error)</span></span>&#123;</span><br><span class="line">                <span class="comment">//find null is not a error</span></span><br><span class="line">                alert(<span class="string">'Error:'</span>+error.code+<span class="string">" "</span>+error.message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line">$(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> Counter=AV.Object.extend(<span class="string">"Counter"</span>);</span><br><span class="line">        <span class="comment">//only increse visit counting when intering a page</span></span><br><span class="line">        <span class="keyword">if</span> ($(<span class="string">'.article-title'</span>).length == <span class="number">1</span>)</span><br><span class="line">           addCount(Counter);</span><br><span class="line">        <span class="keyword">var</span> query=<span class="keyword">new</span> AV.Query(Counter);</span><br><span class="line">        query.descending(<span class="string">"time"</span>);</span><br><span class="line">        <span class="comment">// the sum of popular posts</span></span><br><span class="line">        query.limit(<span class="number">10</span>); </span><br><span class="line">        query.find(&#123;</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span><span class="params">(results)</span></span>&#123;</span><br><span class="line">				</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;results.length;i++)    </span><br><span class="line">                    &#123;</span><br><span class="line">						alert(results[i]);</span><br><span class="line">                        <span class="keyword">var</span> counter=results[i];</span><br><span class="line">                        title=counter.<span class="keyword">get</span>(<span class="string">"title"</span>);</span><br><span class="line">                        url=counter.<span class="keyword">get</span>(<span class="string">"url"</span>);</span><br><span class="line">                        time=counter.<span class="keyword">get</span>(<span class="string">"time"</span>);</span><br><span class="line">                        <span class="comment">// add to the popularlist widget</span></span><br><span class="line">                        showcontent=title+<span class="string">" ("</span>+time+<span class="string">")"</span>;</span><br><span class="line">                        <span class="comment">//notice the "" in href</span></span><br><span class="line">                        $(<span class="string">'.popularlist'</span>).append(<span class="string">'&lt;li&gt;&lt;a href="'</span>+url+<span class="string">'"&gt;'</span>+showcontent+<span class="string">'&lt;/a&gt;&lt;/li&gt;'</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">            error: <span class="function"><span class="keyword">function</span><span class="params">(error)</span></span>&#123;</span><br><span class="line">                alert(<span class="string">"Error:"</span>+error.code+<span class="string">" "</span>+error.message);</span><br><span class="line">            &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">        &#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="將留言區改成disqus">將留言區改成disqus</h3><p><a href="http://mwshen.info/2014/11/14/Hexo-pacman%E4%B8%BB%E9%A2%98%E5%90%AF%E7%94%A8disqus/" target="_blank" rel="external">http://mwshen.info/2014/11/14/Hexo-pacman%E4%B8%BB%E9%A2%98%E5%90%AF%E7%94%A8disqus/</a></p>
+<h3 id="回到頂部功能">回到頂部功能</h3><p><a href="http://wsgzao.github.io/post/hexo-scroll-to-top/" target="_blank" rel="external">http://wsgzao.github.io/post/hexo-scroll-to-top/</a></p>
+<h3 id="數學公式">數學公式</h3><p>使用mathjax(適用tex語法)<br><a href="http://catx.me/2014/03/09/hexo-mathjax-plugin/" target="_blank" rel="external">http://catx.me/2014/03/09/hexo-mathjax-plugin/</a></p>
+<p>需要注意的是若有兩個底線<code>_</code>，會變斜體，這是原有的markdown 格式<br>解決方法：用<br>{<br>%<br>math-block<br>%<br>}<br>和<br>{<br>%<br>endmath-block<br>%<br>}<br>包覆數學公式</p>
+<p>小缺點是會使網頁載入速度變慢(公式的圖片是即時取得的)</p>
+<h3 id="圖床">圖床</h3><ul>
+<li>網頁端：在hexo的source資料夾建立img資料夾，使用時 <code>[](/img/...)</code></li>
+<li>imgur, google, dropbox…</li>
+</ul>
+<h3 id="hexo3">hexo3</h3><p>升級至hexo3的差異<br>_config.yml 的 github→git</p>
+<h2 id="Reference">Reference</h2><ul>
+<li>最詳細的hexo懶人包 <a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">http://ibruce.info/2013/11/22/hexo-your-blog/</a></li>
+<li>提供一些Bug的解決方案 <a href="http://johnnyfee.github.io/2014/03/22/hexo/" target="_blank" rel="external">http://johnnyfee.github.io/2014/03/22/hexo/</a></li>
+<li>Markdown寫作淺談 <a href="http://jianshu.io/p/PpDNMG" target="_blank" rel="external">http://jianshu.io/p/PpDNMG</a></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/20140524big_number/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+          <li class="next disabled"><a>下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-05-22 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/記錄/">記錄<span>5</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/blog/">blog<span>1</span></a></li> <li><a href="/tags/hexo/">hexo<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="<%- config.root %>js/jquery.imagesloaded.min.js"></script>
+<script src="<%- config.root %>js/gallery.js"></script>
+<script src="<%- config.root %>js/bootstrap.min.js"></script>
+<script src="<%- config.root %>js/main.js"></script>
+
+<% if (theme.duoshuo_shortname) { %>
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: '<%= theme.duoshuo_shortname %>' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<% } else if (config.disqus_shortname){ %>
+<script type="text/javascript">
+var disqus_shortname = '<%= config.disqus_shortname %>';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+<% } %>
+<% if (theme.fancybox){ %>
+<link rel="stylesheet" href="<%- config.root %>fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="<%- config.root %>fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<% } %>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+
+
+</body>
+   </html>
