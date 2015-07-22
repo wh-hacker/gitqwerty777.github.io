@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>大數運算的函式庫—BigNumber.h | QWERTY</title>
+  <title>mapreduce介紹 | QWERTY</title>
   <meta name="author" content="HCL">
   
   <meta name="description" content="Programming, Computer Science, Note">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="大數運算的函式庫—BigNumber.h"/>
+  <meta property="og:title" content="mapreduce介紹"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> 大數運算的函式庫—BigNumber.h</h1>
+			<h1> mapreduce介紹</h1>
 		</div>		
 	
 
@@ -119,10 +119,8 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>因為在許多online judge的題目中，大數運算是很常見的題型之一， 所以就寫了一個可以簡單進行大數運算的函式庫。<br><a id="more"></a></p>
-<h4 id="內容">內容</h4><p>目前只支援整數<br>四則運算(除法只算到整數)<br>可直接比較，賦值<br>從各種type轉換成class BigNumber，如int, long, string…<br>以string形式輸出    </p>
-<h3 id="BigNumber-h">BigNumber.h</h3><figure class="highlight nimrod"><figcaption><span>Class BigNumber \(only public function)</span><a href="https://github.com/gitqwerty777/BigNumber/blob/master/test.h" target="_blank" rel="external">BigNumber.h</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;class T&gt; <span class="type">BigNumber</span>(T);</span><br><span class="line"><span class="type">BigNumber</span> operator+(<span class="type">BigNumber</span>);</span><br><span class="line"><span class="type">BigNumber</span> operator-(<span class="type">BigNumber</span>);</span><br><span class="line"><span class="type">BigNumber</span> operator*(<span class="type">BigNumber</span>);</span><br><span class="line"><span class="type">BigNumber</span> operator/(<span class="type">BigNumber</span>);</span><br><span class="line"><span class="keyword">template</span> &lt;class T&gt; <span class="type">void</span> operator=(T);// assign <span class="type">any</span> value into <span class="type">BigNumber</span> structure</span><br><span class="line"><span class="type">bool</span> operator&gt;(<span class="type">BigNumber</span>&amp;);</span><br><span class="line"><span class="type">bool</span> operator&gt;=(<span class="type">BigNumber</span>&amp;);</span><br><span class="line"><span class="type">bool</span> operator==(<span class="type">BigNumber</span>&amp;);</span><br><span class="line"><span class="type">bool</span> operator&lt;(<span class="type">BigNumber</span>&amp;);</span><br><span class="line"><span class="type">string</span> get_bignumber_string();//get <span class="type">Bignumber</span> <span class="keyword">in</span> <span class="type">string</span> <span class="keyword">type</span></span><br><span class="line"><span class="type">void</span> print_number();</span><br><span class="line"><span class="type">void</span> print_number_oneline();//print <span class="keyword">in</span> a line</span><br></pre></td></tr></table></figure>
-<h3 id="測試程式">測試程式</h3><figure class="highlight cpp"><figcaption><span>test_bignumber.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> "test.h"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> str_a[<span class="number">1000</span>], str_b[<span class="number">1000</span>];</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s %s"</span>, str_a, str_b) == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="function">intxx <span class="title">a</span><span class="params">(str_a)</span></span>;</span><br><span class="line">        <span class="function">intxx <span class="title">b</span><span class="params">(str_b)</span></span>;</span><br><span class="line"></span><br><span class="line">        intxx c, d, e, f;</span><br><span class="line"></span><br><span class="line">        c = a + b;</span><br><span class="line">        c.print_number_oneline();</span><br><span class="line">        d = a - b;</span><br><span class="line">        d.print_number_oneline();</span><br><span class="line">        e = a * b;</span><br><span class="line">        e.print_number_oneline();</span><br><span class="line">        f = a / b;</span><br><span class="line">        f.print_number_oneline();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>	  
+	    <p><iframe src="//www.slideshare.net/slideshow/embed_code/45174278" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/wowow1231/introduction-of-mapreduce-45174278" title="Introduction of Mapreduce" target="_blank">Introduction of Mapreduce</a> </strong> from <strong><a href="//www.slideshare.net/wowow1231" target="_blank">Hung-Cheng Lin</a></strong> </div></p>
+	  
 	</div>
 
 	<div>
@@ -131,13 +129,13 @@
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/20140616how-to-install-ubuntu-vmware-tool/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+    	<li class="prev"><a href="/computer-architecture1/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/how_to_build_hexo_blog/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/regular-expression/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -168,7 +166,7 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2014-05-24 
+	2014-09-23 
 	</div>
 	
 
@@ -181,7 +179,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/大數/">大數<span>1</span></a></li> <li><a href="/tags/程式/">程式<span>2</span></a></li>
+  <li><a href="/tags/distributed-system/">distributed system<span>1</span></a></li> <li><a href="/tags/mapreduce/">mapreduce<span>1</span></a></li> <li><a href="/tags/筆記/">筆記<span>11</span></a></li>
     </ul>
 	</div>
 		

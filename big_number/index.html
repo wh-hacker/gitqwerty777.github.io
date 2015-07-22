@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>在Ubuntu虛擬機上安裝vmware_tool | QWERTY</title>
+  <title>大數運算的函式庫—BigNumber.h | QWERTY</title>
   <meta name="author" content="HCL">
   
   <meta name="description" content="Programming, Computer Science, Note">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="在Ubuntu虛擬機上安裝vmware_tool"/>
+  <meta property="og:title" content="大數運算的函式庫—BigNumber.h"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> 在Ubuntu虛擬機上安裝vmware_tool</h1>
+			<h1> 大數運算的函式庫—BigNumber.h</h1>
 		</div>		
 	
 
@@ -119,13 +119,10 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>VMware-tools是Vmware提供，用來增強虛擬顯卡和硬盤性能、以及同步虛擬機與主機時鐘的驅動程序<br><a id="more"></a></p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> /media/VMware Tools</span><br><span class="line">tar -zxvf [].tar.gz -C [<span class="keyword">file</span> path]</span><br><span class="line"><span class="keyword">cd</span> [<span class="keyword">file</span> path]</span><br><span class="line">sudo ./vmware-install.<span class="keyword">pl</span></span><br></pre></td></tr></table></figure>
-<h3 id="另解">另解</h3><pre><code>sudo apt-<span class="built_in">get</span> install <span class="keyword">open</span>-<span class="keyword">vm</span>-tools 
-</code></pre><p>選擇性安裝 </p>
-<pre><code>sudo apt-<span class="built_in">get</span> install <span class="keyword">open</span>-<span class="keyword">vm</span>-dkms   
-sudo apt-<span class="built_in">get</span> install <span class="keyword">open</span>-<span class="keyword">vm</span>-toolbox
-</code></pre>	  
+	    <p>因為在許多online judge的題目中，大數運算是很常見的題型之一， 所以就寫了一個可以簡單進行大數運算的函式庫。<br><a id="more"></a></p>
+<h4 id="內容">內容</h4><p>目前只支援整數<br>四則運算(除法只算到整數)<br>可直接比較，賦值<br>從各種type轉換成class BigNumber，如int, long, string…<br>以string形式輸出    </p>
+<h3 id="BigNumber-h">BigNumber.h</h3><figure class="highlight nimrod"><figcaption><span>Class BigNumber \(only public function)</span><a href="https://github.com/gitqwerty777/BigNumber/blob/master/test.h" target="_blank" rel="external">BigNumber.h</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;class T&gt; <span class="type">BigNumber</span>(T);</span><br><span class="line"><span class="type">BigNumber</span> operator+(<span class="type">BigNumber</span>);</span><br><span class="line"><span class="type">BigNumber</span> operator-(<span class="type">BigNumber</span>);</span><br><span class="line"><span class="type">BigNumber</span> operator*(<span class="type">BigNumber</span>);</span><br><span class="line"><span class="type">BigNumber</span> operator/(<span class="type">BigNumber</span>);</span><br><span class="line"><span class="keyword">template</span> &lt;class T&gt; <span class="type">void</span> operator=(T);// assign <span class="type">any</span> value into <span class="type">BigNumber</span> structure</span><br><span class="line"><span class="type">bool</span> operator&gt;(<span class="type">BigNumber</span>&amp;);</span><br><span class="line"><span class="type">bool</span> operator&gt;=(<span class="type">BigNumber</span>&amp;);</span><br><span class="line"><span class="type">bool</span> operator==(<span class="type">BigNumber</span>&amp;);</span><br><span class="line"><span class="type">bool</span> operator&lt;(<span class="type">BigNumber</span>&amp;);</span><br><span class="line"><span class="type">string</span> get_bignumber_string();//get <span class="type">Bignumber</span> <span class="keyword">in</span> <span class="type">string</span> <span class="keyword">type</span></span><br><span class="line"><span class="type">void</span> print_number();</span><br><span class="line"><span class="type">void</span> print_number_oneline();//print <span class="keyword">in</span> a line</span><br></pre></td></tr></table></figure>
+<h3 id="測試程式">測試程式</h3><figure class="highlight cpp"><figcaption><span>test_bignumber.cpp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> "test.h"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> str_a[<span class="number">1000</span>], str_b[<span class="number">1000</span>];</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s %s"</span>, str_a, str_b) == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="function">intxx <span class="title">a</span><span class="params">(str_a)</span></span>;</span><br><span class="line">        <span class="function">intxx <span class="title">b</span><span class="params">(str_b)</span></span>;</span><br><span class="line"></span><br><span class="line">        intxx c, d, e, f;</span><br><span class="line"></span><br><span class="line">        c = a + b;</span><br><span class="line">        c.print_number_oneline();</span><br><span class="line">        d = a - b;</span><br><span class="line">        d.print_number_oneline();</span><br><span class="line">        e = a * b;</span><br><span class="line">        e.print_number_oneline();</span><br><span class="line">        f = a / b;</span><br><span class="line">        f.print_number_oneline();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>	  
 	</div>
 
 	<div>
@@ -134,13 +131,13 @@ sudo apt-<span class="built_in">get</span> install <span class="keyword">open</s
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/20140616install-boshiamy-in-linux-by-fcitx/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+    	<li class="prev"><a href="/how-to-install-ubuntu-vmware-tool/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/20140524big_number/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/how_to_build_hexo_blog/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -171,23 +168,12 @@ sudo apt-<span class="built_in">get</span> install <span class="keyword">open</s
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2014-06-16 
+	2014-05-24 
 	</div>
 	
 
 	<!-- categories -->
     
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
-    <ul id="categorys" class="tag_box list-unstyled collapse in">
-          
-  <li>
-    <li><a href="/categories/記錄/">記錄<span>5</span></a></li>
-  </li>
-
-    </ul>
-	</div>
-	
 
 	<!-- tags -->
 	
@@ -195,7 +181,7 @@ sudo apt-<span class="built_in">get</span> install <span class="keyword">open</s
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/linux/">linux<span>5</span></a></li> <li><a href="/tags/vmware-tool/">vmware_tool<span>1</span></a></li> <li><a href="/tags/虛擬機器/">虛擬機器<span>1</span></a></li>
+  <li><a href="/tags/大數/">大數<span>1</span></a></li> <li><a href="/tags/程式/">程式<span>2</span></a></li>
     </ul>
 	</div>
 		

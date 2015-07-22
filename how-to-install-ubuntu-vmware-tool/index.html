@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>在Linux上使用fcitx安裝嘸蝦米 | QWERTY</title>
+  <title>在Ubuntu虛擬機上安裝vmware_tool | QWERTY</title>
   <meta name="author" content="HCL">
   
   <meta name="description" content="Programming, Computer Science, Note">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="在Linux上使用fcitx安裝嘸蝦米"/>
+  <meta property="og:title" content="在Ubuntu虛擬機上安裝vmware_tool"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> 在Linux上使用fcitx安裝嘸蝦米</h1>
+			<h1> 在Ubuntu虛擬機上安裝vmware_tool</h1>
 		</div>		
 	
 
@@ -119,14 +119,13 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>之前用過gcin, scim等輸入工具，發現對嘸蝦米的支援十分有限。fcitx預設即有嘸蝦米碼表，較為方便，安裝也比較簡單。<br><a id="more"></a></p>
-<h3 id="安裝fcitx輸入工具">安裝fcitx輸入工具</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install im-<span class="keyword">switch</span> fcitx</span><br></pre></td></tr></table></figure>
-<h4 id="安裝嘸蝦米於fcitx">安裝嘸蝦米於fcitx</h4><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install fcitx-boshiamy</span><br></pre></td></tr></table></figure>
-<h4 id="設為預設值">設為預設值</h4><p>使用im-switch將fcitx設為預設輸入法<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo im-<span class="keyword">switch</span> -s fcitx</span><br></pre></td></tr></table></figure></p>
-<h3 id="調整fcitx設定：fcitx設定-&gt;附加組件配置-&gt;碼表-&gt;boshiamy-config">調整fcitx設定：fcitx設定-&gt;附加組件配置-&gt;碼表-&gt;boshiamy.config</h3><h4 id="模糊鍵">模糊鍵</h4><p>『使用模糊鍵』不勾<br>12.04版 - 此鍵預設被打勾，並定為z鍵，導致所有含z碼的字都出不來</p>
-<h4 id="使用符號">使用符號</h4><p>要用嘸蝦米預設符號:「忽略標點」打勾</p>
-<h4 id="拼音查蝦米碼">拼音查蝦米碼</h4><p>在拼音鍵打勾，最好選 `（Esc下的那鍵），才不影響輸入，然後用 -, = 兩鍵翻頁。<br>（至於輸入的字要查發音則是屬於另一個功能，在剛按完空白鍵輸入後，就按Ctrl+Alt+E，即可看見發音，但缺點是沒有四聲）</p>
-	  
+	    <p>VMware-tools是Vmware提供，用來增強虛擬顯卡和硬盤性能、以及同步虛擬機與主機時鐘的驅動程序<br><a id="more"></a></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> /media/VMware Tools</span><br><span class="line">tar -zxvf [].tar.gz -C [<span class="keyword">file</span> path]</span><br><span class="line"><span class="keyword">cd</span> [<span class="keyword">file</span> path]</span><br><span class="line">sudo ./vmware-install.<span class="keyword">pl</span></span><br></pre></td></tr></table></figure>
+<h3 id="另解">另解</h3><pre><code>sudo apt-<span class="built_in">get</span> install <span class="keyword">open</span>-<span class="keyword">vm</span>-tools 
+</code></pre><p>選擇性安裝 </p>
+<pre><code>sudo apt-<span class="built_in">get</span> install <span class="keyword">open</span>-<span class="keyword">vm</span>-dkms   
+sudo apt-<span class="built_in">get</span> install <span class="keyword">open</span>-<span class="keyword">vm</span>-toolbox
+</code></pre>	  
 	</div>
 
 	<div>
@@ -135,13 +134,13 @@
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/linux-tips/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+    	<li class="prev"><a href="/install-boshiamy-in-linux-by-fcitx/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/20140616how-to-install-ubuntu-vmware-tool/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/big_number/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -178,6 +177,17 @@
 
 	<!-- categories -->
     
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/記錄/">記錄<span>5</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
 
 	<!-- tags -->
 	
@@ -185,7 +195,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/fcitx/">fcitx<span>1</span></a></li> <li><a href="/tags/linux/">linux<span>5</span></a></li> <li><a href="/tags/嘸蝦米/">嘸蝦米<span>1</span></a></li> <li><a href="/tags/記錄/">記錄<span>2</span></a></li> <li><a href="/tags/輸入法/">輸入法<span>1</span></a></li>
+  <li><a href="/tags/linux/">linux<span>5</span></a></li> <li><a href="/tags/vmware-tool/">vmware_tool<span>1</span></a></li> <li><a href="/tags/虛擬機器/">虛擬機器<span>1</span></a></li>
     </ul>
 	</div>
 		
