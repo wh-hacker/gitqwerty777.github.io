@@ -124,7 +124,7 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <h2 id="Introduction">Introduction</h2><h3 id="學習AI的用處">學習AI的用處</h3><ol>
+	    <h2 id="Introduction">Introduction</h2><h3 id="學習 AI 的用處">學習 AI 的用處</h3><ol>
 <li>make computers more useful (to human<br>beings)<br>電腦愈聰明，對人類愈有用(Win more)</li>
 <li>understand the principles that make intelli-<br>gence possible<br>電腦學得的技巧讓人學習(educational)</li>
 </ol>
@@ -156,7 +156,7 @@
 <li>From solving games, to understand intelligence, and then to have fun.</li>
 </ul>
 <h3 id="重大突破">重大突破</h3><p>1912 - End-Game chess playing machine<br>~1970 - Brute Force(by computer)<br>1975 - Alpha-Beta pruning by Knuth and Moore<br>1993 - Monte Carlo  </p>
-<h3 id="無關：核心知識">無關：核心知識</h3><p>用少部分的核心知識(要記得的事物)推得大多數的知識<br>Ex. 背九九乘法表推得所有多位數乘法<br>建構式數學(X)  </p>
+<h3 id="無關：核心知識">無關：核心知識 </h3><p> 用少部分的核心知識 (要記得的事物) 推得大多數的知識 <br>Ex. 背九九乘法表推得所有多位數乘法<br> 建構式數學(X)  </p>
 <h3 id="分類">分類</h3><p>By number of players   </p>
 <ul>
 <li>Single player games<ul>
@@ -238,7 +238,7 @@
 </ul>
 </li>
 <li>Depth of a solution <code>d</code><ul>
-<li>最短深度, <code>D</code> 為最長深度. Root深度為0</li>
+<li>最短深度, <code>D</code> 為最長深度. Root 深度為 0</li>
 </ul>
 </li>
 <li>assume <code>b</code> and <code>e</code> are average constant number, <code>e</code> &gt;= <code>b</code>(兩個點之間可能有多條線)</li>
@@ -265,7 +265,7 @@
 <li>稍微記憶(不拜訪太多次)</li>
 <li>a state will be eventually visited by limited number of times</li>
 </ul>
-<h3 id="BFS(Breadth-First_search)_Search">BFS(Breadth-First search) Search</h3><p><img src="/img/TCG/mrf0Egx.png" alt=""><br>deeper(N): 回傳與N相鄰的點<br>record parent state and backtrace to Find the path </p>
+<h3 id="BFS(Breadth-First_search)_Search">BFS(Breadth-First search) Search</h3><p><img src="/img/TCG/mrf0Egx.png" alt=""><br>deeper(N): 回傳與 N 相鄰的點<br>record parent state and backtrace to Find the path </p>
 <p>Space complexity: $O(b^d)$ → Too big!<br>Time complexity: $O(b^{d-1} * e)$<br>-&gt; costs O(e) to find deeper(N), at most check b^(d-1) times(deeper(leaf) do not return new node)</p>
 <ul>
 <li>Open list: nodes that are in the queue(candidate nodes)</li>
@@ -319,7 +319,7 @@
 <li>read file in random order(disk spinning)</li>
 </ul>
 </li>
-<li>系統為資源和效率(時間、空間、錢)的trade-off</li>
+<li>系統為資源和效率 (時間、空間、錢) 的 trade-off</li>
 </ul>
 <h3 id="DFS">DFS</h3><p><img src="/img/TCG/65RmOgp.png" alt="DFSalgo">  </p>
 <ul>
@@ -327,8 +327,8 @@
 <li>If first choose the branch include the goal, find answer quick</li>
 <li>get out of long and wrong branches ASAP!</li>
 <li>implement <code>next(current, N)</code><ul>
-<li>作用：列舉出N的所有鄰居</li>
-<li>回傳下一個N的鄰居，目前列舉到current</li>
+<li>作用：列舉出 N 的所有鄰居</li>
+<li>回傳下一個 N 的鄰居，目前列舉到 current</li>
 <li>next(null, N) -&gt; return first neighbor of N</li>
 </ul>
 </li>
@@ -367,9 +367,9 @@
 <p>Deep First ID(DFID)     </p>
 <ul>
 <li>限制深度 <ul>
-<li>找到解立即return <img src="/img/TCG/9X2ZiRm.png" alt=""></li>
+<li>找到解立即 return <img src="/img/TCG/9X2ZiRm.png" alt=""></li>
 <li><img src="/img/TCG/gmD51AT.png" alt=""></li>
-<li>time complexity using 二項式定理 <img src="/img/TCG/IfDEwFh.png" alt=""> <img src="/img/TCG/d0m27cU.png" alt=""><ul>
+<li>time complexity using 二項式定理 <img src="/img/TCG/IfDEwFh.png" alt=""> <img src="/img/TCG/d0m27cU.png"alt=""><ul>
 <li>M(e, d) ~ $O(e^d)$ when e is sufficiently large</li>
 <li>→ no so much time penalty to use ID when e is big enough</li>
 </ul>
@@ -417,7 +417,7 @@
 </ul>
 <h3 id="Heuristic(啟發式)_search">Heuristic(啟發式) search</h3><p>Definition: criteria, methods, or principles for deciding which is the most effective to achieve some goal<br>→ By 經驗法則(so not always have optimal solution)  </p>
 <ul>
-<li>先走最有可能通往答案的state(good move ordering)<ul>
+<li>先走最有可能通往答案的 state(good move ordering)<ul>
 <li>best-first algorithm : like greedy   </li>
 </ul>
 </li>
@@ -448,18 +448,18 @@
 </ul>
 </li>
 <li>Assume all costs are positive, so there is no need to check for falling into a loop  </li>
-<li>cost function所推測的cost不可超過實際的cost，否則不保證找到最佳解<ul>
-<li><strong>if h() never overestimates the actual cost to the goal</strong> (called admissible可容許), then <strong>A* always finds an optimal solution</strong></li>
+<li>cost function 所推測的 cost 不可超過實際的 cost，否則不保證找到最佳解<ul>
+<li><strong>if h() never overestimates the actual cost to the goal</strong> (called admissible 可容許), then <strong>A* always finds an optimal solution</strong></li>
 <li>證明？</li>
 </ul>
 </li>
 </ul>
 <ol>
 <li>h(n)=0 : A* 等同 BFS</li>
-<li>h(n)&lt;目前節點到結束點的距離 : A* 演算法保證找到最短路徑, h(n)越小, 搜尋深度越深(代表花愈多時間)</li>
-<li>h(n)=目前節點到結束點的距離 : A* 演算法僅會尋找最佳路徑, 並且能快速找到結果(最理想情況)</li>
-<li>h(n)&gt;目前節點到結束點的距離 : 不保證能找到最短路徑, 但計算比較快</li>
-<li>h(n)與g(n)高度相關 : A* 演算法此時成為Best-First Search<br><a href="http://blog.minstrel.idv.tw/2004/12/star-algorithm.html" target="_blank" rel="external">http://blog.minstrel.idv.tw/2004/12/star-algorithm.html</a></li>
+<li>h(n)&lt; 目前節點到結束點的距離 : A* 演算法保證找到最短路徑, h(n)越小, 搜尋深度越深(代表花愈多時間)</li>
+<li>h(n)= 目前節點到結束點的距離 : A* 演算法僅會尋找最佳路徑, 並且能快速找到結果(最理想情況)</li>
+<li>h(n)&gt; 目前節點到結束點的距離 : 不保證能找到最短路徑, 但計算比較快</li>
+<li>h(n)與 g(n)高度相關 : A* 演算法此時成為 Best-First Search<br><a href="http://blog.minstrel.idv.tw/2004/12/star-algorithm.html" target="_blank" rel="external">http://blog.minstrel.idv.tw/2004/12/star-algorithm.html</a></li>
 </ol>
 <p>Question:  </p>
 <ul>
@@ -476,7 +476,7 @@
 </li>
 </ul>
 <p><code>DFS1</code>: Use <code>next1(current,N)</code> find neighbors of N (in the order of low cost to high cost)<br><img src="/img/TCG/csd9mLf.png" alt="dfs1"><br><code>DFS2</code>: Use a priority queue instead of using a stack in <code>DFScost</code><br><img src="/img/TCG/jthjSm8.png" alt="dfs2"><br>It may be costly to maintain a priority queue</p>
-<h3 id="IDA*_=_DFID_+_A*">IDA* = DFID + A*</h3><p>用A*的cost作為DFS的threshold<br><img src="/img/TCG/PJ2bPrX.png" alt=""> </p>
+<h3 id="IDA*_=_DFID_+_A*">IDA* = DFID + A*</h3><p>用 A* 的 cost 作為 DFS 的 threshold<br><img src="/img/TCG/PJ2bPrX.png" alt=""> </p>
 <p>Ex. 15 puzzle<br>all posibilities: $16! \leq 2.1 \times 10^{13}$<br>g(P): the number of moves made so far<br>h(P): <strong>Manhattan distance</strong> between the current board and the goal<br>Manhattan distance from (i, j) to (i’, j’) is |i’ - i| + |j’ - j| (admissible)   </p>
 <h3 id="basic_thought_for_a_problem">basic thought for a problem</h3><p><em>What you should think about before playing a game</em>：</p>
 <ul>
@@ -500,7 +500,7 @@
 </li>
 </ul>
 <p>Can these techniques be applied to two-person game?</p>
-<h3 id="algorithm整理">algorithm整理</h3><table>
+<h3 id="algorithm 整理">algorithm 整理</h3><table>
 <thead>
 <tr>
 <th>Name</th>
@@ -577,7 +577,7 @@
 </ul>
 </li>
 <li>Make use of the fact that computers can memorize lots of patterns<ul>
-<li>使用已經計算過的 pattern 來做出更好、更接近real cost的heuristic function </li>
+<li>使用已經計算過的 pattern 來做出更好、更接近 real cost 的 heuristic function </li>
 </ul>
 </li>
 </ul>
@@ -595,9 +595,9 @@
 <p>Slide a tile never change the parity<br>Proof: skip</p>
 <p>1-MIPS machine solve 15 puzzle problem within 30 CPU minutes in 1985 using IDA* with Manhattan distance heuristic</p>
 <h3 id="Non-additive_pattern_databases">Non-additive pattern databases</h3><ul>
-<li>原本cost funtion為15片個別的distance之和，若能一次計算多片的distance？</li>
-<li>linear conflict: 靠很近不代表步數少(如[2, 1, 3, 4]並不只兩步)<ul>
-<li>有可能移成pattern時，反而使其他片遠離</li>
+<li>原本 cost funtion 為 15 片個別的 distance 之和，若能一次計算多片的 distance？</li>
+<li>linear conflict: 靠很近不代表步數少 (如[2, 1, 3, 4] 並不只兩步)<ul>
+<li>有可能移成 pattern 時，反而使其他片遠離</li>
 <li><img src="/img/TCG/4-1.png" alt="lin conflict"></li>
 </ul>
 </li>
@@ -613,7 +613,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/img/TCG/4-2.png" alt="prefrin"><br>goal fringe: 所選的方塊都和goal的位置一樣<br><img src="/img/TCG/4-3.png" alt="goalfrin"></p>
+<p><img src="/img/TCG/4-2.png" alt="prefrin"><br>goal fringe: 所選的方塊都和 goal 的位置一樣<br><img src="/img/TCG/4-3.png" alt="goalfrin"></p>
 <p>precompute the minimum number of moves(<strong>fringe number</strong>) to make goal fringe.<br>We can solve it since the pattern size is relatively small.</p>
 <ul>
 <li>Pro’s<ul>
@@ -640,7 +640,7 @@
 <ul>
 <li>patterns may not be disjoint, may be overlapping(重複)</li>
 <li>The heuristic function we can use is<ul>
-<li>$h(P_1, P_2, P_3 … ) = max{h(P_1),h(P_2),h(P_3) …}$</li>
+<li>$h(P_1, P_2, P_3 …) = max{h(P_1),h(P_2),h(P_3) …}$</li>
 </ul>
 </li>
 <li>How to make heuristics and the patterns disjoint?</li>
@@ -657,7 +657,7 @@
 </ul>
 </li>
 </ol>
-<p>Refinement:<br>Partition the board into disjoint regions using the tiles in a region of the goal arrangement as a pattern<br><img src="/img/TCG/4-5.png" alt="aabb"><br><strong>找每個region的最佳解，然後只算在此region內的片所移動的步數(空格不算)，作為新定義的fringe number</strong><br>如此一來，就可以將每個region的cost相加而保持admissible</p>
+<p>Refinement:<br>Partition the board into disjoint regions using the tiles in a region of the goal arrangement as a pattern<br><img src="/img/TCG/4-5.png" alt="aabb"><br><strong>找每個 region 的最佳解，然後只算在此 region 內的片所移動的步數 (空格不算)，作為新定義的 fringe number</strong><br> 如此一來，就可以將每個 region 的 cost 相加而保持 admissible</p>
 <h3 id="Disjoint_pattern">Disjoint pattern</h3><p>A heuristic function f() is disjoint with respect to two patterns P1 and P2 if  </p>
 <ol>
 <li>P1 and P2 have no common cells</li>
@@ -742,7 +742,7 @@
 <p><img src="/img/TCG/5-2.png" alt="Hex"></p>
 <p>Proof on exactly one player win<br>Assume there is no winner<br><img src="/img/TCG/5-3.png" alt="block"><br>blue should totally block red at some place -&gt; blue will connect!  </p>
 <p>let R be the set of red cells that can be reached by chains from rightmost column<br>R does not contain a cell of the leftmost column; otherwise we have a contradiction<br>let N(R) be the blue cells that can be reached by chains originated from the rightmost column.<br>N(R) must contain a cell in the top and bottom row , Otherwise, R contains all cells in the First/bottom row, which is a contradiction.<br>N(R) must be connected. Otherwise, R can advance further. Hence N(R) is a blue winning chain.</p>
-<h3 id="Strategy-stealing_argument">Strategy-stealing argument</h3><p>made by John Nash in 1949<br>後手無一般化的必勝法<br>若後手有必勝法，則先手可以先隨機下一子(並無視之)，再照著後手的下法<br>後手必勝的下法包含了第一手，則再隨機下一子，將其視為第一子<br>限制：不能有和，下子不會有害，symmetric，history independent，</p>
+<h3 id="Strategy-stealing_argument">Strategy-stealing argument</h3><p>made by John Nash in 1949<br>後手無一般化的必勝法 <br> 若後手有必勝法，則先手可以先隨機下一子 (並無視之)，再照著後手的下法<br> 後手必勝的下法包含了第一手，則再隨機下一子，將其視為第一子 <br> 限制：不能有和，下子不會有害，symmetric，history independent，</p>
 <p>Assume the initial board position is B0<br>f(B) has a value only when it is a legal position for the second player.<br>rev(x): interchange colors of pieces in a board or ply x.<br>always has exactly one winner  </p>
 <p>Not Solved<br>Chess DEEP BLUE beat the human World Champion in 1997<br>Chinese chess Professional 7-dan in 2007<br>Shogi<br>Claimed to be professional 2-dan in 2007<br>Defeat a 68-year old 1993 Meijin during 2011 and 2012</p>
 <p>Go<br>Recent success and breakthrough using Monte Carlo UCT based methods.<br>Amateur 1 dan in 2010.<br>Amateur 3 dan in 2011.<br>The program Zen beat a 9-dan professional master at March 17, 2012<br>  First game: Five stone handicap and won by 11 points<br>  Second game: four stones handicap and won by 20 points</p>
@@ -782,7 +782,7 @@
 <p>The one-move-equalization rule: one player plays an opening move and the other player then has to decide which color to<br>play for the reminder of the game.<br>. Hex.<br>. Second-player will win.</p>
 <p>The First move plays one stone, the rest plays two stones each.<br>Can’t prove it is fair</p>
 <p>The first player uses less resource.<br>For example: using less time.<br>Ex. Chinese chess.</p>
-<p>1990’s prediction at 2000<br><img src="/img/TCG/5-5.png" alt=""><br>2000’s prediction at 2010<br><img src="/img/TCG/5-6.png" alt=""></p>
+<p>1990’s prediction at 2000<br><img src="/img/TCG/5-5.png" alt=""><br>2000’s prediction at 2010<br><img src="/img/TCG/5-6.png"alt=""></p>
 <h2 id="Chap_05_Computer_chess_programming_by_Shannon">Chap 05 Computer chess programming by Shannon</h2><p>C.E. Shannon</p>
 <ul>
 <li>1916 ~ 2001.</li>
@@ -885,8 +885,8 @@
 </li>
 </ul>
 <h3 id="Dewey_decimal_system">Dewey decimal system</h3><p>杜威分類法 <img src="/img/TCG/7-1.png" alt=""></p>
-<h3 id="Min-Max_method">Min-Max method</h3><p>假設持白子，數字為白子的evaluating function, 在下白子時，取分數最高(max)的，在下黑子時，取分數最低(min)的 <img src="/img/TCG/7-2.png" alt=""><br><img src="/img/TCG/7-3.png" alt="max layer function F"></p>
-<h3 id="Nega-max_method">Nega-max method</h3><p>將下黑子的分數取負號(即為黑子的分數，因為是零和遊戲)<br>這樣每一層都取最大分數即可<br><img src="/img/TCG/7-4.png" alt="negamax algorithm"></p>
+<h3 id="Min-Max_method">Min-Max method</h3><p>假設持白子，數字為白子的 evaluating function, 在下白子時，取分數最高 (max) 的，在下黑子時，取分數最低 (min) 的 <img src="/img/TCG/7-2.png" alt=""><br><img src="/img/TCG/7-3.png"alt="max layer function F"></p>
+<h3 id="Nega-max_method">Nega-max method</h3><p>將下黑子的分數取負號 (即為黑子的分數，因為是零和遊戲)<br> 這樣每一層都取最大分數即可<br><img src="/img/TCG/7-4.png" alt="negamax algorithm"></p>
 <p>優點是實作較快，程式碼簡潔 </p>
 <h3 id="Alpha-Beta_cut_off">Alpha-Beta cut off</h3><ul>
 <li>current search window(score bound) = [α, β]</li>
@@ -922,16 +922,16 @@
 </li>
 </ul>
 <p><img src="/img/TCG/7-8.png" alt="alpha-beta cut off Algorithm"><br>f = white move, find max to be lower bound, do beta cut off<br>g = black move, find min to be upper bound, do alpha cut off<br><img src="/img/TCG/7-9.png" alt="example"></p>
-<p><img src="/img/TCG/7-10.png" alt="F2"><br>window變號，回傳的score也要變號<br>t = -F(pi, -beta, -m)</p>
-<h3 id="Analysis_for_AB_pruning">Analysis for AB pruning</h3><p><strong>different move orderings</strong> give very different cut branches<br>愈快找到最佳解，可以砍的branch愈多</p>
-<p>critical nodes 一定會搜到(cut off之前至少需搜完一個子branch) <img src="/img/TCG/7-11.png" alt="Critical Node"></p>
-<p>perfect-ordering tree: 每個branch的第一個child就是最佳解<br>Theorem: 若是perfect-ordering tree, AB pruning 會剛好走過所有 critical nodes<br>Proof:<br>Three Types of critial nodes  </p>
+<p><img src="/img/TCG/7-10.png" alt="F2"><br>window 變號，回傳的 score 也要變號<br>t = -F(pi, -beta, -m)</p>
+<h3 id="Analysis_for_AB_pruning">Analysis for AB pruning</h3><p><strong>different move orderings</strong> give very different cut branches<br>愈快找到最佳解，可以砍的 branch 愈多</p>
+<p>critical nodes 一定會搜到(cut off 之前至少需搜完一個子 branch) <img src="/img/TCG/7-11.png" alt="Critical Node"></p>
+<p>perfect-ordering tree: 每個 branch 的第一個 child 就是最佳解<br>Theorem: 若是 perfect-ordering tree, AB pruning 會剛好走過所有 critical nodes<br>Proof:<br>Three Types of critial nodes  </p>
 <ul>
-<li>定義a_i = 第i層的node是第幾個child(杜威分類)</li>
-<li>a_j = 第一個「不是第一個child」的node(如果有的話)<ul>
+<li>定義 a_i = 第 i 層的 node 是第幾個 child(杜威分類)</li>
+<li>a_j = 第一個「不是第一個 child」的 node(如果有的話)<ul>
 <li>a_j-1 = a_j+1 = 1<ul>
-<li>小於j的node都是1</li>
-<li>而且因為是critial node，所以a_j的child一定是1(其他會被砍掉)</li>
+<li>小於 j 的 node 都是 1</li>
+<li>而且因為是 critial node，所以 a_j 的 child 一定是 1(其他會被砍掉)</li>
 </ul>
 </li>
 </ul>
@@ -947,15 +947,15 @@
 </li>
 <li>l-j = odd<ol>
 <li>j+1 = l (type2.1 的第一個兒子)</li>
-<li>j+1 &lt; l (type2.2的第一個兒子)</li>
+<li>j+1 &lt; l (type2.2 的第一個兒子)</li>
 </ol>
 </li>
 </ol>
 <p><img src="/img/TCG/7-13.png" alt="Three Types of critial nodes"><br><img src="/img/TCG/7-14.png" alt="Proof"></p>
-<p>We can calculate the least number of nodes to be searched <img src="/img/TCG/7-15.png" alt=""> <img src="/img/TCG/7-16.png" alt=""></p>
-<p>when there’re some early terminate nodes <img src="/img/TCG/7-18.png" alt=""><br>l = even → x.1.x.1… = b0(q1b2)q3…<br>            1.x.1.x… = (q0b1)(q2b3)…(q0b1 = 第一個孩子的全child，若無child，則為(1-qi)*0)</p>
+<p>We can calculate the least number of nodes to be searched <img src="/img/TCG/7-15.png" alt=""> <img src="/img/TCG/7-16.png"alt=""></p>
+<p>when there’re some early terminate nodes <img src="/img/TCG/7-18.png" alt=""><br>l = even → x.1.x.1… = b0(q1b2)q3…<br>            1.x.1.x… = (q0b1)(q2b3)…(q0b1 = 第一個孩子的全 child，若無 child，則為(1-qi)*0)</p>
 <p>Perfect ordering is not always best when tree are not balanced <img src="/img/TCG/7-17.png" alt=""><br>→ When <strong>“relative” ordering of children</strong>(not perfect order!) are good enough, there are some cut-off  </p>
-<p>Theorem: 若知道所有的分數，就可以最佳化alpha-beta pruning(計算的點最少，cut最多)<br>→ 不過如果能算出來就不用search了…</p>
+<p>Theorem: 若知道所有的分數，就可以最佳化 alpha-beta pruning(計算的點最少，cut 最多)<br>→ 不過如果能算出來就不用 search 了…</p>
 <h3 id="Variations_of_alpha-beta_search">Variations of alpha-beta search</h3><ul>
 <li>Fail hard alpha-beta cut(Original) : F2 <img src="/img/TCG/7-19.png" alt=""> <ul>
 <li>returned value in [α, β] <img src="/img/TCG/7-20.png" alt=""></li>
@@ -992,7 +992,7 @@
 <li>fail-soft provides more information when the true value is out of search window<ul>
 <li>can record better value to be used later when this position is revisited</li>
 <li>F3 saves about 7% of time than that of F2 when a transposition table is used to save and re-use searched results</li>
-<li>記錄F3傳回的值，可減少重複計算的時間，因為下一手的樹在下兩層，大部分node皆相同<ul>
+<li>記錄 F3 傳回的值，可減少重複計算的時間，因為下一手的樹在下兩層，大部分 node 皆相同<ul>
 <li>if p1 is searched, p2 does not need to search again <img src="/img/TCG/7-25.png" alt=""></li>
 </ul>
 </li>
@@ -1029,38 +1029,38 @@
 <p>SCOUT    </p>
 <ul>
 <li>Invented by Judea Pearl in 1980</li>
-<li>TEST whether it is possible for Tb to return something greater han v <img src="" alt="test algo"><ul>
+<li>TEST whether it is possible for Tb to return something greater han v <img src=""alt="test algo"><ul>
 <li>if p is max node → success with only one branch &gt; v</li>
 <li>if p is min node → success with all branches &gt; v</li>
 <li>If FALSE(fails the test), then no need to search Tb  </li>
 <li>If TRUE(passes the test), then search Tb  </li>
 </ul>
 </li>
-<li>algorithm <img src="" alt="scout algo"></li>
-<li><img src="" alt="test true false"></li>
+<li>algorithm <img src=""alt="scout algo"></li>
+<li><img src=""alt="test true false"></li>
 </ul>
 <p>if test success, update the value at this branch</p>
-<p>TEST is not guarantee(but most of the time) that the visited nodes number are less than alpha-beta<br>both have Ω(b^(d/2)), but TEST has small argument and get very small value at the best situation <img src="" alt="node visited"></p>
+<p>TEST is not guarantee(but most of the time) that the visited nodes number are less than alpha-beta<br>both have Ω(b^(d/2)), but TEST has small argument and get very small value at the best situation <img src=""alt="node visited"></p>
 <p>Comparisons<br>When the fIrst branch of a node has the best value, then TEST<br>scans the tree fast.<br>Compared to alpha-beta pruning whose cut off comes from<br>bounds of search windows.</p>
 <p>SCOUT is a recursive procedure<br>A node in a branch that is not the first child of a node with a depth<br>of l.<br>Every ancestor of you may initiate a TEST to visit you.<br> It can be visited l times by TEST.</p>
 <p>The first search, though maybe unsuccessful, can provide useful<br>information in the second search.</p>
 <p>Performance<br>Show great improvements on depth &gt; 3 for games with small branching factors.<br>ab + scout Shows about average 10 to 20% of improvement than only ab.</p>
 <p>SCOUT favors “skinny” game trees, that are game trees with high depth-to-width ratios.<br>On depth = 5, it saves over 40% of time.<br>Maybe bad for games with a large branching factor.<br>Move ordering is very important. if the first branch is good, offers a great chance of pruning further branches.</p>
 <p>Null or Zero window search:<br>Using alpha-beta search with the window [m,m + 1]<br>result will be failed-high or failed-low.<br>Failed-high means the return value &gt; m + 1<br>    Equivalent to TEST(p; m;&gt;) is true<br>Failed-low means the return value &lt; m<br>    Equivalent to TEST(p; m;&gt;) is false<br>Using a searching window is better than using a single bound as in<br>SCOUT.</p>
-<p><img src="" alt="negascout algo"><br>depth &lt; 3 =&gt; no alpha-beta pruning =&gt; return value is exact value<br>research =&gt; do normal window a-b pruning</p>
-<p><img src="" alt="negamax scout algo"></p>
+<p><img src=""alt="negascout algo"><br>depth &lt; 3 =&gt; no alpha-beta pruning =&gt; return value is exact value<br>research =&gt; do normal window a-b pruning</p>
+<p><img src=""alt="negamax scout algo"></p>
 <p>Refinements<br>When a subtree is re-searched, it is best to use information on the previous search to speed up the current search.<br>    Restart from the position that the value t is returned.<br>Order the moves in a priority list.</p>
-<p>binary valued game tree<br>2-player game tree with either 0 or 1 on the leaves<br>and-or tree: min -&gt; and, max -&gt; or<br>全部child = 0 =&gt; 0<br>其中一個child = 1 =&gt; 1</p>
+<p>binary valued game tree<br>2-player game tree with either 0 or 1 on the leaves<br>and-or tree: min -&gt; and, max -&gt; or<br>全部 child = 0 =&gt; 0<br>其中一個 child = 1 =&gt; 1</p>
 <p>A most proving node for a node u: a node if its value is 1, then the value of u is 1.<br>A most disproving node for a node u: a node if its value is 0, then the value of u is 0.</p>
 <p>proof(u): the minimum number nodes to visited to make u = 1<br>disproof(u): the minimum number nodes to visited to make u = 0</p>
-<p>If value(u) is unknown, then proof(u) is the cost of evaluating u<br>If value(u) is 1, then proof(u) = 0<br>If value(u) is 0, then proof(u) = ∞<br><img src="" alt="max min node"></p>
+<p>If value(u) is unknown, then proof(u) is the cost of evaluating u<br>If value(u) is 1, then proof(u) = 0<br>If value(u) is 0, then proof(u) = ∞<br><img src=""alt="max min node"></p>
 <p>disproof number -&gt; reverse calculate method of proof number</p>
-<p><img src="" alt="Ex"></p>
+<p><img src=""alt="Ex"></p>
 <p>Usage<br>find child u that have min{proof(root); disproof(root)}<br>if we try to <strong>prove</strong> it, then pick a child with the <strong>least proof number</strong> for a <strong>MAX node</strong>, and pick any node that has a chance to be proved for a MIN node<br>if we try to disprove it, then pick a child with the least disproof number for a MIN node, and pick any node that has a chance to be disproved for a MAX node</p>
 <p>used in open game tree or an endgame tree by known proof or disproof number</p>
-<p>PN search algorithm<br><img src="" alt="pn algo"></p>
-<p>Multi-value game tree<br><img src="" alt="multi"></p>
-<p>use binary search skill to set TEST value<br><img src="" alt="multi pn algo"></p>
+<p>PN search algorithm<br><img src=""alt="pn algo"></p>
+<p>Multi-value game tree<br><img src=""alt="multi"></p>
+<p>use binary search skill to set TEST value<br><img src=""alt="multi pn algo"></p>
 <h2 id="Chap08_Monte-Carlo_Game_Tree_Search">Chap08 Monte-Carlo Game Tree Search</h2><p>Monte-Carlo: Used in Go(圍棋)<br>Rule</p>
 <ul>
 <li>Ko(打劫): 不能有重複盤面</li>
@@ -1077,8 +1077,8 @@
 <li>huge branching number </li>
 <li>cannot be easily compute good evaluating function </li>
 </ul>
-<p>original ideas<br>Algorithm MCSpure:<br>For each possible next move<br>    Play a large number of almost random games from a position to the end, and score them.<br>Evaluate a move by computing the average of the scores of the random games in which it had played.<br>    Play a move with the best score.<br><img src="" alt="random"></p>
-<h2 id="Chap09_Other_way_to_increase_performance">Chap09 Other way to increase performance</h2><h2 id="Reference">Reference</h2><p><a href="http://www.iis.sinica.edu.tw/~tshsu/tcg/" target="_blank" rel="external">TSHsu講義</a></p>
+<p>original ideas<br>Algorithm MCSpure:<br>For each possible next move<br>    Play a large number of almost random games from a position to the end, and score them.<br>Evaluate a move by computing the average of the scores of the random games in which it had played.<br>    Play a move with the best score.<br><img src=""alt="random"></p>
+<h2 id="Chap09_Other_way_to_increase_performance">Chap09 Other way to increase performance</h2><h2 id="Reference">Reference</h2><p><a href="http://www.iis.sinica.edu.tw/~tshsu/tcg/" target="_blank" rel="external">TSHsu 講義</a></p>
 	  
 	</div>
 
@@ -1138,13 +1138,18 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/筆記/">筆記<span>11</span></a></li> <li><a href="/tags/電腦對局理論/">電腦對局理論<span>2</span></a></li>
+  <li><a href="/tags/筆記/">筆記<span>9</span></a></li> <li><a href="/tags/電腦對局理論/">電腦對局理論<span>2</span></a></li>
     </ul>
 	</div>
 		
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Introduction"><span class="toc-article-text">Introduction</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#學習 AI 的用處"><span class="toc-article-text">學習 AI 的用處</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#為何學棋局"><span class="toc-article-text">為何學棋局</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Turing_test(圖靈測試)"><span class="toc-article-text">Turing test(圖靈測試)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#改變目的"><span class="toc-article-text">改變目的</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#重大突破"><span class="toc-article-text">重大突破</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#無關：核心知識"><span class="toc-article-text">無關：核心知識 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#分類"><span class="toc-article-text">分類</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap02_Basic_Search_Algorithms"><span class="toc-article-text">Chap02 Basic Search Algorithms</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#definition"><span class="toc-article-text">definition</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Brute-force_search"><span class="toc-article-text">Brute-force search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#pure_brute-force_search_program"><span class="toc-article-text">pure brute-force search program</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#無關：Random_Algorithm_應用"><span class="toc-article-text">無關：Random Algorithm 應用</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#intelligent_brute-force_search_algorithm"><span class="toc-article-text">intelligent brute-force search algorithm</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#BFS(Breadth-First_search)_Search"><span class="toc-article-text">BFS(Breadth-First search) Search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Disk_based_algorithm"><span class="toc-article-text">Disk based algorithm</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Disk_based_algorithms"><span class="toc-article-text">Disk based algorithms</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#DFS"><span class="toc-article-text">DFS</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#General_skills_to_improve_searching_algorithm"><span class="toc-article-text">General skills to improve searching algorithm</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Iterative-Deepening(ID)_逐層加深"><span class="toc-article-text">Iterative-Deepening(ID) 逐層加深</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Bi-directional_search"><span class="toc-article-text">Bi-directional search</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Heuristic(啟發式)_search"><span class="toc-article-text">Heuristic(啟發式) search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Heuristic_search_—_A*"><span class="toc-article-text">Heuristic search — A*</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#DFS_with_threshold"><span class="toc-article-text">DFS with threshold</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#IDA*_=_DFID_+_A*"><span class="toc-article-text">IDA* = DFID + A*</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#basic_thought_for_a_problem"><span class="toc-article-text">basic thought for a problem</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#algorithm 整理"><span class="toc-article-text">algorithm 整理</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03_Heuristic_Search_with_Pre-Computed_Databases"><span class="toc-article-text">Chap03 Heuristic Search with Pre-Computed Databases</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Non-additive_pattern_databases"><span class="toc-article-text">Non-additive pattern databases</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Basic_Thought"><span class="toc-article-text">Basic Thought</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Disjoint_pattern"><span class="toc-article-text">Disjoint pattern</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Result"><span class="toc-article-text">Result</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_04_Two-Player_Perfect_Information_Games_Introductions"><span class="toc-article-text">Chap 04 Two-Player Perfect Information Games Introductions</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Definition"><span class="toc-article-text">Definition</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Classification"><span class="toc-article-text">Classification</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Strategy-stealing_argument"><span class="toc-article-text">Strategy-stealing argument</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_05_Computer_chess_programming_by_Shannon"><span class="toc-article-text">Chap 05 Computer chess programming by Shannon</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Analysis"><span class="toc-article-text">Analysis</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Three_phases_of_chess"><span class="toc-article-text">Three phases of chess</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Evaluating_Function"><span class="toc-article-text">Evaluating Function</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_06_Alpha-Beta_Pruning"><span class="toc-article-text">Chap 06 Alpha-Beta Pruning</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Dewey_decimal_system"><span class="toc-article-text">Dewey decimal system</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Min-Max_method"><span class="toc-article-text">Min-Max method</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Nega-max_method"><span class="toc-article-text">Nega-max method</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Alpha-Beta_cut_off"><span class="toc-article-text">Alpha-Beta cut off</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Analysis_for_AB_pruning"><span class="toc-article-text">Analysis for AB pruning</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Variations_of_alpha-beta_search"><span class="toc-article-text">Variations of alpha-beta search</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Questions"><span class="toc-article-text">Questions</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Pruning_Techinique"><span class="toc-article-text">Pruning Techinique</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap07_Scout_and_Proof_Number_Search"><span class="toc-article-text">Chap07 Scout and Proof Number Search</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap08_Monte-Carlo_Game_Tree_Search"><span class="toc-article-text">Chap08 Monte-Carlo Game Tree Search</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap09_Other_way_to_increase_performance"><span class="toc-article-text">Chap09 Other way to increase performance</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
+		</div>
 	
 	</div>
 	

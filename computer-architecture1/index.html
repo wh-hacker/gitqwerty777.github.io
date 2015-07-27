@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>計算機結構(上) | QWERTY</title>
+  <title>計算機結構 (上) | QWERTY</title>
   <meta name="author" content="HCL">
   
   <meta name="description" content="Programming, Computer Science, Note">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="計算機結構(上)"/>
+  <meta property="og:title" content="計算機結構 (上)"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> 計算機結構(上)</h1>
+			<h1> 計算機結構 (上)</h1>
 		</div>		
 	
 
@@ -135,8 +135,7 @@
     <span class="keyword">for</span> (<span class="built_in">j</span> = <span class="number">0</span>; <span class="built_in">j</span> &lt; N; <span class="built_in">j</span> = <span class="built_in">j</span>+<span class="number">1</span>)
         <span class="cell">{r = <span class="number">0</span>;
             for (k = <span class="number">0</span>; k &lt; N; k = k+<span class="number">1</span>)
-            {
-                r = r + y[i][k]*z[k][j];
+            {r = r + y[i][k]*z[k][j];
             }</span>;
             x<span class="matrix">[i]</span><span class="matrix">[j]</span> = r;
         };
@@ -146,16 +145,14 @@ Code B
     <span class="keyword">for</span> (kk = <span class="number">0</span>; kk &lt; N; kk = kk+B)
         <span class="keyword">for</span> (<span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; N; <span class="built_in">i</span> = <span class="built_in">i</span>+<span class="number">1</span>)
             <span class="keyword">for</span> (<span class="built_in">j</span> = jj; <span class="built_in">j</span> &lt; min(jj+B-<span class="number">1</span>,N); <span class="built_in">j</span> = <span class="built_in">j</span>+<span class="number">1</span>)
-            <span class="cell">{
-                r = <span class="number">0</span>;
+            <span class="cell">{r = <span class="number">0</span>;
                 for (k = kk; k &lt; min(kk+B-<span class="number">1</span>,N); k = k+<span class="number">1</span>)
-                {
-                    r = r + y[i][k]*z[k][j];
+                {r = r + y[i][k]*z[k][j];
                 }</span>
                 x<span class="matrix">[i]</span><span class="matrix">[j]</span> = x<span class="matrix">[i]</span><span class="matrix">[j]</span> + r;
             };
 </code></pre><p><strong>Q2: CPU frequency ？ Performance</strong><br>Ans at Chap02<br><strong>Q3: Why do Nvidia GPUs get so much attention today?</strong><br>Heterogeneous(異質) Computing : Integrated CPU/GPU<br><img src="/img/CA/MZa4WQV.png" alt=""></p>
-<h3 id="Post_PC_Era">Post PC Era</h3><p>資訊界：小魚吃大魚<br><img src="/img/CA/XGJt3Qu.png" alt=""><br><img src="/img/CA/XXVfz5O.png" alt=""></p>
+<h3 id="Post_PC_Era">Post PC Era</h3><p> 資訊界：小魚吃大魚 <br><img src="/img/CA/XGJt3Qu.png" alt=""><br><img src="/img/CA/XXVfz5O.png"alt=""></p>
 <p>Ex. Cloud computing  </p>
 <ul>
 <li>Software as a Service (SaaS)</li>
@@ -168,7 +165,7 @@ Code B
 <li>Co-founded by Apple &amp; Acron</li>
 <li>Emphasize low-power since day one</li>
 <li>First low-power, 32 bit mobile processor</li>
-<li>sells designs(IP license) instead of chips<br><img src="/img/CA/573HpxE.png" alt=""><br><img src="/img/CA/3Teh9R3.png" alt=""></li>
+<li>sells designs(IP license) instead of chips<br><img src="/img/CA/573HpxE.png" alt=""><br><img src="/img/CA/3Teh9R3.png"alt=""></li>
 </ul>
 <h3 id="Inside_the_Processor_(CPU)">Inside the Processor (CPU)</h3><p>-Datapath: performs operations on data<br>-Control: sequences datapath, memory, …<br>-Cache memory<br>    -Small fast SRAM memory for immediate access to data</p>
 <h3 id="Moore’s_Law_(1965)">Moore’s Law (1965)</h3><ul>
@@ -179,14 +176,14 @@ Code B
 </ul>
 </li>
 </ul>
-<h3 id="Uniprocessor_Performance">Uniprocessor Performance</h3><p><img src="" alt="uni p"><br>VAX : 25%/year 1978 to 1986<br>RISC + x86: 52%/year 1986 to 2002<br>RISC + x86: 20%/year 2002 to present</p>
+<h3 id="Uniprocessor_Performance">Uniprocessor Performance</h3><p><img src=""alt="uni p"><br>VAX : 25%/year 1978 to 1986<br>RISC + x86: 52%/year 1986 to 2002<br>RISC + x86: 20%/year 2002 to present</p>
 <h3 id="Concept_Change">Concept Change</h3><ul>
 <li><strong>Power expensive</strong>,<strong> Transistors free</strong> (Can put more on chip than can afford to turn on)<ul>
 <li>so hot that make low efficiency</li>
 </ul>
 </li>
-<li><strong>law of diminishing returns</strong>(收益遞減) on more HW for ILP( Instruction Level Parallelism, 指令層級平行)<ul>
-<li>愈平行，效率提升的投資投酬愈少(control overhead)</li>
+<li><strong>law of diminishing returns</strong>(收益遞減) on more HW for ILP(Instruction Level Parallelism, 指令層級平行)<ul>
+<li> 愈平行，效率提升的投資投酬愈少 (control overhead)</li>
 </ul>
 </li>
 <li><strong>Memory slow</strong>,<strong> CPU fast</strong> (200 clock cycles to DRAM memory, 4 clocks for multiply)</li>
@@ -194,7 +191,7 @@ Code B
 <li>Uniprocessor performance 2X / 1.5 yrs -&gt; <strong>multiple cores</strong> (2X processors per chip / 2 years)</li>
 </ul>
 <p>CPU constrained by power, instruction-level parallelism, memory latency<br><img src="/img/CA/V9Q8UOl.png" alt=""></p>
-<h3 id="CPU_history">CPU history</h3><p>8086 Introduced x86 ISA 1978<br>80286 Virtual memory 1982<br>80386 32-bit processor (1985)<br>80486 Pipelining Floating point unit 8 KB cache (1989)<br>Pentium Superscalar (1993)<br>Pentium Pro / II / III  Dynamic execution Multimedia instructions 1995-9<br>Pentium 4 HyperThreading Deep pipeline (2001)<br>Pentium D (2005) Dual core 2 Pentium 4 cores<br>AMD big.LITTLE 大核+小核<br><a href="http://www.techbang.com/posts/15003-arm-our-technology-than-their-rivals-ahead-of-two-generations" target="_blank" rel="external">AMD big.LITTLE</a></p>
+<h3 id="CPU_history">CPU history</h3><p>8086 Introduced x86 ISA 1978<br>80286 Virtual memory 1982<br>80386 32-bit processor (1985)<br>80486 Pipelining Floating point unit 8 KB cache (1989)<br>Pentium Superscalar (1993)<br>Pentium Pro / II / III  Dynamic execution Multimedia instructions 1995-9<br>Pentium 4 HyperThreading Deep pipeline (2001)<br>Pentium D (2005) Dual core 2 Pentium 4 cores<br>AMD big.LITTLE 大核 + 小核 <br><a href="http://www.techbang.com/posts/15003-arm-our-technology-than-their-rivals-ahead-of-two-generations" target="_blank" rel="external">AMD big.LITTLE</a></p>
 <h3 id="8_Design_Principle_for_Computer_Architecture/System">8 Design Principle for Computer Architecture/System</h3><ol>
 <li>Design for Moore’s Law</li>
 <li>Use abstraction to simplify design</li>
@@ -216,11 +213,11 @@ Code B
 </ul>
 <p>-&gt; We focus on response time</p>
 <h3 id="Metrics_for_Performance_Evaluation">Metrics for Performance Evaluation</h3><ul>
-<li>Program execution time(Elapsed time經過時間)<ul>
+<li>Program execution time(Elapsed time 經過時間)<ul>
 <li>Total time to complete a task, including disk access, I/O, etc</li>
 </ul>
 </li>
-<li>CPU execution time(使用CPU的時間)<ul>
+<li>CPU execution time(使用 CPU 的時間)<ul>
 <li>doesn’t count I/O or time spent running other programs</li>
 </ul>
 </li>
@@ -241,7 +238,7 @@ Code B
 </ul>
 </li>
 </ul>
-<h3 id="CPU_performance">CPU performance</h3><p>CPU time<br>= CPU clockcycles x Clockcycle time<br>= CPU clockcycles / clockrate<br>(Because Clock Cycles = Instruction Count x Cycles per Instruction )<br>= Instruction Count x Cycles per Instruction x Clockcycle time  </p>
+<h3 id="CPU_performance">CPU performance</h3><p>CPU time<br>= CPU clockcycles x Clockcycle time<br>= CPU clockcycles / clockrate<br>(Because Clock Cycles = Instruction Count x Cycles per Instruction)<br>= Instruction Count x Cycles per Instruction x Clockcycle time  </p>
 <p>Instruction Count of program is determined by program, ISA and compiler<br>cycles per instruction is determined by CPU hardware</p>
 <p>different instruction may have different CPI(Clocks Per Instruction)<br>-&gt; use weighted average CPI(加權平均)</p>
 <p>Aspects of CPU Performance<br><img src="/img/CA/CJkqLMX.png" alt=""></p>
@@ -281,7 +278,7 @@ Code B
 <li>Performance: ssj_ops/sec(每秒完成的事務數)</li>
 <li>Power: Watts (Joules/sec)<br><img src="/img/CA/RwlzFoo.png" alt=""></li>
 </ul>
-<p>Amdahl’s Law<br>程式的平行化只能將執行時間縮短到一定程度(因為分散運算的overhead)<br><img src="/img/CA/vSJTU7L.png" alt=""></p>
+<p>Amdahl’s Law<br> 程式的平行化只能將執行時間縮短到一定程度 (因為分散運算的 overhead)<br><img src="/img/CA/vSJTU7L.png" alt=""></p>
 <p>Low Power at Idle(x)  </p>
 <ul>
 <li>At 100% load: 295W</li>
@@ -300,18 +297,18 @@ Code B
 <li>Design Principle 3: Make the common thing fast(addi)</li>
 <li>Design Principle 4: Good design demands good compromises(妥協)(three format of instruction code)</li>
 </ul>
-<h3 id="MIPS_Instruction_Set">MIPS Instruction Set</h3><p>Stanford MIPS be Memory are referenced with byte addresses in MIPScommercialized<br>a kind of RISC精簡指令集(Reduced Instruction Set Computing)</p>
+<h3 id="MIPS_Instruction_Set">MIPS Instruction Set</h3><p>Stanford MIPS be Memory are referenced with byte addresses in MIPScommercialized<br>a kind of RISC 精簡指令集 (Reduced Instruction Set Computing)</p>
 <ul>
-<li>31個 32-bit integer registers (R0 = const 0)<br><img src="/img/CA/VRdEFJz.png" alt=""></li>
-<li>32個 32-bit floating-point registers</li>
+<li>31 個 32-bit integer registers (R0 = const 0)<br><img src="/img/CA/VRdEFJz.png" alt=""></li>
+<li>32 個 32-bit floating-point registers</li>
 <li>32-bit HI, LO, PC (program counter) — internal, can’t modify<br>Memory are referenced with byte addresses in MIPS<br>1 word = 4 byte</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>指令</th>
-<th>意義</th>
-<th>備註</th>
+<th> 指令 </th>
+<th> 意義 </th>
+<th> 備註 </th>
 </tr>
 </thead>
 <tbody>
@@ -360,7 +357,7 @@ Code B
 <h3 id="MIPS_Instruction_Format">MIPS Instruction Format</h3><p>instruction code - 32bit<br><img src="/img/CA/MeKGSy9.png" alt=""></p>
 <h4 id="R-type">R-type</h4><ul>
 <li>rs, rt = source register, rd = destination register<ul>
-<li>32個register =&gt; 5bit</li>
+<li>32 個 register =&gt; 5bit</li>
 </ul>
 </li>
 <li>shamt: shift amount<ul>
@@ -380,7 +377,7 @@ Code B
 <span class="label">L2</span>:
 </code></pre><h4 id="J-type">J-type</h4><p><img src="/img/CA/j.png" alt="j type"></p>
 <p>goto absolute address(I-type is relative address)<br>equal to immediate in the middle of the program counter address<br><img src="/img/CA/add2.png" alt=""></p>
-<h3 id="指令表">指令表</h3><p><img src="/img/CA/com.png" alt=""><br><img src="/img/CA/comm2.png" alt=""><br><img src="/img/CA/comm3.png" alt=""></p>
+<h3 id="指令表"> 指令表 </h3><p><img src="/img/CA/com.png" alt=""><br><img src="/img/CA/comm2.png"alt=""><br><img src="/img/CA/comm3.png" alt=""></p>
 <h3 id="function">function</h3><p>pass value</p>
 <ul>
 <li>＄a0 ~ ＄a3 : 4 arguments <ul>
@@ -394,14 +391,14 @@ Code B
 </ul>
 <p>Caller-save register </p>
 <ul>
-<li>Caller saved register: 由Caller負責清理或存入stack frame<ul>
+<li>Caller saved register: 由 Caller 負責清理或存入 stack frame<ul>
 <li>hold temporary quantities that need not be preserved across calls</li>
-<li>Caller先備份，所以callee便可直接使用caller-save register</li>
+<li>Caller 先備份，所以 callee 便可直接使用 caller-save register</li>
 <li>＄t0~t7</li>
 </ul>
 </li>
-<li>Callee saved register: 由Callee負責清理或存入stack<ul>
-<li>hold values that should be preserved across calls(caller還需要用, callee用的時候要先備份)</li>
+<li>Callee saved register: 由 Callee 負責清理或存入 stack<ul>
+<li>hold values that should be preserved across calls(caller 還需要用, callee 用的時候要先備份)</li>
 <li>callee should save them and restore them before returning to the caller</li>
 <li>＄s0~s7</li>
 </ul>
@@ -413,8 +410,8 @@ Code B
 <li>set PC = procedure_address<br>return : jr ＄ra</li>
 </ul>
 <p>Frame pointer points to the first word of the procedure frame</p>
-<p>procedure call stack<br><img src="" alt=""></p>
-<p><img src="" alt="memory layout"><br>Memory layout</p>
+<p>procedure call stack<br><img src=""alt=""></p>
+<p><img src=""alt="memory layout"><br>Memory layout</p>
 <ul>
 <li>text: code</li>
 <li>static data: global variable<ul>
@@ -445,21 +442,19 @@ Code B
 <li>return: jr ＄ra</li>
 </ol>
 <p><img src="/img/CA/reg.png" alt="registers"></p>
-<p><img src="" alt="nested procedure"></p>
+<p><img src=""alt="nested procedure"></p>
 <p>ASCII (American Standard Code for Information Interchange)<br>8 bits/character</p>
 <pre><code><span class="keyword">lb</span> <span class="keyword">sb</span>
 </code></pre><p>Unicode (Universal Encoding)<br>16 bits/character</p>
 <pre><code><span class="keyword">lf</span> <span class="keyword">sf</span>
 </code></pre><p>performance</p>
-<pre><code>Clear1(<span class="keyword">int</span> <span class="built_in">array</span>[ ], <span class="keyword">int</span> size)
-{
-    <span class="keyword">int</span> i;
+<pre><code>Clear1(<span class="keyword">int</span> <span class="built_in">array</span>[], <span class="keyword">int</span> size)
+{<span class="keyword">int</span> i;
     <span class="keyword">for</span> (i=<span class="number">0</span>, i&lt; size; i+= <span class="number">1</span>)
     <span class="built_in">array</span>[i] = <span class="number">0</span>;
 }
 Clear <span class="number">2</span>(<span class="keyword">int</span> *<span class="built_in">array</span>, <span class="keyword">int</span> size)
-{
-    <span class="keyword">int</span> *p,
+{<span class="keyword">int</span> *p,
     <span class="keyword">for</span> (p = &amp;<span class="built_in">array</span>[<span class="number">0</span>]; p &lt; &amp;<span class="built_in">array</span>[size]; p = p+<span class="number">1</span>)
     *p = <span class="number">0</span>;
 }
@@ -489,9 +484,9 @@ enter critical <span class="keyword">section</span>;</span>
     beq ＄t0,＄<span class="constant">zero</span>,<span class="keyword">try</span> ;<span class="keyword">if</span> store fail, <span class="keyword">try</span> again
     <span class="built_in">add</span> ＄s4,＄<span class="constant">zero</span>,＄t1 ;<span class="built_in">put</span> <span class="built_in">load</span> <span class="built_in">value</span> <span class="operator">in</span> ＄s4
 </code></pre><h3 id="MIPS_Addresssing_Mode">MIPS Addresssing Mode</h3><ol>
-<li>Register addressing<br>運算對象在register<br>add</li>
-<li>Immediate addressing<br>運算對象是constant<br>addi  </li>
-<li>Base addressing(The argument is at MEM)<br>運算對象在memory<br>lw<br>way to get address<ol>
+<li>Register addressing<br> 運算對象在 register<br>add</li>
+<li>Immediate addressing<br> 運算對象是 constant<br>addi  </li>
+<li>Base addressing(The argument is at MEM)<br> 運算對象在 memory<br>lw<br>way to get address<ol>
 <li> .data # define data<br> xyz:<br> .word 1 # some data here<br> …<br> .text # program code<br> …<br> lw $5,xyz # equals to lw ＄5, offset(＄gp)</li>
 <li> la ＄6, xyz # ＄6 = &amp;xyz</li>
 </ol>
@@ -505,7 +500,7 @@ machine language <span class="keyword">module</span> + library <span class="keyw
                                            linker  
 machine code <span class="function"><span class="keyword">program</span></span> ---------&gt; memory
                        loader
-</code></pre><p><strong>Assembler</strong><br>Symbol table: translate variables into memory address<br>Psudoinstruction: common variation of assembly language instructions<br><strong>Linker</strong><br><img src="/img/CA/exeheader.png" alt="executable "></p>
+</code></pre><p><strong>Assembler</strong><br>Symbol table: translate variables into memory address<br>Psudoinstruction: common variation of assembly language instructions<br><strong>Linker</strong><br><img src="/img/CA/exeheader.png" alt="executable"></p>
 <p>generate executables file header  </p>
 <ol>
 <li>Place code and data modules symbolically in memory.</li>
@@ -573,7 +568,7 @@ machine code <span class="function"><span class="keyword">program</span></span> 
 </ol>
 <p>Details</p>
 <ol>
-<li>register-tranfer暫存器傳輸<br>RTL (Register Transfer Languages)<br>Ex. ADDUR[rd] &lt;–R[rs] + R[rt], PC &lt;–PC + 4  </li>
+<li>register-tranfer 暫存器傳輸 <br>RTL (Register Transfer Languages)<br>Ex. ADDUR[rd] &lt;–R[rs] + R[rt], PC &lt;–PC + 4  </li>
 <li>Combinational Elements: outputs only depend on input<br>Ex. ALU, MUX, Adder<br>Storage Elements: outputs depend on input and state(clock)<br>Ex. Flip-Flop, register, memory<br>Register<br><img src="/img/CA/regis.png" alt="register graph"><br>Edge-triggered clocking<br>until next edge would the value change</li>
 <li><strong>Instruction Fetch Unit</strong>: mem[PC]<br>Sequential code<br>PC &lt;- PC + 4<br>Branch and Jump<br>PC &lt;- Target addr<br><strong>Memory Operations</strong><br>Mem[R[rs] + SignExt[imm16]]<br>sign extension: increasing the number of bits without   changing value (Ex. 10 0010 -&gt; 0010 0010)  </li>
 <li>Control Unit: set control flag to change the operation with the change of operation code<br>Control Flags</li>
@@ -681,7 +676,7 @@ machine code <span class="function"><span class="keyword">program</span></span> 
 </ul>
 <p>simplified: IF ID EX MEM WB</p>
 <p>The Four Stages of R-type: without Mem<br>The Four Stages of store: without Wr<br>The Three Stages of Beq: without Mem, Wr</p>
-<p><img src="/img/CA/pipe.png" alt="pipe 2ns"><br>Ideal speedup from pipelining == # of pipeline stages<br>(分成N段-&gt;理想上，速度提升N倍)</p>
+<p><img src="/img/CA/pipe.png" alt="pipe 2ns"><br>Ideal speedup from pipelining == # of pipeline stages<br>(分成 N 段 -&gt; 理想上，速度提升 N 倍)</p>
 <h4 id="Pipeline_Hazards">Pipeline Hazards</h4><ul>
 <li>structural hazards: use the same resource at the same time(Single Memory)<br><img src="/img/CA/pipe2.png" alt="structure hazard"></li>
 <li>data hazards: use item before it is ready(load, update)</li>
@@ -696,7 +691,7 @@ machine code <span class="function"><span class="keyword">program</span></span> 
 </ol>
 </li>
 <li>data<ol>
-<li>“Forward” result from one stage to another(算出答案後，在放入記憶體前，就先給之後的instruction使用)(可以同時read and save) </li>
+<li>“Forward” result from one stage to another(算出答案後，在放入記憶體前，就先給之後的 instruction 使用)(可以同時 read and save) </li>
 <li>Load-use data hazard: can’t solved by forward, can solved by reordering instructions, otherwise, need stall  <img src="/img/CA/forward.png" alt="lw hazard">   <img src="/img/CA/forward2.png" alt="loaduse-&gt;forward"></li>
 </ol>
 </li>
@@ -772,13 +767,18 @@ machine code <span class="function"><span class="keyword">program</span></span> 
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/computer-architecture/">computer architecture<span>2</span></a></li> <li><a href="/tags/筆記/">筆記<span>11</span></a></li>
+  <li><a href="/tags/computer-architecture/">computer architecture<span>2</span></a></li> <li><a href="/tags/筆記/">筆記<span>9</span></a></li>
     </ul>
 	</div>
 		
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap01_Introduction"><span class="toc-article-text">Chap01 Introduction</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#What_can_we_learn"><span class="toc-article-text">What can we learn</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Why_need_to_take_this_course"><span class="toc-article-text">Why need to take this course</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Post_PC_Era"><span class="toc-article-text">Post PC Era</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Chip_War:_Big_core_or_Small_core"><span class="toc-article-text">Chip War: Big core or Small core</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Inside_the_Processor_(CPU)"><span class="toc-article-text">Inside the Processor (CPU)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Moore’s_Law_(1965)"><span class="toc-article-text">Moore’s Law (1965)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Uniprocessor_Performance"><span class="toc-article-text">Uniprocessor Performance</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Concept_Change"><span class="toc-article-text">Concept Change</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#CPU_history"><span class="toc-article-text">CPU history</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#8_Design_Principle_for_Computer_Architecture/System"><span class="toc-article-text">8 Design Principle for Computer Architecture/System</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap02_Performance/Power/Cost"><span class="toc-article-text">Chap02 Performance/Power/Cost</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Two_Notions_of_“Performance”"><span class="toc-article-text">Two Notions of “Performance”</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Metrics_for_Performance_Evaluation"><span class="toc-article-text">Metrics for Performance Evaluation</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#CPU_performance"><span class="toc-article-text">CPU performance</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#MIPS"><span class="toc-article-text">MIPS</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#CMOS_IC_power_performance"><span class="toc-article-text">CMOS IC power performance</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Manufacturing_ICs"><span class="toc-article-text">Manufacturing ICs</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Benchmark"><span class="toc-article-text">Benchmark</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#SPEC_benchmark"><span class="toc-article-text">SPEC benchmark</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Power_Benchmark"><span class="toc-article-text">Power Benchmark</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03_Instruction_Set_Architecture(ISA)"><span class="toc-article-text">Chap03 Instruction Set Architecture(ISA)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#ISA_Design_Principle"><span class="toc-article-text">ISA Design Principle</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Design_Principles"><span class="toc-article-text">Design Principles</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#MIPS_Instruction_Set"><span class="toc-article-text">MIPS Instruction Set</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#MIPS_Instruction_Format"><span class="toc-article-text">MIPS Instruction Format</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#R-type"><span class="toc-article-text">R-type</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#I-type"><span class="toc-article-text">I-type</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#J-type"><span class="toc-article-text">J-type</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#指令表"><span class="toc-article-text"> 指令表 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#function"><span class="toc-article-text">function</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Synchronization"><span class="toc-article-text">Synchronization</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#MIPS_Addresssing_Mode"><span class="toc-article-text">MIPS Addresssing Mode</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#from_program_to_memory"><span class="toc-article-text">from program to memory</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#java"><span class="toc-article-text">java</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#ARM"><span class="toc-article-text">ARM</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Intel_x86_ISA"><span class="toc-article-text">Intel x86 ISA</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap04_Building_Single-Cycle_Datapath_and_Control_Unit"><span class="toc-article-text">Chap04 Building Single-Cycle Datapath and Control Unit</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap05_Pipeline"><span class="toc-article-text">Chap05 Pipeline</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Pipeline_Hazards"><span class="toc-article-text">Pipeline Hazards</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Pipelined_datapath"><span class="toc-article-text">Pipelined datapath</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#control_in_each_stage"><span class="toc-article-text">control in each stage</span></a></li></ol></li></ol>
+		</div>
 	
 	</div>
 	

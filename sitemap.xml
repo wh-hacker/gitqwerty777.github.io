@@ -2,153 +2,158 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://gitqwerty777.github.io/economics/</loc>
-    <lastmod>2015-07-22T09:33:05.846Z</lastmod>
+    <loc>http://gitqwerty777.github.io/cleancode/</loc>
+    <lastmod>2015-07-27T07:55:51.710Z</lastmod>
   </url>
   
   <url>
-    <loc>http://gitqwerty777.github.io/MLfoundation1/</loc>
-    <lastmod>2015-07-22T09:10:55.967Z</lastmod>
+    <loc>http://gitqwerty777.github.io/NLP2/</loc>
+    <lastmod>2015-07-24T06:54:24.463Z</lastmod>
   </url>
   
   <url>
-    <loc>http://gitqwerty777.github.io/computer-network1/</loc>
-    <lastmod>2015-07-22T09:10:18.217Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/MLtechnique/</loc>
-    <lastmod>2015-07-22T08:58:57.999Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/computer-gaming/</loc>
-    <lastmod>2015-07-22T08:58:52.840Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/MLfoundation2/</loc>
-    <lastmod>2015-07-22T08:58:40.636Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/Artificial%20Intelligence/</loc>
-    <lastmod>2015-07-22T08:58:16.646Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/computer-architecture2/</loc>
-    <lastmod>2015-07-22T08:58:10.492Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/computer-network2/</loc>
-    <lastmod>2015-07-22T08:57:53.970Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/computer-architecture1/</loc>
-    <lastmod>2015-07-22T08:57:37.033Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/NLP/</loc>
-    <lastmod>2015-07-22T08:56:28.878Z</lastmod>
+    <loc>http://gitqwerty777.github.io/about/index.html</loc>
+    <lastmod>2015-07-24T06:48:13.597Z</lastmod>
   </url>
   
   <url>
     <loc>http://gitqwerty777.github.io/Unity5-Tutorial-Survival-Shooter/</loc>
-    <lastmod>2015-07-22T08:53:17.486Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/header-file-tips/</loc>
-    <lastmod>2015-07-22T08:52:27.578Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/cleancode/</loc>
-    <lastmod>2015-07-22T08:43:44.991Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/linux-tips/</loc>
-    <lastmod>2015-07-22T08:43:36.262Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/how_to_build_hexo_blog/</loc>
-    <lastmod>2015-07-22T08:43:26.385Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/21century-C/</loc>
-    <lastmod>2015-07-22T08:43:16.762Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/git-introduction/</loc>
-    <lastmod>2015-07-22T08:43:02.685Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/git-commands/</loc>
-    <lastmod>2015-07-22T08:42:50.357Z</lastmod>
+    <lastmod>2015-07-24T04:30:32.432Z</lastmod>
   </url>
   
   <url>
     <loc>http://gitqwerty777.github.io/Emacs-tips/</loc>
-    <lastmod>2015-07-22T08:42:41.298Z</lastmod>
+    <lastmod>2015-07-24T04:17:48.515Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/NLP/</loc>
+    <lastmod>2015-07-24T03:44:17.543Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/21century-C/</loc>
+    <lastmod>2015-07-23T11:24:49.819Z</lastmod>
   </url>
   
   <url>
     <loc>http://gitqwerty777.github.io/cpp-boost/</loc>
-    <lastmod>2015-07-22T08:42:33.250Z</lastmod>
+    <lastmod>2015-07-23T11:24:44.650Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/git-introduction/</loc>
+    <lastmod>2015-07-23T11:24:34.416Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/economics/</loc>
+    <lastmod>2015-07-23T11:24:23.055Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/Artificial%20Intelligence/</loc>
+    <lastmod>2015-07-23T11:24:17.548Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/install-boshiamy-in-linux-by-fcitx/</loc>
+    <lastmod>2015-07-23T11:24:00.966Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/MLfoundation1/</loc>
+    <lastmod>2015-07-23T11:23:54.254Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/computer-network1/</loc>
+    <lastmod>2015-07-23T11:23:49.224Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/MLtechnique/</loc>
+    <lastmod>2015-07-23T11:23:45.279Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/computer-gaming/</loc>
+    <lastmod>2015-07-23T11:23:40.609Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/MLfoundation2/</loc>
+    <lastmod>2015-07-23T11:23:33.432Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/computer-architecture2/</loc>
+    <lastmod>2015-07-23T11:23:20.281Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/computer-network2/</loc>
+    <lastmod>2015-07-23T11:23:16.782Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/computer-architecture1/</loc>
+    <lastmod>2015-07-23T11:23:13.201Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/linux-tips/</loc>
+    <lastmod>2015-07-23T11:23:00.561Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/how_to_build_hexo_blog/</loc>
+    <lastmod>2015-07-23T11:22:48.238Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/git-commands/</loc>
+    <lastmod>2015-07-23T11:22:42.630Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/Makefile/</loc>
+    <lastmod>2015-07-23T11:22:32.962Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/CFR/</loc>
+    <lastmod>2015-07-23T11:22:26.990Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/gcc-usage/</loc>
+    <lastmod>2015-07-23T11:22:14.445Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/regular-expression/</loc>
+    <lastmod>2015-07-23T11:22:07.099Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/gdb%E5%85%A5%E9%96%80/</loc>
+    <lastmod>2015-07-23T11:21:35.863Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/header-file-tips/</loc>
+    <lastmod>2015-07-23T06:39:35.473Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/big_number/</loc>
+    <lastmod>2015-07-22T09:18:31.969Z</lastmod>
   </url>
   
   <url>
     <loc>http://gitqwerty777.github.io/how-to-install-ubuntu-vmware-tool/</loc>
     <lastmod>2015-07-22T08:42:26.055Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/Makefile/</loc>
-    <lastmod>2015-07-22T08:42:06.141Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/CFR/</loc>
-    <lastmod>2015-07-22T08:41:59.795Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/gcc-usage/</loc>
-    <lastmod>2015-07-22T08:40:31.892Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/regular-expression/</loc>
-    <lastmod>2015-07-22T08:38:35.439Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/install-boshiamy-in-linux-by-fcitx/</loc>
-    <lastmod>2015-07-22T08:38:01.211Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/big_number/</loc>
-    <lastmod>2015-07-22T08:37:30.813Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/gdb%E5%85%A5%E9%96%80/</loc>
-    <lastmod>2015-07-22T08:37:23.381Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/about/index.html</loc>
-    <lastmod>2015-07-21T07:39:43.866Z</lastmod>
   </url>
   
   <url>

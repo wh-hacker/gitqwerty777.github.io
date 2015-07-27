@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>21世紀C語言 | QWERTY</title>
+  <title>21 世紀 C 語言 | QWERTY</title>
   <meta name="author" content="HCL">
   
   <meta name="description" content="Programming, Computer Science, Note">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="21世紀C語言"/>
+  <meta property="og:title" content="21 世紀 C 語言"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> 21世紀C語言</h1>
+			<h1> 21 世紀 C 語言</h1>
 		</div>		
 	
 
@@ -119,7 +119,7 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <h2 id="演進">演進</h2><p>C語言標準  </p>
+	    <h2 id="演進">演進</h2><p>C 語言標準  </p>
 <ul>
 <li>ANSI C89</li>
 <li>ISO C99<ul>
@@ -130,7 +130,7 @@
 </ul>
 <p>POSIX  </p>
 <ul>
-<li>Unix類作業系統的共同標準</li>
+<li>Unix 類作業系統的共同標準</li>
 <li>實作<ul>
 <li>BSD(Berkeley Software Distribution)<ul>
 <li>Apple iOS</li>
@@ -142,48 +142,50 @@
 </ul>
 </li>
 <li>分別有自己的授權系統<a id="more"></a>
-<h2 id="簡化編譯">簡化編譯</h2></li>
+</li>
 </ul>
 </li>
 </ul>
-<p>套件管理工具  </p>
+<h2 id="簡化編譯">簡化編譯 </h2><p> 套件管理工具  </p>
 <ul>
 <li>Windows: cygwin</li>
 <li>Linux: apt-get, yum</li>
 </ul>
 <p>連結函式庫  </p>
 <ul>
-<li>告知兩次<ul>
-<li><code>#include</code></li>
-<li>編譯器 <code>-l</code></li>
-</ul>
-</li>
+<li>告知兩次<ol>
+<li>文件中: <code>#include</code></li>
+<li>編譯器 link 的時候: <code>-l</code></li>
+</ol>
+<ul>
 <li>Example<ul>
 <li><code>#include &lt;math.h&gt;</code></li>
 <li><code>-lm</code></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>標準函式庫不用連結<ul>
-<li>編譯時隱含<code>-lc</code>，連結到libc</li>
+<li>編譯時隱含<code>-lc</code>，連結到 libc</li>
 </ul>
 </li>
 <li><p>路徑</p>
 <ul>
 <li>預設為標準函式庫路徑</li>
-<li>include檔路徑 <code>I[path]</code></li>
-<li>函式庫路徑 <code>-L[path]</code></li>
-<li>按照相依順序列出<ul>
+<li>增加 include 檔案路徑 <code>I[path]</code></li>
+<li>增加函式庫路徑 <code>-L[path]</code></li>
+<li>需按照相依順序列出<ul>
 <li><code>-lbroad -lgeneral</code></li>
-<li>在board未對應的函數會在general尋找</li>
+<li>在 board 未對應的函數會在 general 尋找</li>
 </ul>
 </li>
-<li><p><code>pkg-config</code></p>
+<li><p><code>pkg-config</code>指令</p>
 <ul>
-<li>回傳套件的<code>-I</code>和<code>-l</code>, <code>-L</code>參數<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~$ pkg-config --libs openssl <span class="comment"># -l, -L</span></span><br><span class="line">-lssl -lcrypto  </span><br><span class="line">~$ pkg-config --cflags libssl <span class="comment"># -I. In this case, -I isn't needed</span></span><br></pre></td></tr></table></figure>
+<li>回傳套件的 <code>-I</code> 和<code>-l</code>, <code>-L</code>參數，不需要自己找        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~$ pkg-config --libs openssl <span class="comment"># -l, -L</span></span><br><span class="line">-lssl -lcrypto  </span><br><span class="line">~$ pkg-config --cflags libssl <span class="comment"># -I. In this case, -I isn't needed</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li><p>用backtick括起來，會用命令執行的結果取代命令</p>
+<li><p>用 backtick 括起來，會用命令執行的結果取代命令</p>
 <ul>
 <li><code>pkg-config --libs openssl</code> = <code>-lssl -lcrypto</code>  </li>
 </ul>
@@ -199,10 +201,10 @@
 </li>
 <li>共享函式庫(shared library)<ul>
 <li>執行期連結</li>
-<li>解法<ol>
-<li>用Libtool打包</li>
-<li>設定LD_LIBRARY_PATH環境變數</li>
-<li><code>-Wl, -R[PATH]</code> <a href="https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dynamic_or_shared.html" target="_blank" rel="external">將-L傳送到linker, -R嵌到執行期</a></li>
+<li>三種解法<ol>
+<li>用 Libtool 打包</li>
+<li>設定 LD_LIBRARY_PATH 環境變數</li>
+<li><code>-Wl, -R[PATH]</code> <a href="https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_dynamic_or_shared.html" target="_blank" rel="external">將 -L 傳送到 linker, -R 嵌到執行期</a></li>
 </ol>
 </li>
 </ul>
@@ -210,9 +212,8 @@
 </ul>
 <p>compiler flag  </p>
 <ul>
-<li><code>-std=gnu11</code><ul>
-<li>gnu99 … </li>
-<li>目前預設是99</li>
+<li><code>-std=gnu11</code> <ul>
+<li>目前預設是 gnu99</li>
 </ul>
 </li>
 <li><code>-O</code><ul>
@@ -224,10 +225,10 @@
 </ul>
 </li>
 </ul>
-<h3 id="Makefile">Makefile</h3><p><a href="http://wen00072-blog.logdown.com/posts/171197-using-getopt-parse-command-line-parameter" target="_blank" rel="external">http://wen00072-blog.logdown.com/posts/171197-using-getopt-parse-command-line-parameter</a></p>
-<p><a href="">參考makefile設定</a></p>
-<h3 id="標頭檔(header)">標頭檔(header)</h3><p><a href=""></a></p>
-<h3 id=""> </h3>	  
+<p><a href="http://wen00072-blog.logdown.com/posts/171197-using-getopt-parse-command-line-parameter" target="_blank" rel="external">快速建立程式參數</a></p>
+<p><a href="http://gitqwerty777.github.io/header-file-tips/">標頭檔 (header) 與 include</a></p>
+<h3 id="Makefile">Makefile</h3><p><a href="http://gitqwerty777.github.io/Makefile/">Makefile 設定方法</a></p>
+	  
 	</div>
 
 	<div>
@@ -236,7 +237,7 @@
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/cpp-boost/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+    	<li class="prev"><a href="/CFR/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
@@ -284,7 +285,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/筆記/">筆記<span>7</span></a></li>
+    <li><a href="/categories/筆記/">筆記<span>10</span></a></li>
   </li>
 
     </ul>
@@ -304,6 +305,11 @@
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#演進"><span class="toc-article-text">演進</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#簡化編譯"><span class="toc-article-text">簡化編譯 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Makefile"><span class="toc-article-text">Makefile</span></a></li></ol></li></ol>
+		</div>
 	
 	</div>
 	

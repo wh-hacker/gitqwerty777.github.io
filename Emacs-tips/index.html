@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Emacs常用指令表 | QWERTY</title>
+  <title>Emacs 常用指令表 | QWERTY</title>
   <meta name="author" content="HCL">
   
   <meta name="description" content="Programming, Computer Science, Note">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Emacs常用指令表"/>
+  <meta property="og:title" content="Emacs 常用指令表"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> Emacs常用指令表</h1>
+			<h1> Emacs 常用指令表</h1>
 		</div>		
 	
 
@@ -119,17 +119,18 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <h2 id="基本">基本</h2><ul>
+	    <div class="alert alert-warning"><i class="fa fa-bell"></i>  Emacs 快捷鍵是可以修改的，所以不一定要全部記住</div>
+<h2 id="Emacs 基本">Emacs 基本</h2><ul>
 <li>C → Ctrl</li>
 <li>M → Alt or escape</li>
 <li>S → Shift</li>
 <li>[Ret] → return(enter)</li>
 <li>例 C-c → Ctrl + c</li>
 <li>「hello.c」的自動儲存檔案的檔名就是「#hello.c#」。儲存檔案後，自動儲存檔就會被刪除</li>
-<li>Ctrl 通常是 編輯/移動 一個字， Alt 通常是 編輯/移動 一個詞</li>
+<li>Ctrl 通常是 編輯 / 移動 一個字， Alt 通常是 編輯 / 移動 一個詞</li>
 </ul>
 <a id="more"></a>
-<h3 id="移動">移動</h3><p><img src="/img/Other/emacs-move.png" alt=""></p>
+<h3 id="Emacs 移動">Emacs 移動</h3><p><img src="/img/Other/emacs-move.png" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -140,15 +141,15 @@
 <tbody>
 <tr>
 <td>M-v, C-v</td>
-<td>前翻/後翻一頁</td>
+<td>上翻 / 下翻一頁</td>
 </tr>
 <tr>
 <td>M-b, M-f</td>
-<td>往前/往後 移動一個詞</td>
+<td>往前 / 往後 移動一個詞</td>
 </tr>
 <tr>
 <td>M-a, M-e</td>
-<td>移動到一句的開始/結尾</td>
+<td>移動到一句的開始 / 結尾</td>
 </tr>
 <tr>
 <td>C-l</td>
@@ -158,9 +159,13 @@
 <td>M-g M-g</td>
 <td>跳至指定行(= M-g g) </td>
 </tr>
+<tr>
+<td>M-m</td>
+<td>將游標移到該行第一個字元(比 C-a 好用)</td>
+</tr>
 </tbody>
 </table>
-<h3 id="編輯">編輯</h3><table>
+<h3 id="Emacs 編輯">Emacs 編輯</h3><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -177,12 +182,12 @@
 <td>全選</td>
 </tr>
 <tr>
-<td>C-SPC</td>
+<td>C-SPACE</td>
 <td>選取文字(再按一次結束選取)</td>
 </tr>
 <tr>
 <td>C-w, M-w</td>
-<td>剪下/複製 選取文字</td>
+<td>剪下 / 複製 選取文字</td>
 </tr>
 <tr>
 <td>C-y</td>
@@ -190,11 +195,11 @@
 </tr>
 <tr>
 <td>M-y</td>
-<td>選擇貼上的文字(從之前剪下/複製過的文字中)</td>
+<td>選擇貼上的文字(從之前剪下 / 複製過的文字中)</td>
 </tr>
 <tr>
 <td>C-d</td>
-<td>同<code>delete</code>鍵(刪除後一個字)</td>
+<td>同 <code>delete</code> 鍵(刪除後一個字)</td>
 </tr>
 <tr>
 <td>M-d</td>
@@ -206,8 +211,8 @@
 </tr>
 </tbody>
 </table>
-<p><code>C-k</code> : 刪除從游標到「行尾」間的字元<br>單獨的 C-k 會把一行的內容殺掉<br>而第二個 C-k 則會殺掉那一行本身(‘\n’)。使所有其他的行向上移動</p>
-<p><code>C-x u</code> : 還原<br>(1) 沒有改變文字的指令不算（移動游標和視窗等）<br>(2) 自行鍵入的字元 一次最多還原20個  </p>
+<p><code>C-k</code> : 刪除從游標到「行尾」間的字元 <br> 單獨的 C-k 會把一行的內容殺掉 <br> 而第二個 C-k 則會殺掉那一行本身(‘\n’)。使所有其他的行向上移動</p>
+<p><code>C-x u</code> : 還原<br>(1) 沒有改變文字的指令不算（移動游標和視窗等）<br>(2) 自行鍵入的字元 一次最多還原 20 個  </p>
 <h3 id="重複">重複</h3><table>
 <thead>
 <tr>
@@ -218,13 +223,18 @@
 </thead>
 <tbody>
 <tr>
-<td>C-u [數字] [指令or字元]</td>
+<td>C-u [數字] [指令 or 字元]</td>
 <td>重複執行</td>
 <td>C-u 8 a → aaaaaaaa </td>
 </tr>
+<tr>
+<td>M-[數字]</td>
+<td>將下一個指令重複 n 次</td>
+<td>M-8 a → aaaaaaaa</td>
+</tr>
 </tbody>
 </table>
-<h3 id="搜尋">搜尋</h3><table>
+<h3 id="Emacs 搜尋">Emacs 搜尋</h3><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -258,7 +268,7 @@
 <li><code>.</code>：將目前的字串置換後，即離開置換模式。</li>
 <li><code>^</code>：回到前一個符合置換的地方。</li>
 </ul>
-<h3 id="分割">分割</h3><table>
+<h3 id="Emacs 分割(window)">Emacs 分割(window)</h3><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -284,7 +294,11 @@
 </tr>
 <tr>
 <td>C-x o</td>
-<td>跳到別的分割</td>
+<td>跳到別的分割(在現有的分割循環)</td>
+</tr>
+<tr>
+<td>M-C-v</td>
+<td>捲動另一個分割</td>
 </tr>
 <tr>
 <td>C-x 5 2</td>
@@ -292,7 +306,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="檔案">檔案</h3><h4 id="檔案切換">檔案切換</h4><table>
+<h3 id="Emacs 檔案">Emacs 檔案</h3><h4 id="Emacs 檔案切換">Emacs 檔案切換</h4><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -310,11 +324,11 @@
 </tr>
 <tr>
 <td>C-x k</td>
-<td>關閉目前編輯的檔案，不存檔</td>
+<td>關閉目前編輯的檔案(不存檔)</td>
 </tr>
 </tbody>
 </table>
-<h4 id="檔案指令">檔案指令</h4><table>
+<h4 id="Emacs 檔案指令">Emacs 檔案指令</h4><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -348,7 +362,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="系統">系統</h3><table>
+<h3 id="Emacs 系統">Emacs 系統</h3><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -362,12 +376,12 @@
 </tr>
 <tr>
 <td>C-z</td>
-<td>暫時離開Emacs(Suspend)</td>
+<td>暫時離開 Emacs(Suspend)</td>
 </tr>
 </tbody>
 </table>
-<p>用<code>fg</code>或<code>%emacs</code>恢復 Emacs</p>
-<h3 id="函式">函式</h3><table>
+<p>用 <code>fg</code> 或<code>%emacs</code>恢復 Emacs</p>
+<h3 id="Emacs 函式">Emacs 函式</h3><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -377,15 +391,15 @@
 <tbody>
 <tr>
 <td>M-x [function]</td>
-<td>執行名為[function]的功能</td>
+<td>執行名為 [function] 的功能</td>
 </tr>
 <tr>
 <td>M-x compile</td>
-<td>開啟<em>compilation</em>分割進行compile </td>
+<td>開啟 <em>compilation</em> 分割進行 compile </td>
 </tr>
 <tr>
 <td>M-x recompile</td>
-<td>重覆執行上次執行過的compile </td>
+<td>重覆執行上次執行過的 compile </td>
 </tr>
 <tr>
 <td>C-x `</td>
@@ -393,7 +407,7 @@
 </tr>
 <tr>
 <td>M-x gdb</td>
-<td>用gdb除錯 </td>
+<td>用 gdb 除錯 </td>
 </tr>
 <tr>
 <td>M-x shell</td>
@@ -402,7 +416,7 @@
 </tbody>
 </table>
 <p>需要在 Shell 下的慣用命令前加上 C-c<br>如 <code>C-c C-c</code> 為中止程式; <code>C-c C-z</code> 為暫停程式等</p>
-<h3 id="幫助">幫助</h3><table>
+<h3 id="Emacs 幫助">Emacs 幫助</h3><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -412,7 +426,7 @@
 <tbody>
 <tr>
 <td>C-h ?</td>
-<td>開啟<em>Help</em>分割</td>
+<td>開啟 <em>Help</em> 分割</td>
 </tr>
 <tr>
 <td>C-h c [指令]</td>
@@ -425,6 +439,10 @@
 <tr>
 <td>C-h f [函數]</td>
 <td>在新分割顯示說明文件</td>
+</tr>
+<tr>
+<td>C-h w [函數]</td>
+<td>查詢此函數的快捷鍵</td>
 </tr>
 <tr>
 <td>C-h m</td>
@@ -456,101 +474,185 @@
 <td>M-;</td>
 <td>在句尾加入註解</td>
 </tr>
+<tr>
+<td>M-^</td>
+<td>將此行併入上一行</td>
+</tr>
+<tr>
+<td>C-t</td>
+<td>對調兩字元</td>
+</tr>
+<tr>
+<td>M-t</td>
+<td>對調兩單字</td>
+</tr>
+<tr>
+<td>C-x C-t</td>
+<td>對調兩行</td>
+</tr>
+<tr>
+<td>M-c</td>
+<td>將字的第一個字母改為大寫(Capitalize)</td>
+</tr>
+<tr>
+<td>M-u</td>
+<td>將單字改為大寫(Upper)</td>
+</tr>
+<tr>
+<td>M-l</td>
+<td>將單字改為小寫(Lower)</td>
+</tr>
 </tbody>
 </table>
-<h2 id="技巧">技巧</h2><h3 id="移動至定義(goto_declaration)">移動至定義(goto declaration)</h3><ol>
-<li><p>建立tag檔</p>
+<h2 id="Emacs 技巧">Emacs 技巧 </h2><h3 id="自動完成"> 自動完成 </h3><p><code>M-/</code><br> 可重複輸入以改變</p>
+<h3 id="移動至定義 (goto_declaration)"> 移動至定義(goto declaration)</h3><ol>
+<li><p>建立 tag 檔</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for c, c++ file</span></span><br><span class="line">find . | grep <span class="string">".*\.\(c\|h\|cpp\)"</span> | xargs etags <span class="operator">-f</span> tags <span class="comment"># output filename "tags"</span></span><br><span class="line"><span class="comment"># for python file </span></span><br><span class="line">find . -type f -name <span class="string">'*.py'</span> | xargs etags <span class="operator">-f</span> tags</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在emacs中用<code>M-.</code>進行搜尋</p>
+<li><p>在 Emacs 中用 <code>M-.</code> 進行搜尋</p>
 </li>
+<li><code>C-x 4 .</code>: 在另一個分割開啟定義</li>
 </ol>
 <p><code>M-*</code> 回到前一個定義的位置  </p>
-<h3 id="回到之前的遊標位置">回到之前的遊標位置</h3><p>在搜尋或尋找定義之後很好用<br><code>C-u C-space</code></p>
-<h2 id="設定檔">設定檔</h2><p>通常是家目錄的<code>.emacs</code></p>
-<a href="!--
-http://stackoverflow.com/questions/11043004/emacs-compile-buffer-auto-close
-https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-text-across-multiple-files.html
-http://www.gnu.org/software/emacs/manual/html_node/emacs/Marks-vs-Flags.html
---">!--
-http://stackoverflow.com/questions/11043004/emacs-compile-buffer-auto-close
-https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-text-across-multiple-files.html
-http://www.gnu.org/software/emacs/manual/html_node/emacs/Marks-vs-Flags.html
---</a>
-<h2 id="Emacs_+_Markdown_Mode">Emacs + Markdown Mode</h2><p><a href="https://linuxtoy.org/archives/emacs-markdown-mode.html" target="_blank" rel="external">Emacs Markdown模式</a></p>
-<p>基本上直接輸入比較快…  </p>
-<ul>
-<li>C-c C-t [N] 插入第N級的標題</li>
-<li>C-c C-a l 插入鏈接，格式為 <a href="url">text</a></li>
-<li>C-c C-i i 插入圖像，格式為 <img src="url" alt="text"></li>
-<li>C-c - 插入水平線</li>
-</ul>
-<p>S-Tab 在大綱視圖、目錄視圖、及正常視圖間切換</p>
-<p>C-c C-c m 預覽HTML<br>C-c C-c p 在瀏覽器中預覽</p>
+<h3 id="回到之前的遊標位置">回到之前的遊標位置 </h3><p> 在搜尋或尋找定義之後很好用<br><code>C-u C-space</code></p>
+<h3 id="Emacs 作為 IDE 使用">Emacs 作為 IDE 使用 </h3><p>function <code>compile</code> 執行編譯命令(make, g++ …)<br>function <code>recompile</code> 重復之前的編譯命令<br> 可將其設為快捷鍵</p>
+<p><a href="http://stackoverflow.com/questions/11043004/emacs-compile-buffer-auto-close" target="_blank" rel="external">編譯成功後自動關閉 <em>compilnation</em> 分割 </a><br><a href="http://lifegoo.pluskid.org/wiki/EmacsSmartCompile.html" target="_blank" rel="external"> 智慧編譯：自動偵測檔名或 makefile 並編譯</a></p>
+<h3 id="Emacs 巨集(Macro)">Emacs 巨集(Macro)</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-x (</td>
+<td>開始定義巨集</td>
+</tr>
+<tr>
+<td>C-x )</td>
+<td>結束巨集定義</td>
+</tr>
+<tr>
+<td>C-x e</td>
+<td>執行上一個定義的巨集</td>
+</tr>
+<tr>
+<td>M-[Num] C-x e</td>
+<td>將上一個定義的巨集執行 Num 次</td>
+</tr>
+<tr>
+<td>C-u C-x (</td>
+<td>執行上一個定義的巨集，然後可以加上按鍵以重新定義巨集</td>
+</tr>
+<tr>
+<td>C-x q</td>
+<td>將巨集定義中插入查詢</td>
+</tr>
+<tr>
+<td>C-u C-x q</td>
+<td>將巨集定義中插入遞迴編輯</td>
+</tr>
+<tr>
+<td>M-C-c</td>
+<td>跳出遞迴編輯</td>
+</tr>
+</tbody>
+</table>
+<p><code>name-last-kbd-macro</code>: 將上一個定義的巨集存檔之前予以命名<br><code>load-file</code>: 載入儲存的 lisp 程式碼巨集<br><code>macroname</code>: 執行儲存過的”macroname”巨集<br><code>insert-kbd-macro</code>: 將命名過的巨集以 lisp 程式碼印出</p>
+<p>應用：在 <code>EmacsMacro.el</code> 中儲存巨集程式碼，並在 <code>.emacs</code> 中寫入</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;;load my macro file                                       </span></span><br><span class="line"><span class="list">(<span class="keyword">load</span> <span class="string">"~/EmacsMacro"</span>)</span></span><br></pre></td></tr></table></figure>
 <!--
+###hippie
 
-    * 放大字體: Ctrl-x Ctrl-+ 或 Ctrl-x Ctrl-=
-    * 縮小字體: Ctrl-x Ctrl–
-    * 重置字體: Ctrl-x Ctrl-0
+### 书签
 
-更酷的是，如果要放大或縮小多次，在第二次直接按 ＋，－，0 就可以了，比如，放大 3 次： Ctrl-x Ctrl-= = = 。另外，Shift + 鼠標左鍵 也能喚出調整字體大小的彈出菜單。
-Tagstags是一個很有用的工具，他可以幫助您將source檔案中所有function定義，及 typedef的定義，全部收集成為一個資料庫，讓你可以很輕易的跳到您要的函數定義。在使用emacs的tags機制之前，您需要先將有關的tag的資 料庫建構出來。建構的方法如下：
-% etags -tlist_of_source_file
-
-ESC .  尋找函數的定義。你可以透過這個命令來找尋你要的函數。輸入此命令後，emacs會提示訊息，要求你輸入要找尋的函數名稱。或是typedef的定義。
-Ctrl-x 4 .      功能同ESC .。但是會把找到的函數定義顯示在另外一個視窗。
-ESC x visit-tags-table  使用其他的TAGS檔案
-ESC x tags-search       以regular expression的方式來找尋函數名稱。
-ESC ,   輸入ESC x tags-search之後，可以用這個來進行尋找下一個的動作。
-ESC x tags-query-replace        以regular expression的方式來置換函數名稱。
-
-
-
-    * 一些不是特別常用的函數綁定到前綴 C-x 上。例如 C-x C-c 退出 Emacs， C-x 2 水平分割當前 window 。
-    * 與某個 mode 相關的的函數被綁定到前綴 C-c 上。
-    * 最不常用的函數根本沒有鍵綁定，而是使用 M-x 然後輸入函數名來調用他們。
-    * 前綴 C-x 4 被保留作操作另外一個 window 用的函數，例如 C-x 4 C-f 在另 外一個 window 裡面打開文件。類似的， C-x 5 被綁定到操縱其他frame 的 函數上面： C-x 5 C-f 才另外一個 frame 裡面打開文件。注意到這兩個函 數與 C-x C-f (打開文件) 有同樣的鍵綁定，只是在中間插入了 4 或者 5， 這並不是一個巧合。
-
-
-被殺掉的可以拉回，而被刪除的則不能。
-將被殺掉的文字回復的動作稱為「拉回（ yanking ）」。
-
-拉回數次同樣的文字，以複製。
-如果您連續地做了數次 C-k，所有被殺掉的文字都會被儲存在一起，因此做一次C-y 就會把所有這些行都拉回來。
-
-C-y 會把最近殺掉的拉回來，但是先前的文字並沒有消失，您可以用 M-y 來回到它。當您已經使用 C-y 把最近殺掉的拉回來之後，再鍵入 M-y 來把這些拉回來的文字替換為先前所殺掉的。一次又一次地鍵入 M-y 會把先前再先前所殺掉的文字帶回來。當您到了您想找的文字時，您不需要做任何事來保存它，只要繼續您的編輯，把這些已拉回的文字留在那裡就好。
-如果您想的話，您可以試著給 M-y 正的或是負的參數
-
-您鍵入 C-s 時，「I-search」出現在回應區。
-Emacs 搜尋指令是「漸進的（ incremental ）」，搜尋發生在遊標後。
-現在如果您鍵入『u』，游標會移動到「cu」的第一次出現位置。將「u」從搜尋字串中消除，游標會移回到「c」的第一次出現位置。
-
-有時候您會進入所謂的「遞迴編輯階層」。它是由位在狀態行的方括弧所指明，並且包含住以小括弧來指明的模式名稱。舉例來說，您可能會看到[(Fundamental)]，而不是 (Fundamental)。
-要離開遞迴編輯階層，請鍵入 ESC ESC ESC。這是個全功能的「離開」指令。您也可以使用它來除去多餘的窗格，並且離開小緩衝區。您無法使用 C-g 來離開遞迴編輯階層。這是因為 C-g 是用來取消指令以及「位於」遞迴編輯階層中的「引數（arguments ）」之故。
->> 鍵入 M-x 以進入小緩衝區；然後鍵入 ESC ESC ESC 離開。
-===========================================================================
-
-
-大全： http://clipthat.blogspot.tw/2010/01/emacs.html
-http://lifegoo.pluskid.org/wiki/Emacs.html
-
-
+### 快速切換到 shell 並 cd 到當前文件所在的目錄
 -->
-<h3 id="Emacs作為IDE使用">Emacs作為IDE使用</h3><p>function <code>compile</code> 執行編譯命令(make, g++ …)<br>function <code>recompile</code> 重復之前的編譯命令<br><!--bind到按鍵--></p>
-<p>function <code>shell</code> 開啟shell<br><a href="http://lifegoo.pluskid.org/wiki/EmacsSmartCompile.html" target="_blank" rel="external">http://lifegoo.pluskid.org/wiki/EmacsSmartCompile.html</a></p>
-<h2 id="進階功能">進階功能</h2><p><a href="http://lifegoo.pluskid.org/wiki/Emacs.html" target="_blank" rel="external">參考 http://lifegoo.pluskid.org/wiki/Emacs.html</a><br><a href="http://lifegoo.pluskid.org/wiki/EmacsTip.html" target="_blank" rel="external">http://lifegoo.pluskid.org/wiki/EmacsTip.html</a><br>rot13</p>
-<p>rot13 是一種很簡單的凱撒位移加密方法，普遍用於各種迷題後面所附的答案等 的加密上，目的是讓你並不能一下子「不小心」看到了答案，同時又讓你在需要知 道答案的時候能夠方便地進行解密。</p>
-<p>rot13 的加密和解密的方法都非常簡單，就是把每個字母往後移動 13 個即可。 因為剛好二十六個字母，所以加密和解密都使用同樣的方法。雖然也可以採用手 工加解密的方法，但是自動完成通常更方便。在 UNIX 系統上，可以直接用 tr 實用程序來完成這個工作：</p>
-<p>tr A-Za-z N-ZA-Mn-za-m</p>
-<p>大多數新聞閱讀器都帶有自動加解密的功能，Emacs 也有一個 rot13-region 的 命令可以方便地使用。</p>
-<p>不過，當然，這種只對英文字母進行轉換的加密，對於中文來說沒有任何作用呢。</p>
-<p>矩形操作</p>
-<p>在 Emacs 裡面可以進行方便的矩形操作，複製、剪切、粘貼以及一個矩形塊等。 Emacs 裡面的矩形塊一開始看上去也許不太直觀，其實熟悉之後是很簡單的，上 下和左右邊界都分別有 pointer 和 mark 限制起來的就是一個矩形，如圖：</p>
-<p>如果不習慣，可以使用 rect-mark.el ，它可以直觀地把矩形顯示出來。例如， 上面的這個區域，使用 rect-mark.el 的 rm-exchange-point-and-mark 命令 (作為和綁定到 C-x C-x 的 exchange-point-and-mark 對應起來，我們可以把 他綁定到 C-x r C-x 上)把他變成一個直觀的矩形區域：</p>
-<p>還可以使用 rm-set-mark 命令標記 mark 然後隨著光標移動動態顯示出來當前 的矩形塊。不過熟悉之後，就幾乎不會用到這個東西了。</p>
-<h3 id="hippie">hippie</h3><h3 id="快速切換到_shell_並_cd_到當前文件所在的目錄">快速切換到 shell 並 cd 到當前文件所在的目錄</h3><h3 id="Emacs_+_Git">Emacs + Git</h3><p><a href="http://www.cnblogs.com/holbrook/archive/2012/04/26/2470923.html" target="_blank" rel="external">http://www.cnblogs.com/holbrook/archive/2012/04/26/2470923.html</a></p>
-<h3 id="畫簡單的ASCII圖">畫簡單的ASCII圖</h3><p><a href="http://emacser.com/artist-mode.htm" target="_blank" rel="external">http://emacser.com/artist-mode.htm</a><br><a href="http://emacser.com/emacs-ditaa.html" target="_blank" rel="external">http://emacser.com/emacs-ditaa.html</a></p>
-<h2 id="Reference">Reference</h2>	  
+<h3 id="Emacs_+_Git">Emacs + Git</h3><p><a href="http://www.cnblogs.com/holbrook/archive/2012/04/26/2470923.html" target="_blank" rel="external">使用 git-emacs</a></p>
+<h3 id="畫簡單的 ASCII 圖">畫簡單的 ASCII 圖 </h3><p><a href="http://emacser.com/artist-mode.htm" target="_blank" rel="external">Artist Mode</a><br><a href="http://emacser.com/emacs-ditaa.html" target="_blank" rel="external"> 輸出成圖片檔</a></p>
+<h3 id="Emacs_+_Markdown_Mode">Emacs + Markdown Mode</h3><p><a href="https://linuxtoy.org/archives/emacs-markdown-mode.html" target="_blank" rel="external">Emacs Markdown 模式</a></p>
+<p>有些指令直接輸入比較快…  </p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>介紹 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-c C-t [N]</td>
+<td>插入第 N 級的標題</td>
+</tr>
+<tr>
+<td>C-c C-a l</td>
+<td>插入鏈接，格式為 <code>[text](url)</code></td>
+</tr>
+<tr>
+<td>C-c C-i i</td>
+<td>插入圖像，格式為 <code>![text](url)</code></td>
+</tr>
+<tr>
+<td>C-c -</td>
+<td>插入水平線</td>
+</tr>
+<tr>
+<td>S-Tab</td>
+<td>在大綱視圖、目錄視圖、及正常視圖間切換</td>
+</tr>
+<tr>
+<td>C-c C-c m</td>
+<td>預覽 HTML</td>
+</tr>
+<tr>
+<td>C-c C-c p</td>
+<td>在瀏覽器中預覽</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他功能">其他功能</h3><p><a href="https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-text-across-multiple-files.html" target="_blank" rel="external">Replacing-text-across-multiple-files</a></p>
+<h3 id="不重要的功能">不重要的功能</h3><ul>
+<li>放大字體: C-x C-+ 或 C-x C-=</li>
+<li>縮小字體: C-x C-–</li>
+<li>重置字體: C-x C-0</li>
+</ul>
+<h2 id="Emacs 小知識">Emacs 小知識 </h2><p><a href="http://lifegoo.pluskid.org/wiki/Emacs.html" target="_blank" rel="external"> 參考資料</a></p>
+<p>前綴  </p>
+<ul>
+<li>一些不是特別常用的函數綁定到前綴 C-x 上。例如 C-x C-c 退出 Emacs， C-x 2 水平分割當前 window</li>
+<li>與某個 mode 相關的的函數被綁定到前綴 C-c 上</li>
+<li>最不常用的函數根本沒有鍵綁定，而是使用 M-x 然後輸入函數名來調用他們</li>
+<li>前綴 C-x 4 被保留作操作另外一個 window 用的函數，例如 C-x 4 C-f 在另 外一個 window 裡面打開文件</li>
+<li>前綴 C-x 5 被綁定到操縱其他 frame 的 函數上面</li>
+</ul>
+<p>殺掉  </p>
+<ul>
+<li>被殺掉的可以拉回，而被刪除的則不能<ul>
+<li><code>delete</code>, <code>backspace</code>都是刪除</li>
+<li><code>C-k</code>, <code>C-w</code>, <code>M-w</code> 等指令都是殺掉<ul>
+<li>如果連續地做了數次 C-k，所有被殺掉的文字都會被儲存在一起，因此做一次 C-y 就會把所有這些行都拉回來</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>將被殺掉的文字回復的動作稱為「拉回（ yanking ）」<ul>
+<li><code>C-y</code> 會把最近殺掉的拉回來，但是先前的文字並沒有消失，您可以用 <code>M-y</code> 來回到它</li>
+<li>您給 <code>M-y</code> 正的或是負的參數</li>
+</ul>
+</li>
+</ul>
+<p>搜尋  </p>
+<ul>
+<li>Emacs 搜尋指令是「漸進的（ incremental ）」，搜尋發生在遊標後<ul>
+<li>如果鍵入『u』，游標會移動到「cu」的第一次出現位置。將「u」從 s 搜尋字串中消除，游標會移回到「c」的第一次出現位置</li>
+</ul>
+</li>
+</ul>
+<p>設定檔: 家目錄的<code>.emacs</code>，可修改 emacs 設定</p>
+<p>名稱來源: Emacs = 「編輯巨集」[Editing MACroS]的簡稱</p>
+<h2 id="Reference">Reference</h2><p><a href="http://clipthat.blogspot.tw/2010/01/emacs.html" target="_blank" rel="external">指令大全</a></p>
+	  
 	</div>
 
 	<div>
@@ -565,7 +667,7 @@ http://lifegoo.pluskid.org/wiki/Emacs.html
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/NLP/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/NLP2/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -607,7 +709,7 @@ http://lifegoo.pluskid.org/wiki/Emacs.html
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/記錄/">記錄<span>5</span></a></li>
+    <li><a href="/categories/記錄/">記錄<span>6</span></a></li>
   </li>
 
     </ul>
@@ -627,6 +729,11 @@ http://lifegoo.pluskid.org/wiki/Emacs.html
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Emacs 基本"><span class="toc-article-text">Emacs 基本</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 移動"><span class="toc-article-text">Emacs 移動</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 編輯"><span class="toc-article-text">Emacs 編輯</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#重複"><span class="toc-article-text">重複</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 搜尋"><span class="toc-article-text">Emacs 搜尋</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 分割(window)"><span class="toc-article-text">Emacs 分割(window)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 檔案"><span class="toc-article-text">Emacs 檔案</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Emacs 檔案切換"><span class="toc-article-text">Emacs 檔案切換</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Emacs 檔案指令"><span class="toc-article-text">Emacs 檔案指令</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 系統"><span class="toc-article-text">Emacs 系統</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 函式"><span class="toc-article-text">Emacs 函式</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 幫助"><span class="toc-article-text">Emacs 幫助</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#其他"><span class="toc-article-text">其他</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Emacs 技巧"><span class="toc-article-text">Emacs 技巧 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#自動完成"><span class="toc-article-text"> 自動完成 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#移動至定義 (goto_declaration)"><span class="toc-article-text"> 移動至定義(goto declaration)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#回到之前的遊標位置"><span class="toc-article-text">回到之前的遊標位置 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 作為 IDE 使用"><span class="toc-article-text">Emacs 作為 IDE 使用 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 巨集(Macro)"><span class="toc-article-text">Emacs 巨集(Macro)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs_+_Git"><span class="toc-article-text">Emacs + Git</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#畫簡單的 ASCII 圖"><span class="toc-article-text">畫簡單的 ASCII 圖 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs_+_Markdown_Mode"><span class="toc-article-text">Emacs + Markdown Mode</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#其他功能"><span class="toc-article-text">其他功能</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#不重要的功能"><span class="toc-article-text">不重要的功能</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Emacs 小知識"><span class="toc-article-text">Emacs 小知識 </span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
+		</div>
 	
 	</div>
 	

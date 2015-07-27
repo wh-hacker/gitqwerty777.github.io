@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>自然語言處理(上) | QWERTY</title>
+  <title>自然語言處理 (上) | QWERTY</title>
   <meta name="author" content="HCL">
   
   <meta name="description" content="Programming, Computer Science, Note">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="自然語言處理(上)"/>
+  <meta property="og:title" content="自然語言處理 (上)"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> 自然語言處理(上)</h1>
+			<h1> 自然語言處理 (上)</h1>
 		</div>		
 	
 
@@ -119,7 +119,7 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <h2 id="Chap01_Introduction">Chap01 Introduction</h2><h3 id="Applications">Applications</h3><ul>
+	    <h2 id="Chap01_Introduction">Chap01 Introduction</h2><h3 id="Applications_of_NLP">Applications of NLP</h3><ul>
 <li>Machine translation<ul>
 <li>google translate</li>
 </ul>
@@ -129,7 +129,7 @@
 </ul>
 </li>
 <li>Smart input method<ul>
-<li>ㄐㄅㄈㄏ =&gt; 加倍奉還</li>
+<li>ㄐㄅㄈㄏ → 加倍奉還</li>
 </ul>
 </li>
 <li>Sentiment(情感) analysis</li>
@@ -138,11 +138,12 @@
 <li>Turing Test</li>
 </ul>
 </li>
-<li><p>Optical character recognition (OCR)</p>
-<a id="more"></a>
-<h3 id="Critical_Problems_in_NLP">Critical Problems in NLP</h3></li>
-<li><p>Ambiguity(不明確,含糊)</p>
-<ul>
+<li>Optical character recognition (OCR)<a id="more"></a>
+</li>
+</ul>
+<h3 id="Critical_Problems_in_NLP">Critical Problems in NLP</h3><ul>
+<li>Ambiguity(不明確性)<ul>
+<li><strong>The most important thing in NLP</strong></li>
 <li>Lexical(字辭)<ul>
 <li>current: noun or adjective</li>
 <li>bank (noun): money or river</li>
@@ -158,7 +159,6 @@
 <li>agent (施事)vs. patient(受事)</li>
 </ul>
 </li>
-<li><strong>The most important thing in NLP</strong></li>
 </ul>
 </li>
 <li>ill-form(bad form)<ul>
@@ -173,7 +173,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="Main_Topics_in_Large-Scale_NLPS_Design">Main Topics in Large-Scale NLPS Design</h3><ul>
+<h3 id="Main_Topics_in_Large-Scale_NLP_Design">Main Topics in Large-Scale NLP Design</h3><ul>
 <li>Knowledge representation<ul>
 <li>organize and describe linguistic knowledge</li>
 </ul>
@@ -183,12 +183,11 @@
 </ul>
 </li>
 <li>Knowledge acquisition<ul>
-<li>setup knowledge base systematically and cost-effectively</li>
-<li>maintain knowledge base consistency</li>
+<li>setup and maintain knowledge base systematically and cost-effectively</li>
 </ul>
 </li>
 <li>Knowledge integration<ul>
-<li>jointly consider various knowledge source effectively</li>
+<li>consider various knowledge sources effectively</li>
 </ul>
 </li>
 </ul>
@@ -198,8 +197,8 @@
 <li>Logical formalisms</li>
 <li>Probabilistic models</li>
 </ul>
-<p>Many of the algorithms used are transducers(用來轉換), which takes structure as input and output another structure   </p>
-<h3 id="Approaches">Approaches</h3><p>NLP start from 1960~, statictics method wins after 1995</p>
+<p>用許多演算法來轉換文字結構，以產生最後結果   </p>
+<h3 id="Approaches">Approaches</h3><p>NLP start from 1960, <strong>statictics method</strong> wins after 1995</p>
 <p>Rule-based approach</p>
 <ul>
 <li>Advantages<ul>
@@ -226,7 +225,7 @@
 <ul>
 <li>Advantages<ul>
 <li>Knowledge acquisition can be automatically achieved by the computer</li>
-<li>Uncertain knowledge can be objectively quantified</li>
+<li>Uncertain knowledge can be objectively quantified(未知的知識可被量化)</li>
 <li><strong>Consistency and completeness</strong> are easy to obtain</li>
 <li><strong>Well established statistical theories and technique are available</strong></li>
 </ul>
@@ -238,33 +237,21 @@
 <li>Prepare database is time consuming</li>
 </ul>
 </li>
-<li>Types of Corpus<ul>
-<li>Type1<ul>
-<li>pure text, or text with parts of speech, semantic tags, syntactic structures…</li>
-<li>bilingual corpora</li>
-<li>speech corpora</li>
-<li>spoken corpora</li>
-</ul>
-</li>
-<li>Type2<ul>
-<li>Balanced Corpora</li>
+<li>Corpus<ul>
 <li>Brown Corpus (1M words),Birmingham Corpus (7.5M words), LOB Corpus (1M words), etc</li>
-</ul>
-</li>
-<li>Type3<ul>
-<li>Corpora of special domains or style</li>
+<li>Corpora of special domains or style<ul>
 <li>Newspaper, Bible, etc</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>Information in Corpora<ul>
-<li>Information within a pure text corpus<ul>
+<li>pure-text corpus<ul>
 <li>language usage of real world, word distribution, co-occurrence</li>
 </ul>
 </li>
-<li>Information within a tagged corpus<ul>
-<li>parts of speech, structures, and features</li>
+<li>tagged corpus<ul>
+<li>parts of speech, structures, features</li>
 </ul>
 </li>
 </ul>
@@ -272,26 +259,25 @@
 </ul>
 <p>Hybrid approach   </p>
 <ul>
-<li>When we adopt rule-based approach<ul>
+<li>Use rule-based approach when <ul>
 <li>Not easy to establish a large-size database</li>
+<li>there are rules that have good coverage<ul>
 <li>it can be governed by a small number of rules</li>
-<li>there are rules that have good coverage</li>
+</ul>
+</li>
 <li>extensional knowledge is important to the system</li>
 </ul>
 </li>
-<li>When we adopt corpus-based approach<ul>
+<li>Use corpus-based approach when<ul>
 <li>Knowledge needed to solve the problem is huge and intricate, not easy to acquire by human</li>
-<li>A good model or formulation can be found</li>
+<li>A good model or formulation exists</li>
 </ul>
 </li>
 </ul>
 <h3 id="Implementation">Implementation</h3><p><a href="http://www.nltk.org/" target="_blank" rel="external">Natural Language Toolkit(NLTK)</a>: Open source Python modules, linguistic data and documentation for research and development in natural language processing</p>
-<p>Code  </p>
+<p>features  </p>
 <ul>
-<li>Corpus readers<ul>
-<li>interfaces to many corpora</li>
-</ul>
-</li>
+<li>Corpus readers</li>
 <li>Tokenizers<ul>
 <li>whitespace, newline, blankline, word, treebank, sexpr, regexp, Punkt sentence segmenter</li>
 </ul>
@@ -388,7 +374,7 @@
 </li>
 <li>Semantics can be divided into two parts: lexical semantics and combination semantics<ul>
 <li>Lexical Semantics<ul>
-<li>上下位，同義(反義)，部分-整體</li>
+<li>上下位，同義(反義)，部分 - 整體</li>
 </ul>
 </li>
 <li>Composition Semantics<ul>
@@ -438,16 +424,16 @@
 <li>crucial to information extraction</li>
 <li>Dialogue Tagging <img src="/img/NLP/dialogue_tag.png" alt=""></li>
 <li>Anaphora(首語重複) and Coreference(指代)<ul>
-<li>張三是老師,他教學很認真,同時,他也是一個好爸爸。</li>
+<li>張三是老師, 他教學很認真, 同時, 他也是一個好爸爸。</li>
 <li>Type/Instance: “老師”/“張三”, “一個好爸爸”/“張三”</li>
 </ul>
 </li>
 </ul>
 <h3 id="Discourse_Analysis(篇章分析)">Discourse Analysis(篇章分析)</h3><p>Example  </p>
 <ul>
-<li>1a: 佛羅倫斯哪個博物館在1993年的爆炸事件中受到破壞？</li>
+<li>1a: 佛羅倫斯哪個博物館在 1993 年的爆炸事件中受到破壞？</li>
 <li>1b: 這個事件哪一天發生？<ul>
-<li>問句1b「這個事件」，指的是問句1a「1993年的爆炸事件」</li>
+<li>問句 1b「這個事件」，指的是問句 1a「1993 年的爆炸事件」</li>
 </ul>
 </li>
 </ul>
@@ -558,7 +544,7 @@
 </ul>
 </li>
 </ul>
-<p>Multiword Expression 和 collocation的關係？</p>
+<p>Multiword Expression 和 collocation 的關係？</p>
 <h3 id="Collocation_detection">Collocation detection</h3><ul>
 <li>by Frequency</li>
 <li>by Mean and Variance of the distance between focal word (焦點詞) and collocating word(搭配詞)</li>
@@ -566,7 +552,7 @@
 <li>Mutual Information</li>
 </ul>
 <h3 id="Frequency">Frequency</h3><ul>
-<li>選bigrams(quantitative technique)<ul>
+<li>選 bigrams(quantitative technique)<ul>
 <li>not always significant</li>
 </ul>
 </li>
@@ -596,13 +582,13 @@
 <li>null hypothesis(虛無假設, H0) <ul>
 <li>w1 and w2 is completely independent<ul>
 <li>P(w1w2) = P(w1)P(w2)</li>
-<li>w1 and w2不是搭配詞</li>
+<li>w1 and w2 不是搭配詞</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>假設H0為真，計算這兩個字符合H0的機率P<ul>
-<li>若P太低則否決H0(是搭配詞)</li>
+<li>假設 H0 為真，計算這兩個字符合 H0 的機率 P<ul>
+<li>若 P 太低則否決 H0(是搭配詞)</li>
 </ul>
 </li>
 <li>Two issues<ul>
@@ -611,7 +597,7 @@
 </ul>
 </li>
 </ul>
-<p>假設檢定的種類包括：t檢驗，Z檢驗，卡方檢驗，F檢驗      </p>
+<p>假設檢定的種類包括：t 檢驗，Z 檢驗，卡方檢驗，F 檢驗      </p>
 <h4 id="t-test">t-test</h4><ul>
 <li>Test whether <strong>means of two groups</strong> are <strong>statistically different</strong><ul>
 <li>H0 means the candidate has no differnece with normal distribution</li>
@@ -621,7 +607,7 @@
 </ul>
 </li>
 <li>can get t-value by alpha level(confidence), degree of freedom(number of sample-1 → total = number of two groups-2), and t-value<ul>
-<li>在normal distribution下，α = 95%落在m±1.96std之間, α = 99%落在m±2.576std之間</li>
+<li>在 normal distribution 下，α = 95% 落在 m±1.96std 之間, α = 99% 落在 m±2.576std 之間</li>
 <li>If t-value is larger than 2.576, we say the two groups <strong>are different</strong> with 99% confidence</li>
 <li><strong>t↑ → more difference → more possible to reject null hypothesis</strong></li>
 </ul>
@@ -644,7 +630,7 @@
 </li>
 <li>T-test is extended to the <strong>comparison of the means of two normal populations</strong><ul>
 <li>H0 is that the average difference is 0 (u = 0)</li>
-<li><img src="/img/NLP/ttest5.png" alt=""><img src="/img/NLP/ttest6.png" alt=""></li>
+<li><img src="/img/NLP/ttest5.png" alt=""><img src="/img/NLP/ttest6.png"alt=""></li>
 <li>where v1 and v2 are the words we are comparing (e.g., powerful and strong), and w is the collocate of interest(e.g., computers)</li>
 </ul>
 </li>
@@ -660,7 +646,7 @@
 </li>
 <li>Example<ul>
 <li>expected frequency of “new companies”: $\frac{8+4667}{14307668} \times \frac{8+15820}{14307668} \times 14307668$ = 5.2 <img src="/img/NLP/chi1.png" alt=""></li>
-<li>chi-square value = χ^2 <img src="/img/NLP/chi3.png" alt=""> <img src="/img/NLP/chi2.png" alt=""></li>
+<li>chi-square value = χ^2 <img src="/img/NLP/chi3.png" alt=""> <img src="/img/NLP/chi2.png"alt=""></li>
 <li>When α=0.05, χ^2=3.841</li>
 <li>Because 1.55&lt;3.841, we cannot reject the null hypothesis. new companies is not a good candidate for a collocation</li>
 </ul>
@@ -727,7 +713,7 @@
 <li>H(X,Y) = H(Y|X) + H(X) = H(X|Y) + H(Y)  </li>
 <li>Conditional entropy H(Y|X) expresses how much <strong>extra</strong> information you still need to supply on average to communicate Y when X is known <img src="/img/NLP/conditional.png" alt=""></li>
 <li>H(X)-H(X|Y) = H(Y)-H(Y|X)<ul>
-<li>This difference is called the <strong>mutual information between X and Y</strong>(共同擁有的information)</li>
+<li>This difference is called the <strong>mutual information between X and Y</strong>(共同擁有的 information)</li>
 <li>The concept of MI is not similar to chi-square <img src="/img/NLP/wrongMI.png" alt=""></li>
 </ul>
 </li>
@@ -736,7 +722,7 @@
 <ul>
 <li>Entropy: uncertainty of a variable <img src="/img/NLP/entropy1.png" alt="">  </li>
 <li>Incorrect model’s cross entropy is larger than correct model’s <img src="/img/NLP/entropy2.png" alt=""><ul>
-<li>正確model和猜測model的差別：P(X)logP(X) ↔ P(X)logPM(X)</li>
+<li>正確 model 和猜測 model 的差別：P(X)logP(X) ↔ P(X)logPM(X)</li>
 </ul>
 </li>
 <li>Entropy Rate: Per-word entropy(= sentence entropy / N) <img src="/img/NLP/entropy_rate.png" alt=""></li>
@@ -883,7 +869,7 @@
 </li>
 <li>probability of a test set, as normalized by the number of words <img src="/img/NLP/perplexity.png" alt=""></li>
 <li>物理意義是單詞的編碼大小<ul>
-<li>如果在某個測試語句上，語言模型的perplexity值為2^190，說明該句子的編碼需要190bits</li>
+<li>如果在某個測試語句上，語言模型的 perplexity 值為 2^190，說明該句子的編碼需要 190bits</li>
 </ul>
 </li>
 <li>relate to entropy<ul>
@@ -980,10 +966,10 @@
 <li>Ex. [s] a b a b a<ul>
 <li>N = 5 ([s]a,ab,ba,ab,ba)</li>
 <li>B = 3 ([s]a, ab, ba)</li>
-<li>C(w1, w2…) = 某N-gram(Ex. ab)出現次數</li>
-<li>r =  某N-gram出現頻率</li>
-<li>Nr = 有幾個「出現r次的N-gram」</li>
-<li>Tr = 出現r次的N-gram，在test data出現的總次數</li>
+<li>C(w1, w2…) = 某 N-gram(Ex. ab)出現次數</li>
+<li>r =  某 N-gram 出現頻率</li>
+<li>Nr = 有幾個「出現 r 次的 N-gram」</li>
+<li>Tr = 出現 r 次的 N-gram，在 test data 出現的總次數</li>
 </ul>
 </li>
 </ul>
@@ -1029,7 +1015,7 @@
 <li><img src="/img/NLP/heldout.png" alt=""><ul>
 <li>Tr / Nr = Average frequency of training frequency r N-grams<ul>
 <li>estimate frequency(value for validation)</li>
-<li>計算出現在training corpus r次的bigrams，在held-out corpus出現的次數稱為Tr。 因為這種bigrams有Nr個，因此平均為Tr / Nr</li>
+<li>計算出現在 training corpus r 次的 bigrams，在 held-out corpus 出現的次數稱為 Tr。 因為這種 bigrams 有 Nr 個，因此平均為 Tr / Nr</li>
 </ul>
 </li>
 </ul>
@@ -1084,7 +1070,7 @@
 <h4 id="(5)_Good-Turing_Estimation">(5) Good-Turing Estimation</h4><ul>
 <li>use things-saw-once to estimate new things(not seen)</li>
 <li>high frequency words are be quite accurate, so no need to discount them<ul>
-<li>若出現次數&gt;k，不變，否則套用公式</li>
+<li>若出現次數 &gt;k，不變，否則套用公式</li>
 </ul>
 </li>
 <li><img src="/img/NLP/goodturing.png" alt=""><ul>
@@ -1113,7 +1099,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="(6)_Absolute_Discounting">(6) Absolute Discounting</h4><p>從所有非零N-gram中拿出λ，平均分配給所有未出現過的N-gram  </p>
+<h4 id="(6)_Absolute_Discounting">(6) Absolute Discounting</h4><p>從所有非零 N-gram 中拿出λ，平均分配給所有未出現過的 N-gram  </p>
 <h3 id="Combining_Estimator">Combining Estimator</h3><p>Combination Methods   </p>
 <ul>
 <li>Simple Linear Interpolation(內插)(finite mixture models)<ul>
@@ -1161,7 +1147,7 @@
 </ul>
 </li>
 <li>model a <strong>state sequence</strong> (perhaps through time) <strong>of random variables</strong> that have dependencies<ul>
-<li>狀態(state)並不是直接可見的，但受狀態影響的某些變量(output symbol)則是可見的</li>
+<li>狀態 (state) 並不是直接可見的，但受狀態影響的某些變量 (output symbol) 則是可見的</li>
 <li>known value<ul>
 <li><strong>output symbols(words)</strong>, which is affected by its state</li>
 <li>probabilistic function of state relation </li>
@@ -1176,7 +1162,7 @@
 <li>rely on 2 assumptions<ul>
 <li>Let X=(X1, …, XT) be a sequence of random variables</li>
 <li>1.Limited Horizon<ul>
-<li>a word’s tag only depends on <strong>previous</strong> tag(state只受前一個state影響)</li>
+<li>a word’s tag only depends on <strong>previous</strong> tag(state 只受前一個 state 影響)</li>
 </ul>
 </li>
 <li>2.Time Invariant<ul>
@@ -1243,8 +1229,8 @@
 <p>Forward Algorithm  </p>
 <ul>
 <li>$α_t(i)$ = probability of state = qi at time = t <img src="/img/NLP/forwardalgo.png" alt="dp"></li>
-<li>α的求法：將time = t-1 的 α 值，乘上在time = t時會在qi state的機率，並加總 <img src="/img/NLP/forwardfex.png" alt="dp"></li>
-<li>順向推出所有可能的state sequence會產生此observation的機率和, 即為此model會產生此observation的機率 <img src="/img/NLP/forwardexample.png" alt="dp"><ul>
+<li>α的求法：將 time = t-1 的 α 值，乘上在 time = t 時會在 qi state 的機率，並加總 <img src="/img/NLP/forwardfex.png" alt="dp"></li>
+<li>順向推出所有可能的 state sequence 會產生此 observation 的機率和, 即為此 model 會產生此 observation 的機率 <img src="/img/NLP/forwardexample.png" alt="dp"><ul>
 <li>Σ P($O_1, O_2, O_3$ | possible state sequence) = P($O_1, O_2, O_3$ | Model)</li>
 </ul>
 </li>
@@ -1308,11 +1294,11 @@
 <ul>
 <li>Backward variables β, which are the total probability of seeing the rest of the observation sequence($O_t to O_T$) given state qi at time t <img src="/img/NLP/bw-procedure.png" alt=""><ul>
 <li><img src="/img/NLP/bw-f.png" alt=""></li>
-<li>初始化β：令t=T時刻所有狀態的β為1</li>
+<li>初始化β：令 t=T 時刻所有狀態的β為 1</li>
 </ul>
 </li>
 <li>由後往前計算 <img src="/img/NLP/bw-graph.png" alt=""></li>
-<li>如果要計算某observation的概率，只需將t=1的後向變量相加</li>
+<li>如果要計算某 observation 的概率，只需將 t=1 的後向變量相加</li>
 </ul>
 <h4 id="Backward-Forward">Backward-Forward</h4><ul>
 <li>We can locally maximize model parameter λ, by an iterative hill-climbing known as Baum-Welch algorithm(=Forward-Backward) (by EM Algorithm structure)</li>
@@ -1331,7 +1317,7 @@
 <p>EM algorithm (Expectation-Maximization)    </p>
 <ul>
 <li>迭代算法，它的最大優點是簡單和穩定，但容易陷入局部最優</li>
-<li>(隨機)選擇參數λ0，找出在λ0下最可能的狀態，計算每個訓練樣本的可能結果的概率，再<strong>重新估計新的參數λ</strong>。經過多次的迭代，直至某個收斂條件滿足為止</li>
+<li>(隨機)選擇參數λ0，找出在λ0 下最可能的狀態，計算每個訓練樣本的可能結果的概率，再 <strong> 重新估計新的參數λ</strong>。經過多次的迭代，直至某個收斂條件滿足為止</li>
 <li>Urn Example<ul>
 <li>update transition matrix A ($a<em>{12}, a</em>{11}$ … ) <img src="/img/NLP/newtrans.png" alt=""><ul>
 <li>P(1→2) = 0.0414 <img src="/img/NLP/1-2.png" alt="1→2"></li>
@@ -1339,9 +1325,9 @@
 <li>normalize: P(1→2)+P(1→1) = 1, P(1→2) = 0.435 …</li>
 </ul>
 </li>
-<li>若state數目多的時候，計算量過大…<ul>
-<li>用backward, forward</li>
-<li>前面用forward, 後面用backward <img src="/img/NLP/bf-graph.png" alt=""></li>
+<li>若 state 數目多的時候，計算量過大…<ul>
+<li>用 backward, forward</li>
+<li>前面用 forward, 後面用 backward <img src="/img/NLP/bf-graph.png" alt=""></li>
 </ul>
 </li>
 </ul>
@@ -1350,12 +1336,12 @@
 <p>Combine forward and backward  </p>
 <ul>
 <li>Let ξt be the probability of being in state i at time t and state j at time t+1, <strong>given observation and model λ</strong><img src="/img/NLP/kesin.png" alt=""></li>
-<li>use not-quite-ξ to get ξ <img src="/img/NLP/nqkesin.png" alt=""> because <img src="/img/NLP/kesin-formula.png" alt=""><ul>
-<li>P(O|λ) → problem1 of HMM 的答案 → 用forward解</li>
+<li>use not-quite-ξ to get ξ <img src="/img/NLP/nqkesin.png" alt=""> because <img src="/img/NLP/kesin-formula.png"alt=""><ul>
+<li>P(O|λ) → problem1 of HMM 的答案 → 用 forward 解</li>
 </ul>
 </li>
-<li>見上方backward, forward同時使用之圖 <img src="/img/NLP/nqkesin-formula.png" alt=""></li>
-<li>ξ可用來計算transition matrix <img src="/img/NLP/newtrans-final.png" alt=""></li>
+<li>見上方 backward, forward 同時使用之圖 <img src="/img/NLP/nqkesin-formula.png" alt=""></li>
+<li>ξ可用來計算 transition matrix <img src="/img/NLP/newtrans-final.png" alt=""></li>
 </ul>
 <p>Summary of Forward-Backward <img src="/img/NLP/fb-algo.png" alt=""> </p>
 <ol>
@@ -1522,7 +1508,7 @@
 <p><strong>discriminative model</strong>(判別模型)   </p>
 <ul>
 <li>Compute the posterior P(Tag|Word) directly to decide tag <img src="/img/NLP/memm.png" alt=""></li>
-<li>求解條件機率分佈 P(y|x) 預測 y → 求P(tag|word)來取得tag </li>
+<li>求解條件機率分佈 P(y|x) 預測 y → 求 P(tag|word)來取得 tag </li>
 <li>不考慮聯合機率分佈 P(x, y)</li>
 <li>對於諸如分類和回歸問題，由於不考慮聯合機率分佈，採用判別模型可以取得更好的效果</li>
 </ul>
@@ -1547,8 +1533,8 @@
 <li>Trigger by word</li>
 <li>Trigger by morphology(詞法學)</li>
 </ol>
-<p>====================分水嶺：尚未分類==========================</p>
-<h3 id="Zipf’s_Law_(long_tail_phenomenon)">Zipf’s Law (long tail phenomenon)</h3><p>a word’s frequency is approximately inversely proportional to its rank in the word distribution list<br>單詞出現的頻率與它在頻率表裡的排名成反比:<br>頻率最高的單詞出現的頻率大約是出現頻率第二位的單詞的2倍</p>
+<p>==================== 分水嶺：尚未分類 ==========================</p>
+<h3 id="Zipf’s_Law_(long_tail_phenomenon)">Zipf’s Law (long tail phenomenon)</h3><p>a word’s frequency is approximately inversely proportional to its rank in the word distribution list<br>單詞出現的頻率與它在頻率表裡的排名成反比:<br>頻率最高的單詞出現的頻率大約是出現頻率第二位的單詞的 2 倍</p>
 <h4 id="Jelinek-Mercer_Smoothing">Jelinek-Mercer Smoothing</h4><p>interpolate(插值) between bigram and unigram<br>because if p(eat the) = 0 and p(eat thou) = 0<br>it still must consider that  p(eat the) &gt; p(eat thou)<br>because p(the) &gt; p(thou)<br>so p(eat the) = N <em> p(the | eat) + (1-N) </em> p(the | thou) </p>
 <h2 id="Language_Model:_Applications">Language Model: Applications</h2><h3 id="Query_Likelihood_Model">Query Likelihood Model</h3><p>given a query 𝑞, rank the probability 𝑝(𝑑|q)<br><img src="/img/NLP/cfKf6I3.png" alt=""><br>So the following arguments are equivalent:<br>1.𝑝𝑑𝑞: find the document 𝑑 that is most likely to be relevant to 𝑞<br>2.𝑝𝑞𝑑: find the document 𝑑 that is most likely to generate the query 𝑞</p>
 <p>Typically, unigram LMs are used in IR(information retrieval)<br>Retrieval does not depend that much on sentence structure</p>
@@ -1585,7 +1571,7 @@
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/Emacs-tips/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+    	<li class="prev"><a href="/NLP2/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
@@ -1628,6 +1614,17 @@
 
 	<!-- categories -->
     
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/筆記/">筆記<span>10</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
 
 	<!-- tags -->
 	
@@ -1635,13 +1632,18 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/機器學習/">機器學習<span>4</span></a></li> <li><a href="/tags/筆記/">筆記<span>11</span></a></li> <li><a href="/tags/統計/">統計<span>1</span></a></li> <li><a href="/tags/自然語言處理/">自然語言處理<span>1</span></a></li>
+  <li><a href="/tags/機器學習/">機器學習<span>5</span></a></li> <li><a href="/tags/統計/">統計<span>2</span></a></li> <li><a href="/tags/自然語言處理/">自然語言處理<span>2</span></a></li>
     </ul>
 	</div>
 		
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap01_Introduction"><span class="toc-article-text">Chap01 Introduction</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Applications_of_NLP"><span class="toc-article-text">Applications of NLP</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Critical_Problems_in_NLP"><span class="toc-article-text">Critical Problems in NLP</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Main_Topics_in_Large-Scale_NLP_Design"><span class="toc-article-text">Main Topics in Large-Scale NLP Design</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Models"><span class="toc-article-text">Models</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Approaches"><span class="toc-article-text">Approaches</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Implementation"><span class="toc-article-text">Implementation</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap02_Overall_Pictures"><span class="toc-article-text">Chap02 Overall Pictures</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Morphology(Structure_of_words)"><span class="toc-article-text">Morphology(Structure of words)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Syntax(structure_of_sentences)"><span class="toc-article-text">Syntax(structure of sentences)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Semantics(meaning_of_individual_sentences)"><span class="toc-article-text">Semantics(meaning of individual sentences)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#FrameNet"><span class="toc-article-text">FrameNet</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Pragmatics(how_sentences_relate_to_each_other)"><span class="toc-article-text">Pragmatics(how sentences relate to each other)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Discourse_Analysis(篇章分析)"><span class="toc-article-text">Discourse Analysis(篇章分析)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Summary"><span class="toc-article-text">Summary</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Analysis"><span class="toc-article-text">Analysis</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#NLP_progress_by_now"><span class="toc-article-text">NLP progress by now</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03_Collocations(搭配詞)"><span class="toc-article-text">Chap03 Collocations(搭配詞)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Collocation_detection"><span class="toc-article-text">Collocation detection</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Frequency"><span class="toc-article-text">Frequency</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Mean_and_Variance_of_the_distance_between_focal_word(焦點詞)_and_collocating_word(搭配詞)"><span class="toc-article-text">Mean and Variance of the distance between focal word(焦點詞) and collocating word(搭配詞)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hypothesis_Testing(假設檢定)"><span class="toc-article-text">Hypothesis Testing(假設檢定)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#t-test"><span class="toc-article-text">t-test</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Chi-Square_test"><span class="toc-article-text">Chi-Square test</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Likelihood_Ratios"><span class="toc-article-text">Likelihood Ratios</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Mutual_Information"><span class="toc-article-text">Mutual Information</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Case_Study"><span class="toc-article-text">Case Study</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap04_N-gram_Model"><span class="toc-article-text">Chap04 N-gram Model</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Counting"><span class="toc-article-text">Counting</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Language_model"><span class="toc-article-text">Language model</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Evaluating_N-Gram_Models"><span class="toc-article-text">Evaluating N-Gram Models</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#perplexity(複雜度)"><span class="toc-article-text">perplexity(複雜度)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#word_entropy"><span class="toc-article-text">word entropy</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap05_Statistical_Inference"><span class="toc-article-text">Chap05 Statistical Inference</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Form_Equivalence_Class"><span class="toc-article-text">Form Equivalence Class</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Finding_statistical_estimator"><span class="toc-article-text">Finding statistical estimator</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#(1)_Maximum_Likelihood_Estimation"><span class="toc-article-text">(1) Maximum Likelihood Estimation</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#(2)_Laplace’s,_Lidstone’s_and_Jeffreys-Perks’_Laws"><span class="toc-article-text">(2) Laplace’s, Lidstone’s and Jeffreys-Perks’ Laws</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#(3)_Held_Out_Estimation"><span class="toc-article-text">(3) Held Out Estimation</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#work_model_in_statistical_NLP_research"><span class="toc-article-text">work model in statistical NLP research</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#(4)_Cross-Validation"><span class="toc-article-text">(4) Cross-Validation</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#(5)_Good-Turing_Estimation"><span class="toc-article-text">(5) Good-Turing Estimation</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#(6)_Absolute_Discounting"><span class="toc-article-text">(6) Absolute Discounting</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Combining_Estimator"><span class="toc-article-text">Combining Estimator</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap06_Hidden_Markov_Models(HMM)"><span class="toc-article-text">Chap06 Hidden Markov Models(HMM)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#3_problems_of_HMM"><span class="toc-article-text">3 problems of HMM</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Solutions_of_HMM_problem"><span class="toc-article-text">Solutions of HMM problem</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Forward"><span class="toc-article-text">Forward</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Backward"><span class="toc-article-text">Backward</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Backward-Forward"><span class="toc-article-text">Backward-Forward</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap07_Part-of-Speech_Tagging"><span class="toc-article-text">Chap07 Part-of-Speech Tagging</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Rule-Based_Tagging"><span class="toc-article-text">Rule-Based Tagging</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hidden_Markov_Model_tagging"><span class="toc-article-text">Hidden Markov Model tagging</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Maximum_entropy_Markov_model_(MEMM)"><span class="toc-article-text">Maximum entropy Markov model (MEMM)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Transformation-Based_Learning_of_Tags"><span class="toc-article-text">Transformation-Based Learning of Tags</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Zipf’s_Law_(long_tail_phenomenon)"><span class="toc-article-text">Zipf’s Law (long tail phenomenon)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Jelinek-Mercer_Smoothing"><span class="toc-article-text">Jelinek-Mercer Smoothing</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Language_Model:_Applications"><span class="toc-article-text">Language Model: Applications</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Query_Likelihood_Model"><span class="toc-article-text">Query Likelihood Model</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Dependence_Language_Model"><span class="toc-article-text">Dependence Language Model</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Proximity_Language_Model"><span class="toc-article-text">Proximity Language Model</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Positional_Language_Model"><span class="toc-article-text">Positional Language Model</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Speech_Recognition"><span class="toc-article-text">Speech Recognition</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Machine_Translation_(MT)"><span class="toc-article-text">Machine Translation (MT)</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#參考資料"><span class="toc-article-text">參考資料</span></a></li></ol>
+		</div>
 	
 	</div>
 	

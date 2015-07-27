@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>gdb入門 | QWERTY</title>
+  <title>gdb 入門 | QWERTY</title>
   <meta name="author" content="HCL">
   
   <meta name="description" content="Programming, Computer Science, Note">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="gdb入門"/>
+  <meta property="og:title" content="gdb 入門"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> gdb入門</h1>
+			<h1> gdb 入門</h1>
 		</div>		
 	
 
@@ -119,11 +119,11 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <h3 id="簡介">簡介</h3><p>gdb是FSF下的一個子計畫，目的是提供一個除錯器的實作。只要使用GNU計畫出產的編譯器，就可以用它來進行除錯。<br>gdb可以debug C/C++/Objective-C/Fortran/Java 等語言。<br><a id="more"></a></p>
+	    <h3 id="簡介">簡介</h3><p>gdb 是 FSF 下的一個子計畫，目的是提供一個除錯器的實作。只要使用 GNU 計畫出產的編譯器，就可以用它來進行除錯。<br>gdb 可以 debug C/C++/Objective-C/Fortran/Java 等語言。<br><a id="more"></a></p>
 <h3 id="基本知識">基本知識</h3><p><strong>function -&gt; frame</strong>  </p>
 <ul>
 <li>正在執行的函數就是 frame 0，而呼叫該函數的就是 frame 1，以此類推  </li>
-<li>在gdb進入另一個frame之前，它會將該frame的一些變數值之類的儲存至堆疊(stack)裡，等到從frame回來後再從這些stack裡把這些變數值取回來  </li>
+<li>在 gdb 進入另一個 frame 之前，它會將該 frame 的一些變數值之類的儲存至堆疊 (stack) 裡，等到從 frame 回來後再從這些 stack 裡把這些變數值取回來  </li>
 </ul>
 <h3 id="除錯程序">除錯程序</h3><ol>
 <li>載入程式</li>
@@ -134,15 +134,15 @@
 </ol>
 <h4 id="載入程式">載入程式</h4><p><code>-g</code> 可加入除錯資訊</p>
 <pre><code>gcc -g xxx<span class="class">.c</span> -o xxx
-</code></pre><p>這些除錯訊息會使檔案大小差10倍之多，所以一般在發佈應用程式時是不會以<code>-g</code>參數編譯的<br>可以在事後利用 strip 指令清掉應用程式裡的除錯資訊</p>
+</code></pre><p>這些除錯訊息會使檔案大小差 10 倍之多，所以一般在發佈應用程式時是不會以 <code>-g</code> 參數編譯的 <br> 可以在事後利用 strip 指令清掉應用程式裡的除錯資訊</p>
 <pre><code><span class="keyword">strip </span>./xxx
 </code></pre><p>開始除錯(不要做 optimize，不然程式碼行數會對不上)</p>
 <pre><code>gdb ./xxx
-gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./xxx <span class="comment">##必要時加入-d (dirctory)，指定 source code 的位置</span>
+gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./xxx <span class="comment">## 必要時加入 -d (dirctory)，指定 source code 的位置</span>
 </code></pre><table>
 <thead>
 <tr>
-<th>gdb參數</th>
+<th>gdb 參數</th>
 <th>簡寫</th>
 <th>說明</th>
 </tr>
@@ -166,52 +166,52 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 <tr>
 <td>-core file_name</td>
 <td>-c</td>
-<td>讀入一個core dump檔案(系統當機之後用)  </td>
+<td>讀入一個 core dump 檔案(系統當機之後用)  </td>
 </tr>
 <tr>
 <td>-pid process_id</td>
 <td>-p</td>
-<td>啟動attach模式，除錯一個執行中的行程。number是目標行程的pid  </td>
+<td>啟動 attach 模式，除錯一個執行中的行程。number 是目標行程的 pid  </td>
 </tr>
 <tr>
 <td>-directory directory_name</td>
 <td>-d</td>
-<td>將directory加入原始碼的搜尋路行  </td>
+<td>將 directory 加入原始碼的搜尋路行  </td>
 </tr>
 <tr>
 <td>-readnow</td>
 <td>-r</td>
-<td>一次讀取完所有的符號表，這會讓啟動gdb的時間<br>變長，但在執行往後的除錯動作會較快速。</td>
+<td>一次讀取完所有的符號表，這會讓啟動 gdb 的時間 <br> 變長，但在執行往後的除錯動作會較快速。</td>
 </tr>
 <tr>
 <td>-quiet/-silent</td>
 <td>-q</td>
-<td>安靜模式，啟動時gdb將不會顯示版權頁。</td>
+<td>安靜模式，啟動時 gdb 將不會顯示版權頁。</td>
 </tr>
 <tr>
 <td>-nowindows</td>
 <td>-nw</td>
-<td>如果gdb有編入GUI的話，這個選項會關掉它</td>
+<td>如果 gdb 有編入 GUI 的話，這個選項會關掉它</td>
 </tr>
 <tr>
 <td>-windows</td>
 <td>-w</td>
-<td>與上一選項相反，這會啟動GUI</td>
+<td>與上一選項相反，這會啟動 GUI</td>
 </tr>
 <tr>
 <td>-cd directory_name</td>
 <td></td>
-<td>切換工作目錄為directory而不是現在的目錄</td>
+<td>切換工作目錄為 directory 而不是現在的目錄</td>
 </tr>
 <tr>
 <td>-tty device_name</td>
 <td>-t</td>
-<td>指定device 為程式的標準輸出入</td>
+<td>指定 device 為程式的標準輸出入</td>
 </tr>
 <tr>
 <td>—args</td>
 <td></td>
-<td>這個參數要當作命令列的最後一個參數，其後跟隨的參數<br>都會被視為「欲傳給將除錯的程式的參數」</td>
+<td>這個參數要當作命令列的最後一個參數，其後跟隨的參數 <br> 都會被視為「欲傳給將除錯的程式的參數」</td>
 </tr>
 </tbody>
 </table>
@@ -229,7 +229,7 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 </tr>
 <tr>
 <td>break offset</td>
-<td>在程式停止位置的前(offset為負)/後第offset行</td>
+<td>在程式停止位置的前(offset 為負)/ 後第 offset 行</td>
 </tr>
 <tr>
 <td>break linenum</td>
@@ -237,7 +237,7 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 </tr>
 <tr>
 <td>break filename:linenum</td>
-<td>在file的指定行號或指定函式(若多型，需額外提供參數)</td>
+<td>在 file 的指定行號或指定函式(若多型，需額外提供參數)</td>
 </tr>
 <tr>
 <td>break</td>
@@ -245,7 +245,7 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 </tr>
 <tr>
 <td>break [args] if [cond]</td>
-<td>當[cond]這個運算式為真，設定中斷點<br>args可能是上列的任一種情形</td>
+<td>當 [cond] 這個運算式為真，設定中斷點<br>args 可能是上列的任一種情形</td>
 </tr>
 <tr>
 <td>rbreak [RE]</td>
@@ -271,7 +271,7 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 </tr>
 <tr>
 <td>condition</td>
-<td>進一步設中斷點的條件 如果條件為true則中斷</td>
+<td>進一步設中斷點的條件 如果條件為 true 則中斷</td>
 </tr>
 <tr>
 <td>commands</td>
@@ -321,7 +321,7 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 </tr>
 <tr>
 <td>set/show args</td>
-<td>設定/顯示 命令列的參數</td>
+<td>設定 / 顯示 命令列的參數</td>
 </tr>
 <tr>
 <td>attach PID</td>
@@ -333,7 +333,7 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 </tr>
 </tbody>
 </table>
-<h4 id="慢慢追程式(step,_next_…)">慢慢追程式(step, next …)</h4><table>
+<h4 id="慢慢追程式 (step,_next_…)"> 慢慢追程式(step, next …)</h4><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -351,7 +351,7 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 </tr>
 <tr>
 <td>where</td>
-<td>顯示目前所在的frame的位置</td>
+<td>顯示目前所在的 frame 的位置</td>
 </tr>
 <tr>
 <td>backtrace (bt)</td>
@@ -359,11 +359,11 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 </tr>
 <tr>
 <td>next(n)</td>
-<td>直接跑完整個frame，不會進入frame中<br>i.e. 每次執行主程式的一個指令 </td>
+<td>直接跑完整個 frame，不會進入 frame 中<br>i.e. 每次執行主程式的一個指令 </td>
 </tr>
 <tr>
 <td>step(s)</td>
-<td>不會直接跑完，而是進入frame中一步一步執行(※註)<br>i.e. 每次執行程式中的一個指令</td>
+<td>不會直接跑完，而是進入 frame 中一步一步執行(※註)<br>i.e. 每次執行程式中的一個指令</td>
 </tr>
 <tr>
 <td>until</td>
@@ -371,24 +371,24 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 </tr>
 <tr>
 <td>return</td>
-<td>直接中止執行該 frame（視同該 frame 已執行完畢），並返回上個 frame 的呼叫點<br>等同C語言指令<code>return;</code></td>
+<td>直接中止執行該 frame（視同該 frame 已執行完畢），並返回上個 frame 的呼叫點 <br> 等同 C 語言指令<code>return;</code></td>
 </tr>
 <tr>
 <td>finish</td>
-<td>執行完目前的frame。<br>可能必須下達多個 finish 才能回到原來的進入點</td>
+<td>執行完目前的 frame。<br>可能必須下達多個 finish 才能回到原來的進入點</td>
 </tr>
 <tr>
 <td>up</td>
-<td>回到上一層frame，frame被呼叫的地方，並顯示其 stack 資訊<br>Ex. up 2: 回到上三層frame</td>
+<td>回到上一層 frame，frame 被呼叫的地方，並顯示其 stack 資訊<br>Ex. up 2: 回到上三層 frame</td>
 </tr>
 <tr>
 <td>down</td>
-<td>到下一層frame</td>
+<td>到下一層 frame</td>
 </tr>
 </tbody>
 </table>
-<p>※註：若該函式的除錯資訊沒有編進執行檔裡的話，那step也不會跳進這個函式裡，而是單純的將它看作一行程式碼(如同next的作用)，如標準函式庫(如stdio.h)提供的函式。</p>
-<h4 id="檢查變數值">檢查變數值</h4><h6 id="print(p)">print(p)</h6><p>輸入p/?，?是格式字元，與printf不同的以粗體表示  </p>
+<p>※註：若該函式的除錯資訊沒有編進執行檔裡的話，那 step 也不會跳進這個函式裡，而是單純的將它看作一行程式碼 (如同 next 的作用)，如標準函式庫(如 stdio.h) 提供的函式。</p>
+<h4 id="檢查變數值">檢查變數值 </h4><h6 id="print(p)">print(p)</h6><p> 輸入 p/?，? 是格式字元，與 printf 不同的以粗體表示  </p>
 <table>
 <thead>
 <tr>
@@ -447,13 +447,13 @@ gdb <span class="operator">-d</span> /home/<span class="built_in">test</span> ./
 </table>
 <h6 id="存取臨時變數">存取臨時變數</h6><pre><code>(gdb) <span class="tag">p</span> <span class="tag">i</span>
 $<span class="number">1</span> = <span class="number">6078</span>
-</code></pre><p>$1 是執行 print 指令後，gdb 產生的一個臨時變數<br>可以直接利用 $1 來取用這個變數</p>
+</code></pre><p>$1 是執行 print 指令後，gdb 產生的一個臨時變數 <br> 可以直接利用 $1 來取用這個變數</p>
 <p>用於 print 及 disp 的參數名稱</p>
 <pre><code><span class="label">$:</span> 前一次的運算式    
 <span class="label">$$:</span> 兩次前的運算式
 <span class="label">$7:</span> 第七個運算式
 <span class="label">$$7:</span> 倒數第七個運算式
-</code></pre><h6 id="display">display</h6><p>display在中斷點時會自動顯示變數值   </p>
+</code></pre><h6 id="display">display</h6><p>display 在中斷點時會自動顯示變數值   </p>
 <table>
 <thead>
 <tr>
@@ -472,7 +472,7 @@ $<span class="number">1</span> = <span class="number">6078</span>
 </tr>
 </tbody>
 </table>
-<h4 id="顯示資訊">顯示資訊</h4><p>可以顯示某些資訊以利於debug</p>
+<h4 id="顯示資訊">顯示資訊 </h4><p> 可以顯示某些資訊以利於 debug</p>
 <h6 id="列出原始碼">列出原始碼</h6><table>
 <thead>
 <tr>
@@ -483,15 +483,15 @@ $<span class="number">1</span> = <span class="number">6078</span>
 <tbody>
 <tr>
 <td>list(第一次)</td>
-<td>列出現在執行的位置上下5行</td>
+<td>列出現在執行的位置上下 5 行</td>
 </tr>
 <tr>
 <td>list(持續輸入)</td>
-<td>繼續印出之後的程式碼(類似page down)</td>
+<td>繼續印出之後的程式碼(類似 page down)</td>
 </tr>
 <tr>
 <td>list -</td>
-<td>印出上一次list的程式碼的前一段程式碼(類似page up)</td>
+<td>印出上一次 list 的程式碼的前一段程式碼(類似 page up)</td>
 </tr>
 <tr>
 <td>list a,b</td>
@@ -561,9 +561,9 @@ $<span class="number">1</span> = <span class="number">6078</span>
 </tr>
 </tbody>
 </table>
-<h6 id="信號管理">信號管理</h6><p>預設為 <code>stop</code> <code>print</code> <code>noignore</code>，也就是遇到 signal 時，GDB 會先攔截，並中斷程式<br>必要時可以改為 <code>nostop</code> <code>noprint</code>，讓程式本身去處理 signal<br>若下達 <code>ignore</code> 則是讓程式忽略此 signal</p>
+<h6 id="信號管理">信號管理 </h6><p> 預設為 <code>stop</code> <code>print</code> <code>noignore</code>，也就是遇到 signal 時，GDB 會先攔截，並中斷程式 <br> 必要時可以改為 <code>nostop</code> <code>noprint</code>，讓程式本身去處理 signal<br>若下達 <code>ignore</code> 則是讓程式忽略此 signal</p>
 <pre><code>handle <span class="list">(<span class="keyword">signal</span>)</span> <span class="list">(<span class="keyword">operation</span>)</span>
-</code></pre><h6 id="thread管理">thread管理</h6><table>
+</code></pre><h6 id="thread 管理">thread 管理</h6><table>
 <thead>
 <tr>
 <th>指令</th>
@@ -585,12 +585,12 @@ $<span class="number">1</span> = <span class="number">6078</span>
 </tr>
 </tbody>
 </table>
-<h3 id="其他指令(括號內為簡寫)">其他指令(括號內為簡寫)</h3><ul>
+<h3 id="其他指令 (括號內為簡寫)"> 其他指令(括號內為簡寫)</h3><ul>
 <li>quit 結束 (Ctrl + C)</li>
 <li>help(h) 求助 (可加指令名稱)</li>
 <li>shell 執行 Shell 指令</li>
 </ul>
-<h3 id="參考資料">參考資料</h3><p><a href="http://user.frdm.info/ckhung/b/c/gdb.php" target="_blank" rel="external">http://user.frdm.info/ckhung/b/c/gdb.php</a><br><a href="http://tetralet.luna.com.tw/?op=ViewArticle&amp;articleId=187&amp;blogId=1" target="_blank" rel="external">http://tetralet.luna.com.tw/?op=ViewArticle&amp;articleId=187&amp;blogId=1</a><br><a href="http://blog.yslin.tw/2012/08/gdb.html" target="_blank" rel="external">http://blog.yslin.tw/2012/08/gdb.html</a><br><a href="http://www.study-area.org/cyril/opentools/opentools/debug.html" target="_blank" rel="external">http://www.study-area.org/cyril/opentools/opentools/debug.html</a><br><a href="http://www.cis.nctu.edu.tw/~is93007/acd.htm" target="_blank" rel="external">連結已失效</a><br><a href="http://www.gnu.org/software/gdb/" target="_blank" rel="external">GDB的本站</a><br><a href="http://www.gnu.org/software/gdb/documentation/" target="_blank" rel="external">GDB的官方手冊下載區</a></p>
+<h3 id="參考資料">參考資料 </h3><p><a href="http://user.frdm.info/ckhung/b/c/gdb.php" target="_blank" rel="external">http://user.frdm.info/ckhung/b/c/gdb.php</a><br><a href="http://tetralet.luna.com.tw/?op=ViewArticle&amp;articleId=187&amp;blogId=1" target="_blank" rel="external">http://tetralet.luna.com.tw/?op=ViewArticle&amp;articleId=187&amp;blogId=1</a><br><a href="http://blog.yslin.tw/2012/08/gdb.html" target="_blank" rel="external">http://blog.yslin.tw/2012/08/gdb.html</a><br><a href="http://www.study-area.org/cyril/opentools/opentools/debug.html" target="_blank" rel="external">http://www.study-area.org/cyril/opentools/opentools/debug.html</a><br><a href="http://www.cis.nctu.edu.tw/~is93007/acd.htm" target="_blank" rel="external"> 連結已失效</a><br><a href="http://www.gnu.org/software/gdb/" target="_blank" rel="external">GDB 的本站</a><br><a href="http://www.gnu.org/software/gdb/documentation/" target="_blank" rel="external">GDB 的官方手冊下載區</a></p>
 	  
 	</div>
 
@@ -657,6 +657,11 @@ $<span class="number">1</span> = <span class="number">6078</span>
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#簡介"><span class="toc-article-text">簡介</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#基本知識"><span class="toc-article-text">基本知識</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#除錯程序"><span class="toc-article-text">除錯程序</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#載入程式"><span class="toc-article-text">載入程式</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#設中斷點"><span class="toc-article-text">設中斷點</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#開始跑程式"><span class="toc-article-text">開始跑程式</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#慢慢追程式 (step,_next_…)"><span class="toc-article-text"> 慢慢追程式(step, next …)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#檢查變數值"><span class="toc-article-text">檢查變數值 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#print(p)"><span class="toc-article-text">print(p)</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#存取臨時變數"><span class="toc-article-text">存取臨時變數</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#display"><span class="toc-article-text">display</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#顯示資訊"><span class="toc-article-text">顯示資訊 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#列出原始碼"><span class="toc-article-text">列出原始碼</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#info:_檢視_breakpoint_和_commands_和_display"><span class="toc-article-text">info: 檢視 breakpoint 和 commands 和 display</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#信號管理"><span class="toc-article-text">信號管理 </span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#thread 管理"><span class="toc-article-text">thread 管理</span></a></li></ol></li></ol></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#其他指令 (括號內為簡寫)"><span class="toc-article-text"> 其他指令(括號內為簡寫)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#參考資料"><span class="toc-article-text">參考資料 </span></a></li></ol>
+		</div>
 	
 	</div>
 	

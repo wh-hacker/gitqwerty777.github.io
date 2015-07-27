@@ -1,0 +1,2095 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>自然語言處理 (下) | QWERTY</title>
+  <meta name="author" content="HCL">
+  
+  <meta name="description" content="Programming, Computer Science, Note">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="自然語言處理 (下)"/>
+  <meta property="og:site_name" content="QWERTY"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51310670-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
+
+</head>
+
+
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">QWERTY</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 自然語言處理 (下)</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h2 id="Chap08_Syntax_and_Grammars">Chap08 Syntax and Grammars</h2><p>Grammar    </p>
+<ul>
+<li>represent certain knowledges of what we know about a language</li>
+<li>General criteria<ul>
+<li>linguistic naturalness</li>
+<li>mathematical power</li>
+<li>computational effectiveness</li>
+</ul>
+</li>
+</ul>
+<p>Context-free grammars(CFG)</p>
+<ul>
+<li>Alias<ul>
+<li>Phrase structure grammars</li>
+<li>Backus-Naur form</li>
+</ul>
+</li>
+<li>More powerful than finite state machine</li>
+<li>Rules <ul>
+<li>Terminals <ul>
+<li>words</li>
+</ul>
+</li>
+<li>Non-terminals <ul>
+<li>Noun phrase, Verb phrase …</li>
+</ul>
+</li>
+<li>Generate strings in the language</li>
+<li>Reject strings not in the language  </li>
+<li>LHS → RHS<ul>
+<li>LHS: Non-terminals </li>
+<li>RHS: Non-terminals or Terminals</li>
+</ul>
+</li>
+<li>Context Free<ul>
+<li>probability of a subtree does not depend on words not dominated by the subtree(subtree 出現的機率和上下文無關)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<p>Evaluation  </p>
+<ol>
+<li>Does it undergenerate?<ul>
+<li>rules cannot completely explain language</li>
+<li>not a problem if the goal is to produce a language</li>
+</ul>
+</li>
+<li>Does it overgenerate?<ul>
+<li>rules overly explain the language</li>
+<li>not a problem if the goal is to recognize or understand well-formed(correct) language</li>
+</ul>
+</li>
+<li>Does it assign appropriate structures to the strings that it generates?</li>
+</ol>
+<p>Parsing  </p>
+<ul>
+<li>take a string and a grammar</li>
+<li>assigning trees that covers all and only words in input strings</li>
+<li>return parse tree for that string</li>
+</ul>
+<p>English Grammar Fragment  </p>
+<ul>
+<li>Sentences</li>
+<li>Noun Phrases<ul>
+<li>Ex. NP → det Nominal</li>
+<li><strong>head: central criticial noun in NP</strong><ul>
+<li>important in statistical parsing</li>
+<li>after det(冠詞), before pp(介系詞片語) <img src="/img/NLP/np-parse.png" alt=""></li>
+</ul>
+</li>
+<li>Agreement<ul>
+<li>a part of overgenerate</li>
+<li>This flight(○)</li>
+<li>This flights(×)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Verb Phrases<ul>
+<li>head verb with arguments</li>
+<li>Subcategorization(分類)<ul>
+<li>categorize according to VP rules</li>
+<li>a part of overgenerate</li>
+<li>Prefer<ul>
+<li>I prefer [to leave earlier]TO-VP</li>
+</ul>
+</li>
+<li>Told<ul>
+<li>I was told [United has a flight]S</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Overgenerate Solution  </p>
+<pre><code>-<span class="ruby"> transform into multiple rules
+</span>    -<span class="ruby"> <span class="constant">NP</span> → <span class="constant">Single_Det</span> <span class="constant">Single_Nominal</span>
+</span>    -<span class="ruby"> <span class="constant">NP</span> → 複數_Det 複數_Nominal
+</span>    -<span class="ruby"> <span class="constant">Will</span> generate a lot of rules!
+</span>-<span class="ruby"> out of <span class="constant">CFG</span> framework
+</span>    -<span class="ruby"> <span class="constant">Chomsky</span> hierarchy of languages ![](<span class="regexp">/img/</span><span class="constant">NLP</span>/modelclass.png)</span>
+</code></pre><p><a href="http://zh.wikipedia.org/wiki/%E9%99%84%E6%A0%87%E8%AF%AD%E8%A8%80" target="_blank" rel="external">Indexed Grammar</a>  </p>
+<ul>
+<li>Indexed grammars and languages problem <img src="/img/NLP/index-example.png" alt=""> </li>
+<li>recognized by nested stack automata <img src="/img/NLP/index-grammar.png" alt=""></li>
+</ul>
+<h3 id="Treebanks_and_headfinding">Treebanks and headfinding</h3><p>critical to the development of statistical parsers</p>
+<p>Treebanks  </p>
+<ul>
+<li>corpora with parse trees<ul>
+<li>created by automatic parser and human annotators</li>
+</ul>
+</li>
+<li>Ex. Penn Treebank</li>
+<li>Grammar<ul>
+<li>Treebanks implicitly define a grammar<ul>
+<li>Simply make all subtrees fit the rules</li>
+</ul>
+</li>
+<li>parse tree tend to be very flat to avoid recursion<ul>
+<li>Penn Treebank has ~4500 different rules for VPs</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Head Finding  </p>
+<ul>
+<li>use tree traversal rules specific to each non-terminal in the grammar</li>
+<li> 先向右再向左 <img src="/img/NLP/head-np.png" alt=""><!-- 重要 --></li>
+</ul>
+<h3 id="Dependency_Grammars">Dependency Grammars</h3><ul>
+<li>every possible parse is a tree <img src="/img/NLP/dependency-parse.png" alt=""><ul>
+<li>every node is a word </li>
+<li>every link is dependency relations between words </li>
+</ul>
+</li>
+<li>Advantage<ul>
+<li>Deals well with long-distance word order languages <ul>
+<li>structure is flexible</li>
+</ul>
+</li>
+<li>Parsing is much faster than CFG</li>
+<li>Tree can be used by later applications</li>
+</ul>
+</li>
+<li>Approaches<!-- 重要 --><ul>
+<li>Optimization-based approaches <ul>
+<li>search for the tree that matches some criteria the best</li>
+<li>spanning tree algorithms</li>
+</ul>
+</li>
+<li>Shift-reduce approaches<ul>
+<li>greedily take actions based on the current word and state</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Summary  </p>
+<ul>
+<li>Constituency(顧客, words that behave as a single unit) is a key phenomena easily captured with CFG rules<ul>
+<li>But agreement and subcategorization make problems</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chap09_Syntactic_Parsing">Chap09 Syntactic Parsing</h2><ul>
+<li>Top-Down Search <img src="/img/NLP/top-down.png" alt=""><ul>
+<li>Search trees among possible answers  <!--- But suggests trees that are not consistent with words--></li>
+</ul>
+</li>
+<li>Bottom-Up Parsing<ul>
+<li>Only forms trees that can fit the words <!-- global tree may not form answer(S) --></li>
+</ul>
+</li>
+<li>Mixed parsing strategy<ul>
+<li>looks like Binomial Search</li>
+<li>The number of rules tried at each deicision of the analysis (branching factor)<ul>
+<li>top-down parsing: categories of LHS(Left Hand Side) word</li>
+<li>bottom-up parsing: categories of left most RHS(Right Hand Side) word<ul>
+<li> 倒推：從最左邊可以倒推的字開始 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>backtracking methods are doomed because of two inter-related problems  </p>
+<ul>
+<li>(1)Structural and lexical ambiguity<ul>
+<li>PP(介系詞片語) attachment<ul>
+<li>PP can attach to [sentences, verb phrases, noun phrases, and adjectival phrases]</li>
+</ul>
+</li>
+<li>coordination<ul>
+<li>P and Q or R <ul>
+<li>P and (Q or R)</li>
+<li>(P and Q) or R</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>noun-noun compounding<ul>
+<li>town widget hammer<ul>
+<li>((town widget) hammer)</li>
+<li>(town (widget hammer))</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Solution<ul>
+<li>how to determine the intended structure?</li>
+<li>how to store the partial structures?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>(2)Shared subproblems<ul>
+<li>naïve backtracking will lead to duplicated work(不一定會對，所以會一直 backtrack…)</li>
+</ul>
+</li>
+</ul>
+<p>Dynamic Programming  </p>
+<ul>
+<li>Avoid doing repeated work</li>
+<li>Solve in polynomial time</li>
+<li>approaches<ul>
+<li>CKY</li>
+<li>Earley</li>
+</ul>
+</li>
+</ul>
+<h3 id="CKY(bottom-up)">CKY(bottom-up)</h3><ul>
+<li>transform rules into Chomsky-Normal Form <img src="/img/NLP/cnf-transform.png" alt=""></li>
+<li>build a table <ul>
+<li>A spanning from i to j in the input is in [i,j]</li>
+<li>A → BC == [i,j] → [i,k] [k,j]</li>
+<li>entire string = [0, n] <ul>
+<li>expected to be S</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>iterate all possible k <img src="/img/NLP/CKY-table2.png" alt=""><ul>
+<li>[i,j] = [i,i+1]x[i+1, j], [i,i+2]x[i+2,j] ……</li>
+</ul>
+</li>
+<li>fill the table a column at a time, from left to right, bottom to top <img src="/img/NLP/CKY-table3.png" alt=""><ul>
+<li>Ex. [1,3] = [1,2]Det + [2,3] Nomimal, Noun = NP</li>
+<li>Ex. <img src="/img/NLP/CKY-ex.png" alt=""></li>
+</ul>
+</li>
+<li>Algorithm <img src="/img/NLP/CKY-algo.png" alt=""></li>
+<li>Performance<ul>
+<li>a lot of elements unrelated to the answer</li>
+<li>can use online search to fill table (from left to right)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Earley">Earley</h3><ul>
+<li>parser that exploits chart as data structure</li>
+<li>node = vertex</li>
+<li>arc = edge<ul>
+<li>active edge: (a) and (b)</li>
+<li>inactive edge: (c)</li>
+</ul>
+</li>
+</ul>
+<p>decorated grammar  </p>
+<ul>
+<li>(a) “•” in the first <img src="/img/NLP/dot-a.png" alt=""><ul>
+<li>• NP VP</li>
+<li>A hypothesis has been made, but has not been verified yet</li>
+</ul>
+</li>
+<li>(b) “•” in the middle <img src="/img/NLP/dot-b.png" alt=""><ul>
+<li>NP • VP</li>
+<li>A hypothesis has been partially confirmed</li>
+</ul>
+</li>
+<li>(c) “•” in the last<ul>
+<li>NP VP •</li>
+<li>A hypothesis has been wholly confirmed</li>
+</ul>
+</li>
+<li>representation of edge <img src="/img/NLP/chart-struct.png" alt=""></li>
+<li>initialization <img src="/img/NLP/chart-initialize.png" alt=""><ul>
+<li>for each rule A → W, if A is a category that can span a chart (typically S), add <0, 0,=""a="" →=""•w=""> <img src="/img/NLP/chartchart-init.png" alt=""><ul>
+<li>A implies •W from position 0 to 0</li>
+</ul>
+</0,></li>
+</ul>
+</li>
+<li>Housekeeping<ul>
+<li>prevent duplicate rules</li>
+</ul>
+</li>
+</ul>
+<p>Fundamental rule  </p>
+<ul>
+<li>If the chart contains <i, j,=""a="" →=""w1="" •b=""w2=""> and <j, k,=""b="" →=""w3="" •="">, then add edge <i, k,="" a=""→="" w1=""b="" •w2=""> to the chart <img src="/img/NLP/chart-fund.png"alt=""></i,></j,></i,></li>
+<li>Notes<ol>
+<li>New edge may be either active or inactive</li>
+<li>does not remove the active edge that has succeeded</li>
+</ol>
+</li>
+</ul>
+<p>Bottom-up rule  </p>
+<ul>
+<li>if adding edge <i, j,=""c="" →=""w1="" •=""> to the chart, then for every rule that has the form B → C W2, add <i, i,="" b=""→="" •=""c="" w2=""> <img src="/img/NLP/chart-bottom.png"alt=""></i,></i,></li>
+</ul>
+<p>Top-down rule   </p>
+<ul>
+<li>If adding edge <i, j,=""c="" →=""w1="" •b=""w2=""> to the chart, then for each rule B → W, add &lt; j, j, B →•W&gt;</i,></li>
+</ul>
+<h3 id="Full_Syntactic_Parsing">Full Syntactic Parsing</h3><ul>
+<li>necessary for deep semantic analysis of texts</li>
+<li>not practical for many applications (given typical resources)<ul>
+<li>O(n^3) for straight parsing</li>
+<li>O(n^5) for probabilistic versions</li>
+<li>Too slow for real time applications (search engines)</li>
+</ul>
+</li>
+<li>Two Alternatives<ul>
+<li>Dependency parsing<ul>
+<li>Change the underlying grammar formalism</li>
+<li>can get a lot done with just binary relations among the words</li>
+<li> 詳見 Chap08 dependency grammar</li>
+</ul>
+</li>
+<li>Partial parsing<ul>
+<li>Approximate phrase-structure parsing with finite-state and statistical approaches</li>
+</ul>
+</li>
+<li>Both of these approaches give up something (syntactic, structure) in return for more robust and efficient parsing</li>
+</ul>
+</li>
+</ul>
+<p>Partial parsing</p>
+<ul>
+<li>For many applications you don’t really need full parse</li>
+<li>For example, if you’re interested in locating all the people, places and organizations  <ul>
+<li>base-NP chunking <ul>
+<li>[NP The morning flight] from [NP Denvar] has arrived </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Two approaches<ul>
+<li>Rule-based (hierarchical) transduction(轉導) <!--???--><ul>
+<li>Restrict recursive rules (make the rules flat)<ul>
+<li>like NP → NP VP</li>
+</ul>
+</li>
+<li>Group the rules so that RHS of the rules can refer to non-terminals introduced in earlier transducers, but not later ones</li>
+<li>Combine the rules in a group in the same way we did with the rules for spelling changes</li>
+<li>Combine the groups into a cascade<ul>
+<li>can be used to find the sequence of flat chunks you’re interested in</li>
+<li>or approximate hierarchical trees you get from full parsing with a CFG</li>
+</ul>
+</li>
+<li>Typical Architecture <img src="/img/NLP/Cascaded Transducers.png" alt=""><ul>
+<li>Phase 1: Part of speech tags</li>
+<li>Phase 2: Base syntactic phrases</li>
+<li>Phase 3: Larger verb and noun groups</li>
+<li>Phase 4: Sentential level rules</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Statistical sequence labeling<ul>
+<li>HMMs</li>
+<li>MEMMs</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chap10_Statistical_Parsing">Chap10 Statistical Parsing</h2><p>Motivation  </p>
+<ul>
+<li>N-gram models and HMM Tagging only allowed us to process sentences linearly</li>
+<li><strong>Probabilistic Context Free Grammars</strong>(PCFG)<ul>
+<li>alias: Stochastic context-free grammar(SCFG)</li>
+<li>simplest and most natural probabilistic model for tree structures</li>
+<li>closely related to those for HMMs</li>
+<li> 為每一個 CFG 的規則標示其發生的可能性 </li>
+</ul>
+</li>
+</ul>
+<p>Idea  </p>
+<ul>
+<li>reduce “right” parse to “most probable parse”<ul>
+<li>Argmax P(Parse|Sentence)</li>
+</ul>
+</li>
+</ul>
+<p>A PCFG consists of  </p>
+<ul>
+<li>set of terminals, {wk}</li>
+<li>set of nonterminals, {Ni}</li>
+<li>start symbol N1</li>
+<li>set of rules<ul>
+<li>{Ni —&gt; ξj}(ξj is a sequence of terminals and nonterminals)</li>
+</ul>
+</li>
+<li>probabilities of rules<ul>
+<li>total probability of imply Ni to other sequence ξj is 1 </li>
+<li>∀i Σj P(Ni → ξj) = 1</li>
+</ul>
+</li>
+<li>Probability of sentence according to grammar G <ul>
+<li>P($w<em>{1m}$) = sum of P($w</em>{1m}$, t) for every possible tree t</li>
+</ul>
+</li>
+<li>Nj dominates the words wa … wb<ul>
+<li>Nj → wa … wb</li>
+</ul>
+</li>
+</ul>
+<p>Assumptions of the Model  </p>
+<ul>
+<li>Place Invariance<ul>
+<li>probability of a subtree does not depend on its position in the string</li>
+<li>similar to time invariance in HMMs</li>
+</ul>
+</li>
+<li>Ancestor Free<ul>
+<li>probability of a subtree does not depend on nodes in the derivation outside the subtree(subtree 的機率只和 subtree 內的 node 有關)</li>
+<li>can simplify probability calculation <img src="/img/NLP/after-assump.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>Questions of PCFGs(similar to three questions of HMM)    </p>
+<ul>
+<li>Assign probabilities to parse trees<ul>
+<li>What is the probability of a sentence $w_{1m}$ according to a grammar G<ul>
+<li>P(w1m|G)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Parsing with probabilities(Decoding)<ul>
+<li>What is the most likely parse for a sentence<ul>
+<li>argmax_t P(t|w1m,G) </li>
+<li>How to efficiently find the best (or N best) trees </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Training the model (Learning) <ul>
+<li>How to set rule probabilities(parameter of grammar model) that maximize the probability of a sentence<ul>
+<li>argmax_G P(w1m|G)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Simple Probability Model  </p>
+<ul>
+<li>probability of a tree is the product of the probabilities of rules in derivation</li>
+<li>Rule Probabilities<ul>
+<li>S → NP </li>
+<li>P(NP | S)</li>
+</ul>
+</li>
+<li>Training the Model<ul>
+<li>estimate probability from data</li>
+<li>P(α → β | α) = Count(α→β) / Count(α) = Count(α→β) / Σγ Count(α→γ)</li>
+</ul>
+</li>
+<li>Parsing (Decoding)<ul>
+<li>trees with highest probability in the model</li>
+</ul>
+</li>
+<li>Example: Book the dinner flight<ul>
+<li><img src="/img/NLP/pm-ex.png" alt=""></li>
+<li><img src="/img/NLP/pm-ex2.png" alt=""></li>
+<li>too slow!</li>
+</ul>
+</li>
+</ul>
+<p>Dynamic Programming again  </p>
+<ul>
+<li>use CKY and Earley to <strong>parse</strong></li>
+<li>Viterbi and HMMs to <strong>get the best parse</strong></li>
+<li>Parameters of a PCFG in Chomsky Normal Form<ul>
+<li>P(Nj→NrNs | G) , $n^3$ matrix of parameters</li>
+<li>P(Nj→wk | G), $nV$ parameters</li>
+<li>n is the number of nonterminals </li>
+<li>V is the number of terminals</li>
+</ul>
+</li>
+<li>Σr,s P(Nj→NrNs) + ΣkP(Nj→wk) = 1<ul>
+<li> 所有由 Nj 導出的 rule，機率總和必為 1</li>
+</ul>
+</li>
+</ul>
+<p>Probabilistic Regular Grammars (PRG)    </p>
+<ul>
+<li>start state N1 </li>
+<li>rules<ul>
+<li>Ni → wjNk</li>
+<li>Ni → wj</li>
+</ul>
+</li>
+<li>PRG is a HMM with [start state] and [finish(sink) state] <img src="/img/NLP/prg-sink.png" alt=""></li>
+</ul>
+<p>Inside and Outside probability <img src="/img/NLP/prg-graph.png" alt=""> <img src="/img/NLP/prg-bf.png"alt=""> <img src="/img/NLP/prg-bf2.png" alt="">  </p>
+<ul>
+<li>Forward(Outside) probability<ul>
+<li><span>$$α_i(t) = P(w_{1(t-1)}, X_t = i)$$</span><!-- Has MathJax --></li>
+<li>everything above a certain node(include the node)</li>
+</ul>
+</li>
+<li>Backward(Inside) probability<ul>
+<li><span>$$β_i(t, T) = P(w_{tT} | X_t = i)$$</span><!-- Has MathJax --></li>
+<li>everything below a certain node</li>
+<li>total probability of generating words $w_t \cdots w_T$, given the root nonterminal $N^i$ and a grammar G</li>
+</ul>
+</li>
+</ul>
+<p>Inside Algorithm (bottom-up)      </p>
+<ul>
+<li>$P(w<em>{1m} | G) = P(N_1 → w</em>{1m} | G) = P(w<em>{1m} | N^1</em>{1m}, G) = B_1(1,m)$<ul>
+<li>$B_1(1,m)$ is Inside probability<ul>
+<li>P(w1~wm are below N1(start symbol))</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>base rule<ul>
+<li><span>$$B_j(k, k) = P(w_k | N^j_{kk}, G) = P(N^j → w_k | G)$$</span><!-- Has MathJax --></li>
+</ul>
+</li>
+<li><span>$$B_j(p, q) = P(w_{pq} | N^j_{pq}, G) =$$</span><!-- Has MathJax --> <img src="/img/NLP/inside-induction.png" alt=""><ul>
+<li>try every possible rules to split Nj, product of <strong>rule probabilty and segments’ inside probabilities </strong> </li>
+</ul>
+</li>
+<li>use grid to solve again<ul>
+<li><img src="/img/NLP/inside-grid.png" alt=""><ul>
+<li>X 軸代表起始座標，Y 軸代表長度 <ul>
+<li>(2,3) → flies like ants</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Outside Algorithm (top-down)     </p>
+<ul>
+<li><span>$$P(w_{1m} | G) = Σ_j α_j(k, k)P(N^j → w_k)$$</span><!-- Has MathJax --> <img src="/img/NLP/outside-graph.png" alt=""> <!-- 為何是 sum...-->
+<ul>
+<li>outside probability of wk x (inside) probability of wk  of every Nj</li>
+</ul>
+</li>
+<li>basecase <ul>
+<li><span>$$α_1(1, m) = 1, α_j(1,m) = 0$$</span><!-- Has MathJax --></li>
+<li>P(N1) = 1, P(Nj outside w1 to wm) = 0</li>
+</ul>
+</li>
+<li> 自己的 outside probability 等於 <ul>
+<li> 爸爸的 outside probability 乘以 爸爸的 inside probability 除以 自己的 inside probability<ul>
+<li>inside x outside 是固定值？</li>
+</ul>
+</li>
+<li> 爸爸的 inside probabiliity 除以 自己的 inside probability 就是其兄弟的 inside probability</li>
+<li> 使用此公式計算 <img src="/img/NLP/inout.png" alt=""></li>
+</ul>
+</li>
+<li><span>$$α_j(p, q)β_j(p, q) = P(w_{1m}, N^j_{pq} | G)$$</span><!-- Has MathJax -->
+<ul>
+<li> 某個點的 inside 乘 outside = 在某 grammar 中，出現此句子，且包含此點的機率 </li>
+<li> 所有點的總和：在某 grammar 下，某 parse tree(包含所有 node) 的機率 <img src="/img/NLP/parse-probability.png" alt=""></li>
+</ul>
+</li>
+<li>Outside example: 這些數字理論上算起來會一樣… <img src="/img/NLP/outside-forward.png" alt=""></li>
+</ul>
+<p>Finding the Most Likely Parse for a Sentence     </p>
+<ul>
+<li>δi(p,q)= the highest inside probability parse of a subtree $N_{pq}^i$</li>
+<li>Initialization <ul>
+<li>δi(p,p)= P(Ni → wp)</li>
+</ul>
+</li>
+<li>Induction and Store backtrace<ul>
+<li>δi(p,q)= $argmax(j,k,r)P(Ni→NjNk)δj(p,r)δk(r+1,q)$</li>
+<li> 找所有可能的切法 </li>
+</ul>
+</li>
+<li>Termination<ul>
+<li>answer = δ1(1,m)</li>
+</ul>
+</li>
+</ul>
+<p>Training a PCFG</p>
+<ul>
+<li>find the optimal probabilities among grammar rules</li>
+<li>use EM Training Algorithm to seek the grammar that maximizes the likelihood of the training data<ul>
+<li>Inside-Outside Algorithm </li>
+</ul>
+</li>
+<li><img src="/img/NLP/inoutagain.png" alt=""></li>
+<li> 將產生句子的機率視為π，為 Nj 產生 pq 的機率 <img src="/img/NLP/pi.png" alt=""></li>
+<li>Nj 被使用的機率 <img src="/img/NLP/pi2.png" alt=""></li>
+<li>Nj 被使用，且 Nj→NrNs 的機率 <img src="/img/NLP/pi3.png" alt=""></li>
+<li>Nj→NrNs 這條 rule 被使用的機率 = 前兩式相除 <img src="/img/NLP/pi4.png" alt=""></li>
+<li>Nj→wk <img src="/img/NLP/pi5.png" alt=""><ul>
+<li> 僅分子差異 <img src="/img/NLP/pi6.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>Problems with the Inside-Outside Algorithm    </p>
+<ul>
+<li>Extremely Slow<ul>
+<li>For each sentence, each iteration of training is $O(m^3n^3)$</li>
+</ul>
+</li>
+<li>Local Maxima</li>
+<li>Satisfactory learning requires many more nonterminals than are theoretically needed to describe the language</li>
+<li>There is no guarantee that the learned nonterminals will be linguistically motivated</li>
+</ul>
+<h2 id="Chap11_Dependency_Parsing">Chap11 Dependency Parsing</h2><p><a href="http://stp.lingfil.uu.se/~nivre/docs/ACLslides.pdf" target="_blank" rel="external">COLING-ACL 2006, Dependency Parsing, by Joachim Nivre and Sandra Kuebler</a><br><a href="http://naaclhlt2010.isi.edu/tutorials/t7-slides.pdf" target="_blank" rel="external">NAACL 2010, Recent Advances in Dependency Parsing, by Qin Iris. Wang and YueZhang</a><br><a href="https://sites.google.com/site/zhenghuanlp/publications/IJCNLP2013-tutorial-DP.pdf?attredirects=0&amp;d=1" target="_blank" rel="external">IJCNLP 2013, Dependency Parsing: Past, Present, and Future, by Zhenghua Li, Wenliang Chen, Min Zhang</a></p>
+<p>Dependency Structure vs. Constituency Structure <img src="/img/NLP/parse.png" alt=""><br>Parsing is one way to deal with the ambiguity problem in<br>natural language<br>dependency syntax is syntactic relations (dependencies) </p>
+<p>Constraint: between word pairs  <img src="/img/NLP/depend.png" alt=""><br>    Projective: No crossing links(a word and its dependents form a contiguous substring of the sentence)<br>    An arc (wi , r ,wj) ∈ A is projective iff wi →∗ wk for all:<br>    i &lt; k &lt; j when i &lt; j<br>    j &lt; k &lt; i when j &lt; i<br>    射出去的那一方也可以射到兩個字中間的任何一字 <br><img src="/img/NLP/depend-ex.png"alt=""></p>
+<p>Non-projective Dependency Trees  </p>
+<ul>
+<li>Long-distance dependencies  </li>
+<li>With crossing links</li>
+<li>Not so frequent in English<ul>
+<li>All the dependency trees from Penn Treebank are projective</li>
+</ul>
+</li>
+<li>Common in other languages with free word order<ul>
+<li>Prague(23%) and Czech, German and Dutch</li>
+</ul>
+</li>
+</ul>
+<p>Data Driven Dependency Parsing  </p>
+<ul>
+<li>Data-driven parsing<ul>
+<li>No grammar / rules needed</li>
+<li>Parsing decisions are made based on learned models</li>
+<li>deal with ambiguities well</li>
+<li><img src="/img/NLP/data-driven.png" alt=""></li>
+</ul>
+</li>
+<li>Three approaches<ul>
+<li>Graph-based models</li>
+<li>Transition-based models(good in practice)<ul>
+<li>Define a transition system for <strong>mapping a sentence to its dependency tree</strong></li>
+<li>Predefine some transition actions</li>
+<li>Learning: predicting the next state transition, by transition history</li>
+<li>Parsing: construct the optimal transition sequence</li>
+<li>Greedy search / beam search</li>
+<li>Features are defined over a richer parsing history</li>
+</ul>
+</li>
+<li>Hybrid models</li>
+</ul>
+</li>
+</ul>
+<p>Comparison   </p>
+<ul>
+<li>Graph-based models<ul>
+<li>Find the optimal tree from all the possible ones</li>
+<li>Global, exhaustive</li>
+</ul>
+</li>
+<li>Transition-based models<ul>
+<li>Predefine some actions (shift and reduce)</li>
+<li>use stack to hold partially built parses</li>
+<li><strong>Find the optimal action sequence</strong></li>
+<li>Local, Greedy or beam search</li>
+</ul>
+</li>
+<li>The two models produce different types of errors</li>
+</ul>
+<p>Hybrid Models  </p>
+<ul>
+<li>Three integration methods<ul>
+<li>Ensemble approach: parsing time integration (Sagae &amp; Lavie 2006)</li>
+<li>Feature-based integration (Nivre &amp; Mcdonald 2008)</li>
+<li>Single model combination (Zhang &amp; Clark 2008)</li>
+</ul>
+</li>
+<li>Gain benefits from both models</li>
+</ul>
+<p><img src="/img/NLP/parse-algo.png" alt=""></p>
+<h3 id="Graph-based_dependency_parsing_models">Graph-based dependency parsing models</h3><ul>
+<li>Search for a tree with the highest score</li>
+<li>Define search space<ul>
+<li>Exhaustive search</li>
+<li>Features are defined over a limited parsing history</li>
+</ul>
+</li>
+<li>The score is linear combination of features <ul>
+<li>What features we can use? (later)</li>
+<li>What learning approaches can lead us to find the best tree with the highest score (later)</li>
+</ul>
+</li>
+<li>Applicable to both probabilistic and nonprobabilistic models </li>
+</ul>
+<p>Features  </p>
+<ul>
+<li>dynamic features<ul>
+<li>Take into account the link labels of the surrounding word-pairs when predicting the label of current pair</li>
+<li>Commonly used in sequential labeling</li>
+<li>A word’s children are generated first(先生 child, 再找 parent), before it modifies another word</li>
+</ul>
+</li>
+</ul>
+<p>Learning Approaches   </p>
+<ul>
+<li>Local learning approaches<ul>
+<li>Learn a local link classifier given of features defined on training data</li>
+<li>example <img src="/img/NLP/local-feature-example.png" alt=""><ul>
+<li>3-class classification: No link, left link or right link</li>
+<li>Efficient O(n) local training</li>
+</ul>
+</li>
+<li>local training and parsing <img src="/img/NLP/local-train-with-parse.png" alt=""></li>
+<li>Learn the weights of features<ul>
+<li>Maximum entropy models (Ratnaparkhi 99, Charniak 00)</li>
+<li>Support vector machines (Yamada &amp; Matsumoto 03)</li>
+<li>Use a richer feature set!</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Global learning approaches</li>
+<li>Unsupervised/Semi-supervised learning approaches<ul>
+<li>Use both annotated training data and un-annotated raw text</li>
+</ul>
+</li>
+</ul>
+<h3 id="Transition-based_model">Transition-based model</h3><ul>
+<li>Stack holds partially built parses</li>
+<li>Queue holds unprocessed words</li>
+<li>Actions<ul>
+<li>use input words to build output parse</li>
+</ul>
+</li>
+</ul>
+<h4 id="parsing_processes">parsing processes</h4><p>Arc-eager parser  </p>
+<ul>
+<li>4 tranition actions<ul>
+<li>SHIFT: push stack</li>
+<li>REDUCE: pop stack</li>
+<li>ARC-LEFT: pop stack and add link</li>
+<li>ARC-RIGHT: push stack and add link</li>
+</ul>
+</li>
+<li><img src="/img/NLP/arc-eager-example.png" alt=""></li>
+<li>Time complexity: linear<ul>
+<li>every word will be pushed once and popped once(except root)</li>
+</ul>
+</li>
+<li>parse<ul>
+<li>by actions: arcleft → arclect subject, noun, …</li>
+</ul>
+</li>
+</ul>
+<p>Arc-standard parser  </p>
+<ul>
+<li>3 actions<ul>
+<li>SHIFT: push</li>
+<li>LEFT: pop leftmost stack element and add</li>
+<li>RIGHT: pop rightmost stack element and add</li>
+</ul>
+</li>
+<li>Also linear time</li>
+</ul>
+<p>Non-projectivity  </p>
+<ul>
+<li>neither of parser can solve it<ul>
+<li>online reorder<ul>
+<li>add extra action: swap</li>
+<li>not linear: $N^2$, but expect to belinear</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Decoding_algorithms">Decoding algorithms</h4><p>search action sequence to build the parse<br>scoring action given context<br>Candidate item <s, g,=""q=""></s,></p>
+<ul>
+<li>greedy local search<ul>
+<li>initialize: Q = input</li>
+<li>goal: S=[root], G=tree, Q=[]</li>
+</ul>
+</li>
+<li>problem: one error leads to incorrect parse<ul>
+<li>Beam search: keep N highest partial states<ul>
+<li>use total score of all actions to rank a parse</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Score_Models">Score Models</h4><ul>
+<li>linear model</li>
+<li>SVM</li>
+</ul>
+<h2 id="Chap12_Semantic_Representation_and_Computational_Semantics">Chap12 Semantic Representation and Computational Semantics</h2><p>Semantic aren’t primarily descriptions of inputs</p>
+<p>Semantic Processing  </p>
+<ul>
+<li>reason about the truth</li>
+<li>answer questions based on content<ul>
+<li>Touchstone application is often question answering</li>
+</ul>
+</li>
+<li>inference to determine the truth that isn’t actually know</li>
+</ul>
+<p>Method    </p>
+<ul>
+<li>principled, theoretically motivated approach<ul>
+<li>Computational/Compositional Semantics</li>
+</ul>
+</li>
+<li>limited, practical approaches that have some hope of being useful<ul>
+<li>Information extraction</li>
+</ul>
+</li>
+</ul>
+<h3 id="Information_Extraction">Information Extraction</h3><p>Information Extraction = segmentation + classification +  association + clustering <img src="/img/NLP/IE.png" alt=""></p>
+<ul>
+<li>superficial analysis <ul>
+<li>pulls out only the entities, relations and roles related to consuming application</li>
+</ul>
+</li>
+<li>Similar to chunking</li>
+</ul>
+<h3 id="Compositional_Semantics">Compositional Semantics</h3><ul>
+<li>Use First-Order Logic(FOL) representation that accounts for all the entities, roles and relations present in a sentence</li>
+<li>Similar to our approach to full parsing</li>
+<li>Compositional: The meaning of a whole is derived from the meanings of the parts(syntatic) <img src="/img/NLP/syntax-semantic.png" alt=""></li>
+<li>Syntax-Driven Semantic Analysis<ul>
+<li>The composition of meaning representations is guided by the <strong>syntactic</strong> components and relations provided by the  grammars</li>
+</ul>
+</li>
+</ul>
+<h4 id="FOL">FOL</h4><ul>
+<li>allow to answer yes/no questions</li>
+<li>allow variable</li>
+<li>allow inference</li>
+</ul>
+<p>Events, actions and relationships can be captured with representations that consist of predicates with arguments  </p>
+<ul>
+<li>Predicates<ul>
+<li>Primarily Verbs, VPs, Sentences</li>
+<li>Verbs introduce/refer to events and processes</li>
+</ul>
+</li>
+<li>Arguments <ul>
+<li>Primarily Nouns, Nominals, NPs, PPs</li>
+<li>Nouns introduce the things that play roles in those events</li>
+</ul>
+</li>
+<li>Example: Mary gave a list to John <ul>
+<li>Giving(Mary, John, List)</li>
+<li>Gave: Predicate</li>
+<li>Mary, John, List: Argument</li>
+<li>better representation <img src="/img/NLP/FOL-better.png" alt=""></li>
+</ul>
+</li>
+<li>Lambda Forms<ul>
+<li>Allow variables to be bound</li>
+<li>λxP(x)(Sally) = P(Sally)</li>
+</ul>
+</li>
+</ul>
+<p>Ambiguation  </p>
+<ul>
+<li>mismatch between syntax and semantics<ul>
+<li>displaced arguments</li>
+<li>complex NPs with quantifiers<ul>
+<li>A menu</li>
+<li>Every restaurant <img src="/img/NLP/complicate-NP.png" alt=""></li>
+<li>Not every waiter</li>
+<li>Most restaurants</li>
+<li><img src="/img/NLP/complicate-NP-induction.png" alt=""></li>
+</ul>
+</li>
+<li>still preserving strict compositionality</li>
+</ul>
+</li>
+<li>Two (syntax) rules to revise<ul>
+<li>The S rule<ul>
+<li>S → NP VP, NP.Sem(VP.Sem)</li>
+<li>NP and VP swapped, because S is NP</li>
+</ul>
+</li>
+<li>Simple NP’s like proper nouns<ul>
+<li>λx.Franco(x)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Store and Retrieve  <ul>
+<li><img src="/img/NLP/ambiguity-of-same-POS.png" alt=""></li>
+<li>Retrieving the quantifiers one at a time and placing them in front</li>
+<li>The order determines the meaning <img src="/img/NLP/store.png" alt=""></li>
+<li>retrieve <img src="/img/NLP/retrieve.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h3 id="Set-Based_Models">Set-Based Models</h3><ul>
+<li>domain: the set of elements</li>
+<li>entity: elements of domain</li>
+<li>Properties of the elements: sets of elements from the domain</li>
+<li>Relations: sets of tuples of elements from the domain</li>
+<li>FOL<ul>
+<li>FOL Terms → elements of the domain<ul>
+<li>Med -&gt; “f”</li>
+</ul>
+</li>
+<li>FOL atomic formula → sets, or sets of tuples<ul>
+<li>Noisy(Med) is true if “f is in the set of elements that corresponds to the noisy relation</li>
+<li>Near(Med, Rio) is true if “the tuple <f,g> is in the set of tuples that corresponds to “Near” in the interpretation</f,g></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Example: Everyone likes a noisy restaurant <img src="/img/NLP/set-based-model.png" alt=""><ul>
+<li>There is a particular restaurant out there; it’s a noisy place; everybody likes it 有一家吵雜的餐廳大家都喜歡 </li>
+<li>Everybody has at least one noisy restaurant that they like 大家都喜歡一家吵雜的餐廳 </li>
+<li>Everybody likes noisy restaurants (i.e., there is no noisy restaurant out there that is disliked by anyone) 大家都喜歡吵雜的餐廳 </li>
+<li>Using predicates to create <strong>categories</strong> of concepts <ul>
+<li>people and restaurants</li>
+<li>basis for OWL (Web Ontology Language) 網絡本體語言 </li>
+</ul>
+</li>
+<li>before <img src="/img/NLP/uncategories.png" alt=""></li>
+<li>after <img src="/img/NLP/categories.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h2 id="Chap13_Lexical_Semantics">Chap13 Lexical Semantics</h2><p>we didn’t do word meaning in compositional semantics</p>
+<p>WordNet  </p>
+<ul>
+<li>meaning and relationship about words<ul>
+<li>hypernym(上位詞)<ul>
+<li>breakfast → meal</li>
+</ul>
+</li>
+<li>hierarchies <img src="/img/NLP/wordnet-hierarchy.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>In our semantics examples, we used various FOL predicates to capture various aspects of events, including the notion of roles<br>Havers, takers, givers, servers, etc.</p>
+<p>Thematic roles(語義關係) <img src="/img/NLP/thematic-roles.png" alt=""></p>
+<ul>
+<li>semantic generalizations over the specific roles that occur with specific verbs<ul>
+<li>provide a shallow level of semantic analysis</li>
+<li>tied to syntactic analysis</li>
+</ul>
+</li>
+<li>i.e. Takers, givers, eaters, makers, doers, killers<ul>
+<li>They’re all the agents of the actions</li>
+</ul>
+</li>
+<li>AGENTS are often subjects</li>
+<li>In a VP-&gt;V NP rule, the NP is often a THEME</li>
+</ul>
+<p>2 major English resources using thematic data</p>
+<ul>
+<li>PropBank<ul>
+<li>Layered on the Penn TreeBank</li>
+<li>Small number (25ish) labels</li>
+</ul>
+</li>
+<li>FrameNet<ul>
+<li>Based on frame semantics</li>
+<li>Large number of frame-specific labels</li>
+</ul>
+</li>
+</ul>
+<p>Example  </p>
+<ul>
+<li>[McAdams and crew] covered [the floors] with [checked linoleum]. 格子花紋油毯 <ul>
+<li>Arg0 (agent: the causer of the smearing)</li>
+<li>Arg1 (theme: “thing covered”)</li>
+<li>Arg2 (covering: “stuff being smeared”)</li>
+</ul>
+</li>
+<li>including agent and theme, remaining args are verb specific</li>
+</ul>
+<p>Logical Statements  </p>
+<ul>
+<li>Example: EAT — Eating(e) ^Agent(e,x)^ Theme(e,y)^Food(y)<ul>
+<li>(adding in all the right quantifiers and lambdas)</li>
+</ul>
+</li>
+<li>Use WordNet to encode the selection restrictions</li>
+<li>Unfortunately, language is creative<ul>
+<li>… ate glass on an empty stomach accompanied only by water and tea</li>
+<li>you <strong>can’t eat gold</strong> for lunch if you’re hungry</li>
+</ul>
+</li>
+</ul>
+<p>can we discover a verb’s restrictions by using a corpus and WordNet?    </p>
+<ol>
+<li>Parse sentences and find heads</li>
+<li>Label the thematic roles</li>
+<li>Collect statistics on the co-occurrence of particular headwords with particular thematic roles</li>
+<li>Use the WordNet hypernym structure to <strong>find the most meaningful level to use as a restriction</strong></li>
+</ol>
+<h3 id="WSD">WSD</h3><p>Word sense disambiguation  </p>
+<ul>
+<li>select right sense for a word </li>
+<li>Semantic selection restrictions can be used to disambiguate<ul>
+<li>Ambiguous arguments to unambiguous predicates</li>
+<li>Ambiguous predicates with unambiguous arguments</li>
+</ul>
+</li>
+<li>Ambiguous arguments<ul>
+<li>Prepare a dish(菜餚)</li>
+<li>Wash a dish(盤子)</li>
+</ul>
+</li>
+<li>Ambiguous predicates<ul>
+<li>Serve (任職 / 服務) Denver</li>
+<li>Serve (供應) breakfast</li>
+</ul>
+</li>
+</ul>
+<p>Methodology   </p>
+<ul>
+<li>Supervised Disambiguation<ul>
+<li>based on a labeled training set</li>
+</ul>
+</li>
+<li>Dictionary-Based Disambiguation<ul>
+<li>based on lexical resource like dictionaries</li>
+</ul>
+</li>
+<li>Unsupervised Disambiguation<ul>
+<li>label training data is expensive </li>
+<li>based on unlabeled corpora</li>
+</ul>
+</li>
+<li>Upper(human) and Lower(simple model) Bounds</li>
+<li>Pseudoword<ul>
+<li>Generate artificial evaluation data for comparison and improvement of text processing algorithms</li>
+</ul>
+</li>
+</ul>
+<p>Supervised ML Approaches  </p>
+<ul>
+<li>What’s a tag?<ul>
+<li>In WordNet, “bass” in a text has 8 possible tags or labels (bass1 through bass8)</li>
+</ul>
+</li>
+<li>require very simple representation for training data<ul>
+<li>Vectors of sets of feature/value pairs</li>
+<li>need to extract training data by characterization of text surrounding the target</li>
+</ul>
+</li>
+<li>If you decide to use features that require more analysis (say parse trees) then the ML part may be doing less work (relatively) if these features are truly informative</li>
+<li>Classification<ul>
+<li>Naïve Bayes (the right thing to try first)</li>
+<li>Decision lists</li>
+<li>Decision trees</li>
+<li>MaxEnt</li>
+<li>Support vector machines</li>
+<li>Nearest neighbor methods…</li>
+<li>choice of technique depends on features that have been used</li>
+</ul>
+</li>
+<li>Bootstrapping<ul>
+<li>Use when don’t have enough data to train a system…</li>
+<li> 集中有放回的均勻抽樣 </li>
+</ul>
+</li>
+</ul>
+<h4 id="Naive_Bayes">Naive Bayes</h4><ul>
+<li>Argmax P(sense|feature vector) <img src="/img/NLP/bayesian-decision.png" alt=""> </li>
+<li>find maximum probabilty of words given possible sk <img src="/img/NLP/bayesian-decision2.png" alt=""></li>
+<li><img src="/img/NLP/bayesian-classifier.png" alt=""></li>
+<li>assumption<ul>
+<li>bag of words model<ul>
+<li>structure and order of words is ignored</li>
+<li>each pair of words in the bag is independent</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>73% correct</li>
+</ul>
+<h4 id="Dictionary-Based_Disambiguation">Dictionary-Based Disambiguation</h4><ol>
+<li>Disambiguation based on sense definitions</li>
+<li>Thesaurus-Based Disambiguation</li>
+<li>Disambiguation based on translations in a second-language corpus</li>
+</ol>
+<p>sense definition</p>
+<ul>
+<li>find keywords in definition of a word<ul>
+<li>cone<ul>
+<li>… pollen-bearing scales or bracts in <strong>trees</strong></li>
+<li>shape for holding <strong>ice cream</strong></li>
+</ul>
+</li>
+<li>50%~70% accuracies</li>
+<li>Alternatives<ul>
+<li>Several iterations to determine correct sense</li>
+<li>Combine the dictionary-based and thesaurus-based disambiguation</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%B4%A2%E5%BC%95%E5%85%B8" target="_blank" rel="external">Thesaurus-Based(索引典)</a> Disambiguation    </p>
+<ul>
+<li>Category can determine which word senses are used</li>
+<li>Each word is assigned one or more subject codes which correspond to its different meanings<ul>
+<li>select the most often subject code</li>
+<li> 考慮 w 的 context，有多少 words 的 senses 與 w 相同 </li>
+</ul>
+</li>
+<li>Walker’s Algorithm<ul>
+<li>50% accuracy for “interest, point, power, state, and terms”</li>
+</ul>
+</li>
+<li>Problems<ul>
+<li>general topic categorization, e.g., mouse in computer</li>
+<li>coverage, e.g., Navratilova</li>
+</ul>
+</li>
+<li>Yarowsky’s Algorithm <img src="/img/NLP/yarowsky-algo.png" alt=""> <img src="/img/NLP/yarowsky-algo2.png"alt=""> <img src="/img/NLP/yarowsky-algo3.png" alt=""><ul>
+<li><ol>
+<li>categorize sentences</li>
+</ol>
+</li>
+<li><ol>
+<li>categorize words</li>
+</ol>
+</li>
+<li><ol>
+<li>disambiguate by decision rule for Naïve Bayes</li>
+</ol>
+</li>
+<li>result <img src="/img/NLP/yarowsky-result.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>Disambiguation based on translations in a second-language corpus  </p>
+<ul>
+<li>the word “interest” has two translations in German<ul>
+<li>“Beteiligung” (legal share—50% a interest in the company)</li>
+<li>“Interesse” (attention, concern—her interest in Mathematics)</li>
+</ul>
+</li>
+<li>Example: … showed interest …<ul>
+<li>Look up English-German dictionary, show → zeigen</li>
+<li>Compute R(Interesse, zeigen) and R(Beteiligung, zeigen)</li>
+<li>R(Interesse, zeigen) &gt; R(Beteiligung, zeigen)</li>
+</ul>
+</li>
+</ul>
+<h4 id="Unsupervised_Disambiguation">Unsupervised Disambiguation</h4><p>P(vj|sk) are estimated using the EM algorithm  </p>
+<ol>
+<li>Random initialization of P(vj|sk)(word)</li>
+<li>For each context ci of w, compute P(ci|sk)(sentence)</li>
+<li>Use P(ci|sk) as training data</li>
+<li>Reestimate P(vj|sk)(word)</li>
+</ol>
+<p>Surface Representations(features)   </p>
+<ul>
+<li>Collocational<ul>
+<li>words that appear in specific positions to the right and left of the target word</li>
+<li>limited to the words themselves as well as part of speech</li>
+<li>Example: guitar and bassplayer stand<ul>
+<li>[guitar, NN, and, CJC, player, NN, stand, VVB]</li>
+<li>In other words, a vector consisting of [position n word, position n part-of-speech…]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Co-occurrence<ul>
+<li>words that occur regardless of position</li>
+<li>Typically limited to frequency counts</li>
+<li>Assume we’ve settled on a possible vocabulary of 12 words that includes guitarand playerbut not andand stand</li>
+<li>Example: guitar and bassplayer stand<ul>
+<li>Assume a 12-word sentence includes guitar and player but not “and” and stand</li>
+<li>[0,0,0,1,0,0,0,0,0,1,0,0]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Applications  </p>
+<ul>
+<li>tagging<ul>
+<li>translation</li>
+<li>information retrieval</li>
+</ul>
+</li>
+</ul>
+<p>different label  </p>
+<ul>
+<li>Generic thematic roles (aka case roles)<ul>
+<li>Agent, instrument, source, goal, etc.</li>
+</ul>
+</li>
+<li>Propbank labels<ul>
+<li>Common set of labels ARG0-ARG4, ARGM</li>
+<li>specific to verb semantics</li>
+</ul>
+</li>
+<li>FrameNet frame elements<ul>
+<li>Conceptual and frame-specific </li>
+</ul>
+</li>
+<li>Example: [Ochocinco] bought [Burke] [a diamond ring]<ul>
+<li>generic: Agent, Goal, Theme</li>
+<li>propbank: ARG0, ARG2, ARG1</li>
+<li>framenet: Customer, Recipe, Goods</li>
+</ul>
+</li>
+</ul>
+<p>Semantic Role Labeling  </p>
+<ul>
+<li>automatically identify and label thematic roles<ul>
+<li>For each verb in a sentence<ul>
+<li>For each constituent<ul>
+<li>Decide if it is an argument to that verb</li>
+<li>if it is an argument, determine what kind</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>feature<ul>
+<li>from parse and lexical item</li>
+<li>“path” </li>
+</ul>
+</li>
+</ul>
+<h3 id="Lexical_Acquisition">Lexical Acquisition</h3><ul>
+<li>Verb Subcategorization<ul>
+<li>the syntactic means by which verbs express their arguments</li>
+</ul>
+</li>
+<li>Attachment Ambiguity<ul>
+<li>The children ate the cake with their hands</li>
+<li>The children ate the cake with blue icing</li>
+</ul>
+</li>
+<li>SelectionalPreferences<ul>
+<li>The semantic categorization of a verb’s arguments</li>
+</ul>
+</li>
+<li>Semantic Similarity (refer to IR course)<ul>
+<li>Semantic similarity between words</li>
+</ul>
+</li>
+</ul>
+<h4 id="Verb_Subcategorization">Verb Subcategorization</h4><p>a particular set of syntactic categories that a verb can appear with is called a <strong>subcategorization frame</strong> <img src="/img/NLP/subcategorization.png" alt=""></p>
+<p>Brent’s subcategorization frame learner  </p>
+<ol>
+<li>Cues: Define a regular pattern of words and syntactic categories<ol>
+<li>ε: error rate of assigning frame f to verb v based on cue cj</li>
+</ol>
+</li>
+<li>Hypothesis Testing: Define null hypothesis H0: “the frame is not appropriate for the verb” <ol>
+<li>Reject this hypothesis if the cue cj indicates with high probability that our H0 is wrong</li>
+</ol>
+</li>
+</ol>
+<p>Example<br>Cues  </p>
+<ul>
+<li>regular pattern for subcategorization frame “NP NP”<ul>
+<li>(OBJ | SUBJ_OBJ | CAP) (PUNC |CC)<br>Null hypothesis testing</li>
+</ul>
+</li>
+<li>Verb vi occurs a total of n times in the corpus and there are m &lt; n occurrences with a cue for frame fj</li>
+<li><p>Reject the null hypothesis H0 that vi does not accept fj with the following probability of error <img src="/img/NLP/brent-null-hypothesis.png" alt=""></p>
+</li>
+<li><p>Brent’s system does well at precision, but not well at recall</p>
+</li>
+<li>Manning’s system<ul>
+<li>solve this problem by using a tagger and running the cue detection on the output of the tagger</li>
+<li>learn a lot of subcategorization frames, even those it is low-reliability</li>
+<li>still low performance </li>
+<li>improve : use prior knowledge</li>
+</ul>
+</li>
+</ul>
+<p>PCFG prefers to parse common construction  </p>
+<ul>
+<li>P(A|prep, verb, np1, np2, w) ~= P(A|prep, verb, np1, np2)<ul>
+<li>Do not count the word outside of frame</li>
+<li>w: words outside of “verb np1(prep np2)”</li>
+<li>A: random variable representing attachment decision</li>
+<li>V(A): verb or np1</li>
+<li>Counter example<ul>
+<li>Fred saw a movie with Arnold Schwarzenegger</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>P(A|prep, verb, np1, np2, noun1, noun2) ~= P(A|prep, verb, noun1, noun2)<ul>
+<li>noun1 = head of np1, noun2 = head of np2</li>
+<li>total parameters: $10^{13}$ = #(prep) x #(verb) x #(noun) x #(noun) </li>
+</ul>
+</li>
+<li>P(A= noun | prep, verb, noun1) vs. P(A= verb | prep, verb, noun1)<ul>
+<li>compare probability to be verb and probability to be noun</li>
+</ul>
+</li>
+</ul>
+<p>Technique: Alternative to reduce parameters   </p>
+<ul>
+<li>Condition probabilities on fewer things</li>
+<li>Condition probabilities on more general things</li>
+</ul>
+<p>The model asks the following questions  </p>
+<ul>
+<li>VAp: Is there a PP headed by p and following the verb v which attaches to v(VAp=1) or not (VAp=0)?</li>
+<li>NAp: Is there a PP headed by p and following the noun n which attaches to n (NAp=1) or not (NAp=0)?</li>
+<li>(1) Determine the attachment of a PP that is immediately following an object noun, i.e. compute the probability of NAp=1</li>
+<li>In order for the first PP headed by the preposition p to attach to the verb, both VAp=1 and NAp=0<ul>
+<li>calculate likelihood ratio between V and N <img src="/img/NLP/likelihood-ratio-vn.png" alt=""></li>
+<li>maximum estimation<ul>
+<li>P(VA = 1 | v) = C(v, p) / C(v)</li>
+<li>P(NA = 1 | n) = C(n, p) / C(n)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Estimation of PP attachment counts<ul>
+<li>Sure Noun Attach<ul>
+<li>If a noun is followed by a PP but no preceding verb, increment C(prep attached to noun) </li>
+</ul>
+</li>
+<li>Sure Verb Attach<ul>
+<li>if a passive verb is followed by a PP other than a “by” phrase, increment C(prep attached to verb) </li>
+<li>if a PP follows both a noun phrase and a verb but the noun phrase is a pronoun, increment C(prep attached to verb)</li>
+</ul>
+</li>
+<li>Ambiguous Attach<ul>
+<li>if a PP follows both a noun and a verb, see if the probabilities based on the attachment decided by previous way</li>
+<li>otherwise increment both attachment counters by 0.5</li>
+</ul>
+</li>
+<li><img src="/img/NLP/attach-example.png" alt=""></li>
+<li>Sparse data is a major cause of the difference between the human and program performance(attachment indeterminacy 不確定性)</li>
+</ul>
+</li>
+</ul>
+<p>Using Semantic Information  </p>
+<ul>
+<li>condition on semantic tags of verb &amp; noun<ul>
+<li>Sue bought a plant with Jane(human)</li>
+<li>Sue bought a plant with yellow leaves(object)</li>
+</ul>
+</li>
+</ul>
+<p>Assumption<br>The noun phrase serves as the subject of the relative clause</p>
+<ul>
+<li>collect “ subject-verb” and “verb-object” pairs.(training part)  </li>
+<li>compute t-score (testing part) <ul>
+<li>t-score &gt; 0.10 (significant)</li>
+</ul>
+</li>
+</ul>
+<p>P (relative clause attaches to x | main verb of clause =v) &gt; P (relative clause attaches to y | main verb of clause=v)<br>↔ P (x= subject/object | v) &gt; P (y= subject/ object|v)</p>
+<p>Selectional Preferences  </p>
+<ul>
+<li>Most verbs prefer particular type of arguments<ul>
+<li>eat → object (food item)</li>
+<li>think → subject (people)</li>
+<li>bark → subject (dog)</li>
+</ul>
+</li>
+<li>Aspects of meaning of a word can be inferred<ul>
+<li>Susan had never eaten a fresh <strong>durian</strong> before (food item)</li>
+</ul>
+</li>
+<li>Selectional preferences can be used to rank different parses of a sentence</li>
+<li>Selectional preference strength<ul>
+<li>how strongly the verb constrains its direct object</li>
+<li><img src="/img/NLP/selection-strength.png" alt=""></li>
+<li>KL divergence between the prior distribution of direct objects of general verb and the distribution of direct objects of specific verb</li>
+<li>2 assumptions<ul>
+<li>only the head noun of the object is considered</li>
+<li>rather than dealing with individual nouns, we look at classes of nouns</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Selectional association<ul>
+<li>Selectional Association between a verb and a class is this class’s contribution to S(v) / the overall preference strength S(v) <img src="/img/NLP/selectional-association.png" alt=""></li>
+<li>There is also a rule for assigning association strengths to nouns instead of noun classes<ul>
+<li>If noun belongs to several classes, then its choose the highest association strength among all classes </li>
+</ul>
+</li>
+<li>estimating the probability that a direct object in noun class c occurs given a verb v<ul>
+<li>A(interrupt, chair) = max(A(interrupt, people), A(interrupt, furniture)) = A(interrupt, people)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Example <img src="/img/NLP/selectional-example.png" alt=""><ul>
+<li>eat prefers fooditem <ul>
+<li>A(eat, food)=1.08 → very specific</li>
+</ul>
+</li>
+<li>seehas a uniform distribution<ul>
+<li>A(see, people)=A(see, furniture)=A(see, food)=A(see, action)=0 → no selectional preference</li>
+</ul>
+</li>
+<li>find disprefers action item<ul>
+<li>A(find, action)=-0.13 → less specific</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Semantic Similarity  </p>
+<ul>
+<li>assessing semantic similarity between a new word and other already known words</li>
+<li>Vector Space vs Probabilistic</li>
+<li>Vector Space<ul>
+<li>Words can be expressed in different spaces: document space, word spaceand modifier space</li>
+<li>Similarity measures for binary vectors: matching coefficient, Dice coefficient, Jaccard(or Tanimoto) coefficient, Overlap coefficientand cosine</li>
+<li>Similarity measures for the real-valued vector space: cosine, Euclidean Distance, normalized correlation coefficient<ul>
+<li>cosine assumes a Euclidean space which is not well-motivated when dealing with word counts</li>
+</ul>
+</li>
+<li><img src="/img/NLP/similarity-measure.png" alt=""></li>
+</ul>
+</li>
+<li>Probabilistic Measures<ul>
+<li>viewing word counts by representing them as probability distributions</li>
+<li>compare two probability distributions using<ul>
+<li>KL Divergence</li>
+<li>Information Radius(Irad)</li>
+<li>L1Norm</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Chap14_Computational_Discourse">Chap14 Computational Discourse</h2><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Well-formedness constraints</th>
+<th>Types of ambiguity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lexical</td>
+<td>Rules of inflection and derivation</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>structural, morpheme boundaries, morpheme identity<br>Syntactic | Grammar rules | structural, POS<br>Semantic | Selection restrictions | word sense, quantifier scope<br><a href="https://zh.wikipedia.org/wiki/%E8%AF%AD%E7%94%A8%E5%AD%A6" target="_blank" rel="external">Pragmatic</a> | conversation principles | pragmatic function</p>
+<p>Computational Discourse  </p>
+<ul>
+<li>Discourse(語篇)<ul>
+<li>A group of sentences with the same coherence relation</li>
+</ul>
+</li>
+<li>Coherence relation<ul>
+<li>the 2nd sentence offers the reader an explaination or cause for the 1st sentence</li>
+</ul>
+</li>
+<li>Entity-based Coherence<ul>
+<li>relationships with the entities, introducing them and following them in a focused way</li>
+<li>Discourse Segmentation<ul>
+<li>Divide a document into a linear sequence of multiparagraph passages</li>
+<li>Academic article<ul>
+<li>Abstract</li>
+<li>Introduction</li>
+<li>Methodology</li>
+<li>Results</li>
+<li>Conclusion</li>
+</ul>
+</li>
+<li><img src="http://www.wannabehacks.co.uk/images/Inverted_pyramid_in_comprehensive_form.jpg" alt="Inverted Pyramid"></li>
+<li>Applications<ul>
+<li>News</li>
+<li>Summarize different segments of a document</li>
+<li>Extract information from inside a single discourse segment</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>TextTiling (Hearst,1997)  </p>
+<ul>
+<li>Tokenization<ul>
+<li>Each space-delimited word in the input is converted to lower-case</li>
+<li>Words in a stop list of function words are thrown out</li>
+<li>The remaining words are morphologically stemmed</li>
+<li>The stemmed words are grouped into pseudo-sentencesof length w = 20</li>
+</ul>
+</li>
+<li>Lexical score determination<ul>
+<li>compute a lexical cohesion(結合) score between pseudo-sentences<ul>
+<li>score: average similarity of words in the pseudo-sentences before gap to pseudo-sentences after the gap(??)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Boundary identification    <ul>
+<li>Compute a depth score for each gap</li>
+<li>Boundaries are assigned at any valley which is deeper than a cutoff</li>
+</ul>
+</li>
+</ul>
+<p>Coherence Relations  </p>
+<ul>
+<li>Result<ul>
+<li>The Tin Woodman was caught in the rain. His joints rusted</li>
+</ul>
+</li>
+<li>Explanation<ul>
+<li>John hid Bill’s car keys. He was drunk</li>
+</ul>
+</li>
+<li>Parallel<ul>
+<li>The Scarecrow wanted some brains</li>
+<li>The Tin Woodman wanted a heart</li>
+</ul>
+</li>
+<li>Elaboration(詳細論述)<ul>
+<li>Dorothy was from Kansas</li>
+<li>She lived in the midst of the great Kansas prairies</li>
+</ul>
+</li>
+<li>Occasion(起因)<ul>
+<li>Dorothy picked up the oil-can</li>
+<li>She oiled the Tin Woodman’s joints</li>
+</ul>
+</li>
+</ul>
+<p>Coherence Relation Assignment  </p>
+<ul>
+<li>Discourse parsing</li>
+<li>Open problems</li>
+</ul>
+<p>Cue-Phrase-Based Algorithm  </p>
+<ul>
+<li>Using cue phrases<ul>
+<li>Segment the text into discourse segments</li>
+<li>Classify the relationship between each consecutive discourse</li>
+</ul>
+</li>
+<li>Cue phrase<ul>
+<li>connectives, which are often conjunctions or adverbs <ul>
+<li>because, although, but, for example, yet, with, and</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>discourse uses vs. sentential uses<ul>
+<li><strong>With</strong> its distant orbit, Mars exhibits frigid weather conditions. (因為長距離的運行軌道，火星天氣酷寒)</li>
+<li>We can see Mars <strong>with</strong> an ordinary telescope</li>
+</ul>
+</li>
+<li><p><img src="/img/NLP/discourse-relation.png" alt=""></p>
+</li>
+<li><p>Temporal Relation  </p>
+<ul>
+<li>ordered in time (Asynchronous)<ul>
+<li>before, after …</li>
+</ul>
+</li>
+<li>overlapped (Synchronous)<ul>
+<li>at the same time</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Contingency Relation<ul>
+<li> 因果關係，附帶條件 </li>
+</ul>
+</li>
+<li>Comparison Relation<ul>
+<li>difference between two arguments</li>
+</ul>
+</li>
+<li>Expansion Relation<ul>
+<li>expands the information for one argument in the other one or continues the narrative flow</li>
+</ul>
+</li>
+<li>Implicit Relation<ul>
+<li>Discourse marker is absent</li>
+<li> 颱風來襲，學校停止上課 </li>
+</ul>
+</li>
+<li>Chinese Relation Words <img src="/img/NLP/chinese-coherence-relation.png" alt=""> <ul>
+<li>Ambiguous Discourse Markers <ul>
+<li> 而：而且, 然而, 因而 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Reference_Resolution">Reference Resolution</h3><p><img src="/img/NLP/reference-resolution.png" alt="">  </p>
+<ul>
+<li>Evoke<ul>
+<li>When a referent is first mentioned in a discourse, we say that a representation for it is <strong>evoked into</strong> the model</li>
+</ul>
+</li>
+<li>Access<ul>
+<li>Upon subsequent mention, this representation is <strong>accessed from</strong> the model</li>
+</ul>
+</li>
+</ul>
+<p>Five Types of Referring Expressions  </p>
+<ul>
+<li>Indefinite Noun Phrases(不定名詞)<ul>
+<li>marked with the determiner a, some, this …</li>
+<li>Create a new internal symbol and add to the current world model<ul>
+<li>Mayumi has bought a new automobile</li>
+<li>automobile(g123)</li>
+<li>new(g123)</li>
+<li>owns(mayumi, g123)</li>
+</ul>
+</li>
+<li>non-specific sense to describe an object<ul>
+<li>Mayumi wantsto buy a new XJE</li>
+</ul>
+</li>
+<li>whole classes of objects<ul>
+<li>A new automobiletypically requires repair twice in the first 12 months</li>
+</ul>
+</li>
+<li>collect one or more properties<ul>
+<li>The Macho GTE XL is a new automobile</li>
+</ul>
+</li>
+<li>Question and commands<ul>
+<li>Is her automobile in a parking placenear the exit?</li>
+<li>Put her automobile into a parking placenear the exit!</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Definite Noun Phrases(定名詞)<ul>
+<li>simple referential and generic uses(the same as indefinite)</li>
+<li>indicate an individual by description that they satisfy<ul>
+<li>The manufacturer <strong>of this automobile</strong> should be indicted</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pronouns(代名詞)<ul>
+<li>reference backs to entities that have been introduced by previous nounphrases in a discourse</li>
+<li>non-referential noun phrase<ul>
+<li>non-exist object</li>
+</ul>
+</li>
+<li>logical variable<ul>
+<li>No male driveradmits that heis incompetent </li>
+</ul>
+</li>
+<li>something that is available from the context of utterance, but has not been explicitly mentioned before<ul>
+<li>Here they come, late again!</li>
+<li>Can’t easily know who are “they”</li>
+</ul>
+</li>
+<li>Anaphora<ul>
+<li>Number Agreements<ul>
+<li>John has a Ford Falcon. It is red</li>
+<li>John has three Ford Falcons. They are red</li>
+</ul>
+</li>
+<li>Person Agreement(人稱)</li>
+<li>Gender Agreement</li>
+<li>Selection Restrictions<ul>
+<li>verb and its arguments</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Demonstratives (指示詞)<ul>
+<li>this, that</li>
+</ul>
+</li>
+<li>Names<ul>
+<li>Full name &gt; long definite description &gt; short definite description &gt; last name&gt; first name &gt; distal demonstrative &gt; proximate demonstrative &gt; NP &gt; stressed pronoun &gt; unstressed pronoun</li>
+</ul>
+</li>
+</ul>
+<p>Information Status  </p>
+<ul>
+<li>Referential forms used to provide new or old information</li>
+<li>givenness hierarchy <img src="/img/NLP/givenness-hierarchy.png" alt=""></li>
+<li>Definite-indefinite is a clue to given-new status<ul>
+<li>The sales managere(given) employed a foreign distributor(new)</li>
+</ul>
+</li>
+<li>If there are ambiguous noun phrases in a sentence, then it extracts the presuppositions to provide extra constraints</li>
+<li>When some new information is added to knowledge base, check if it is consistent with what we already know</li>
+</ul>
+<p>Active model of understanding  </p>
+<ul>
+<li>Given a text, build up predictions or expectations about new information and actively compare these with successive input to resolve ambiguities</li>
+<li>Construct a proof of the information provided in a sentence from the existing world knowledge and plausible inference rules illustrated</li>
+<li>the inference are not sensitive to the order<ul>
+<li>if the proposition that the disc is heavy is inferred, then it is not changed after the discourse has finished</li>
+<li>Solution: describe the propositions in temporal order</li>
+</ul>
+</li>
+<li>Script: encapsulate a sequence of actions that belong together into a script<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">automobile_buying</span>:<span class="value"></span><br><span class="line">&lt;&#123;<span class="function">customer</span>(C), <span class="function">automobile</span>(A), <span class="function">dealer</span>(D), <span class="function">garage</span>(G)&#125;,</span><br><span class="line">	&lt;</span><br><span class="line">		<span class="function">goes</span>(C, G),</span><br><span class="line">		<span class="function">test_drives</span>(C, A),</span><br><span class="line">		<span class="function">orders</span>(C, A, D),</span><br><span class="line">		<span class="function">delivers</span>(D, A, C),</span><br><span class="line">		<span class="function">drives</span>(C, A)</span><br><span class="line">	&gt;</span><br><span class="line">&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="參考資料"> 參考資料 </h2><ul>
+<li>HHChen 課堂講義 </li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/Emacs-tips/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/NLP/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div id="disqus_thread">
+     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  	 </div>
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-05-01 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/筆記/">筆記<span>10</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/機器學習/">機器學習<span>5</span></a></li> <li><a href="/tags/統計/">統計<span>2</span></a></li> <li><a href="/tags/自然語言處理/">自然語言處理<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap08_Syntax_and_Grammars"><span class="toc-article-text">Chap08 Syntax and Grammars</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Treebanks_and_headfinding"><span class="toc-article-text">Treebanks and headfinding</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Dependency_Grammars"><span class="toc-article-text">Dependency Grammars</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap09_Syntactic_Parsing"><span class="toc-article-text">Chap09 Syntactic Parsing</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#CKY(bottom-up)"><span class="toc-article-text">CKY(bottom-up)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Earley"><span class="toc-article-text">Earley</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Full_Syntactic_Parsing"><span class="toc-article-text">Full Syntactic Parsing</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap10_Statistical_Parsing"><span class="toc-article-text">Chap10 Statistical Parsing</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap11_Dependency_Parsing"><span class="toc-article-text">Chap11 Dependency Parsing</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Graph-based_dependency_parsing_models"><span class="toc-article-text">Graph-based dependency parsing models</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Transition-based_model"><span class="toc-article-text">Transition-based model</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#parsing_processes"><span class="toc-article-text">parsing processes</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Decoding_algorithms"><span class="toc-article-text">Decoding algorithms</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Score_Models"><span class="toc-article-text">Score Models</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap12_Semantic_Representation_and_Computational_Semantics"><span class="toc-article-text">Chap12 Semantic Representation and Computational Semantics</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Information_Extraction"><span class="toc-article-text">Information Extraction</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Compositional_Semantics"><span class="toc-article-text">Compositional Semantics</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#FOL"><span class="toc-article-text">FOL</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Set-Based_Models"><span class="toc-article-text">Set-Based Models</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap13_Lexical_Semantics"><span class="toc-article-text">Chap13 Lexical Semantics</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#WSD"><span class="toc-article-text">WSD</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Naive_Bayes"><span class="toc-article-text">Naive Bayes</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Dictionary-Based_Disambiguation"><span class="toc-article-text">Dictionary-Based Disambiguation</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Unsupervised_Disambiguation"><span class="toc-article-text">Unsupervised Disambiguation</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Lexical_Acquisition"><span class="toc-article-text">Lexical Acquisition</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Verb_Subcategorization"><span class="toc-article-text">Verb Subcategorization</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap14_Computational_Discourse"><span class="toc-article-text">Chap14 Computational Discourse</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Reference_Resolution"><span class="toc-article-text">Reference Resolution</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#參考資料"><span class="toc-article-text"> 參考資料 </span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 HCL
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script type="text/javascript">
+var disqus_shortname = 'githubforqwerty';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!--mathjax-->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>      
+
+
+<!--leancloud page counter-->
+<script>
+function addCount (Counter) {
+        var title = $("page-header").context.title.split('|')[0].trim();
+	var url = "/" + $('.mytitle').context.URL.split("/")[3] + "/";
+        var query=new AV.Query(Counter);
+        //use url as unique idnetfication
+        query.equalTo("url",url);
+        query.find({
+            success: function(results){
+                if(results.length>0)
+                {
+                    var counter=results[0];
+                    counter.fetchWhenSave(true); //get recent result
+                    counter.increment("time");
+                    counter.save();
+                }
+                else
+                {
+                    var newcounter=new Counter();
+                    newcounter.set("title",title);
+                    newcounter.set("url",url);
+                    newcounter.set("time",1);
+                    newcounter.save(null,{
+                        success: function(newcounter){
+                        //alert('New object created');
+                        },
+                        error: function(newcounter,error){
+                        alert('Failed to create');
+                        }
+                        });
+                }
+            },
+            error: function(error){
+                //find null is not a error
+                alert('Error:'+error.code+" "+error.message);
+            }
+        });
+}
+$(function(){
+        var Counter=AV.Object.extend("Counter");
+        //only increse visit counting when intering a page
+	var titleName = $('h1')[0].textContent.trim()
+        if ($('.mytitle').context.URL.split("/")[2] != "localhost:4000" && $('title').length == 1 && titleName != "QWERTY" && titleName != "Categories" && titleName != "Tags" && titleName != "彙整")
+           addCount(Counter);
+        var query=new AV.Query(Counter);
+        query.descending("time");
+        // the sum of popular posts
+        query.limit(10); 
+        query.find({
+            success: function(results){
+				
+                    for(var i=0;i<results.length;i++)    
+                    {
+						//alert(results[i]);
+                        var counter=results[i];
+                        title=counter.get("title");
+                        url=counter.get("url");
+                        time=counter.get("time");
+                        // add to the popularlist widget
+                        showcontent=title+" ("+time+")";
+                        //notice the "" in href
+                        $('.popularlist').append('<li><a href="'+url+'">'+showcontent+'</a></li>');
+                    }
+                },
+            error: function(error){
+                alert("Error:"+error.code+" "+error.message);
+            }
+            }
+        )
+        });
+</script>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+   </html>

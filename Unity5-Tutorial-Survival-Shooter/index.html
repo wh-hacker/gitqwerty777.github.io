@@ -119,16 +119,17 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p><a href="">資料下載</a><br><a id="more"></a></p>
+	    <p>Unity 官網上的教學 <a href="https://unity3d.com/learn/tutorials/projects/survival-shooter-project" target="_blank" rel="external">Survival-Shooter-Project</a> 實作</p>
+<a id="more"></a>
 <h2 id="Outline">Outline</h2><h2 id="記錄">記錄</h2><h3 id="Chap02">Chap02</h3><ul>
-<li><code>Drag</code>, <code>AngularDrag</code>:<a href="http://forums.gamesalad.com/discussion/34363/whats-drag-and-angular-drag-used-for" target="_blank" rel="external">阻力大小</a>，<a href="http://www.cnblogs.com/zhibolife/p/4018621.html" target="_blank" rel="external">角阻力</a><ul>
-<li>設定Infinity會使移動完成(放開鍵盤)後立刻停止</li>
+<li><code>Drag</code>, <code>AngularDrag</code>:<a href="http://forums.gamesalad.com/discussion/34363/whats-drag-and-angular-drag-used-for" target="_blank" rel="external">阻力大小 </a>，<a href="http://www.cnblogs.com/zhibolife/p/4018621.html" target="_blank" rel="external"> 角阻力</a><ul>
+<li>設定 Infinity 會使移動完成 (放開鍵盤) 後立刻停止</li>
 </ul>
 </li>
 <li><code>GetComponent&lt;T&gt;</code> Get type T component from this object</li>
 <li><code>Rigidbody</code>(剛體)：屬於物理運動的物件</li>
-<li><a href="http://www.victsao.com/blog/97-unity/420-unity-update-fixupdate" target="_blank" rel="external">FixUpdate</a></li>
-<li><code>Anim.SetTrigger(String)</code>: 啟動animator的trigger</li>
+<li><a href="http://www.victsao.com/blog/97-unity/420-unity-update-fixupdate" target="_blank" rel="external">Update 和 FixUpdate</a></li>
+<li><code>Anim.SetTrigger(String)</code>: 啟動 animator 的 trigger</li>
 <li><code>Input.GetAxisRaw(&quot;Horizontal&quot;);</code>, <code>Input.GetAxisRaw(&quot;Vertical&quot;);</code>：鍵盤輸入</li>
 <li><code>Input.mousePosition</code>：滑鼠位置</li>
 <li><code>floorHit</code>：滑鼠對應到遊戲中地板的位置，用投影方式算出</li>
@@ -136,41 +137,41 @@
 </ul>
 <h3 id="Chap03">Chap03</h3><ul>
 <li><code>offset = transform.position - target.position;</code>: camera 和 player 的距離(固定)</li>
-<li><code>Vector3.Lerp</code>: 內插法移動至 player位置+offset</li>
+<li><code>Vector3.Lerp</code>: 內插法移動至 player 位置 +offset</li>
 </ul>
 <h3 id="Chap04">Chap04</h3><ul>
 <li><code>hitParticles</code>: 屬於<a href="http://shineliublog.blogspot.tw/2014/01/13-unity-3d-particle-system.html" target="_blank" rel="external">ParticleSystem(粒子系統)</a><ul>
 <li>被打的特效</li>
 </ul>
 </li>
-<li>Nav Mesh Agent(尋路agent)<ul>
+<li>Nav Mesh Agent(尋路 agent)<ul>
 <li>Use Windows → navigation to bake</li>
 </ul>
 </li>
 </ul>
 <h3 id="Chap05">Chap05</h3><ul>
-<li><code>Handle Slide Area</code>: 控制UI.Slide的移動，移除後無法變更Slide</li>
+<li><code>Handle Slide Area</code>: 控制 UI.Slide 的移動，移除後無法變更 Slide</li>
 </ul>
 <h3 id="Chap07">Chap07</h3><ul>
-<li><code>OnTriggerEnter (Collider other)</code> 被其他Collider碰到時自動呼叫<ul>
+<li><code>OnTriggerEnter (Collider other)</code> 被其他 Collider 碰到時自動呼叫<ul>
 <li><code>OnTriggerExit (Collider other)</code> 離開</li>
 </ul>
 </li>
-<li><code>GetComponentInChildren</code>: 可以拿child的object</li>
-<li><code>GameObject.FindGameObjectWithTag (&quot;Player&quot;);</code>: 拿取其他object</li>
-<li><code>capsuleCollider.isTrigger = true;</code>: 模擬被Trigger的情況 → 會依序呼叫<code>OnTriggerEnter</code>，<code>OnTriggerExit</code></li>
-<li><code>Rigidbody.isKinematic = true;</code>:使其得到物理性質(預設即有，只是之前關掉了)</li>
-<li><code>Destroy (gameObject, 2f);</code>: 在2秒後將呼叫者摧毀</li>
-<li><code>Input.GetButton(&quot;Fire1&quot;)</code>: 滑鼠左鍵或left control</li>
+<li><code>GetComponentInChildren</code>: 可以拿 child 的 object</li>
+<li><code>GameObject.FindGameObjectWithTag (&quot;Player&quot;);</code>: 拿取其他 object</li>
+<li><code>capsuleCollider.isTrigger = true;</code>: 模擬被 Trigger 的情況 → 會依序呼叫<code>OnTriggerEnter</code>，<code>OnTriggerExit</code></li>
+<li><code>Rigidbody.isKinematic = true;</code>: 使其得到物理性質(預設即有，只是之前關掉了)</li>
+<li><code>Destroy (gameObject, 2f);</code>: 在 2 秒後將呼叫者摧毀</li>
+<li><code>Input.GetButton(&quot;Fire1&quot;)</code>: 滑鼠左鍵或 left control</li>
 <li><code>LineRenderer</code>: 線渲染器渲染有寬度並可以被賦予貼圖的線，可設置顏色，寬度<ul>
 <li><code>gunLine.SetPosition((int) index, Vetor3 position)</code><ul>
-<li>依照index順序的端點畫出線</li>
+<li>依照 index 順序的端點畫出線</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><code>timer += Time.deltaTime</code> in <code>Update</code>: 計算經過時間</li>
-<li><code>Physics.Raycast ((Ray) shootRay, (RayCastHit) out shootHit, (float)range, (int)shootableMask)</code>: 計算shootHit(擊中的地方)，限制在shootableMask上<ul>
+<li><code>Physics.Raycast ((Ray) shootRay, (RayCastHit) out shootHit, (float)range, (int)shootableMask)</code>: 計算 shootHit(擊中的地方)，限制在 shootableMask 上<ul>
 <li><code>shootableMask = LayerMask.GetMask (&quot;Shootable&quot;);</code></li>
 </ul>
 </li>
@@ -181,13 +182,13 @@
 <li><code>Instantiate</code>: 產生物件</li>
 </ul>
 <h3 id="Chap10">Chap10</h3><ul>
-<li>物件會照Hierarchy的順序render到螢幕</li>
+<li>物件會照 Hierarchy 的順序 render 到螢幕</li>
 <li><code>Application.LoadLevel(Application.loadedLevel);</code>: 重新載入此場景(scene)</li>
 </ul>
 <h2 id="遇到的問題">遇到的問題</h2><h3 id="Chap02-1">Chap02</h3><p>PlayerAC — 設定箭頭時要取消勾選<code>Has Exit Time</code></p>
 <h3 id="Chap04-1">Chap04</h3><p>Bake: set Width Inaccuracy % to 1 — Unity5 找不到 → 不影響</p>
 <h3 id="Chap05-1">Chap05</h3><p>CanvasGroup → 直接在 Add Component 處尋找</p>
-<h2 id="Reference">Reference</h2>	  
+	  
 	</div>
 
 	<div>
@@ -244,7 +245,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/記錄/">記錄<span>5</span></a></li>
+    <li><a href="/categories/記錄/">記錄<span>6</span></a></li>
   </li>
 
     </ul>

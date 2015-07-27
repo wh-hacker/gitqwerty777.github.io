@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>clean code(無瑕的程式碼)心得 | QWERTY</title>
+  <title>clean code(無瑕的程式碼) 心得 | QWERTY</title>
   <meta name="author" content="HCL">
   
-  <meta name="description" content="作者從OO的觀點出發。僅節錄我認為有助益的">
+  <meta name="description" content="Programming, Computer Science, Note">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="clean code(無瑕的程式碼)心得"/>
+  <meta property="og:title" content="clean code(無瑕的程式碼) 心得"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> clean code(無瑕的程式碼)心得</h1>
+			<h1> clean code(無瑕的程式碼) 心得</h1>
 		</div>		
 	
 
@@ -115,26 +115,20 @@
 	<div class="col-md-9">
 	
 
-	
-		 <div class="alert alert-success description">
-			<i class="fa fa-info-circle"></i> <p>作者從OO的觀點出發。僅節錄我認為有助益的</p>
-			
-		</div> <!-- alert -->
 			
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>作者是從OO的觀點出發。僅節錄我認為有助益的。<del>(書中廢話蠻多的)</del><br><a id="more"></a></p>
+	    <p>作者是從 OO 的觀點出發。僅節錄我認為有助益的。(書中有蠻多 java 的重構範例)</p>
+<a id="more"></a>
 <h2 id="Chap01_動機">Chap01 動機</h2><ol>
-<li>神就藏在細節裡<br>一致性的縮排是程式低錯誤率的最顯著指標  </li>
-<li><blockquote><p>Later equals never</p>
-<footer><strong>-- Dave LeBlanc</strong></footer></blockquote>      
-累積愈多難看的程式碼 → 愈難清理 → (修改的成本太高)重寫   </li>
-<li>不夠好的程式碼使維護成本太高(你看得懂自己寫的code嗎)</li>
+<li>神就藏在細節裡 <br> 一致性的縮排是程式低錯誤率的最顯著指標  </li>
+<li>Later equals NEVER: 累積愈多難看的程式碼 → 愈難清理 → (修改的成本太高)重寫</li>
+<li>不夠好的程式碼使維護成本太高(你看得懂自己寫的 code 嗎)</li>
 </ol>
-<p>讓開發速度變快的唯一方法：隨時保持clean code</p>
-<h2 id="Chap02_Clean_Code_的定義">Chap02 Clean Code 的定義</h2><p>認為自己的code<strong>應該要有的樣子</strong></p>
-<p>CleanCode學派(作者)對此的定義   </p>
+<p>讓開發速度變快的唯一方法：隨時保持 clean code</p>
+<h2 id="Chap02_Clean_Code_的定義">Chap02 Clean Code 的定義 </h2><p> 認為自己的 code<strong>應該要有的樣子</strong></p>
+<p>CleanCode 學派 (作者) 對此的定義   </p>
 <ul>
 <li>每個函式、類別、模組都能表達單一意圖，降低程式相依性</li>
 <li>易讀：不該使人猜測程式的意思<ul>
@@ -144,9 +138,9 @@
 </li>
 <li>抽象化：程式碼不重複</li>
 </ul>
-<h2 id="Chap03_原則">Chap03 原則</h2><p>任何原則在特殊情形都是可以違反的</p>
+<h2 id="Chap03_原則">Chap03 原則 </h2><p> 任何原則在特殊情形都是可以違反的</p>
 <ul>
-<li>童子軍規則：離開的code比剛來時更乾淨</li>
+<li>童子軍規則：離開的 code 比剛來時更乾淨</li>
 <li>寫軟體如同寫作，先把想法寫下來，然後開始啄磨，直到讀起來很通順。第一份初稿通常是粗糙而雜亂無章的，修改之後才會改善到想要的樣子。程式設計大師在寫程式時，並不認為自己是在寫程式，而是在說故事。</li>
 <li>一次只能專注在 「讓程式運作」或「讓程式整潔」其中之一</li>
 </ul>
@@ -154,6 +148,11 @@
 <li>有辦法唸出來的名稱，愈具體愈好</li>
 <li>用 define, enum, const 代替 常數<ul>
 <li>enum player{black, white}</li>
+<li>86400 → SECOND_PER_DAY</li>
+<li>容易了解的數字就不用<ul>
+<li><code>circumference = radius * Math.PI * 2</code>: 2 不用換 </li>
+</ul>
+</li>
 </ul>
 </li>
 <li>class：名詞或名詞片語<ul>
@@ -173,7 +172,7 @@
 </ul>
 </li>
 <li>避免 data, info, manager 等意義較廣的字<ul>
-<li>accountList → accountGroup (除非此變數真的是list型態)</li>
+<li>accountList → accountGroup (除非此變數真的是 list 型態)</li>
 <li>add() → insert(), append()</li>
 </ul>
 </li>
@@ -182,24 +181,29 @@
 <li>timestamp</li>
 </ul>
 </li>
+<li>較大範圍的視野用較長的名稱<ul>
+<li><code>for(int i = 0; i &lt; blahblah; i++</code>: 可以用 i<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//which is better?</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; RowNumber; i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ColumnNumber; j++)</span><br><span class="line">		...</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; RowNumber; i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; ColumnNumber; j++)</span><br><span class="line">		...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="(2)函式">(2)函式</h3><ul>
-<li>只做(在<strong>同一層級</strong>上)的<strong>一件</strong>事情<ul>
+<li>只做 (在<strong> 同一層級 </strong> 上)的 <strong> 一件 </strong> 事情<ul>
 <li>以’無法再分割’為標準</li>
 </ul>
 </li>
 <li>長度：小於二十行(或一個螢幕)</li>
-<li>不用switch：switch容易違反<ul>
+<li>不用 switch：switch 容易違反<ul>
 <li><a href="http://www.dotblogs.com.tw/hatelove/archive/2010/10/16/single-responsibility-principle.aspx" target="_blank" rel="external">單一職責原則</a></li>
 <li><a href="http://www.cnblogs.com/adam/archive/2008/04/18/1159280.html" target="_blank" rel="external">開放閉合原則</a></li>
 <li>解法：<a href="http://blog.monkeypotion.net/gameprog/pattern/abstract-factory" target="_blank" rel="external">抽象工廠</a></li>
-<li>將switch移到interface method</li>
+<li>將 switch 移到 interface method</li>
 </ul>
 </li>
 <li>參數<ul>
 <li>愈少愈好($\leq$ 三個，因為需要記順序)</li>
 <li>避免用參數當回傳值<ul>
-<li>呼叫擁有變數的類別，用其method來修改</li>
+<li>呼叫擁有變數的類別，用其 method 來修改</li>
 </ul>
 </li>
 <li>正常：單一參數<ul>
@@ -213,7 +217,7 @@
 </li>
 </ul>
 </li>
-<li>避免flag<ul>
+<li>避免 flag<ul>
 <li>代表函式不只做一件事</li>
 <li>render(bool isSuite) → renderForSuite() + renderForSingleTest()</li>
 </ul>
@@ -226,15 +230,23 @@
 <li>assertEquals(expected, actual) → assertExpectedEqualsActual(expected, actual)</li>
 </ul>
 </li>
+<li>描述可能的副作用<ul>
+<li><code>getOOS()</code> → <code>createOrReturnOOS()</code>: 可能會 create</li>
 </ul>
 </li>
-<li>指令(command)與查詢(query)分離<ul>
+</ul>
+</li>
+<li>指令 (command) 與查詢 (query) 分離<ul>
 <li>if(attributeExists(“username”)) setAttribute(“username”, “unclebob”); // makesure attribute exist before set</li>
 </ul>
 </li>
+<li>適當的靜態 (static) 宣告<ul>
+<li>靜態方法用到的資料都從參數而來，而不是從任何擁有這個方法的物件得來</li>
+</ul>
+</li>
 <li>結構化程式設計準則<ul>
-<li>每個函式的區塊都應該只有一個進入點和一個離開點(沒有break, continue, goto，只有一個return)</li>
-<li>在函式夠短的情況下<strong>沒有必要</strong></li>
+<li>每個函式的區塊都應該只有一個進入點和一個離開點(沒有 break, continue, goto，只有一個 return)</li>
+<li>在函式夠短的情況下 <strong> 沒有必要</strong></li>
 </ul>
 </li>
 </ul>
@@ -287,7 +299,7 @@
 </li>
 </ul>
 <h3 id="(4)排版">(4)排版</h3><ul>
-<li>偏好小檔案(200-500行)</li>
+<li>偏好小檔案(200-500 行)</li>
 <li>報紙型編排：先出現標題(高階概念、演算法)，再來是內容(函式、細節)<ul>
 <li>最重要的概念先出現，用最少的資訊來表達，再來才是實作細節</li>
 </ul>
@@ -305,8 +317,8 @@
 <li>for(int i = 0, …)</li>
 </ul>
 </li>
-<li>class內的函數<ul>
-<li>java放在class的最上方</li>
+<li>class 內的函數<ul>
+<li>java 放在 class 的最上方</li>
 <li>C++ 按照 <a href="https://groups.yahoo.com/neo/groups/extremeprogramming/conversations/topics/2405" target="_blank" rel="external">scissors rule(剪刀準則)</a></li>
 </ul>
 </li>
@@ -317,7 +329,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="(5)物件及資料結構">(5)物件及資料結構</h3><p>1.物件  </p>
+<h3 id="(5)物件及資料結構">(5)物件及資料結構</h3><div class="alert alert-danger"><i class="fa fa-bug"></i>  你知道的太多了...</div>    
+<p>1. 物件  </p>
 <ul>
 <li>私有變數和公用函式</li>
 <li>將實現的過程隱藏(抽象化)</li>
@@ -332,10 +345,10 @@
 </li>
 <li><strong>要讓每件事物都是一個物件是一個神話</strong></li>
 </ul>
-<p>2.資料結構  </p>
+<p>2. 資料結構  </p>
 <ul>
 <li>曝露資料(public)，沒有顯著的函式</li>
-<li>為資料結構設getter和setter是多此一舉</li>
+<li>為資料結構設 getter 和 setter 是多此一舉</li>
 </ul>
 <p>互補性     </p>
 <ul>
@@ -348,7 +361,7 @@
 </ul>
 <p><a href="http://zh.wikipedia.org/wiki/%E5%BE%97%E5%A2%A8%E5%BF%92%E8%80%B3%E5%AE%9A%E5%BE%8B" target="_blank" rel="external">The law of Demeter</a>  </p>
 <ul>
-<li>模組不該知道關於它所操縱<strong>物件</strong>的內部運作</li>
+<li>模組不該知道關於它所操縱 <strong> 物件 </strong> 的內部運作</li>
 <li>違反原則: 火車連結<ul>
 <li><code>String outputDir = ctxt.getOptions().getScratchDir().getAbsolutePath()</code></li>
 <li>改進(仍然知道底層操作)：<code>Options opts = ctxt.getOptions();</code>, <code>File scratchDir = opts.getScratchDir();</code>, <code>String outputDir = scratchDir.getAbsolutePath();</code></li>
@@ -363,30 +376,35 @@
 </ul>
 </li>
 </ul>
+<p>可調整的資料應放在高層次  </p>
+<ul>
+<li>底層不應存放參數</li>
+<li>放在高階層比較好找，也比較好修改</li>
+</ul>
 <h3 id="(6)錯誤處理">(6)錯誤處理</h3><ul>
 <li>定義正常的流程<ul>
-<li>使用<a href="http://martinfowler.com/eaaCatalog/specialCase.html" target="_blank" rel="external">特殊情況物件(special case pattern)</a>替代if()檢查<ul>
+<li>使用 <a href="http://martinfowler.com/eaaCatalog/specialCase.html" target="_blank" rel="external"> 特殊情況物件 (special case pattern)</a> 替代 if()檢查<ul>
 <li>將特殊情況包在特殊情況物件</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>使用 例外處理(try-catch-finally) 取代回傳error code<ul>
+<li>使用 例外處理(try-catch-finally) 取代回傳 error code<ul>
 <li>例外處理是「一件事」 <ul>
 <li>error code 必須在呼叫結束之後立即檢查錯誤</li>
-<li>提取try和catch的內容，成為新函式</li>
+<li>提取 try 和 catch 的內容，成為新函式</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>不要傳遞NULL<ul>
-<li>要檢查值是不是NULL，很麻煩<ul>
-<li>所有程式都不傳NULL → 所有函式都不用檢查</li>
+<li>不要傳遞 NULL<ul>
+<li>要檢查值是不是 NULL，很麻煩<ul>
+<li>所有程式都不傳 NULL → 所有函式都不用檢查</li>
 </ul>
 </li>
 <li>解決<ul>
 <li>回傳特殊情況物件<ul>
-<li>例：找不到時，回傳空list</li>
+<li>例：找不到時，回傳空 list</li>
 </ul>
 </li>
 <li>使用例外處理</li>
@@ -396,35 +414,44 @@
 </li>
 <li>Java：<a href="http://teddy-chen-tw.blogspot.tw/2011/05/checked-or-unchecked-exceptions-1.html" target="_blank" rel="external">使用不檢查型例外：</a>, <a href="http://www.slideshare.net/teddysoft/javacheckedunchecked-exceptions" target="_blank" rel="external">(檢查和不檢查型例外)</a>, 因為其破壞開放閉合原則，修改低階函式時也需要修改高階函式</li>
 </ul>
-<h3 id="(7)邊界">(7)邊界</h3><p>使用第三方API時</p>
+<h3 id="(7)邊界">(7)邊界 </h3><p> 使用第三方 API 時</p>
 <ul>
 <li>學習性測試<ul>
 <li>寫一些測試程式來了解第三方軟體</li>
 <li>第三方軟體改版後也能用來確定行為是否改變</li>
 </ul>
 </li>
-<li>包裹第三方API<ul>
+<li>包裹第三方 API<ul>
 <li><code>public void open() { try{innerPort.open();} ... }</code></li>
 <li>好處<ul>
 <li>掌握控制程式的權利</li>
-<li>在API未知的情況可以先寫出Fake API來測試</li>
+<li>在 API 未知的情況可以先寫出 Fake API 來測試</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="(8)單元測試">(8)單元測試</h3><p> 有了測試程式(和版本控制系統)就不會害怕修改程式！</p>
+<h3 id="(8)單元測試">(8)單元測試 </h3><p> 有了測試程式(和版本控制系統) 就不會害怕修改程式！</p>
 <p><a href="http://gliyao.logdown.com/posts/2014/01/18/software-talk-about-test-driven-development-test-driven-development-i" target="_blank" rel="external">測試驅動開發(TDD)</a></p>
 <ol>
 <li>只寫剛好無法通過的單元測試</li>
 <li>只寫剛好能通過測試的程式</li>
 </ol>
+<p>範圍  </p>
+<ul>
+<li>使用 Coverage Tool(涵蓋率工具)<ul>
+<li>檢查是否每個函式都有被執行過</li>
+</ul>
+</li>
+<li>測試邊界條件</li>
+</ul>
+<p>原則  </p>
 <ul>
 <li>測試的程式碼也需要整潔<ul>
 <li>最重要的是可讀性，效率是其次</li>
 </ul>
 </li>
-<li>建造-操作-檢查（BUILD-OPERATE-CHECK）<ul>
+<li>建造 - 操作 - 檢查（BUILD-OPERATE-CHECK）<ul>
 <li>產生數據，操作之，再檢查正確性</li>
 <li>GIVEN-WHEN-THEN<ul>
 <li>Given: 前提、環境</li>
@@ -434,36 +461,36 @@
 </li>
 </ul>
 </li>
-<li>一個測試只用一個assert</li>
+<li>一個測試只用一個 assert</li>
 </ul>
 <p>F.I.R.S.T. 法則    </p>
 <ul>
 <li>Fast：快速</li>
 <li>Independent：可個別獨立執行</li>
 <li>Repeatable：可在任何環境重複執行</li>
-<li>Self-Validating：輸出bool值，而不是記錄檔</li>
+<li>Self-Validating：輸出 bool 值，而不是記錄檔</li>
 <li>Timely：先寫測試再實作</li>
 </ul>
-<h3 id="(9)類別">(9)類別</h3><p>計算職責的數量：單一職責原則  </p>
+<h3 id="(9)類別">(9)類別 </h3><p> 計算職責的數量：單一職責原則  </p>
 <ul>
-<li>每個class只能有一個修改的理由</li>
+<li>每個 class 只能有一個修改的理由</li>
 <li>凝聚性：方法內使用愈多變數代表這個方法更屬於這個類別</li>
 <li>保持凝聚性就會產生許多小類別</li>
 </ul>
-<p>開放閉合原則：類別是可擴充，但不可修改的<br><a href="http://yupingnote.blogspot.tw/2013/12/dip.html" target="_blank" rel="external">相依性反轉原則 (DIP, Dependency Inversion Principle)</a></p>
+<p>開放閉合原則：類別是可擴充，但不可修改的 <br><a href="http://yupingnote.blogspot.tw/2013/12/dip.html" target="_blank" rel="external"> 相依性反轉原則 (DIP, Dependency Inversion Principle)</a></p>
 <ul>
 <li>類別應該相依於抽象概念而非具體細節</li>
 <li>細節應該依賴抽象，抽象不該依賴細節</li>
 </ul>
-<p>一種解法：<br>將public interface method重構到 extend class</p>
-<h3 id="(10)系統">(10)系統</h3><p>如同建造城市，某些人負責整體規劃，其它人專注在細節執行。<br>進行抽象化和模組化</p>
-<p>將所有關注的事分離開來<br>e.g. 延遲初始(Lazy Initialization)：物件的建立會延後到第一次使用為止<br>但是每個物件都要做的話，產生很多重複       </p>
+<p>一種解法：<br>將 public interface method 重構到 extend class</p>
+<h3 id="(10)系統">(10)系統 </h3><p> 如同建造城市，某些人負責整體規劃，其它人專注在細節執行。<br>進行抽象化和模組化</p>
+<p>將所有關注的事分離開來 <br>e.g. 延遲初始(Lazy Initialization)：物件的建立會延後到第一次使用為止<br> 但是每個物件都要做的話，產生很多重複       </p>
 <ul>
 <li><strong>將建造和使用分離</strong><ul>
-<li>main建造物件，並將物件傳送至應用程式。應用程式只需要使用</li>
+<li>main 建造物件，並將物件傳送至應用程式。應用程式只需要使用</li>
 <li>有時候應用程式要決定何時產生物件<ul>
 <li>抽象工廠<ul>
-<li>main開工廠，集中生產，並由應用程式呼叫</li>
+<li>main 開工廠，集中生產，並由應用程式呼叫</li>
 </ul>
 </li>
 </ul>
@@ -484,7 +511,7 @@
 <li>讓系統一開始就做對，是一個神話</li>
 </ul>
 </li>
-<li>AOP<a href="https://zh.wikipedia.org/wiki/面向侧面的程序设计" target="_blank" rel="external">(1)</a><a href="www.javaworld.com.tw/jute/post/view?bid=43&amp;id=145561&amp;sty=1&amp;tpg=1&amp;age=0">(2)</a><ul>
+<li>AOP<a href="https://zh.wikipedia.org/wiki/ 面向侧面的程序设计" target="_blank" rel="external">(1)</a><a href="www.javaworld.com.tw/jute/post/view?bid=43&amp;id=145561&amp;sty=1&amp;tpg=1&amp;age=0">(2)</a><ul>
 <li>剖面(aspect)<ul>
 <li>系統中哪些點的行為，需要一起修改，以支援某個關注點</li>
 <li>如日誌記錄(log)、使用相同資料庫 </li>
@@ -494,11 +521,11 @@
 </li>
 </ul>
 <h4 id="剖面範例">剖面範例</h4><ol>
-<li><a href="http://openhome.cc/Gossip/SpringGossip/FromProxyToAOP.html" target="_blank" rel="external">Java代理機制</a><ol>
+<li><a href="http://openhome.cc/Gossip/SpringGossip/FromProxyToAOP.html" target="_blank" rel="external">Java 代理機制</a><ol>
 <li>代理可以呼叫被代理物件的函式，也可以進行剖面的行為</li>
 </ol>
 </li>
-<li>Java AOP框架<ol>
+<li>Java AOP 框架<ol>
 <li>Spring AOP</li>
 <li>JBoss AOP</li>
 </ol>
@@ -509,9 +536,7 @@
 <p>一個理想的架構，包含模組化的關注點，每個關注點都用一個普通物件實作。 不同領域之間利用最小侵入性的剖面工具整合。 這樣的架構就可以是測試驅動的(test-driven)，如同程式碼一樣。</p>
 </blockquote>
 <p>系統需要特定領域的語言(Domain-Specific Language), 讓領域專家可以把程式寫得像是散文的結構，而且領域概念和實作程式碼相似</p>
-<h3 id="(11)羽化">(11)羽化</h3><p>這篇算是總集篇</p>
-<p>簡單設計守則  </p>
-<ol>
+<h3 id="(11)結論：簡單設計守則">(11)結論：簡單設計守則</h3><ol>
 <li>執行完所有的測試</li>
 <li>程式重構<ol>
 <li>消除重複<ol>
@@ -536,10 +561,10 @@
 <p>將「做什麼」和「何時做」分解開來。</p>
 <p>缺點  </p>
 <ul>
-<li>需要修改程式碼/架構</li>
-<li>速度不一定變快(有overhead)</li>
+<li>需要修改程式碼 / 架構</li>
+<li>速度不一定變快(有 overhead)</li>
 <li>很難寫正確<ul>
-<li>很難發覺bug(不容易重複出現)</li>
+<li>很難發覺 bug(不容易重複出現)</li>
 </ul>
 </li>
 </ul>
@@ -560,15 +585,15 @@
 </ul>
 </li>
 <li>正確的關閉程式<ul>
-<li>防止deadlock</li>
+<li>防止 deadlock</li>
 </ul>
 </li>
 <li>測試<ul>
-<li>偽造/產生失敗以測試</li>
+<li>偽造 / 產生失敗以測試</li>
 <li>在不同的平台測試</li>
 <li>執行比處理器數量還多的執行緒</li>
 <li>調整參數(執行緒數量、重複執行次數)</li>
-<li><a href="http://www.ibm.com/developerworks/cn/java/j-contest.html" target="_blank" rel="external">用IBM contest找BUG</a><ul>
+<li><a href="http://www.ibm.com/developerworks/cn/java/j-contest.html" target="_blank" rel="external">用 IBM contest 找 BUG</a><ul>
 <li>不一定會順順序執行</li>
 </ul>
 </li>
@@ -583,11 +608,50 @@
 </ul>
 <p>模型  </p>
 <ul>
-<li>生產-消費</li>
-<li>讀取-寫入</li>
+<li>生產 - 消費</li>
+<li>讀取 - 寫入</li>
 <li>哲學家用餐</li>
 </ul>
-<h2 id="進階閱讀">進階閱讀</h2><p><a href="https://msdn.microsoft.com/zh-tw/library/dn387568.aspx" target="_blank" rel="external">30天快速上手 TDD</a><br><a href="https://www.gitbook.com/book/lee-w/clean-code/details" target="_blank" rel="external">cleancode筆記</a><br><a href="http://www.tenlong.com.tw/items/9861541489?item_id=25936" target="_blank" rel="external">敏捷軟體開發：原則、樣式及實務</a></p>
+<h3 id="(13)_程式碼的異味">(13) 程式碼的異味 </h3><blockquote><p> 聖人見微以知萌，見端以知末，故見象箸而怖，知天下不足也。</p>
+<footer><strong>韓非子．說林上</strong></footer></blockquote>    
+<p><a href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E7%A0%81%E5%BC%82%E5%91%B3" target="_blank" rel="external">Code Smell</a>:<br>程式碼中的任何可能導致深層問題的症狀</p>
+<p>General Rules(之前重複的就不列了)  </p>
+<ol>
+<li>一份檔案有多種程式語言</li>
+<li>明顯該有的行為未實現</li>
+<li>在邊界條件的不正確行為<ol>
+<li>封裝邊界條件: 將邊界條件的集中處理<ol>
+<li><code>int nextLevel = level+1; //boundary condition</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>無視編譯器警告</li>
+<li>否定的判斷式<ol>
+<li><code>if(!buffer.isFull())</code> → <code>if(buffer.isNotFull())</code></li>
+</ol>
+</li>
+<li>封裝條件判斷<ol>
+<li><code>if(timer.hasExpired &amp;&amp; !timer.isRecurrent())</code>→ <code>if(shouldBeDeleted(timer))</code></li>
+</ol>
+</li>
+<li>過多的資訊(↔ 資料隱藏)<ol>
+<li>類別擁有的變數、方法數量愈少愈好、方法擁有的變數愈少愈好</li>
+</ol>
+</li>
+<li>不一致性<ol>
+<li>命名的一致性(例：對於同一個物件，在不同函式中的實體使用相同的名稱)</li>
+<li>行為的一致性(例：用同樣的方式來完成所有類似的事)</li>
+</ol>
+</li>
+<li>特色留戀(Feature Envy)<ol>
+<li>使用別的物件的 getter 或 setter 來操作那個物件的資料</li>
+<li>有時候是必要之惡：放入別的物件會違反其他 OOP 的原則(此例：單一職責、開放閉合原則等)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> clas HourlyEmployeeReport&#123;</span><br><span class="line">	<span class="keyword">private</span> HourlyEmployee employee;</span><br><span class="line">	</span><br><span class="line">	<span class="function">String <span class="title">reportHours</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> String.Format(</span><br><span class="line">			<span class="string">"Name:%s, Hours:%d.%ld\n"</span>,</span><br><span class="line">			employee.getName(),</span><br><span class="line">			employee.getTenthsWorked()/<span class="number">10</span>,</span><br><span class="line">			employee.getTenthsWorked()%<span class="number">10</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"><span class="number">4</span>. 不該隱藏執行順序的耦合(temporal coupling)</span><br><span class="line">``` java</span><br><span class="line"><span class="comment">//not a good example, but can explain what is temporal coupling</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buyFoodFromMarket</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//you may forget one of this function when you create new method, like buyFoodFromShop()</span></span><br><span class="line">	prepareCar();</span><br><span class="line">	gotoMarket();</span><br><span class="line">	buyFood();</span><br><span class="line">	goHome();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">NEW_buyFoodFromMarket</span><span class="params">()</span></span>&#123;</span><br><span class="line">	car = prepareCar();<span class="comment">//expose the temporal coupling</span></span><br><span class="line">	market = gotoMarket(car);</span><br><span class="line">	food = buyFood(market);</span><br><span class="line">	goHome(food);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="進階閱讀">進階閱讀 </h2><p><a href="https://msdn.microsoft.com/zh-tw/library/dn387568.aspx" target="_blank" rel="external">30 天快速上手 TDD</a><br><a href="https://www.gitbook.com/book/lee-w/clean-code/details" target="_blank" rel="external">cleancode 筆記</a><br><a href="http://www.tenlong.com.tw/items/9861541489?item_id=25936" target="_blank" rel="external"> 敏捷軟體開發：原則、樣式及實務</a><br><a href="http://blog.csdn.net/veryitman/article/details/6937604" target="_blank" rel="external">The Principles of Good Programming</a></p>
 	  
 	</div>
 
@@ -645,7 +709,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/筆記/">筆記<span>7</span></a></li>
+    <li><a href="/categories/筆記/">筆記<span>10</span></a></li>
   </li>
 
     </ul>
@@ -665,6 +729,11 @@
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap01_動機"><span class="toc-article-text">Chap01 動機</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap02_Clean_Code_的定義"><span class="toc-article-text">Chap02 Clean Code 的定義 </span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03_原則"><span class="toc-article-text">Chap03 原則 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(1)有意義的命名"><span class="toc-article-text">(1)有意義的命名</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(2)函式"><span class="toc-article-text">(2)函式</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(3)註解"><span class="toc-article-text">(3)註解</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(4)排版"><span class="toc-article-text">(4)排版</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(5)物件及資料結構"><span class="toc-article-text">(5)物件及資料結構</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(6)錯誤處理"><span class="toc-article-text">(6)錯誤處理</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(7)邊界"><span class="toc-article-text">(7)邊界 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(8)單元測試"><span class="toc-article-text">(8)單元測試 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(9)類別"><span class="toc-article-text">(9)類別 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(10)系統"><span class="toc-article-text">(10)系統 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#剖面範例"><span class="toc-article-text">剖面範例</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(11)結論：簡單設計守則"><span class="toc-article-text">(11)結論：簡單設計守則</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(12)平行化"><span class="toc-article-text">(12)平行化</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#(13)_程式碼的異味"><span class="toc-article-text">(13) 程式碼的異味 </span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#進階閱讀"><span class="toc-article-text">進階閱讀 </span></a></li></ol>
+		</div>
 	
 	</div>
 	

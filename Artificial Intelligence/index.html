@@ -6,7 +6,7 @@
   <title>人工智慧 | QWERTY</title>
   <meta name="author" content="HCL">
   
-  <meta name="description" content="Introduction, Agents, Search, Informed Search,  Beyond Classical Search, Adversarial Search(game), Constraint Satisfaction Problems(CSP), Logical Agents, First-Order Logic">
+  <meta name="description" content="Programming, Computer Science, Note">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -115,11 +115,6 @@
 	<div class="col-md-9">
 	
 
-	
-		 <div class="alert alert-success description">
-			<i class="fa fa-info-circle"></i> <p>Introduction, Agents, Search, Informed Search,  Beyond Classical Search, Adversarial Search(game), Constraint Satisfaction Problems(CSP), Logical Agents, First-Order Logic</p>
-			
-		</div> <!-- alert -->
 			
 
 	<!-- content -->
@@ -129,7 +124,9 @@
 <li>Artificial Intelligence(A.I.) or WALL.E</li>
 <li>human-like or robot with intelligence</li>
 <li>there are various defintion of AI</li>
-<li>goal of AI : To create intelligent machines<a id="more"></a></li>
+<li><p>goal of AI : To create intelligent machines</p>
+<a id="more"></a>
+</li>
 <li><p>Multiple Dimensions of Intelligence(多元智能)  </p>
 <ul>
 <li>Linguistic(語言), Logico-mathematical, Spatial, Musical, Kinesthetic(動作), Intrapersonal, Interpersonal</li>
@@ -199,8 +196,8 @@
 <li>AI (expert systems) becomes an industry (1980-1988)</li>
 <li>The return of neural networks (1986-1995)</li>
 <li>Broader technical development: probability, ALife, GA, soft computing (1988-)</li>
-<li>Machine learning and data mining (1990- )</li>
-<li>Intelligent agents (1995- )</li>
+<li>Machine learning and data mining (1990-)</li>
+<li>Intelligent agents (1995-)</li>
 <li>Bayesian probabilistic reasoning</li>
 </ul>
 <h3 id="Historical_Achievements">Historical Achievements</h3><ul>
@@ -425,7 +422,7 @@
 <li>space complexity: maximum number of nodes in memory</li>
 <li>optimality: does it always find a least-cost solution?</li>
 </ul>
-<h3 id="Type_of_Search">Type of Search</h3><p>可參考<a href="http://gitqwerty777.github.io/%E9%9B%BB%E8%85%A6%E5%B0%8D%E5%B1%80%E7%90%86%E8%AB%96/">電腦對局理論</a>，兩者的complexity算法不同</p>
+<h3 id="Type_of_Search">Type of Search</h3><p>可參考 <a href="http://gitqwerty777.github.io/%E9%9B%BB%E8%85%A6%E5%B0%8D%E5%B1%80%E7%90%86%E8%AB%96/"> 電腦對局理論</a>，兩者的 complexity 算法不同</p>
 <h4 id="Uninformed_search_(blind_search)">Uninformed search (blind search)</h4><p>use only the information available in the problem definition</p>
 <p><img src="/img/AI/3-2.png" alt=""></p>
 <ul>
@@ -685,7 +682,7 @@
 </ul>
 </li>
 <li>若所有鄰居的值都比現值小，則認為現值是最大值 <img src="/img/AI/4-hc.png" alt=""> </li>
-<li>可能會走到Local maxima <img src="/img/AI/4-2.png" alt="">   </li>
+<li>可能會走到 Local maxima <img src="/img/AI/4-2.png" alt="">   </li>
 <li>走到平地的時候<ul>
 <li>限制走平地的步數</li>
 </ul>
@@ -861,7 +858,7 @@
 <p>Online DFS <img src="/img/AI/4-online-dfs.png" alt="">  </p>
 <ul>
 <li>Untried: action not yet tried</li>
-<li>Unbacktracked: state not yet backtracked(尚未走回去過的state)  </li>
+<li>Unbacktracked: state not yet backtracked(尚未走回去過的 state)  </li>
 <li>Worst case each node is visited twice<ul>
 <li>online iterative deepening approach solves this problem</li>
 </ul>
@@ -1091,7 +1088,7 @@
 </ul>
 </li>
 <li>3 or more variables<ul>
-<li>cryptarithmetic(覆面算，用英文字母來取代0至9的數字) column constraints</li>
+<li>cryptarithmetic(覆面算，用英文字母來取代 0 至 9 的數字) column constraints</li>
 </ul>
 </li>
 <li>Preferences (soft constraints)<ul>
@@ -1195,19 +1192,19 @@
 </ul>
 </li>
 <li>Path consistency<ul>
-<li>若xi, xj的domain，可以使第三個variable xk的domain滿足{xi, xk}和{xj, xk}的consistency</li>
+<li>若 xi, xj 的 domain，可以使第三個 variable xk 的 domain 滿足 {xi, xk} 和{xj, xk}的 consistency</li>
 </ul>
 </li>
 <li>If variable X loses a value, <strong>neighbors of X</strong> need to be rechecked (detect inconsistency)<ul>
 <li>Ex. Arc Consistency </li>
-<li>REMOVE-INCONSISTENT-VALUE: 如果Xi的Domain中，有無法達成 Xi↔Xj 這個條件的值，則刪除　<img src="/img/AI/6-arc.png" alt="arc algo"></li>
+<li>REMOVE-INCONSISTENT-VALUE: 如果 Xi 的 Domain 中，有無法達成 Xi↔Xj 這個條件的值，則刪除　<img src="/img/AI/6-arc.png" alt="arc algo"></li>
 </ul>
 </li>
 </ul>
 <p>k-Consistency  </p>
 <ul>
 <li>for any set of k-1 variables and for any consistent assignment to those variables, a consistent value can always be assigned to the k-th variable</li>
-<li>只要有任何k-1個確定值的變數，必有一確定值可以放在第k個變數</li>
+<li>只要有任何 k-1 個確定值的變數，必有一確定值可以放在第 k 個變數</li>
 <li>A graph is <strong>strongly k-consistent</strong> if it is k-consistent and is also (k-1)-consistent, (k-2)-consistent, … 1-consistent<ul>
 <li>guarantee to find solution in O(n^2d)</li>
 <li>but establishing strongly k-consistent graph take exponential time</li>
@@ -1292,11 +1289,11 @@ Waltz’s Algorithm
 </ul>
 </li>
 <li>tree decomposition<ul>
-<li>把一部分的圖形變成一個大的node，把這些大的node合成一顆樹</li>
+<li>把一部分的圖形變成一個大的 node，把這些大的 node 合成一顆樹</li>
 <li>規則<ol>
-<li>若兩個variables本來有相連，他們必須出現在同一個subgraph至少一次</li>
-<li>若一個variable出現多次，則那些subgraph要彼此相連</li>
-<li>每個variable至少要出現一次</li>
+<li>若兩個 variables 本來有相連，他們必須出現在同一個 subgraph 至少一次</li>
+<li>若一個 variable 出現多次，則那些 subgraph 要彼此相連</li>
+<li>每個 variable 至少要出現一次</li>
 </ol>
 </li>
 <li>make subgraph as small as possible<ul>
@@ -1345,7 +1342,7 @@ Waltz’s Algorithm
 <li>In any consistent formalization of mathematics that is sufficiently strong to define the concept of <strong>natural numbers</strong>, one can construct a statement that can be <strong>neither proved nor disproved</strong> within that system(任何相容的形式系統，只要蘊涵皮亞諾算術公理，就可以在其中構造在體系中不能被證明的真命題，因此通過推演不能得到所有真命題（即體系是不完備的）。)</li>
 <li>No consistent system can be used to prove its own consistency (can not simultaneously be true and false) 任何相容的形式系統，只要蘊涵皮亞諾算術公理，它就不能用於證明它本身的相容性</li>
 </ol>
-<p><a href="http://episte.math.ntu.edu.tw/articles/mm/mm_15_4_11/index.html" target="_blank" rel="external">《戈德爾不完備定理》，董世平</a><br>任一個證明，都必須從某一個公設系統出發。對於自然數我們最常用的公設系統就是皮亞諾公設 (Peano Axioms)， 這些公設中最複雜而且困難的，（不僅對一般的高中，大學生如此，對邏輯學家亦如此），就是大名鼎鼎的「數學歸納法」。藉著數學歸納法及其他的公設， 我們可證明「質數有無窮多個」，問題是「是否所有有關自然數的敘述，只要是對的，就可由皮亞諾公設出發，而得到證明呢？」也就是「皮亞諾公設是否完備?」 若皮亞諾公設具有完備性，那麼所有有關自然數的敘述，若是對的， 就可由皮亞諾公設證明。<br>由戈德爾不完備定理而得的一個結論，就是「皮亞諾公設是不完備的！」有些關於自然數的敘述是對的，但皮亞諾公設無法證明它，戈德爾的證明也的確告訴我們如何找到這個敘述。事實上，由戈德爾的證明，我們可得一個算則，給我們一個公設系統，我們就可按此算則，而得到一個算術句型，再經過適當的編譯 (compile)，即可成為此系統內的一個句型，而此句型在此系統內為真，卻無法在此系統內被證明，所以也許我們會覺得皮亞諾公設不具有完備性，這是它的缺點，我們應當找另一個具有完備性的公設系統來代替它，但不完備定理告訴我們，「任何一個具有一致性的公設化系統皆是不完備的！」這也就是為什麼雖然大家明知皮亞諾公設是不完備的，但這個公設系統仍是被普遍的使用，因為任何其他系統，也都是不完備的。也許我們再退一步，皮亞諾公設固然不具有完備性，我們至少可要求它具有一致性吧！也就是皮亞諾公設所證明的，一定是真的，可惜，這一點也做不到，由不完備定理可得另一個結論就是「在皮亞諾公設系統內將無法證明它的一致性！」從某一方面來說，你須要假設比「皮亞諾公設是一致的」更強或相等的假設，你才能證明皮亞諾公設的一致性，當然我們若須要更強的假設，也就須要更大的信心去相信它是對的。同樣的，皮亞諾公設也沒那麼特殊，就像不完備性的結果一樣，由戈德爾不完備定理，任一個足夠強的公設系統，皆無法證明它本身的一致性。</p>
+<p><a href="http://episte.math.ntu.edu.tw/articles/mm/mm_15_4_11/index.html" target="_blank" rel="external">《戈德爾不完備定理》，董世平 </a><br> 任一個證明，都必須從某一個公設系統出發。對於自然數我們最常用的公設系統就是皮亞諾公設 (Peano Axioms)， 這些公設中最複雜而且困難的，（不僅對一般的高中，大學生如此，對邏輯學家亦如此），就是大名鼎鼎的「數學歸納法」。藉著數學歸納法及其他的公設， 我們可證明「質數有無窮多個」，問題是「是否所有有關自然數的敘述，只要是對的，就可由皮亞諾公設出發，而得到證明呢？」也就是「皮亞諾公設是否完備?」 若皮亞諾公設具有完備性，那麼所有有關自然數的敘述，若是對的， 就可由皮亞諾公設證明。<br>由戈德爾不完備定理而得的一個結論，就是「皮亞諾公設是不完備的！」有些關於自然數的敘述是對的，但皮亞諾公設無法證明它，戈德爾的證明也的確告訴我們如何找到這個敘述。事實上，由戈德爾的證明，我們可得一個算則，給我們一個公設系統，我們就可按此算則，而得到一個算術句型，再經過適當的編譯 (compile)，即可成為此系統內的一個句型，而此句型在此系統內為真，卻無法在此系統內被證明，所以也許我們會覺得皮亞諾公設不具有完備性，這是它的缺點，我們應當找另一個具有完備性的公設系統來代替它，但不完備定理告訴我們，「任何一個具有一致性的公設化系統皆是不完備的！」這也就是為什麼雖然大家明知皮亞諾公設是不完備的，但這個公設系統仍是被普遍的使用，因為任何其他系統，也都是不完備的。也許我們再退一步，皮亞諾公設固然不具有完備性，我們至少可要求它具有一致性吧！也就是皮亞諾公設所證明的，一定是真的，可惜，這一點也做不到，由不完備定理可得另一個結論就是「在皮亞諾公設系統內將無法證明它的一致性！」從某一方面來說，你須要假設比「皮亞諾公設是一致的」更強或相等的假設，你才能證明皮亞諾公設的一致性，當然我們若須要更強的假設，也就須要更大的信心去相信它是對的。同樣的，皮亞諾公設也沒那麼特殊，就像不完備性的結果一樣，由戈德爾不完備定理，任一個足夠強的公設系統，皆無法證明它本身的一致性。</p>
 <ul>
 <li>第一不完備定理<ul>
 <li>任何一個足夠強的一致公設系統，必定是不完備的</li>
@@ -1359,7 +1356,7 @@ Waltz’s Algorithm
 </li>
 </ul>
 <p>哥德爾證明：任何無矛盾的公理體系，只要包含初等算術的陳述，則必定存在一個不可判定命題，用這組公理不能判定其真假。也就是說，「無矛盾」和「完備」是不能同時滿足的！這便是聞名於世的哥德爾不完全性定理。</p>
-<p><a href="http://programmermagazine.github.io/201403/htm/focus4.html#從程式人的角度證明哥德爾不完備定理" target="_blank" rel="external">從程式人的角度證明「哥德爾不完備定理」</a></p>
+<p><a href="http://programmermagazine.github.io/201403/htm/focus4.html# 從程式人的角度證明哥德爾不完備定理" target="_blank" rel="external">從程式人的角度證明「哥德爾不完備定理」</a></p>
 <h3 id="knowledge-based_agents">knowledge-based agents</h3><p>use logical sentences(邏緝式) to infer conclusions about the world</p>
 <p>KnowledgeBase Agent  </p>
 <ul>
@@ -1476,7 +1473,7 @@ Waltz’s Algorithm
 <p>Example: <a href="https://zh.wikipedia.org/wiki/Hunt_the_Wumpus" target="_blank" rel="external">Wumpus</a>  </p>
 <ul>
 <li>Using Resolution(歸結) inference rule<ul>
-<li>$\frac{\Gamma_1 \cup\left{ \ell\right} \,\,\,\, \Gamma_2 \cup\left{ \overline{\ell}\right} }{\Gamma_1 \cup\Gamma_2}|\ell|$</li>
+<li>$\frac{\Gamma_1 \cup\left{ \ell\right} \,\,\,\, \Gamma_2 \cup\left{\overline{\ell}\right} }{\Gamma_1 \cup\Gamma_2}|\ell|$</li>
 </ul>
 </li>
 </ul>
@@ -1619,8 +1616,8 @@ Waltz’s Algorithm
 <p>Improvements  </p>
 <ul>
 <li>Early termination<ul>
-<li>A clause is true if any literal is true(用or相連)</li>
-<li>A sentence is false if any clause is false(因為用and相連)</li>
+<li>A clause is true if any literal is true(用 or 相連)</li>
+<li>A sentence is false if any clause is false(因為用 and 相連)</li>
 </ul>
 </li>
 <li>Unit clause heuristic<ul>
@@ -1635,7 +1632,7 @@ Waltz’s Algorithm
 <li>a symbol that always appears with the same sign in all clauses</li>
 <li>Ex. A and ~A would not both appear in a sentence if A  is pure </li>
 <li>Make a pure symbol literal true<ul>
-<li>在全設成true時, KB自然是true</li>
+<li>在全設成 true 時, KB 自然是 true</li>
 </ul>
 </li>
 </ul>
@@ -1920,7 +1917,7 @@ Waltz’s Algorithm
 <li>∀s Set(s) ⇔ (s = {} ) ∨ (∃x,s2 Set(s2) ∧ s = {x|s2})</li>
 <li>¬∃x,s {x|s} = {}</li>
 <li>∀x,s x ∈ s ⇔ s = {x|s}</li>
-<li>∀x,s x ∈ s ⇔ [ ∃y,s2} (s = {y|s2} ∧ (x = y ∨ x ∈ s2))]</li>
+<li>∀x,s x ∈ s ⇔ [∃y,s2} (s = {y|s2} ∧ (x = y ∨ x ∈ s2))]</li>
 <li>∀s1,s2 s1 ⊆ s2 ⇔ (∀x x ∈ s1 ⇒ x ∈ s2)</li>
 <li>∀s1,s2 (s1 = s2) ⇔ (s1 ⊆ s2 ∧ s2 ⊆ s1)</li>
 <li>∀x,s1,s2 x ∈ (s1 ∩ s2) ⇔ (x ∈ s1 ∧ x ∈ s2)</li>
@@ -1990,7 +1987,7 @@ Waltz’s Algorithm
 <p>Unification</p>
 <ul>
 <li>To unify Knows(John,x) and Knows(y,z)<ul>
-<li>MGU = { y/John, x/z }</li>
+<li>MGU = {y/John, x/z}</li>
 </ul>
 </li>
 <li>There is a single most general unifier (MGU) that is unique up to renaming of variables</li>
@@ -2038,7 +2035,7 @@ Waltz’s Algorithm
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/CFR/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
+    	<li class="prev"><a href="/economics/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
@@ -2088,13 +2085,18 @@ Waltz’s Algorithm
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/artificial-intelligence/">artificial intelligence<span>1</span></a></li> <li><a href="/tags/筆記/">筆記<span>11</span></a></li>
+  <li><a href="/tags/artificial-intelligence/">artificial intelligence<span>1</span></a></li> <li><a href="/tags/筆記/">筆記<span>9</span></a></li>
     </ul>
 	</div>
 		
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Introduction"><span class="toc-article-text">Introduction</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Turing_Test"><span class="toc-article-text">Turing Test</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Taxonomy_of_AI"><span class="toc-article-text">Taxonomy of AI</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#The_History_of_AI"><span class="toc-article-text">The History of AI</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Historical_Achievements"><span class="toc-article-text">Historical Achievements</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Other_Usage_of_AI"><span class="toc-article-text">Other Usage of AI</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap02_Agents"><span class="toc-article-text">Chap02 Agents</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Agents_and_environments"><span class="toc-article-text">Agents and environments</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Rationality"><span class="toc-article-text">Rationality</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Task_Environment:_PEAS"><span class="toc-article-text">Task Environment: PEAS</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Environment_types"><span class="toc-article-text">Environment types</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Agent_types"><span class="toc-article-text">Agent types</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03_Search"><span class="toc-article-text">Chap03 Search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Problem-solving_agents"><span class="toc-article-text">Problem-solving agents</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Problem_types"><span class="toc-article-text">Problem types</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Problem_formulation"><span class="toc-article-text">Problem formulation</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Problem_Domains"><span class="toc-article-text">Problem Domains</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Implementation:_States_vs-_Nodes"><span class="toc-article-text">Implementation: States vs. Nodes</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Search_Property"><span class="toc-article-text">Search Property</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Type_of_Search"><span class="toc-article-text">Type of Search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Uninformed_search_(blind_search)"><span class="toc-article-text">Uninformed search (blind search)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Graph_Search"><span class="toc-article-text">Graph Search</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03b_Informed_Search"><span class="toc-article-text">Chap03b Informed Search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Inventing_Better_Heuristic_Functions"><span class="toc-article-text">Inventing Better Heuristic Functions</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Summary:_all_informed_algorithms"><span class="toc-article-text">Summary: all informed algorithms</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap04_Beyond_Classical_Search"><span class="toc-article-text">Chap04 Beyond Classical Search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Local_Search_Algorithms"><span class="toc-article-text">Local Search Algorithms</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Hill_climbing(爬山)"><span class="toc-article-text">Hill climbing(爬山)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Simulated_annealing"><span class="toc-article-text">Simulated annealing</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Local_Beam_Search"><span class="toc-article-text">Local Beam Search</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Genetic_algorithms"><span class="toc-article-text">Genetic algorithms</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Local_search_in_continuous_spaces"><span class="toc-article-text">Local search in continuous spaces</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Searching_with_nondeterministic_actions"><span class="toc-article-text">Searching with nondeterministic actions</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Searching_with_partial_observations"><span class="toc-article-text">Searching with partial observations</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Online_Search"><span class="toc-article-text">Online Search</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap05_Adversarial_Search(game)"><span class="toc-article-text">Chap05 Adversarial Search(game)</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap06_Constraint_Satisfaction_Problems(CSP)"><span class="toc-article-text">Chap06 Constraint Satisfaction Problems(CSP)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Backtracking_Search"><span class="toc-article-text">Backtracking Search</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap07_Logical_Agents"><span class="toc-article-text">Chap07 Logical Agents</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Gödel’s_Incompleteness_Theorem_(Kurt_Gödel,_1931)"><span class="toc-article-text">Gödel’s Incompleteness Theorem (Kurt Gödel, 1931)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#knowledge-based_agents"><span class="toc-article-text">knowledge-based agents</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Terminology"><span class="toc-article-text">Terminology</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Propositional_Logic"><span class="toc-article-text">Propositional Logic</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Proof_Methods"><span class="toc-article-text">Proof Methods</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Testing_Validity"><span class="toc-article-text">Testing Validity</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Resolution"><span class="toc-article-text">Resolution</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Propositional_Horn_Clauses"><span class="toc-article-text">Propositional Horn Clauses</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Forward_and_Backward_Chaining"><span class="toc-article-text">Forward and Backward Chaining</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Davis-Putnam_Procedure(DPLL)"><span class="toc-article-text">Davis-Putnam Procedure(DPLL)</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap08_First-Order_Logic"><span class="toc-article-text">Chap08 First-Order Logic</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
+		</div>
 	
 	</div>
 	

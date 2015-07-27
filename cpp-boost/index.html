@@ -6,7 +6,7 @@
   <title>C++ boost 簡單應用 | QWERTY</title>
   <meta name="author" content="HCL">
   
-  <meta name="description" content="Programming, Computer Science, Note">
+  <meta name="description" content="C++的著名擴充函式庫">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -115,11 +115,16 @@
 	<div class="col-md-9">
 	
 
+	
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> <p>C++的著名擴充函式庫</p>
+			
+		</div> <!-- alert -->
 			
 
 	<!-- content -->
 	<div class="mypage">		
-	    <h2 id="簡介">簡介</h2><p>C++的著名擴充函式庫<br>功能(節錄)：    </p>
+	    <h2 id="簡介">簡介 </h2><p>C++ 的著名擴充函式庫<br> 功能(節錄)：    </p>
 <ul>
 <li>regex</li>
 <li>function binding</li>
@@ -136,19 +141,81 @@
 <li>program options</li>
 <li>threads</li>
 </ul>
-<p><a href="http://www.boost.org/doc/libs/1_58_0/libs/libraries.htm" target="_blank" rel="external">http://www.boost.org/doc/libs/1_58_0/libs/libraries.htm</a></p>
+<p><a href="http://www.boost.org/doc/libs/1_58_0/libs/libraries.htm" target="_blank" rel="external">所有功能</a></p>
 <a id="more"></a>
 <p>安裝：<code>sudo apt-get install libboost-all-dev</code></p>
-<h2 id="基本功能">基本功能</h2><p>可以讓c++寫得像python的工具</p>
-<h3 id="foreach">foreach</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;boost/foreach.hpp&gt;</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">hello</span><span class="params">( "Hello, world!" )</span></span>;</span><br><span class="line">  BOOST_FOREACH( <span class="keyword">char</span> ch, hello )&#123; <span class="comment">// equals to for (auto c : hello) in C03                          </span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; ch &lt;&lt; endl;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> foreach BOOST_FOREACH</span></span><br></pre></td></tr></table></figure>
+<h2 id="基本功能">基本功能 </h2><p> 可以讓 c++ 寫得像 python 的工具</p>
+<h3 id="foreach">foreach</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;boost/foreach.hpp&gt;</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">hello</span><span class="params">("Hello, world!")</span></span>;</span><br><span class="line">  BOOST_FOREACH(<span class="keyword">char</span> ch, hello )&#123; <span class="comment">// equals to for (auto c : hello) in c03                          </span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; ch &lt;&lt; endl;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//convient way to use</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> foreach BOOST_FOREACH</span></span><br></pre></td></tr></table></figure>
 <p><a href="http://www.artima.com/cppsource/foreach.html" target="_blank" rel="external">實作方法</a></p>
-<h3 id="lexical_cast">lexical_cast</h3><p>transform to string</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;boost/lexical_cast.hpp&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">double</span> j = <span class="number">233.211321313213</span>;                              </span><br><span class="line"><span class="built_in">string</span> mystring = boost::lexical_cast&lt;<span class="built_in">string</span>&gt;(j);</span><br></pre></td></tr></table></figure>
+<h3 id="lexical_cast">lexical_cast</h3><p>可以轉換成其他格式</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;boost/lexical_cast.hpp&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">double</span> j = <span class="number">233.211321231</span>;                              </span><br><span class="line"><span class="built_in">string</span> mystring = boost::lexical_cast&lt;<span class="built_in">string</span>&gt;(j);</span><br><span class="line"><span class="keyword">double</span> k = boost::lexical_cast&lt;<span class="keyword">double</span>&gt;(mystring);<span class="comment">//k = 233.211</span></span><br></pre></td></tr></table></figure>
 <h3 id="split">split</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;boost/algorithm/string.hpp&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="built_in">string</span> stringtobesplit = <span class="string">"AA/BB-CC"</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; tokens;</span><br><span class="line">boost::split(tokens, stringtobesplit, boost::is_any_of(<span class="string">"/\-"</span>));</span><br></pre></td></tr></table></figure>
-<h3 id="shared_pointer">shared pointer</h3><p>boost::shared_ptr指針sp1和sp2同時擁有了implementation對象的訪問權限，且當sp1和sp2都釋放對該對象的所有權時，其所管理的的對象的內存才被自動釋放。在共享對象的訪問權限同時，也實現了其內存的自動管理。</p>
-<p>未看…<br><a href="http://stackoverflow.com/questions/569775/smart-pointers-boost-explained" target="_blank" rel="external">http://stackoverflow.com/questions/569775/smart-pointers-boost-explained</a><br><a href="http://blog.csdn.net/jnu_simba/article/details/9569593" target="_blank" rel="external">http://blog.csdn.net/jnu_simba/article/details/9569593</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;boost/shared_ptr.hpp&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">safeclose</span><span class="params">(FILE*fp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fp) &#123;</span><br><span class="line">        fclose(fp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">some_fn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    boost::<span class="built_in">shared_ptr</span>&lt;FILE&gt; fp( fopen(myfilename, <span class="string">"a+t"</span>), safeclose );</span><br><span class="line">    <span class="comment">//body of the function, and when ever it exits the file gets closed</span></span><br><span class="line">    <span class="built_in">fprintf</span>( fp.get(), <span class="string">"a message\n"</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id=""> </h2><h2 id="Reference">Reference</h2><p><a href="http://stackoverflow.com/questions/125580/what-are-the-advantages-of-using-the-c-boost-libraries" target="_blank" rel="external">http://stackoverflow.com/questions/125580/what-are-the-advantages-of-using-the-c-boost-libraries</a><br><a href="http://stackoverflow.com/questions/325906/most-used-parts-of-boost" target="_blank" rel="external">http://stackoverflow.com/questions/325906/most-used-parts-of-boost</a></p>
+<h3 id="Smart_Pointers">Smart Pointers</h3><p><a href="http://stackoverflow.com/questions/569775/smart-pointers-boost-explained" target="_blank" rel="external">Basic properties of smart pointers</a></p>
+<ul>
+<li>no ownership at all<ul>
+<li>smart pointer cannot delete the object, because it doesn’t own it</li>
+</ul>
+</li>
+<li>transfer of ownership<ul>
+<li>only one smart pointer can ever point to the same object at the same time</li>
+<li>If the smart pointer is to be returned from functions, the ownership is transferred to the returned smart pointer</li>
+<li>Transfer of ownership cannot really be implemented in C++ currently, because object will be copied after return<ul>
+<li>only can use the copy constructor to implement that transfer of ownership</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>share of ownership<ul>
+<li>multiple smart pointers can point to the same object at the same time</li>
+<li>can be implemented by having a copy constructor</li>
+</ul>
+</li>
+</ul>
+<h4 id="Categorizing_smart_pointers">Categorizing smart pointers</h4><ul>
+<li><code>scoped_ptr</code><ul>
+<li>neither transferable nor sharable (= normal pointer)</li>
+<li>when it goes out of scope, it is destroyed</li>
+</ul>
+</li>
+<li><code>shared_ptr</code><ul>
+<li>shares ownership</li>
+<li>reference counted so it can see when the last copy of it goes out of scope and then it frees the object automatically</li>
+<li>所有使用同一筆資料的指標都不再使用後自動釋放</li>
+</ul>
+</li>
+<li><code>weak_ptr</code><ul>
+<li>non-owning smart pointer</li>
+<li>reference a managed object (managed by a shared_ptr) so it will not add a reference count<ul>
+<li>If you need to access the object, you can lock the management of it (to avoid that in another thread a shared_ptr frees it while you use the object)</li>
+</ul>
+</li>
+<li>If <code>weak_ptr</code> points to an object already deleted, it will notice you by throwing an exception</li>
+<li>It is most beneficial when you have a cyclic reference: Reference counting cannot easily cope with such a situation</li>
+</ul>
+</li>
+<li><code>intrusive_ptr</code><ul>
+<li>like a shared_ptr <ul>
+<li>does not keep the reference count in a shared_ptr</li>
+<li>but call helper functions to increse/decrese the count <ul>
+<li>helper function need to be defined by the object that is managed</li>
+<li>reference count is not anymore internal to the smart pointer, but the smart pointer uses an existing reference counting mechanism</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>typically used when there is a 3rd party smart ptr you must use</li>
+</ul>
+</li>
+<li><code>unique_ptr</code><ul>
+<li>transfer of ownership pointer</li>
+<li>cannot copy it, but can move it by using C++1x’s <code>move</code> constructors</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt; scoped_ptr&lt;T&gt; &gt; tPtrVec;</span><br><span class="line">&#123;</span><br><span class="line">     scoped_ptr&lt;T&gt; tPtr(<span class="keyword">new</span> T());</span><br><span class="line">     tPtrVec.push_back(tPtr);</span><br><span class="line">     <span class="comment">// raw T* is freed</span></span><br><span class="line">&#125;</span><br><span class="line">tPtrVec[<span class="number">0</span>]-&gt;DoSomething(); <span class="comment">// accessing freed memory</span></span><br><span class="line"><span class="comment">//--------------------------------------</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt; <span class="built_in">shared_ptr</span>&lt;T&gt; &gt; tPtrVec;</span><br><span class="line">&#123;</span><br><span class="line">     <span class="built_in">shared_ptr</span>&lt;T&gt; tPtr(<span class="keyword">new</span> T());</span><br><span class="line">     <span class="comment">// This copy to tPtrVec.push_back and ultimately to the vector storage</span></span><br><span class="line">     <span class="comment">// causes the reference count to go from 1-&gt;2</span></span><br><span class="line">     tPtrVec.push_back(tPtr);</span><br><span class="line">     <span class="comment">// num references to T goes from 2-&gt;1 on the destruction of tPtr</span></span><br><span class="line">&#125;</span><br><span class="line">tPtrVec[<span class="number">0</span>]-&gt;DoSomething(); <span class="comment">// raw T* still exists, so this is safe</span></span><br><span class="line"><span class="comment">//--------------------------------------</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt; weak_ptr&lt;T&gt; &gt; tPtrVec;</span><br><span class="line">&#123;</span><br><span class="line">     <span class="built_in">shared_ptr</span>&lt;T&gt; tPtr(<span class="keyword">new</span> T());</span><br><span class="line">     tPtrVec.push_back(tPtr);</span><br><span class="line">     <span class="comment">// num references to T goes from 1-&gt;0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">shared_ptr</span>&lt;T&gt; tPtrAccessed =  tPtrVec[<span class="number">0</span>].lock();</span><br><span class="line"><span class="keyword">if</span> (tPtrAccessed[<span class="number">0</span>].get() == <span class="number">0</span>)&#123;</span><br><span class="line">     <span class="built_in">cout</span> &lt;&lt; <span class="string">"Raw T* was freed, can't access it"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">     tPtrVec[<span class="number">0</span>]-&gt;DoSomething(); <span class="comment">// raw </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//--------------------------------------</span></span><br><span class="line">unique_ptr&lt;type&gt; p(<span class="keyword">new</span> type);</span><br><span class="line">unique_ptr&lt;type&gt; q(p); <span class="comment">// not legal!</span></span><br><span class="line">unique_ptr&lt;type&gt; r(move(p)); <span class="comment">// legal. p is now empty and r owns the object</span></span><br><span class="line">unique_ptr&lt;type&gt; s(function_returning_a_unique_ptr()); <span class="comment">// legal!</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://blog.csdn.net/jnu_simba/article/details/9569593" target="_blank" rel="external">Chinese Explaination</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;boost/shared_ptr.hpp&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">safeclose</span><span class="params">(FILE*fp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fp) &#123;</span><br><span class="line">        fclose(fp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">some_fn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    boost::<span class="built_in">shared_ptr</span>&lt;FILE&gt; fp(fopen(myfilename, <span class="string">"a+t"</span>), safeclose );</span><br><span class="line">    <span class="comment">//body of the function, and when ever it exits the file gets closed</span></span><br><span class="line">    <span class="built_in">fprintf</span>(fp.get(), <span class="string">"a message\n"</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reference">Reference</h2><p><a href="http://stackoverflow.com/questions/125580/what-are-the-advantages-of-using-the-c-boost-libraries" target="_blank" rel="external">Advantage of using boost libraries</a><br><a href="http://stackoverflow.com/questions/325906/most-used-parts-of-boost" target="_blank" rel="external">Most used parts of boost</a></p>
 	  
 	</div>
 
@@ -164,7 +231,7 @@
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/21century-C/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/CFR/" class="alignright next">下一頁<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -206,7 +273,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/記錄/">記錄<span>5</span></a></li>
+    <li><a href="/categories/記錄/">記錄<span>6</span></a></li>
   </li>
 
     </ul>
@@ -226,6 +293,11 @@
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#簡介"><span class="toc-article-text">簡介 </span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#基本功能"><span class="toc-article-text">基本功能 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#foreach"><span class="toc-article-text">foreach</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#lexical_cast"><span class="toc-article-text">lexical_cast</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#split"><span class="toc-article-text">split</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Smart_Pointers"><span class="toc-article-text">Smart Pointers</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Categorizing_smart_pointers"><span class="toc-article-text">Categorizing smart pointers</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
+		</div>
 	
 	</div>
 	

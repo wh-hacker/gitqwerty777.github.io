@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Git觀念 | QWERTY</title>
+  <title>Git 觀念 | QWERTY</title>
   <meta name="author" content="HCL">
   
   <meta name="description" content="Programming, Computer Science, Note">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Git觀念"/>
+  <meta property="og:title" content="Git 觀念"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> Git觀念</h1>
+			<h1> Git 觀念</h1>
 		</div>		
 	
 
@@ -127,7 +127,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Git安裝">Git安裝</h2><ul>
+<h2 id="Git 安裝">Git 安裝</h2><ul>
 <li>Debian/Ubuntu: 主要: <code>git-core</code> 和 <code>git-doc</code><ul>
 <li>選擇性: <code>git-gui</code>, <code>gitk</code>(圖形化), <code>gitweb</code> …</li>
 </ul>
@@ -137,10 +137,10 @@
 </ul>
 </li>
 </ul>
-<h3 id="Git常用名稱">Git常用名稱</h3><ul>
-<li>origin： 遠端(remote) Repository 的別稱，預設即為origin/master分支</li>
-<li>master： 本地(local) Repository 的 master分支<ul>
-<li>名為master的分支通常是專案中的主要分支</li>
+<h2 id="Git 常用名稱">Git 常用名稱</h2><ul>
+<li>origin： 遠端(remote) Repository 的別稱，預設即為 origin/master 分支</li>
+<li>master： 本地(local) Repository 的 master 分支<ul>
+<li>名為 master 的分支通常是專案中的主要分支</li>
 </ul>
 </li>
 <li>HEAD<ul>
@@ -149,7 +149,7 @@
 </li>
 <li>相對名稱<ul>
 <li>HEAD/HEAD^/HEAD^^/HEAD~4 <ul>
-<li>代表目前版本/前一版/前二版/前四版的提交</li>
+<li>代表目前版本 / 前一版 / 前二版 / 前四版的提交</li>
 </ul>
 </li>
 <li>HEAD^1/HEAD^2/ …<ul>
@@ -157,18 +157,18 @@
 </ul>
 </li>
 <li>A…B<ul>
-<li>A和B的相對差異</li>
-<li>列出A和B的祖先，直到A和B的分歧點</li>
+<li>A 和 B 的相對差異</li>
+<li>列出 A 和 B 的祖先，直到 A 和 B 的分歧點</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><code>git rev-parse HEAD</code>: 取得代稱(HEAD^, HEAD~1, tag)的辨識碼</li>
+<li><code>git rev-parse HEAD</code>: 取得代稱 (HEAD^, HEAD~1, tag) 的辨識碼</li>
 </ul>
 <ul>
-<li>ORIG_HEAD：合併或重設前的HEAD</li>
-<li>FETCH_HEAD：fetch抓取的HEAD</li>
-<li>MERGE_HEAD：合併時，另一個分支的HEAD</li>
+<li>ORIG_HEAD：合併或重設前的 HEAD</li>
+<li>FETCH_HEAD：fetch 抓取的 HEAD</li>
+<li>MERGE_HEAD：合併時，另一個分支的 HEAD</li>
 </ul>
 <h2 id="設定檔">設定檔</h2><ol>
 <li>容器的設定檔 <code>.git/config</code></li>
@@ -176,26 +176,26 @@
 <li>全系統的設定檔 <code>/etc/gitconfig</code></li>
 </ol>
 <p>優先級： 1 &gt; 2 &gt; 3</p>
-<h2 id="Git資料結構">Git資料結構</h2><p>Index 和 Data:[Blobs, Tree, Commits, Tags]  </p>
+<h2 id="Git 資料結構">Git 資料結構</h2><p>Index 和 Data:[Blobs, Tree, Commits, Tags]  </p>
 <ul>
 <li>Data<ul>
 <li>Blob(binary large object): 檔案本身<ul>
-<li>新增檔案時，看的是檔案的sha1，而不是檔名<ul>
-<li>若有兩個檔案內容相同，則git只會有一份blob</li>
+<li>新增檔案時，看的是檔案的 sha1，而不是檔名<ul>
+<li>若有兩個檔案內容相同，則 git 只會有一份 blob</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Tree: 目錄資訊，指向Blobs<ul>
-<li>記錄Blob的辨識碼，檔案的資訊(名稱)，子Tree等</li>
-<li>Git可以用Tree快速產生兩個版本間的差異</li>
+<li>Tree: 目錄資訊，指向 Blobs<ul>
+<li>記錄 Blob 的辨識碼，檔案的資訊(名稱)，子 Tree 等</li>
+<li>Git 可以用 Tree 快速產生兩個版本間的差異</li>
 </ul>
 </li>
-<li>Commit: 更動資訊，新的Commit會指向本來的Commit<ul>
-<li>包含作者，時間，commit對應的目錄(Tree)，commit message</li>
+<li>Commit: 更動資訊，新的 Commit 會指向本來的 Commit<ul>
+<li>包含作者，時間，commit 對應的目錄(Tree)，commit message</li>
 </ul>
 </li>
-<li>Tag: 記錄commit的別名<ul>
+<li>Tag: 記錄 commit 的別名<ul>
 <li>lightweight tag<ul>
 <li>容器私有的</li>
 </ul>
@@ -209,21 +209,21 @@
 </ul>
 </li>
 <li>Index<ul>
-<li>即為Staging area(暫存區)</li>
-<li>可視為一顆Tree，在add之後就將新檔案加入Tree中</li>
-<li>正式commit時，index即為commit的Tree</li>
+<li>即為 Staging area(暫存區)</li>
+<li>可視為一顆 Tree，在 add 之後就將新檔案加入 Tree 中</li>
+<li>正式 commit 時，index 即為 commit 的 Tree</li>
 </ul>
 </li>
 </ul>
 <p><img src="/img/Other/artist-test.png" alt=""></p>
-<p>打包機制(pack file)：找內容相似的檔案，只儲存一份+差異的部分</p>
+<p>打包機制(pack file)：找內容相似的檔案，只儲存一份 + 差異的部分</p>
 <h2 id="分支">分支</h2><ul>
-<li>可視為指向某個commit的指標</li>
-<li>切換的時候工作目錄(容器的目錄)會被改變</li>
+<li>可視為指向某個 commit 的指標</li>
+<li>切換的時候工作目錄 (容器的目錄) 會被改變</li>
 <li>用途  <ul>
 <li>分隔 測試、開發、穩定的版本</li>
-<li>debug分支</li>
-<li>feature分支</li>
+<li>debug 分支</li>
+<li>feature 分支</li>
 </ul>
 </li>
 <li>可以分層<ul>
@@ -231,21 +231,20 @@
 <li>“release/…”</li>
 </ul>
 </li>
-<li>開發時用branch(動態)，完成後可用tag取代(靜態)</li>
-<li>分支是local的<ul>
-<li>平常上傳只會將目前的HEAD和遠端分支的HEAD同步</li>
+<li>開發時用 branch(動態)，完成後可用 tag 取代(靜態)</li>
+<li>分支是 local 的<ul>
+<li>平常上傳只會將目前的 HEAD 和遠端分支的 HEAD 同步</li>
 </ul>
 </li>
 </ul>
-<h2 id="合併">合併</h2><p>每次提交和合併的時間間隔愈短，每次的衝突愈少，較容易實作。</p>
+<h2 id="合併">合併 </h2><p> 每次提交和合併的時間間隔愈短，每次的衝突愈少，較容易實作。</p>
 <p>同一條線上的合併  </p>
 <ul>
 <li>目前版本比被合併版本新 → Already up to date</li>
 <li>目前版本比被合併版本舊 → fast-forward<ul>
-<li>將目前版本移動到被合併版本的HEAD</li>
+<li>將目前版本移動到被合併版本的 HEAD</li>
 </ul>
 </li>
-<li></li>
 </ul>
 	  
 	</div>
@@ -304,7 +303,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/筆記/">筆記<span>7</span></a></li>
+    <li><a href="/categories/筆記/">筆記<span>10</span></a></li>
   </li>
 
     </ul>
@@ -324,6 +323,11 @@
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Git 安裝"><span class="toc-article-text">Git 安裝</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Git 常用名稱"><span class="toc-article-text">Git 常用名稱</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#設定檔"><span class="toc-article-text">設定檔</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Git 資料結構"><span class="toc-article-text">Git 資料結構</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#分支"><span class="toc-article-text">分支</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#合併"><span class="toc-article-text">合併 </span></a></li></ol>
+		</div>
 	
 	</div>
 	

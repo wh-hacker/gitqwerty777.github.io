@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>機器學習基石(上) | QWERTY</title>
+  <title>機器學習基石 (上) | QWERTY</title>
   <meta name="author" content="HCL">
   
   <meta name="description" content="Introduction, Perceptron, types of learning, Feasibility of Learning, Training versus Testing, Theory of Generalization, VC Dimension, Noise and Error, Error Measure">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="機器學習基石(上)"/>
+  <meta property="og:title" content="機器學習基石 (上)"/>
   <meta property="og:site_name" content="QWERTY"/>
 
   
@@ -103,7 +103,7 @@
 
 	
 		<div class="page-header">		
-			<h1> 機器學習基石(上)</h1>
+			<h1> 機器學習基石 (上)</h1>
 		</div>		
 	
 
@@ -124,7 +124,7 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p><a href="https://www.coursera.org/course/ntumlone" target="_blank" rel="external">原版</a>的講義做得十分精美，可以很快了解</p>
+	    <p><a href="https://www.coursera.org/course/ntumlone" target="_blank" rel="external">原版 </a> 的講義做得十分精美，可以很快了解</p>
 <h2 id="Chap01_Introduction">Chap01 Introduction</h2><p>課堂討論：學習的定義    </p>
 <ol>
 <li>從不會到會  </li>
@@ -152,15 +152,15 @@
 </ul>
 </li>
 <li><strong>無法簡單定義</strong></li>
-<li>有可提供學習的<strong>資料</strong></li>
+<li>有可提供學習的 <strong> 資料</strong></li>
 </ol>
-<h3 id="ML使用時機">ML使用時機</h3><ul>
+<h3 id="ML 使用時機">ML 使用時機</h3><ul>
 <li>人類無法操作<ul>
 <li>火星探索</li>
 </ul>
 </li>
 <li>難以定義的問題<ul>
-<li>視覺/聽覺辨識  </li>
+<li>視覺 / 聽覺辨識  </li>
 </ul>
 </li>
 <li>需要快速判斷<ul>
@@ -172,7 +172,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="ML應用">ML應用</h3><p>推薦系統<br>將物品分解成各個porperty factors，形成vector，並與自己的喜好vector比較  </p>
+<h3 id="ML 應用">ML 應用 </h3><p> 推薦系統 <br> 將物品分解成各個 porperty factors，形成 vector，並與自己的喜好 vector 比較  </p>
 <h3 id="formalize_the_learning_problem">formalize the learning problem</h3><ul>
 <li>target funcion <code>f</code><ul>
 <li>unknown pattern to be learned   </li>
@@ -206,13 +206,13 @@
 <li>marketing buzz word<br>課堂討論：Maching Learning &amp; Neural Network  </li>
 <li>A technique used in early AI and ML</li>
 </ul>
-<h2 id="Chap_02_Perceptron(感知器)">Chap 02 Perceptron(感知器)</h2><h3 id="yes/no_question_by_grading">yes/no question by grading</h3><p>用feature(特質)來分隔兩種不同的結果    </p>
+<h2 id="Chap_02_Perceptron(感知器)">Chap 02 Perceptron(感知器)</h2><h3 id="yes/no_question_by_grading">yes/no question by grading</h3><p>用 feature(特質)來分隔兩種不同的結果    </p>
 <ul>
 <li>x: input</li>
 <li>w: hypothesis</li>
-<li>x是在d維度空間的點(d個features)，w為分隔此空間的線(平面)的法向量 <img src="/img/ML/pla-w.png" alt=""> </li>
-<li>以二維空間為例：w產生的線分隔兩邊 <img src="/img/ML/MOzf2UK.png" alt=""><ul>
-<li>也就是h(x)的正負，w所在的那一側為正 <img src="/img/ML/joxwtUt.png" alt="">   </li>
+<li>x 是在 d 維度空間的點 (d 個 features)，w 為分隔此空間的線(平面) 的法向量 <img src="/img/ML/pla-w.png" alt=""> </li>
+<li>以二維空間為例：w 產生的線分隔兩邊 <img src="/img/ML/MOzf2UK.png" alt=""><ul>
+<li>也就是 h(x)的正負，w 所在的那一側為正 <img src="/img/ML/joxwtUt.png" alt="">   </li>
 </ul>
 </li>
 </ul>
@@ -221,22 +221,22 @@
 <ol>
 <li>find a mistake(which sign is wrong) <img src="/img/ML/u0KFPyS.png" alt=""></li>
 <li>correct the mistake <img src="/img/ML/Mow3SlT.png" alt=""><ul>
-<li>if real ans = +, new w = w + x(使w靠近正的點)</li>
-<li>if real ans = -, new w = w - x(使w遠離負的點) </li>
+<li>if real ans = +, new w = w + x(使 w 靠近正的點)</li>
+<li>if real ans = -, new w = w - x(使 w 遠離負的點) </li>
 </ul>
 </li>
 <li>keep doing until no mistake </li>
 </ol>
-<p>question<br>同乘$y_nx_n$ <img src="/img/ML/KKHE36Z.png" alt=""><br>可看出錯誤變少：正確的時候，$w_nx_n$和$y_n$同號，所以$w_nx_ny_n$是正的    </p>
+<p>question<br>同乘 $y_nx_n$ <img src="/img/ML/KKHE36Z.png" alt=""><br>可看出錯誤變少：正確的時候，$w_nx_n$ 和 $y_n$ 同號，所以 $w_nx_ny_n$ 是正的    </p>
 <h3 id="linear_seperability">linear seperability</h3><p><img src="/img/ML/5L1kwEZ.png" alt="">  </p>
 <ul>
 <li>linear seperable<ul>
 <li>exist perfect w makes $sign(y) = sign(w_nx_n)$, n = 0~N</li>
-<li>用直線(平面)必可分成無錯誤的兩塊  </li>
+<li>用直線 (平面) 必可分成無錯誤的兩塊  </li>
 </ul>
 </li>
 <li>if Data is linear seperable, then PLA can generate w to make no mistake </li>
-<li>每次改動使$w_f$(正解)和$w_t$的內積變大，也就是愈來愈接近 <img src="/img/ML/unBVfjt.png" alt=""><ul>
+<li>每次改動使 $w_f$(正解)和 $w_t$ 的內積變大，也就是愈來愈接近 <img src="/img/ML/unBVfjt.png" alt=""><ul>
 <li>但成長速度有限 <img src="/img/ML/LHtRvcu.png" alt="">    <ul>
 <li>$|W_t| &lt;= sqrt(t) max(X_n)$</li>
 <li><img src="/img/ML/J66FCPC.png" alt=""></li>
@@ -258,7 +258,7 @@
 <li>assume linear seperable<ul>
 <li>What if no linear seperate?(in reality)</li>
 <li>選出犯錯最少的</li>
-<li>這是個NP-HARD問題… <img src="/img/ML/oRWuGAO.png" alt=""></li>
+<li>這是個 NP-HARD 問題… <img src="/img/ML/oRWuGAO.png" alt=""></li>
 </ul>
 </li>
 </ul>
@@ -334,7 +334,7 @@
 <li>chess AI</li>
 </ul>
 </li>
-<li>和gene algorithm類似</li>
+<li>和 gene algorithm 類似</li>
 </ul>
 <h3 id="Different_Protocol">Different Protocol</h3><p>Batch Learning    </p>
 <ul>
@@ -355,7 +355,7 @@
 <ul>
 <li>strategically-observed data</li>
 <li>machine can ask question(take <strong>chosen</strong>(input, output)pair to learn)<ul>
-<li>關於自己不會(錯誤)的問題，拿相關的資料來學習</li>
+<li>關於自己不會 (錯誤) 的問題，拿相關的資料來學習</li>
 <li>比對有自信的答案(= 對答案)</li>
 </ul>
 </li>
@@ -380,7 +380,7 @@
 <li>‘no physical learning’ -&gt; the most difficult to learn</li>
 <li>need ‘feature conversion’</li>
 <li>Ex. Rating Prediction Problem<ul>
-<li>從歌曲評分抽出feature: 喜好, 歌的性質……  </li>
+<li>從歌曲評分抽出 feature: 喜好, 歌的性質……  </li>
 </ul>
 </li>
 </ul>
@@ -396,7 +396,7 @@
 <li>Can sample represent the real?</li>
 </ul>
 </li>
-<li>有極小可能無法代表real status</li>
+<li>有極小可能無法代表 real status</li>
 </ul>
 <h3 id="Hoeffding’s_Inequality">Hoeffding’s Inequality</h3><ul>
 <li>v and u are error rate of certain h in sample and real data <img src="/img/ML/PG3e7Jr.png" alt=""></li>
@@ -405,31 +405,31 @@
 </ul>
 </li>
 </ul>
-<p><strong>Error between hypothesis and target function</strong> can be inferred by data <img src="/img/ML/2I9ZSPn.png" alt=""> <img src="/img/ML/AC3KnSC.png" alt=""></p>
+<p><strong>Error between hypothesis and target function</strong> can be inferred by data <img src="/img/ML/2I9ZSPn.png" alt=""> <img src="/img/ML/AC3KnSC.png"alt=""></p>
 <h3 id="Ein_and_Eout">Ein and Eout</h3><p>in-sample error(Ein) and out-of-sample error(Eout)<br>Guarantee: for large N, Ein(h) ~= Eout(h) is probably approximately correct (PAC) <img src="/img/ML/colR3kh.png" alt="">  </p>
-<p>Q: if 150 people flips a coin 5 times, and one of them gets 5 heads.  A: Probability is &gt; 99% <img src="/img/ML/CCrtjgi.png" alt=""><br>→ 做愈多次，遇到的BAD sample(Eout 和 Ein 差很多; sample和實際差距過大)的機率愈大<br>→ Real learning: Algorithm choose the best <code>h</code> which has lowest Ein(h) among <code>H</code></p>
+<p>Q: if 150 people flips a coin 5 times, and one of them gets 5 heads.  A: Probability is &gt; 99% <img src="/img/ML/CCrtjgi.png" alt=""><br>→ 做愈多次，遇到的 BAD sample(Eout 和 Ein 差很多; sample 和實際差距過大)的機率愈大<br>→ Real learning: Algorithm choose the best <code>h</code> which has lowest Ein(h) among <code>H</code></p>
 <ul>
 <li>Bad Data for a <code>H</code>  <ul>
 <li>存在 <code>h</code> 使 Ein(h) 和 Eout(h) 相差很大 <img src="/img/ML/x6wkDZk.png" alt=""><ul>
-<li>由 hoeffding 知道抽到bad data的機率很小</li>
+<li>由 hoeffding 知道抽到 bad data 的機率很小</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>hypothesis的個數愈多，抽到BAD data的機率愈高 <img src="/img/ML/IK9lYNY.png" alt=""><ul>
-<li>安全的data(在任何h都不是bad data)的比例 若很高，則學到的東西可能不好</li>
+<li>hypothesis 的個數愈多，抽到 BAD data 的機率愈高 <img src="/img/ML/IK9lYNY.png" alt=""><ul>
+<li>安全的 data(在任何 h 都不是 bad data)的比例 若很高，則學到的東西可能不好</li>
 </ul>
 </li>
 </ul>
-<p>若hypothesis set的大小是有限的話，只要N夠大，Eout ~= Ein<br>但perceptron不是finite(有無限多種分隔可選)</p>
+<p>若 hypothesis set 的大小是有限的話，只要 N 夠大，Eout ~= Ein<br>但 perceptron 不是 finite(有無限多種分隔可選)</p>
 <h2 id="Chap05_Training_versus_Testing">Chap05 Training versus Testing</h2><p>g is similar to f ↔ Eout(g) ~= Ein(g) ~= 0  </p>
 <p>But need train and test <img src="/img/ML/TXVWRpF.png" alt="">       </p>
 <ul>
 <li>Train: find hypothesis that can fit sample data   </li>
 <li>Test: take <strong>good sample data</strong> that is similar to exact data  </li>
 </ul>
-<p>How to decide the number of hypothesis set<br><img src="/img/ML/mrA45Zq.png" alt=""> <img src="/img/ML/hsyNq1P.png" alt=""><br>Cannot both satisfied!</p>
-<p>Todo: Find a finite value $m_H$ can replace infinite M<br><img src="/img/ML/LOwwaGm.png" alt=""><br>Idea: M is overestimated, we use classification:<br>how many lines =&gt; how many kinds of line(that makes different output)<br>This method is called Dichotomies(二分法): Mini-hypotheses<br><img src="/img/ML/8CcPNcS.png" alt=""></p>
+<p>How to decide the number of hypothesis set<br><img src="/img/ML/mrA45Zq.png" alt=""> <img src="/img/ML/hsyNq1P.png"alt=""><br>Cannot both satisfied!</p>
+<p>Todo: Find a finite value $m_H$ can replace infinite M<br><img src="/img/ML/LOwwaGm.png" alt=""><br>Idea: M is overestimated, we use classification:<br>how many lines =&gt; how many kinds of line(that makes different output)<br>This method is called Dichotomies(二分法): Mini-hypotheses<br><img src="/img/ML/8CcPNcS.png"alt=""></p>
 <table>
 <thead>
 <tr>
@@ -472,43 +472,43 @@
 </li>
 <li>Convex Sets<ul>
 <li>worst case: every point make a circle <img src="/img/ML/tVqlZrK.png" alt=""></li>
-<li>$m_H(N) = 2^N$ -&gt; exists N inputs that can be <strong>shattered(所有output皆可產生)</strong></li>
+<li>$m_H(N) = 2^N$ -&gt; exists N inputs that can be <strong>shattered(所有 output 皆可產生)</strong></li>
 </ul>
 </li>
 </ul>
 <p><img src="/img/ML/eEXFWde.png" alt=""><br>Now $m_H(N)$ is finite, but exponential<br>Question:Can we find polynomial instead of exponential?</p>
 <h3 id="Break_Point_of_H">Break Point of H</h3><p>if all possible k inputs can’t be shattered by H<br>k = break point for H <img src="/img/ML/q3wjQSm.png" alt=""></p>
 <p>2D perceptrons: break point at 4<br>3 inputs: exist at least one input that can shatter <img src="/img/ML/perceptron-shatter.png" alt=""><br>4 inputs: for all inputs, no shatter  </p>
-<p>If there is no breakpoint, we can only find exponential($2^N$) increase<br>If there is a breakpoint, we can find polynomial($O(N^k)$)increase<br>breakpoint愈小，hypothesis set 成長的速度受到愈多限制(因為無法shatter，所以hypothesis數比exponential小)</p>
+<p>If there is no breakpoint, we can only find exponential($2^N$) increase<br>If there is a breakpoint, we can find polynomial($O(N^k)$)increase<br>breakpoint 愈小，hypothesis set 成長的速度受到愈多限制(因為無法 shatter，所以 hypothesis 數比 exponential 小)</p>
 <h2 id="Chap06_Theory_of_Generalization">Chap06 Theory of Generalization</h2><p>Q: maximum possible $m_H(N)$ if input number(N) = 3 when breakpoint(k) = 2?<br>A: x1, x2 cannot shatter, and so does x2, x3 and x1, x3 <img src="/img/ML/KE3Xwxf.png" alt=""><br>→ When N &gt; breakpoint, break point restricts $m_H(N)$ a lot!</p>
 <p>idea: prove $m_H(N) \leq$ poly(N) if N &gt; k </p>
 <h3 id="Bounding_function">Bounding function</h3><p>bounding function B(N, k): maximum possible $m_H(N)$ when break point = k</p>
-<p>Table of bounding function(incomplete) <img src="/img/ML/darN0tn.png" alt=""><br>B(N, k) = $m_H(N) = 2^N$ when N &lt; k(shatter)<br>B(N, k) &lt; $m_H(N) = 2^N - 1$ when N = k(至少比shatter少一種)<br>When N &gt; k :Using reduce, Ex. B(4,3) <img src="/img/ML/gDjeq7v.png" alt=""><br>α: dichotomies on (x1, x2, x3) with x4 paired<br>β: dichotomies on (x1, x2, x3) with x4 no paired</p>
+<p>Table of bounding function(incomplete) <img src="/img/ML/darN0tn.png" alt=""><br>B(N, k) = $m_H(N) = 2^N$ when N &lt; k(shatter)<br>B(N, k) &lt; $m_H(N) = 2^N - 1$ when N = k(至少比 shatter 少一種)<br>When N &gt; k :Using reduce, Ex. B(4,3) <img src="/img/ML/gDjeq7v.png"alt=""><br>α: dichotomies on (x1, x2, x3) with x4 paired<br>β: dichotomies on (x1, x2, x3) with x4 no paired</p>
 <p>Because B(4,3) can’t shatter any 3 inputs<br>→ α + β can’t shatter at (x1, x2, x3)<br>→ α + β $\leq$ B(3,3)</p>
 <p>Because B(4,3) can’t shatter any 3 inputs and x4 is already paired<br>→ α can’t shatter any 2 inputs at (x1, x2, x3)<br>→ α $\leq$ B(3,2)</p>
 <p>B(4,3) = 2α + β $\leq$ B(3,3) + B(3,2)<br>Generalized: B(N,k) $\leq$ B(N-1,k) + B(N-1,k-1) <img src="/img/ML/jbksHEC.png" alt=""><br>By calculation: $m_H(N) \leq B(N,k) \leq N^{k-1}$  </p>
-<p>Conclusion: $m_H(N)$ is polynomial if break point exists for N &gt;= 2 &amp; k &gt;= 3!!<br><img src="/img/ML/M8N4HsO.png" alt=""><br><img src="/img/ML/OqhVOS4.png" alt=""><br>‘&lt;=’ can be ‘=’ actually -&gt; not easy proof(skipped)</p>
+<p>Conclusion: $m_H(N)$ is polynomial if break point exists for N &gt;= 2 &amp; k &gt;= 3!!<br><img src="/img/ML/M8N4HsO.png" alt=""><br><img src="/img/ML/OqhVOS4.png"alt=""><br>‘&lt;=’ can be ‘=’ actually -&gt; not easy proof(skipped)</p>
 <h3 id="Vapnik-Chervonenkis_(VC)_bound">Vapnik-Chervonenkis (VC) bound</h3><p>Proof: BAD Bound for General H   </p>
 <ol>
-<li>Now Ein(h) finite, but Eout(h) still infinite(Eout的點有無限個)<ol>
-<li>use ghost sample data Ein’ to replace(<strong>想像</strong>再sample一次會產生的Ein’，將這段資料作為eout)</li>
-<li>圖中Ein離Eout很遠，是bad data，只要Ein’在Eout附近，Ein’也會離Eout很遠 <img src="/img/ML/kK29SSC.png" alt=""></li>
-<li>Eout 乘1/2，使其成為不等式 <img src="/img/ML/jr6WUKW.png" alt=""></li>
+<li>Now Ein(h) finite, but Eout(h) still infinite(Eout 的點有無限個)<ol>
+<li>use ghost sample data Ein’ to replace(<strong>想像 </strong> 再 sample 一次會產生的 Ein’，將這段資料作為 eout)</li>
+<li>圖中 Ein 離 Eout 很遠，是 bad data，只要 Ein’在 Eout 附近，Ein’也會離 Eout 很遠 <img src="/img/ML/kK29SSC.png" alt=""></li>
+<li>Eout 乘 1/2，使其成為不等式 <img src="/img/ML/jr6WUKW.png" alt=""></li>
 </ol>
 </li>
-<li>將bad data相似的hypothesis分在一起 <img src="" alt=""><ol>
-<li>總共有2N個data(Ein + Ein’) → $m_H(2N)$ <img src="/img/ML/MQ5v22d.png" alt=""></li>
-<li>因為有了$m_H()$函數，變成只考慮固定的hypothesis   </li>
+<li>將 bad data 相似的 hypothesis 分在一起 <img src=""alt=""><ol>
+<li>總共有 2N 個 data(Ein + Ein’) → $m_H(2N)$ <img src="/img/ML/MQ5v22d.png" alt=""></li>
+<li>因為有了 $m_H()$ 函數，變成只考慮固定的 hypothesis   </li>
 </ol>
 </li>
 <li>Use Hoeffding without Replacement<ol>
-<li>可視為2N個點取N個點，sample為Ein，剩下為Ein’(不放回去)</li>
-<li>使用 ‘Hoeffding without Replacement’： 公式和hoeffding 一樣 <img src="/img/ML/0ZC5xI3.png" alt=""></li>
-<li>Hoeffding只用於單一hypothesis，所以需要步驟2</li>
+<li>可視為 2N 個點取 N 個點，sample 為 Ein，剩下為 Ein’(不放回去)</li>
+<li>使用 ‘Hoeffding without Replacement’： 公式和 hoeffding 一樣 <img src="/img/ML/0ZC5xI3.png" alt=""></li>
+<li>Hoeffding 只用於單一 hypothesis，所以需要步驟 2</li>
 </ol>
 </li>
 </ol>
-<p>Vapnik-Chervonenkis (VC) bound <img src="/img/ML/tjn5okQ.png" alt=""><br>→ proved that learning with <strong>2D perceptrons</strong> feasible!<br><img src="/img/ML/kyXVoYU.png" alt=""><br>You need to let everything good to learned well <img src="/img/ML/n8YPfWQ.png" alt=""></p>
+<p>Vapnik-Chervonenkis (VC) bound <img src="/img/ML/tjn5okQ.png" alt=""><br>→ proved that learning with <strong>2D perceptrons</strong> feasible!<br><img src="/img/ML/kyXVoYU.png"alt=""><br>You need to let everything good to learned well <img src="/img/ML/n8YPfWQ.png" alt=""></p>
 <h2 id="Chap_07_VC_Dimension">Chap 07 VC Dimension</h2><p>VC Dimension<br>= maximum non-break point = (minimum k) - 1<br>= largest N that can shatter </p>
 <p>2D perceptron review <img src="/img/ML/EOUT=0.png" alt=""><br>How does PLA in more than 2 dimension?  </p>
 <ul>
@@ -521,12 +521,12 @@
 <p>Proof</p>
 <ol>
 <li>d_VC &gt; d+1 → d+1 can shatter<br>input matrix which is invertible <img src="/img/ML/specificmatrix.png" alt=""><br>for any y, we can find w such that sign(Xw) = y → $w = yX^{-1}$ → it can shatter </li>
-<li>d_VC &lt; d+1 → d+2 can’t shatter<br>linear dependence restricts dichotomy <img src="/img/ML/linearrely.png" alt=""><br>if row &gt; column, it would cause linear dependence <img src="/img/ML/xd+2=all.png" alt=""><br>for any input, we can find some $a_n$ that makes an output can’t happen → no shatter <img src="/img/ML/geneag0.png" alt=""></li>
+<li>d_VC &lt; d+1 → d+2 can’t shatter<br>linear dependence restricts dichotomy <img src="/img/ML/linearrely.png" alt=""><br>if row &gt; column, it would cause linear dependence <img src="/img/ML/xd+2=all.png"alt=""><br>for any input, we can find some $a_n$ that makes an output can’t happen → no shatter <img src="/img/ML/geneag0.png" alt=""></li>
 </ol>
 <h3 id="freedom">freedom</h3><p>dimension, number of parameters, hypothesis quantity(M) → degrees of freedom<br>d_VC(H) = effitive binary degrees of freedom = powerfulness of H</p>
-<p>The more powerful it is (d_vc big), the more probability to get bad data <img src="/img/ML/dvcbigsmall.png" alt="D_vc"><br>question:<img src="/img/ML/Qhyperplane.png" alt=""><br>比perceptron少一個parameter → d</p>
-<p>penalty for model complexity <img src="/img/ML/smalle.png" alt=""><br>model愈強，Ein愈小，和Eout誤差愈大 <img src="/img/ML/modelcomplexity.png" alt="">  </p>
-<p>number of data(N) should be 10000$d<em>{vc}$ in theory; 10$d</em>{vc}$  is enough in practice, because VC bound is loose <img src="/img/ML/nanddvc.png" alt=""> <img src="/img/ML/hoffedingloose.png" alt=""></p>
+<p>The more powerful it is (d_vc big), the more probability to get bad data <img src="/img/ML/dvcbigsmall.png" alt="D_vc"><br>question:<img src="/img/ML/Qhyperplane.png" alt=""><br>比 perceptron 少一個 parameter → d</p>
+<p>penalty for model complexity <img src="/img/ML/smalle.png" alt=""><br>model 愈強，Ein 愈小，和 Eout 誤差愈大 <img src="/img/ML/modelcomplexity.png"alt="">  </p>
+<p>number of data(N) should be 10000$d<em>{vc}$ in theory; 10$d</em>{vc}$  is enough in practice, because VC bound is loose <img src="/img/ML/nanddvc.png" alt=""> <img src="/img/ML/hoffedingloose.png"alt=""></p>
 <p>question: <img src="/img/ML/q2.png" alt=""><br>all of above(increase power of model)</p>
 <h2 id="Chap08_Noise_and_Error">Chap08 Noise and Error</h2><ul>
 <li>Noise in y<ul>
@@ -550,7 +550,7 @@
 <p>classification and regression use different error measure <img src="/img/ML/01andsquare.png" alt="">   </p>
 <ul>
 <li>0/1 error<ul>
-<li>minimum flipping noise(錯誤的output) </li>
+<li>minimum flipping noise(錯誤的 output) </li>
 <li>NP-hard to optimize</li>
 </ul>
 </li>
@@ -589,10 +589,10 @@
 <p>pocket  </p>
 <ul>
 <li>modify Ein to $E^w_{in}$(with weight)</li>
-<li>weight愈高的錯誤愈容易被選來修正</li>
+<li>weight 愈高的錯誤愈容易被選來修正</li>
 </ul>
 <p>權重可以適用於許多演算法!</p>
-<h2 id="參考資料">參考資料</h2><p><a href="https://www.coursera.org/course/ntumlone" target="_blank" rel="external">Coursera機器學習基石</a><br>C老師上課講解</p>
+<h2 id="參考資料">參考資料</h2><p><a href="https://www.coursera.org/course/ntumlone" target="_blank" rel="external">Coursera 機器學習基石</a><br>C 老師上課講解</p>
 	  
 	</div>
 
@@ -650,7 +650,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/筆記/">筆記<span>7</span></a></li>
+    <li><a href="/categories/筆記/">筆記<span>10</span></a></li>
   </li>
 
     </ul>
@@ -663,13 +663,18 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/機器學習/">機器學習<span>4</span></a></li>
+  <li><a href="/tags/機器學習/">機器學習<span>5</span></a></li>
     </ul>
 	</div>
 		
 
 	<!-- toc -->
 	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap01_Introduction"><span class="toc-article-text">Chap01 Introduction</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#key_eassence_of_ML"><span class="toc-article-text">key eassence of ML</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#ML 使用時機"><span class="toc-article-text">ML 使用時機</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#ML 應用"><span class="toc-article-text">ML 應用 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#formalize_the_learning_problem"><span class="toc-article-text">formalize the learning problem</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Differences"><span class="toc-article-text">Differences</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Machine_Learning_&_Data_Mining"><span class="toc-article-text">Machine Learning & Data Mining</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Machine_Learning_&_Artificial_Intelligence"><span class="toc-article-text">Machine Learning & Artificial Intelligence</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Machine_Learning_&_Statistics"><span class="toc-article-text">Machine Learning & Statistics</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_02_Perceptron(感知器)"><span class="toc-article-text">Chap 02 Perceptron(感知器)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#yes/no_question_by_grading"><span class="toc-article-text">yes/no question by grading</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#select_g_from_h"><span class="toc-article-text">select g from h</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Perception_Learning_Algorithm(PLA)"><span class="toc-article-text">Perception Learning Algorithm(PLA)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#linear_seperability"><span class="toc-article-text">linear seperability</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#PLA_Guarantee"><span class="toc-article-text">PLA Guarantee</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Pocket_Algorithm(a_little_modified_by_PLA)"><span class="toc-article-text">Pocket Algorithm(a little modified by PLA)</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03_types_of_learning"><span class="toc-article-text">Chap03 types of learning</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Output_Space"><span class="toc-article-text">Different Output Space</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Data_Label"><span class="toc-article-text">Different Data Label</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Protocol"><span class="toc-article-text">Different Protocol</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Input_Space"><span class="toc-article-text">Different Input Space</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_04_Feasibility_of_Learning"><span class="toc-article-text">Chap 04 Feasibility of Learning</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hoeffding’s_Inequality"><span class="toc-article-text">Hoeffding’s Inequality</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Ein_and_Eout"><span class="toc-article-text">Ein and Eout</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap05_Training_versus_Testing"><span class="toc-article-text">Chap05 Training versus Testing</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Types_of_Growth_Function"><span class="toc-article-text">Types of Growth Function</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Break_Point_of_H"><span class="toc-article-text">Break Point of H</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap06_Theory_of_Generalization"><span class="toc-article-text">Chap06 Theory of Generalization</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Bounding_function"><span class="toc-article-text">Bounding function</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Vapnik-Chervonenkis_(VC)_bound"><span class="toc-article-text">Vapnik-Chervonenkis (VC) bound</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_07_VC_Dimension"><span class="toc-article-text">Chap 07 VC Dimension</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#freedom"><span class="toc-article-text">freedom</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap08_Noise_and_Error"><span class="toc-article-text">Chap08 Noise and Error</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Error_Measure"><span class="toc-article-text">Error Measure</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#參考資料"><span class="toc-article-text">參考資料</span></a></li></ol>
+		</div>
 	
 	</div>
 	
