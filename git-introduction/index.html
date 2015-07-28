@@ -138,7 +138,10 @@
 </li>
 </ul>
 <h2 id="Git 常用名稱">Git 常用名稱</h2><ul>
-<li>origin： 遠端(remote) Repository 的別稱，預設即為 origin/master 分支</li>
+<li>origin： 遠端(remote) Repository 的別稱，預設即為 origin/master 分支<ul>
+<li><code>clone</code>的時候會自動設定遠端</li>
+</ul>
+</li>
 <li>master： 本地(local) Repository 的 master 分支<ul>
 <li>名為 master 的分支通常是專案中的主要分支</li>
 </ul>
@@ -184,6 +187,7 @@
 <li>若有兩個檔案內容相同，則 git 只會有一份 blob</li>
 </ul>
 </li>
+<li>打包機制(pack file)：找內容相似的檔案，只儲存一份 + 差異的部分</li>
 </ul>
 </li>
 <li>Tree: 目錄資訊，指向 Blobs<ul>
@@ -215,8 +219,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/img/Other/artist-test.png" alt=""></p>
-<p>打包機制(pack file)：找內容相似的檔案，只儲存一份 + 差異的部分</p>
+<p>版本和 Tag 都是指標，指向某個 commit <img src="/img/Other/artist-test.png" alt=""></p>
 <h2 id="分支">分支</h2><ul>
 <li>可視為指向某個 commit 的指標</li>
 <li>切換的時候工作目錄 (容器的目錄) 會被改變</li>
@@ -237,16 +240,139 @@
 </ul>
 </li>
 </ul>
+<h3 id="分支種類">分支種類</h3><ul>
+<li>唯讀<ul>
+<li>遠端追蹤分支：蒐集遠端每個分支的變更</li>
+<li>本地追蹤分支：蒐集本地分支和遠端追蹤分支的變更</li>
+</ul>
+</li>
+<li>本地分支：平常使用的分支</li>
+<li>遠端分支</li>
+</ul>
 <h2 id="合併">合併 </h2><p> 每次提交和合併的時間間隔愈短，每次的衝突愈少，較容易實作。</p>
-<p>同一條線上的合併  </p>
+<p>同一條線上的合併(不會有新提交，只會移動 branch 指標)  </p>
 <ul>
 <li>目前版本比被合併版本新 → Already up to date</li>
-<li>目前版本比被合併版本舊 → fast-forward<ul>
+<li>目前版本比被合併版本舊 → fast-forward(快轉)<ul>
 <li>將目前版本移動到被合併版本的 HEAD</li>
 </ul>
 </li>
 </ul>
-	  
+<p>正常的合併  </p>
+<ol>
+<li>Resolve(直觀的方法)<ul>
+<li>只能用在兩個分支的合併</li>
+<li>以共同的祖先為基礎，套用被合併版本的變更到目前版本</li>
+</ul>
+</li>
+<li>Recursive(預設方法)<ul>
+<li>只能用在兩個分支的合併</li>
+<li>兩個版本有多個共同祖先的時候，將所有祖先合併成一個暫時性的版本，以此版本為基礎用 Resolve 方法<ul>
+<li>多個祖先合併時可能也有相同的問題(遞迴) </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Octopus<ul>
+<li>多次呼叫 Recursive，每次處理一個分支</li>
+<li>可用在多分支的合併</li>
+</ul>
+</li>
+</ol>
+<p>特殊合併   </p>
+<ul>
+<li>Ours<ul>
+<li>只留下目前版本的變更</li>
+<li>其他的版本都是父提交</li>
+<li>通常用於<ul>
+<li>已經有其他版本的變更時</li>
+<li>只想要別人的歷史記錄，不想要其他人的變更</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Subtree<ul>
+<li>合併目前分支的子樹(子專案)</li>
+<li>git 會自動偵測子樹位置</li>
+</ul>
+</li>
+<li>Example<ol>
+<li>複製 gitweb 專案到目前專案中的 gitweb 子目錄</li>
+<li>commit</li>
+<li><code>git pull -s ours gitweb.git master</code> # 已經有最新版本了</li>
+<li>之後可以用 <code>git pull -s subtree gitweb.git master</code> 來得到 gitweb 最新的變更</li>
+</ol>
+</li>
+</ul>
+<p>特性  </p>
+<ul>
+<li>不是擠壓合併<ul>
+<li>合併後會包含所有被合併分支的記錄</li>
+<li><code>git merge/pull --squash</code> 強迫擠壓</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改提交">修改提交 </h2><p> 理由</p>
+<ul>
+<li>大小適當  <ul>
+<li>將大範圍的提交拆解成小的，有主題的變更</li>
+<li>結合相似的變更成為一個大的提交</li>
+</ul>
+</li>
+<li>步驟分明<ul>
+<li>排序使其更合理</li>
+<li>移除不必要的提交</li>
+</ul>
+</li>
+</ul>
+<p>在其他開發者取得你的 repository 之前(上傳之前)  </p>
+<h3 id="回復">回復</h3><ul>
+<li>—soft: 將 HEAD 還原至指定 commit</li>
+<li>—mixed: 將 HEAD 和 Index(staging area)還原至指定 commit，工作目錄不變</li>
+<li>—hard: 將 HEAD 和 Index 和工作目錄還原至指定 commit</li>
+<li>被取代的 HEAD 會放在 ORIG_HEAD</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git reset [--soft/mixed/hard] [commit] <span class="comment"># default is mixed</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 變更上一次的提交</span></span><br><span class="line">git reset HEAD^ <span class="comment"># 此時上一次的提交已經不存在，但是資料相同</span></span><br><span class="line"><span class="comment"># do some modification</span></span><br><span class="line">git commit <span class="comment"># 會覆蓋上一次的 commit</span></span><br></pre></td></tr></table></figure>
+<p>reset 到其他 branch 上：沒有必要 <br> 通常用於清除錯誤</p>
+<ul>
+<li><p>cherry-pick</p>
+<ul>
+<li>將指定 commit 送入其他分支上</li>
+<li><code>git cherry-pick [commit]</code></li>
+<li><p>使用時機</p>
+<ul>
+<li><p>若有多個 branch 都找到相同的 bug</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout release</span><br><span class="line">git cherry-pick develop~<span class="number">2</span> <span class="comment"># get debug commit from develop branch</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>將某個分支的 commit 移植到另一個 branch</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># in develop: W → X → Y → Z </span></span><br><span class="line">git checkout master</span><br><span class="line">git cherry-pick develop^ <span class="comment"># Y </span></span><br><span class="line">git cherry-pick develop~<span class="number">3</span> <span class="comment"># W</span></span><br><span class="line">git cherry-pick develop~<span class="number">2</span> <span class="comment"># X</span></span><br><span class="line">git cherry-pick develop <span class="comment"># Z</span></span><br><span class="line"><span class="comment"># alternative</span></span><br><span class="line">git cherry-pick develop^<span class="number">3</span>..develop</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>如果要合併多個，可以加上 -n 指令就不會先幫你 commit，這樣可以多選幾個要合併的 commit，最後再 git commit 即可</p>
+</li>
+<li>用途<ul>
+<li>將某個送交送到另一個分支。如：有時多個 branch 都有同一個 bug，可用 cherry-pick 將 debug 的送交合併到其他 branch</li>
+<li>重新排列 commit(一個一個送)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="容器">容器</h2><ul>
+<li>裸容器(bare)<ul>
+<li>沒有工作目錄、目前分支</li>
+<li>其他人可以用 clone 及 fetch 取得資料，push 更新</li>
+<li>如 github</li>
+<li>產生: <code>git init --bare</code></li>
+</ul>
+</li>
+<li>開發容器</li>
+</ul>
+<h2 id="建立備份">建立備份</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># assume mygitrepository is already a git repository</span></span><br><span class="line"><span class="built_in">cd</span> /tmp/Backup <span class="comment"># for example, you may want to put on server </span></span><br><span class="line">git <span class="built_in">clone</span> --bare mygitrepository mygitrepository.git <span class="comment"># bare repository</span></span><br><span class="line"><span class="comment"># backup repository often use .git suffix</span></span><br><span class="line"><span class="built_in">cd</span> mygitrepository</span><br><span class="line">git remote add origin /tmp/Backup/mygitrepository </span><br><span class="line"><span class="comment"># can use other name to replace "origin"</span></span><br><span class="line">git remote update <span class="comment"># 建立遠端追蹤分支(update remote information)</span></span><br></pre></td></tr></table></figure>
+<!--try it at workstation-->
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh myhost.com <span class="comment"># build it on server</span></span><br><span class="line"><span class="built_in">cd</span> /git</span><br><span class="line">mkdir newrepo.git</span><br><span class="line"><span class="built_in">cd</span> newrepo.git</span><br><span class="line">git init --shared --bare</span><br></pre></td></tr></table></figure>
+<h2 id="同步">同步</h2>	  
 	</div>
 
 	<div>
@@ -303,7 +429,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/筆記/">筆記<span>10</span></a></li>
+    <li><a href="/categories/筆記/">筆記<span>11</span></a></li>
   </li>
 
     </ul>
@@ -326,7 +452,7 @@
 	
 	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
 	   <div id="toc" class="toc collapse in">
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Git 安裝"><span class="toc-article-text">Git 安裝</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Git 常用名稱"><span class="toc-article-text">Git 常用名稱</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#設定檔"><span class="toc-article-text">設定檔</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Git 資料結構"><span class="toc-article-text">Git 資料結構</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#分支"><span class="toc-article-text">分支</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#合併"><span class="toc-article-text">合併 </span></a></li></ol>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Git 安裝"><span class="toc-article-text">Git 安裝</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Git 常用名稱"><span class="toc-article-text">Git 常用名稱</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#設定檔"><span class="toc-article-text">設定檔</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Git 資料結構"><span class="toc-article-text">Git 資料結構</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#分支"><span class="toc-article-text">分支</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#分支種類"><span class="toc-article-text">分支種類</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#合併"><span class="toc-article-text">合併 </span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#修改提交"><span class="toc-article-text">修改提交 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#回復"><span class="toc-article-text">回復</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#容器"><span class="toc-article-text">容器</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立備份"><span class="toc-article-text">建立備份</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#同步"><span class="toc-article-text">同步</span></a></li></ol>
 		</div>
 	
 	</div>

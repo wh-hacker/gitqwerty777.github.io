@@ -119,8 +119,8 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <h3 id="簡介">簡介</h3><p>gdb 是 FSF 下的一個子計畫，目的是提供一個除錯器的實作。只要使用 GNU 計畫出產的編譯器，就可以用它來進行除錯。<br>gdb 可以 debug C/C++/Objective-C/Fortran/Java 等語言。<br><a id="more"></a></p>
-<h3 id="基本知識">基本知識</h3><p><strong>function -&gt; frame</strong>  </p>
+	    <h3 id="簡介">簡介 </h3><p> 只要使用 GNU 計畫出產的編譯器(gcc)，就可以用 gdb 來進行除錯，包含 C/C++/Objective-C/Fortran/Java 等語言。<br><a id="more"></a></p>
+<h3 id="基本知識">基本知識</h3><p><strong>function → frame</strong>  </p>
 <ul>
 <li>正在執行的函數就是 frame 0，而呼叫該函數的就是 frame 1，以此類推  </li>
 <li>在 gdb 進入另一個 frame 之前，它會將該 frame 的一些變數值之類的儲存至堆疊 (stack) 裡，等到從 frame 回來後再從這些 stack 裡把這些變數值取回來  </li>
@@ -643,6 +643,17 @@ $<span class="number">1</span> = <span class="number">6078</span>
 
 	<!-- categories -->
     
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/筆記/">筆記<span>11</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
 
 	<!-- tags -->
 	
@@ -650,7 +661,7 @@ $<span class="number">1</span> = <span class="number">6078</span>
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/gdb/">gdb<span>2</span></a></li> <li><a href="/tags/自編/">自編<span>1</span></a></li>
+  <li><a href="/tags/gdb/">gdb<span>2</span></a></li>
     </ul>
 	</div>
 		
@@ -660,7 +671,7 @@ $<span class="number">1</span> = <span class="number">6078</span>
 	
 	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
 	   <div id="toc" class="toc collapse in">
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#簡介"><span class="toc-article-text">簡介</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#基本知識"><span class="toc-article-text">基本知識</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#除錯程序"><span class="toc-article-text">除錯程序</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#載入程式"><span class="toc-article-text">載入程式</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#設中斷點"><span class="toc-article-text">設中斷點</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#開始跑程式"><span class="toc-article-text">開始跑程式</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#慢慢追程式 (step,_next_…)"><span class="toc-article-text"> 慢慢追程式(step, next …)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#檢查變數值"><span class="toc-article-text">檢查變數值 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#print(p)"><span class="toc-article-text">print(p)</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#存取臨時變數"><span class="toc-article-text">存取臨時變數</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#display"><span class="toc-article-text">display</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#顯示資訊"><span class="toc-article-text">顯示資訊 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#列出原始碼"><span class="toc-article-text">列出原始碼</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#info:_檢視_breakpoint_和_commands_和_display"><span class="toc-article-text">info: 檢視 breakpoint 和 commands 和 display</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#信號管理"><span class="toc-article-text">信號管理 </span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#thread 管理"><span class="toc-article-text">thread 管理</span></a></li></ol></li></ol></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#其他指令 (括號內為簡寫)"><span class="toc-article-text"> 其他指令(括號內為簡寫)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#參考資料"><span class="toc-article-text">參考資料 </span></a></li></ol>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#簡介"><span class="toc-article-text">簡介 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#基本知識"><span class="toc-article-text">基本知識</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#除錯程序"><span class="toc-article-text">除錯程序</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#載入程式"><span class="toc-article-text">載入程式</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#設中斷點"><span class="toc-article-text">設中斷點</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#開始跑程式"><span class="toc-article-text">開始跑程式</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#慢慢追程式 (step,_next_…)"><span class="toc-article-text"> 慢慢追程式(step, next …)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#檢查變數值"><span class="toc-article-text">檢查變數值 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#print(p)"><span class="toc-article-text">print(p)</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#存取臨時變數"><span class="toc-article-text">存取臨時變數</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#display"><span class="toc-article-text">display</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#顯示資訊"><span class="toc-article-text">顯示資訊 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#列出原始碼"><span class="toc-article-text">列出原始碼</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#info:_檢視_breakpoint_和_commands_和_display"><span class="toc-article-text">info: 檢視 breakpoint 和 commands 和 display</span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#信號管理"><span class="toc-article-text">信號管理 </span></a></li><li class="toc-article-item toc-article-level-6"><a class="toc-article-link" href="#thread 管理"><span class="toc-article-text">thread 管理</span></a></li></ol></li></ol></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#其他指令 (括號內為簡寫)"><span class="toc-article-text"> 其他指令(括號內為簡寫)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#參考資料"><span class="toc-article-text">參考資料 </span></a></li></ol>
 		</div>
 	
 	</div>

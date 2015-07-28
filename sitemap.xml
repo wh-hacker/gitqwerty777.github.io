@@ -2,8 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gitqwerty777.github.io/gdb-introduction/</loc>
+    <lastmod>2015-07-27T10:46:01.879Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://gitqwerty777.github.io/cleancode/</loc>
     <lastmod>2015-07-27T07:55:51.710Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/git-introduction/</loc>
+    <lastmod>2015-07-26T11:48:46.765Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/git-commands/</loc>
+    <lastmod>2015-07-26T11:34:10.205Z</lastmod>
   </url>
   
   <url>
@@ -39,11 +54,6 @@
   <url>
     <loc>http://gitqwerty777.github.io/cpp-boost/</loc>
     <lastmod>2015-07-23T11:24:44.650Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/git-introduction/</loc>
-    <lastmod>2015-07-23T11:24:34.416Z</lastmod>
   </url>
   
   <url>
@@ -112,11 +122,6 @@
   </url>
   
   <url>
-    <loc>http://gitqwerty777.github.io/git-commands/</loc>
-    <lastmod>2015-07-23T11:22:42.630Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://gitqwerty777.github.io/Makefile/</loc>
     <lastmod>2015-07-23T11:22:32.962Z</lastmod>
   </url>
@@ -134,11 +139,6 @@
   <url>
     <loc>http://gitqwerty777.github.io/regular-expression/</loc>
     <lastmod>2015-07-23T11:22:07.099Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/gdb%E5%85%A5%E9%96%80/</loc>
-    <lastmod>2015-07-23T11:21:35.863Z</lastmod>
   </url>
   
   <url>
