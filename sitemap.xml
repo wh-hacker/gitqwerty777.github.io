@@ -2,13 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gitqwerty777.github.io/computer-gaming/</loc>
+    <lastmod>2015-08-05T09:36:24.983Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/MLfoundation2/</loc>
+    <lastmod>2015-08-03T10:41:27.776Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/regular-expression/</loc>
+    <lastmod>2015-07-30T09:19:57.824Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://gitqwerty777.github.io/gdb-introduction/</loc>
-    <lastmod>2015-07-27T10:46:01.879Z</lastmod>
+    <lastmod>2015-07-30T08:39:05.923Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/MLfoundation1/</loc>
+    <lastmod>2015-07-30T08:00:52.046Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/linux-tips/</loc>
+    <lastmod>2015-07-30T06:27:19.253Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/Emacs-tips/</loc>
+    <lastmod>2015-07-30T06:10:55.035Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/big_number/</loc>
+    <lastmod>2015-07-29T10:18:00.221Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/how_to_build_hexo_blog/</loc>
+    <lastmod>2015-07-29T10:05:02.691Z</lastmod>
   </url>
   
   <url>
     <loc>http://gitqwerty777.github.io/cleancode/</loc>
-    <lastmod>2015-07-27T07:55:51.710Z</lastmod>
+    <lastmod>2015-07-29T09:06:22.632Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gitqwerty777.github.io/Makefile/</loc>
+    <lastmod>2015-07-29T08:21:32.931Z</lastmod>
   </url>
   
   <url>
@@ -34,11 +79,6 @@
   <url>
     <loc>http://gitqwerty777.github.io/Unity5-Tutorial-Survival-Shooter/</loc>
     <lastmod>2015-07-24T04:30:32.432Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/Emacs-tips/</loc>
-    <lastmod>2015-07-24T04:17:48.515Z</lastmod>
   </url>
   
   <url>
@@ -72,11 +112,6 @@
   </url>
   
   <url>
-    <loc>http://gitqwerty777.github.io/MLfoundation1/</loc>
-    <lastmod>2015-07-23T11:23:54.254Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://gitqwerty777.github.io/computer-network1/</loc>
     <lastmod>2015-07-23T11:23:49.224Z</lastmod>
   </url>
@@ -84,16 +119,6 @@
   <url>
     <loc>http://gitqwerty777.github.io/MLtechnique/</loc>
     <lastmod>2015-07-23T11:23:45.279Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/computer-gaming/</loc>
-    <lastmod>2015-07-23T11:23:40.609Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/MLfoundation2/</loc>
-    <lastmod>2015-07-23T11:23:33.432Z</lastmod>
   </url>
   
   <url>
@@ -112,21 +137,6 @@
   </url>
   
   <url>
-    <loc>http://gitqwerty777.github.io/linux-tips/</loc>
-    <lastmod>2015-07-23T11:23:00.561Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/how_to_build_hexo_blog/</loc>
-    <lastmod>2015-07-23T11:22:48.238Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/Makefile/</loc>
-    <lastmod>2015-07-23T11:22:32.962Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://gitqwerty777.github.io/CFR/</loc>
     <lastmod>2015-07-23T11:22:26.990Z</lastmod>
   </url>
@@ -137,18 +147,8 @@
   </url>
   
   <url>
-    <loc>http://gitqwerty777.github.io/regular-expression/</loc>
-    <lastmod>2015-07-23T11:22:07.099Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://gitqwerty777.github.io/header-file-tips/</loc>
     <lastmod>2015-07-23T06:39:35.473Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gitqwerty777.github.io/big_number/</loc>
-    <lastmod>2015-07-22T09:18:31.969Z</lastmod>
   </url>
   
   <url>

@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/jquery-2.0.3.min.js" async></script>
 
   <!-- analytics -->
   
@@ -46,7 +46,7 @@
 
 
 
-  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js" async></script>
   <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
 
 </head>
@@ -119,10 +119,17 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>因為在許多 online judge 的題目中，大數運算是很常見的題型之一， 所以就寫了一個可以簡單進行大數運算的函式庫。<br><a id="more"></a></p>
-<h4 id="內容">內容 </h4><p> 目前只支援整數 <br> 四則運算 (除法只算到整數)<br> 可直接比較，賦值 <br> 從各種 type 轉換成 class BigNumber，如 int, long, string…<br>以 string 形式輸出    </p>
-<p><a href="https://github.com/gitqwerty777/BigNumber" target="_blank" rel="external">程式連結</a></p>
-<figure class="highlight cpp"><figcaption><span>BigNumber.h</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; BigNumber(T);</span><br><span class="line">BigNumber <span class="keyword">operator</span>+(BigNumber);</span><br><span class="line">BigNumber <span class="keyword">operator</span>-(BigNumber);</span><br><span class="line">BigNumber <span class="keyword">operator</span>*(BigNumber);</span><br><span class="line">BigNumber <span class="keyword">operator</span>/(BigNumber);</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">void</span> <span class="keyword">operator</span>=(T);<span class="comment">// assign any value into BigNumber structure</span></span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>&gt;(BigNumber&amp;);</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>&gt;=(BigNumber&amp;);</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>==(BigNumber&amp;);</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(BigNumber&amp;);</span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">get_bignumber_string</span><span class="params">()</span></span>;<span class="comment">//get Bignumber in string type</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_number</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_number_oneline</span><span class="params">()</span></span>;<span class="comment">//print in a line</span></span><br></pre></td></tr></table></figure>	  
+	    <p> 因為在許多 online judge 的題目中，大數運算是很常見的題型之一， 所以就寫了一個可以簡單進行大數運算的函式庫。<br><a id="more"></a></p>
+<h1 id="BigNumber_內容">BigNumber 內容 </h1><ul>
+<li> 目前只支援整數 </li>
+<li> 四則運算 (除法只算到整數)</li>
+<li> 可直接比較，賦值 </li>
+<li> 從各種 type 轉換成 BigNumber 物件，如 int, long, string…</li>
+<li> 以 string 形式輸出 </li>
+</ul>
+<p><a href="https://github.com/gitqwerty777/BigNumber" target="_blank" rel="external">github 程式碼連結 </a></p>
+<!--# 實作方法 -->
+	  
 	</div>
 
 	<div>

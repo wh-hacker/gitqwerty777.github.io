@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/jquery-2.0.3.min.js" async></script>
 
   <!-- analytics -->
   
@@ -46,7 +46,7 @@
 
 
 
-  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js" async></script>
   <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
 
 </head>
@@ -125,98 +125,103 @@
 	<!-- content -->
 	<div class="mypage">		
 	    <h2 id="Chap09_Linear_Regression">Chap09 Linear Regression</h2><ul>
-<li>方法和 perceptron 相同<ul>
-<li>將 w 向量 (參數) 最佳化</li>
-<li>直接用計算出的 Wx<ul>
-<li>perceptron → +1 / -1</li>
-<li>regression → 數字</li>
+<li>將 w 向量 (參數) 最佳化<ul>
+<li>直接用計算出的 Wx</li>
+<li>perceptron → output 只有 +1/-1</li>
+<li>regression → output 為數字</li>
 </ul>
 </li>
-<li>找最少誤差 <img src="/img/ML/residual.png" alt=""></li>
+<li>找最少誤差 <img src="/img/ML/einout2.png" alt=""><ul>
+<li>wx 和 y 的誤差平方</li>
+<li>Ein: 取平均, Eout: 取期望值 </li>
+<li><img src="/img/ML/residual.png" alt=""></li>
 </ul>
 </li>
 </ul>
-<p><img src="/img/ML/einout2.png" alt=""><br>Ein = wx 和 y 的平均誤差 <br>Eout = wx 和 y 的誤差期望值<br><a id="more"></a><br> 轉換成矩陣形式(最後一行的 X, y, w 都是矩陣)<br><img src="/img/ML/einmatrix.png"alt=""></p>
+<a id="more"></a>
+<p>轉換成矩陣形式(最後一行的 X, y, w 都是矩陣)<br><img src="/img/ML/einmatrix.png" alt=""></p>
 <p>Ein(w)函數性質  </p>
 <ul>
 <li>continuous</li>
 <li>differeniable</li>
 <li>convex(凸)     </li>
-<li>可以找到最低點(Ein 微分 = 0) <img src="/img/ML/ein=0.png" alt=""><ul>
-<li>因為 A = $X^tX$，必為 symmetric matrix，可直接做微分 <img src="/img/ML/vectorwdiff.png" alt=""></li>
+<li>可以找到最低點(使 Ein 微分 = 0 的 w) <img src="/img/ML/ein=0.png" alt=""><ul>
+<li>因為 A 為 $X^tX$ 的形式，必為 symmetric matrix，可直接做微分 <img src="/img/ML/vectorwdiff.png" alt=""></li>
 </ul>
 </li>
 </ul>
-<p>計算 W  </p>
+<p>計算 W <img src="/img/ML/invertiblesingular.png" alt="">   </p>
 <ul>
 <li>若 A invertible，可直接求 inverse</li>
-<li>若非，則用 X 十字架(pseudo inverse)</li>
-<li><img src="/img/ML/invertiblesingular.png" alt=""></li>
+<li>若非，則用 X 十字架(<a href="https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_pseudoinverse" target="_blank" rel="external">pseudo inverse</a>)</li>
 </ul>
-<p>linear regression algorithm(easy)<br><img src="/img/ML/regressionalgo.png" alt="linear regression algorithm"></p>
+<h3 id="linear_regression_algorithm(easy)">linear regression algorithm(easy)</h3><p> <img src="/img/ML/regressionalgo.png" alt="linear regression algorithm"></p>
 <p>Is it “learning algorithm”?    </p>
 <ul>
 <li>No → 直接計算所得的解</li>
 <li><strong>Yes</strong> → good Ein and Eout(finite $d_vc$), pseudo-inverse<ul>
-<li>內部實際是迭代進行</li>
+<li>可視為迭代進行(用矩陣一次算出)</li>
 </ul>
 </li>
 </ul>
-<p>“Simpler-than-VC” Guarantee<br><img src="/img/ML/9-3.png" alt=""><br>預測值 $\hat{y} = Xw = XX^{-1}y = Hy$<br>定義 hat matrix $H = XX^{-1}$ </p>
-<p>Hat Matrix in Geometric  </p>
+<h3 id="“Simpler-than-VC”_Guarantee">“Simpler-than-VC” Guarantee</h3><p>可證 Ein 會小於????</p>
+<p><img src="/img/ML/9-3.png" alt=""><br>預測值 $\hat{y} = Xw = XX^{-1}y = Hy$<br>定義 hat matrix $H = XX^{-1}$ </p>
+<h4 id="Hat_Matrix_in_Geometry">Hat Matrix in Geometry</h4><p><img src="/img/ML/9-1.png" alt="">  </p>
 <ul>
-<li><img src="/img/ML/9-1.png" alt=""></li>
-<li>預測值 $\hat{y}$ 被限制在 spax of X 上 ($\hat{y}$ = WX)</li>
+<li>預測值 $\hat{y}$ 被限制在 X 的 span 上 ($\hat{y} = WX$)</li>
 <li>最小誤差會出現在 y - $\hat{y}$ 與 span of X 垂直時</li>
-<li>H matrix : 使向量投影至 span of X 上</li>
-<li>I - H : 投影至與 span of X 垂直的向量 (即為誤差: y - $\hat{y}$)<ul>
-<li>可以發現 I-H 對角線上的值之和 trace(I - H) = N - (d + 1)</li>
-<li>物理意義上為在 N 維空間投影至 d+1 維空間</li>
+<li>H 將向量投影至 span of X 上</li>
+<li>I-H : 投影至與 span of X 垂直的向量 (即為誤差: y - $\hat{y}$)<ul>
+<li>可以發現 I-H 對角線上的值之和 trace(I - H) = N - (d + 1)<ul>
+<li>其物理意義為在 N 維空間投影至 d+1 維空間</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>with noise <img src="/img/ML/9-4.png" alt=""><ul>
-<li>f(x) + noise → y</li>
-<li>noise * (1-H) = y - $\hat{y}$</li>
-<li>可算出 Ein 和 noise 的關係 <img src="/img/ML/9-5.png" alt=""> <img src="/img/ML/9-6.png"alt=""></li>
-<li>N 變大時, Eout↓, Ein↑, 收斂在σ^2 (noise level) <img src="/img/ML/9-7.png" alt=""> </li>
+<li>f(x) + noise → y<ul>
+<li>f(x) 為正確的 y</li>
+<li>noise * (I-H) = y - $\hat{y}$</li>
 </ul>
 </li>
-<li>expected generalization error(Eout - Ein): 2(d+1)/N </li>
+<li>可算出 Ein 和 noise 的關係: N 變大時, Eout↓, Ein↑, noise level 收斂在σ^2 <img src="/img/ML/9-5.png" alt=""> <img src="/img/ML/9-6.png"alt=""> <img src="/img/ML/9-7.png" alt=""> <ul>
+<li>Eout 可用類似方法證明</li>
+<li>expected generalization error(= Eout - Ein): 2(d+1)/N </li>
 </ul>
-<p>Run Linear Regression Algo(efficient) and set initial w = $w^T_{lin}$ to speed up the perceptron learning     </p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Usage">Usage</h3><p>Run Linear Regression Algo(efficient) and set initial w = $w^T_{lin}$ to speed up the perceptron learning     </p>
 <ul>
-<li>總 Err(面積): Square Error &gt; 0/1 Error <img src="/img/ML/9-8.png" alt=""></li>
-<li>regression 產生的 W 比 classification 的誤差更大 <img src="/img/ML/9-9.png" alt=""><ul>
-<li>但計算時間較短</li>
+<li>誤差大小(看面積): Square Error &gt; 0/1 Error <img src="/img/ML/9-8.png" alt=""><ul>
+<li>regression 產生的 W 比 classification 的誤差更大，但計算時間較短 <img src="/img/ML/9-9.png" alt=""></li>
 </ul>
 </li>
 </ul>
-<h2 id="Chap_10_Logistic_Regression">Chap 10 Logistic Regression</h2><p>Heart attack prediction<br>Not every people with bad condition will have heart attack<br>→ only P(Heart attack | x) probability<br>→ look as error</p>
-<p>f(x): P(+1|X) &gt; 1/2 當成 +1 <img src="/img/ML/10-1.png" alt=""></p>
+<h2 id="Chap_10_Logistic_Regression">Chap 10 Logistic Regression</h2><p>Heart attack prediction<br>Not every people with bad condition will have heart attack<br>→ only P(Heart attack | x) probability<br>→ look it as noise</p>
+<p>若機率 P(+1|X) &gt; 1/2，則當成 +1，其他 output 當作 noise <img src="/img/ML/10-1.png" alt=""></p>
 <p>‘soft’ binary classification: f(x) = P(+1|x)</p>
 <ul>
-<li>ideal data: probabilty</li>
-<li>data we have: noisy data(+1 or -1)</li>
-<li><strong>the same data as perceptron, different target function</strong><ul>
-<li>target function 為發生的機率  </li>
+<li>ideal data: probabilty ↔ we have only noisy data(+1 or -1)</li>
+<li><strong>the same data as perceptron, but different target function</strong></li>
 </ul>
-</li>
-</ul>
-<p>Logistic Hypothesis   </p>
-<ul>
+<h3 id="Logistic_Hypothesis">Logistic Hypothesis</h3><ul>
 <li>smooth, monotonic, sigmoid(S 形) function <img src="/img/ML/10-3.png" alt=""> <img src="/img/ML/10-2.png"alt=""><ul>
 <li>0 &lt;= θ(x) &lt;= 1</li>
 <li>θ(x) + θ(-x) = 1 </li>
 <li>θ(-∞) = 0, θ(0) = 0.5, θ(∞) = 1</li>
-<li>$h(x) = θ(w^Tx)$ <img src="/img/ML/10-4.png" alt=""></li>
+<li>令 $h(x) = θ(w^Tx)$ <img src="/img/ML/10-4.png" alt=""></li>
 </ul>
 </li>
 </ul>
-<p>Likelihood<br>if h ~= f, [h 產生 y 的機率] 接近 [f 產生 y 的機率(其值通常很大)]<br>g = argmax_h likelihood(h) <img src="/img/ML/10-6.png" alt=""></p>
-<p>Cross-Entropy Error    </p>
-<ul>
-<li>max Π h(ynxn)<ul>
-<li>最高可能性</li>
+<p>Likelihood<br>if h ~= f, [h 產生 y 的機率] 接近 [f 產生 y 的機率 (其值通常大於產生其他 output 的機率)]<br> 猜測：若能找到 h, 其產生的 output 和 f 很像的話(也就是和 data 的 output 很像), 那 h 也會和 f 很像 → 成功學習<br>g = argmax_h likelihood(h) <img src="/img/ML/10-6.png" alt=""></p>
+<h4 id="Cross-Entropy_Error">Cross-Entropy Error</h4><ul>
+<li>因為 h(x) = θ(wTx)<ul>
+<li>h(x) = h(-x)</li>
+</ul>
+</li>
+<li>最高可能性 = max Π h(ynxn)<ul>
 <li>Π = 連乘 </li>
 </ul>
 </li>
@@ -229,16 +234,18 @@
 </ul>
 </li>
 <li>= min 1/N x Σ -lnθ(ynwxn) <img src="/img/ML/10-7.png" alt=""><ul>
-<li>乘 1/N, min 和 負號抵消  </li>
+<li>乘 1/N, 加上 min 和負號 </li>
 </ul>
 </li>
-<li>代入θ公式, Ein <img src="/img/ML/10-8.png" alt=""></li>
-<li>Cross-Entropy Error <img src="/img/ML/10-9.png" alt=""></li>
+<li>代入θ公式, Ein = <img src="/img/ML/10-8.png" alt=""><ul>
+<li>此函式即為 Cross-Entropy Error <img src="/img/ML/10-9.png" alt=""></li>
 </ul>
-<p>find ∇Ein(w) = 0 to find min(Ein) <img src="/img/ML/10-11.png" alt="">  </p>
+</li>
+</ul>
+<h4 id="Minimize_Cross-Entropy_Error">Minimize Cross-Entropy Error</h4><p>find ∇Ein(w) = 0 to find min(Ein) <img src="/img/ML/10-11.png" alt="">  </p>
 <ol>
-<li>θ項都為 0<ul>
-<li>only if all ynWxn &gt;&gt; 0</li>
+<li>使所有θ項都為 0<ul>
+<li>only if all ynwxn &gt;&gt; 0</li>
 <li>需要 linear-seqerable data</li>
 </ul>
 </li>
@@ -246,23 +253,20 @@
 <li>non-linear equation of w</li>
 </ul>
 </li>
-<li>都不好算 </li>
 </ol>
+<p>→ 都不好算 </p>
 <p>solve it by PLA  </p>
 <ul>
-<li>若有錯則更新，正確則 $w^t = w^{t+1}$ <img src="/img/ML/10-12.png" alt=""><ul>
-<li>(xn, yn) contributes to the gradient by an amount of $θ(-y_nw^Tx_n)$</li>
-</ul>
-</li>
+<li>若有錯則更新，正確則不變($w^t = w^{t+1}$) <img src="/img/ML/10-12.png" alt=""></li>
 <li>加入參數η，為更新的幅度倍率(本來為 1) <img src="/img/ML/10-13.png" alt=""><ul>
-<li>v 為原本的式子</li>
+<li>v 代表原本的式子</li>
+<li>用 (xn, yn) 更新的大小： $θ(-y_nw^Tx_n)$</li>
 </ul>
 </li>
 </ul>
-<p>PLA smoothing <img src="/img/ML/10-14.png" alt="">   </p>
+<h3 id="PLA_smoothing">PLA smoothing</h3><p><img src="/img/ML/10-14.png" alt="">   </p>
 <ul>
-<li>更新時<ul>
-<li>往 Ein 較低的方向走</li>
+<li>更新時就是在往 Ein 較低的方向走<ul>
 <li>v 為方向, η為幅度 </li>
 </ul>
 </li>
@@ -280,7 +284,6 @@
 <li>梯度的數值大小間接反映距離谷底的遠近 <img src="/img/ML/10-19.png" alt=""></li>
 <li>希望步幅與梯度大小成正比<ul>
 <li>wt+1 ← wt - η∇Ein(wt)</li>
-<li>和上圖不同，不用除∇Ein(wt)長度</li>
 </ul>
 </li>
 </ul>
@@ -291,20 +294,17 @@
 <p>Update Time  </p>
 <ul>
 <li>decide wt+1 by all data → O(N) time</li>
-<li>Can logistic regression with O(1) time per iteration(like PLA)?<ul>
-<li>→ expectation ε instead of Σ</li>
-<li>→ use one of data instead of ε</li>
-<li>→ <strong>Stochastic Gradient Descent</strong></li>
+<li>Can logistic regression with O(1) time per iteration(like PLA)?<br>→ use one of data instead of all data<br>→ <strong>Stochastic Gradient Descent</strong></li>
+</ul>
+<h4 id="Stochastic_Gradient_Descent_(SGD)">Stochastic Gradient Descent (SGD)</h4><p><img src="/img/ML/11-7.png" alt="stochastic gradient descent">      </p>
+<ul>
+<li>隨機選其中一筆資料來對 w 進行更新<ul>
+<li>進行足夠多的更新後，平均的隨機梯度與平均的真實梯度近似相等</li>
 </ul>
 </li>
-</ul>
-<p>Stochastic Gradient Descent (SGD) <img src="/img/ML/11-7.png" alt="stochastic gradient descent">    </p>
-<ul>
-<li>隨機選其中一筆資料來獲取「梯度」，以此對 w 進行更新</li>
-<li>進行足夠多的更新後，平均的隨機梯度與平均的真實梯度近似相等</li>
 <li>η often use 0.1</li>
 <li>compare PLA and SGD <img src="/img/ML/11-8.png" alt=""><ul>
-<li>SGD looks like more flexible PLA</li>
+<li>SGD is more flexible than PLA</li>
 </ul>
 </li>
 </ul>
@@ -312,11 +312,11 @@
 <p><img src="/img/ML/11-1.png" alt=""><br><img src="/img/ML/11-2.png"alt=""> ys: classification correctness score</p>
 <p>Error functions <img src="/img/ML/11-3.png" alt="">  </p>
 <ul>
-<li>small err0/1 $\nRightarrow$ smallSQR  </li>
-<li>small errSQR → small err0/1</li>
-<li>small errSCE(scaled cross entropy) ↔ small err0/1</li>
-<li>small Ece → small E0/1<ul>
-<li>cross entropy error implies small classification error <img src="/img/ML/11-4.png" alt=""> <img src="/img/ML/11-5.png"alt=""> </li>
+<li>small 0/1 error $\nRightarrow$ small square error</li>
+<li>small err SQR → small err 0/1</li>
+<li>small Err CE → small Err 0/1<ul>
+<li><strong> small cross entropy error implies small classification error </strong><img src="/img/ML/11-4.png" alt=""> <img src="/img/ML/11-5.png"alt=""></li>
+<li>small err SCE(scaled cross entropy) ↔ small err 0/1 </li>
 </ul>
 </li>
 </ul>
@@ -327,13 +327,13 @@
 <li>缺點：只有在數據線性可分時才可行，否則需要借助 POCKET 算法（沒有理論保證）</li>
 </ol>
 </li>
-<li>線性回歸<ol>
+<li>linear regression<ol>
 <li>優點：最簡單的優化（直接利用矩陣運算工具）</li>
 <li>缺點：ys 的值較大時，與 0/1 error 相差較大</li>
 <li>線性回歸得到的結果 w 可作為其他算法的初始值</li>
 </ol>
 </li>
-<li>logistic 回歸<ol>
+<li>logistic regression<ol>
 <li>優點：比較容易優化（梯度下降）</li>
 <li>缺點：ys 是非常小的負數時，與 0/1 error 相差較大</li>
 <li>實際中，logistic 回歸用於分類的效果優於線性回歸的方法和 POCKET 算法</li>
@@ -350,40 +350,42 @@
 </li>
 <li>One versus One (OVO) <img src="/img/ML/11-9.png" alt=""><ol>
 <li>共有 N(N-1)/2 個 perceptron，投票決定</li>
-<li>優點： training 有效率(每個 perceptron 較小), can be coupled with any binary classification approaches</li>
-<li>缺點： use O(K^2) space, slower prediction, more training</li>
+<li>優點： training 有效率(每個 perceptron 較小), 可以使用 binary classification 的方法</li>
+<li>缺點： O(K^2) space</li>
 </ol>
 </li>
 </ol>
 <h2 id="Chap_12_Nonlinear_Transformation">Chap 12 Nonlinear Transformation</h2><p>座標系轉換  </p>
 <ul>
-<li>將非線性的 h(x)轉成線性 <img src="/img/ML/12-2.png" alt=""> </li>
-<li>circular separable in X → linear separable in Z <img src="/img/ML/12-1.png" alt=""> <ul>
-<li>lines in Z-space ↔ special quadratic curves(圓錐曲線) in X-space</li>
+<li>將非線性的 h(x)轉成線性 <ul>
+<li>circular separable in X → linear separable in Z <img src="/img/ML/12-2.png" alt="">  <img src="/img/ML/12-1.png"alt=""> </li>
+<li>可在 X 做出任何二次曲線的 Z <img src="/img/ML/12-3.png" alt=""></li>
 </ul>
 </li>
-<li>可在 X 做出任何二次曲線的 Z <img src="/img/ML/12-3.png" alt=""></li>
-<li>transform data from X to Z to train <img src="/img/ML/12-4.png" alt=""><ul>
+<li>transform data X to Z to train easily <img src="/img/ML/12-4.png" alt=""><ul>
 <li>(xn, yn) → (zn = ϕ(xn), yn)</li>
 <li>train w by (z, y)</li>
 <li>g(x) = sign(ϕ(x)w) (= sign(wz))</li>
 </ul>
 </li>
 <li>代價<ul>
-<li>O(Q^d) //Q 次方座標系, d 個參數(x, y)</li>
+<li>O(Q^d)<ul>
+<li>Q 次方座標系, d 個參數(x, y)</li>
+</ul>
+</li>
 <li>$d_{vc}$ 隨 Q 成長</li>
 </ul>
 </li>
 </ul>
 <blockquote>
-<p>力量 (the force) 愈強，代價愈大(可能會 overfit)(見 Chap13)</p>
+<p>力量愈強，代價愈大(可能會 overfit)(見 Chap13)</p>
 </blockquote>
 <p>有效學習的條件</p>
 <ol>
 <li>Ein(g) 約等於 Eout(g)</li>
 <li>Ein(g)足夠小</li>
 </ol>
-<p>當模型很簡單時（dvc 很小），我們更容易滿足 1. 而不容易滿足 2. ；反之，模型很複雜時（dvc 很大），更容易滿足 2. 而不容易滿足 1.<br>→ 次方愈高，hypothesis set 包含愈多、愈複雜，Eout 更偏離，也對數據擬合得更充分，Ein 更小 <img src="/img/ML/12-5.png" alt=""> <img src="/img/ML/12_1.png"alt=""> </p>
+<p>當模型很簡單時（dvc 很小），我們更容易滿足 1. 而不容易滿足 2. ；反之，模型很複雜時（dvc 很大），更容易滿足 2. 而不容易滿足 1.<br>→ 次方愈高，hypothesis set 包含愈多、愈複雜，Eout 更偏離，也對數據擬合得更充分，Ein 更小 <img src="/img/ML/12_1.png" alt=""> </p>
 <p>安全的方法: 先算低次方, 若結果已足夠好就不用繼續尋找 <br> 實務上的機器學習，通常都不會使用太高維度的 learning</p>
 <blockquote>
 <p>linear model first: simple, efficient, safe, and workable!</p>
@@ -430,10 +432,7 @@
 <li>data size ↓</li>
 <li>stochastic noise ↑</li>
 <li>deterministic noise ↑</li>
-<li>hypothesis set 的 power ↑<ul>
-<li>如同教小孩微積分</li>
-</ul>
-</li>
+<li>hypothesis set 的 power ↑</li>
 </ol>
 <p>類比成開車 <img src="/img/ML/13-2.png" alt=""></p>
 <p><strong>Overfit 是很常發生的！</strong></p>
@@ -503,7 +502,7 @@
 <li>dVC(H) = d + 1 </li>
 <li>實際的 dvc 更小(被λ限制)，但不好證明 <img src="/img/ML/14-2.png" alt=""></li>
 </ul>
-<p>General Regularizers: 限制 hypothesis 的「方向」 <img src="/img/ML/14-3.png" alt="">    </p>
+<p>General Regularizers <img src="/img/ML/14-3.png" alt="">    </p>
 <ul>
 <li>target-dependent<ul>
 <li>用 target function 的性質來限制</li>
@@ -550,7 +549,7 @@
 <li>all training models: select among hypotheses(初賽)</li>
 <li>all validation schemes: select among finalists(複賽)</li>
 <li>all testing methods: just evaluate</li>
-<li>Still use <strong>test result(之前沒用過的 test data 算出的結果)</strong> for final benchmark, not best validation result</li>
+<li>Still use <strong>test result(之前沒用過的 data)</strong> for final benchmark, not best validation result</li>
 </ol>
 <h2 id="Chap16_Three_Learning_Principles">Chap16 Three Learning Principles</h2><h3 id="Occam’s_Razor">Occam’s Razor</h3><p>An explanation of the data should be made as simple as possible, but no simpler<br>用最簡單且有效的方法解釋資料 <br><img src="/img/ML/16-1.png" alt=""><br> 因為愈簡單的 H 愈難分資料 → 可以分開資料時，有顯著性(若是用複雜模型，分開是很容易的)<br>→ linear first, always ask whether overfitting</p>
 <h3 id="Sampling_Bias">Sampling Bias</h3><p>抽樣誤差：抽樣非真正隨機<br>Ex. 1948 電話民調，但電話當時昂貴<br>movie recommend system: When data have time sequential, should emphasize later data, do not use random data</p>
@@ -616,7 +615,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/筆記/">筆記<span>11</span></a></li>
+    <li><a href="/categories/筆記/">筆記<span>13</span></a></li>
   </li>
 
     </ul>
@@ -629,7 +628,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/機器學習/">機器學習<span>5</span></a></li>
+  <li><a href="/tags/機器學習/">機器學習<span>4</span></a></li>
     </ul>
 	</div>
 		
@@ -639,7 +638,7 @@
 	
 	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
 	   <div id="toc" class="toc collapse in">
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap09_Linear_Regression"><span class="toc-article-text">Chap09 Linear Regression</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_10_Logistic_Regression"><span class="toc-article-text">Chap 10 Logistic Regression</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_11_Linear_Models"><span class="toc-article-text">Chap 11 Linear Models</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Multiclass_Classification_-_meta_algorithms"><span class="toc-article-text">Multiclass Classification - meta algorithms</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_12_Nonlinear_Transformation"><span class="toc-article-text">Chap 12 Nonlinear Transformation</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_13_Overfitting"><span class="toc-article-text">Chap 13 Overfitting</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Case_Study"><span class="toc-article-text">Case Study</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap14_Regularization"><span class="toc-article-text">Chap14 Regularization</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap15_Validation"><span class="toc-article-text">Chap15 Validation</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap16_Three_Learning_Principles"><span class="toc-article-text">Chap16 Three Learning Principles</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Occam’s_Razor"><span class="toc-article-text">Occam’s Razor</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Sampling_Bias"><span class="toc-article-text">Sampling Bias</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Data_Snooping"><span class="toc-article-text">Data Snooping</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap09_Linear_Regression"><span class="toc-article-text">Chap09 Linear Regression</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#linear_regression_algorithm(easy)"><span class="toc-article-text">linear regression algorithm(easy)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#“Simpler-than-VC”_Guarantee"><span class="toc-article-text">“Simpler-than-VC” Guarantee</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Hat_Matrix_in_Geometry"><span class="toc-article-text">Hat Matrix in Geometry</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Usage"><span class="toc-article-text">Usage</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_10_Logistic_Regression"><span class="toc-article-text">Chap 10 Logistic Regression</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Logistic_Hypothesis"><span class="toc-article-text">Logistic Hypothesis</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Cross-Entropy_Error"><span class="toc-article-text">Cross-Entropy Error</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Minimize_Cross-Entropy_Error"><span class="toc-article-text">Minimize Cross-Entropy Error</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#PLA_smoothing"><span class="toc-article-text">PLA smoothing</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Stochastic_Gradient_Descent_(SGD)"><span class="toc-article-text">Stochastic Gradient Descent (SGD)</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_11_Linear_Models"><span class="toc-article-text">Chap 11 Linear Models</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Multiclass_Classification_-_meta_algorithms"><span class="toc-article-text">Multiclass Classification - meta algorithms</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_12_Nonlinear_Transformation"><span class="toc-article-text">Chap 12 Nonlinear Transformation</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_13_Overfitting"><span class="toc-article-text">Chap 13 Overfitting</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Case_Study"><span class="toc-article-text">Case Study</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap14_Regularization"><span class="toc-article-text">Chap14 Regularization</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap15_Validation"><span class="toc-article-text">Chap15 Validation</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap16_Three_Learning_Principles"><span class="toc-article-text">Chap16 Three Learning Principles</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Occam’s_Razor"><span class="toc-article-text">Occam’s Razor</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Sampling_Bias"><span class="toc-article-text">Sampling Bias</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Data_Snooping"><span class="toc-article-text">Data Snooping</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
 		</div>
 	
 	</div>

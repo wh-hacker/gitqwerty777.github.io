@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/jquery-2.0.3.min.js" async></script>
 
   <!-- analytics -->
   
@@ -46,7 +46,7 @@
 
 
 
-  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js" async></script>
   <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
 
 </head>
@@ -611,6 +611,28 @@
 </tr>
 </tbody>
 </table>
+<h3 id="Emacs_+_Screen">Emacs + Screen</h3><p><a href="http://lifegoo.pluskid.org/wiki/Screen.html" target="_blank" rel="external">教學 </a><br><a href="http://lagunawang.pixnet.net/blog/post/2836825-linux-screen%E6%8C%87%E4%BB%A4" target="_blank" rel="external"> 指令表</a></p>
+<p>因為 Emacs 的快捷鍵和 Screen 重複，要自己在 <code>.screenrc</code> 設定檔修改</p>
+<p>終端機指令<br>screen -list 可以列出你目前的所有 screen 會話(同時可有多個 screen)<br>screen -r [detached screen] 回復 detach 的 screen<br>screen -wipe 砍掉不要的 screen </p>
+<p>screen 內指令共同前綴 C-a<br>C-a c - 開新分頁<br>C-a n - 切換到下一個分頁<br>C-a p - 切換到前一個分頁<br>C-a C-a - 切換到最近用過的分頁<br>C-a [N] - 跳到編號 N 的分頁<br>C-a w - 列出開啟的分頁(簡短)<br>C-a “ - 列出所有的分頁提供切換<br>C-a k - 關閉目前分頁  </p>
+<p>C-a S - 將螢幕水平分割<br>C-a <tab> - 在分割的區域之間切換焦點</tab></p>
+<p>C-a C - 清除目前的分頁內容<br>C-a H - 儲存目前分頁記錄（檔名為 screenlog.n, n 為視窗號碼）<br>C-a x - 鎖定 screen，需要輸入使用者密碼<br>C-a d - Detach screen，暫時脫離 screen，程式會持續進行，你可以在重開終端機或重新登入後再連接到剛才的那個 screen (當然，重開機會不見)  </p>
+<p>C-a [- 編輯模式(操作和 vi 相似)  </p>
+<ul>
+<li>h, j, k, l 分別為向左，向下，向上，向右移動一格（或是一行）</li>
+<li>^ 與 $ 分別移到該行最左邊及最右邊的非空白字元</li>
+<li>w 以字為單位往前移動並移到字首</li>
+<li>b 以字為單位往後移動並移到字首</li>
+<li>e 以字為單位往前移動並移到字尾</li>
+<li>C-b 向上捲一頁</li>
+<li>C-f 向下捲一頁</li>
+<li>/ 與 ? 向下或向上尋找字串</li>
+<li>space 第一次按下到第二次按下的區域會被複製<ul>
+<li>C-a ] 貼上</li>
+</ul>
+</li>
+<li>非指令的輸入會離開編輯模式</li>
+</ul>
 <h3 id="其他功能">其他功能</h3><p><a href="https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-text-across-multiple-files.html" target="_blank" rel="external">Replacing-text-across-multiple-files</a></p>
 <h3 id="不重要的功能">不重要的功能</h3><ul>
 <li>放大字體: C-x C-+ 或 C-x C-=</li>
@@ -732,7 +754,7 @@
 	
 	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
 	   <div id="toc" class="toc collapse in">
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Emacs 基本"><span class="toc-article-text">Emacs 基本</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 移動"><span class="toc-article-text">Emacs 移動</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 編輯"><span class="toc-article-text">Emacs 編輯</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#重複"><span class="toc-article-text">重複</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 搜尋"><span class="toc-article-text">Emacs 搜尋</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 分割(window)"><span class="toc-article-text">Emacs 分割(window)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 檔案"><span class="toc-article-text">Emacs 檔案</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Emacs 檔案切換"><span class="toc-article-text">Emacs 檔案切換</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Emacs 檔案指令"><span class="toc-article-text">Emacs 檔案指令</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 系統"><span class="toc-article-text">Emacs 系統</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 函式"><span class="toc-article-text">Emacs 函式</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 幫助"><span class="toc-article-text">Emacs 幫助</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#其他"><span class="toc-article-text">其他</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Emacs 技巧"><span class="toc-article-text">Emacs 技巧 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#自動完成"><span class="toc-article-text"> 自動完成 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#移動至定義 (goto_declaration)"><span class="toc-article-text"> 移動至定義(goto declaration)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#回到之前的遊標位置"><span class="toc-article-text">回到之前的遊標位置 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 作為 IDE 使用"><span class="toc-article-text">Emacs 作為 IDE 使用 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 巨集(Macro)"><span class="toc-article-text">Emacs 巨集(Macro)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs_+_Git"><span class="toc-article-text">Emacs + Git</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#畫簡單的 ASCII 圖"><span class="toc-article-text">畫簡單的 ASCII 圖 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs_+_Markdown_Mode"><span class="toc-article-text">Emacs + Markdown Mode</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#其他功能"><span class="toc-article-text">其他功能</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#不重要的功能"><span class="toc-article-text">不重要的功能</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Emacs 小知識"><span class="toc-article-text">Emacs 小知識 </span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Emacs 基本"><span class="toc-article-text">Emacs 基本</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 移動"><span class="toc-article-text">Emacs 移動</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 編輯"><span class="toc-article-text">Emacs 編輯</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#重複"><span class="toc-article-text">重複</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 搜尋"><span class="toc-article-text">Emacs 搜尋</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 分割(window)"><span class="toc-article-text">Emacs 分割(window)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 檔案"><span class="toc-article-text">Emacs 檔案</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Emacs 檔案切換"><span class="toc-article-text">Emacs 檔案切換</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Emacs 檔案指令"><span class="toc-article-text">Emacs 檔案指令</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 系統"><span class="toc-article-text">Emacs 系統</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 函式"><span class="toc-article-text">Emacs 函式</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 幫助"><span class="toc-article-text">Emacs 幫助</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#其他"><span class="toc-article-text">其他</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Emacs 技巧"><span class="toc-article-text">Emacs 技巧 </span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#自動完成"><span class="toc-article-text"> 自動完成 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#移動至定義 (goto_declaration)"><span class="toc-article-text"> 移動至定義(goto declaration)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#回到之前的遊標位置"><span class="toc-article-text">回到之前的遊標位置 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 作為 IDE 使用"><span class="toc-article-text">Emacs 作為 IDE 使用 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs 巨集(Macro)"><span class="toc-article-text">Emacs 巨集(Macro)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs_+_Git"><span class="toc-article-text">Emacs + Git</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#畫簡單的 ASCII 圖"><span class="toc-article-text">畫簡單的 ASCII 圖 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs_+_Markdown_Mode"><span class="toc-article-text">Emacs + Markdown Mode</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Emacs_+_Screen"><span class="toc-article-text">Emacs + Screen</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#其他功能"><span class="toc-article-text">其他功能</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#不重要的功能"><span class="toc-article-text">不重要的功能</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Emacs 小知識"><span class="toc-article-text">Emacs 小知識 </span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
 		</div>
 	
 	</div>

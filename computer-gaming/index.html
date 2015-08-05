@@ -6,7 +6,7 @@
   <title>電腦對局理論 | QWERTY</title>
   <meta name="author" content="HCL">
   
-  <meta name="description" content="個人認為在資訊系學到最好的課">
+  <meta name="description" content="個人認為在資訊系學到最好的課，此外講義內容也很詳細(所以目前只寫到第八章)">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/jquery-2.0.3.min.js" async></script>
 
   <!-- analytics -->
   
@@ -46,7 +46,7 @@
 
 
 
-  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js" async></script>
   <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
 
 </head>
@@ -117,7 +117,7 @@
 
 	
 		 <div class="alert alert-success description">
-			<i class="fa fa-info-circle"></i> <p>個人認為在資訊系學到最好的課</p>
+			<i class="fa fa-info-circle"></i> <p>個人認為在資訊系學到最好的課，此外講義內容也很詳細(所以目前只寫到第八章)</p>
 			
 		</div> <!-- alert -->
 			
@@ -125,14 +125,15 @@
 	<!-- content -->
 	<div class="mypage">		
 	    <h2 id="Introduction">Introduction</h2><h3 id="學習 AI 的用處">學習 AI 的用處</h3><ol>
-<li>make computers more useful (to human<br>beings)<br>電腦愈聰明，對人類愈有用(Win more)</li>
+<li>make computers more useful (to human beings)<br>電腦愈聰明，對人類愈有用(Win more)</li>
 <li>understand the principles that make intelli-<br>gence possible<br>電腦學得的技巧讓人學習(educational)</li>
 </ol>
 <h3 id="為何學棋局">為何學棋局</h3><ol>
 <li>容易辨別輸贏</li>
 <li>規則簡單(先備知識少)<a id="more"></a>
-<h3 id="Turing_test(圖靈測試)">Turing test(圖靈測試)</h3>If a machine is intelligent, then it cannot be distinguished from a human.</li>
+</li>
 </ol>
+<h3 id="Turing_test(圖靈測試)">Turing test(圖靈測試)</h3><p>If a machine is intelligent, then it cannot be distinguished from a human.</p>
 <ul>
 <li>CAPTCHA(驗證碼): Completely Automated Public Turing test to tell Computers and Humans Apart</li>
 <li>Wolfram Alpha<ul>
@@ -140,11 +141,10 @@
 </ul>
 </li>
 </ul>
-<p>Problems:</p>
+<p>Problems  </p>
 <ul>
 <li>Are all human behaviors intelligent?</li>
-<li>Can human perform every possible intelligent behavior?</li>
-<li>Human intelligence 和 Intelligence 並不完全相同</li>
+<li>Can human perform every possible intelligent behavior?<br>→ Human intelligence 和 Intelligence 並不完全重合</li>
 </ul>
 <h3 id="改變目的">改變目的</h3><ul>
 <li>From Artificial Intelligence to Machine Intelligence<ul>
@@ -1022,63 +1022,472 @@
 </li>
 </ul>
 <h2 id="Chap07_Scout_and_Proof_Number_Search">Chap07 Scout and Proof Number Search</h2><ul>
-<li>Suppose we get at least score s at the First branch</li>
-<li>want to find whether second branch is at most gaining s score or not</li>
-<li><strong>Is there a way to search a tree approximately?</strong>  </li>
-</ul>
-<p>SCOUT    </p>
-<ul>
-<li>Invented by Judea Pearl in 1980</li>
-<li>TEST whether it is possible for Tb to return something greater han v <img src=""alt="test algo"><ul>
-<li>if p is max node → success with only one branch &gt; v</li>
-<li>if p is min node → success with all branches &gt; v</li>
-<li>If FALSE(fails the test), then no need to search Tb  </li>
-<li>If TRUE(passes the test), then search Tb  </li>
+<li>Suppose we get at least score s at the First branch<ul>
+<li>want to find whether second branch can get score over s or not</li>
 </ul>
 </li>
-<li>algorithm <img src=""alt="scout algo"></li>
-<li><img src=""alt="test true false"></li>
 </ul>
-<p>if test success, update the value at this branch</p>
-<p>TEST is not guarantee(but most of the time) that the visited nodes number are less than alpha-beta<br>both have Ω(b^(d/2)), but TEST has small argument and get very small value at the best situation <img src=""alt="node visited"></p>
-<p>Comparisons<br>When the fIrst branch of a node has the best value, then TEST<br>scans the tree fast.<br>Compared to alpha-beta pruning whose cut off comes from<br>bounds of search windows.</p>
-<p>SCOUT is a recursive procedure<br>A node in a branch that is not the first child of a node with a depth<br>of l.<br>Every ancestor of you may initiate a TEST to visit you.<br> It can be visited l times by TEST.</p>
-<p>The first search, though maybe unsuccessful, can provide useful<br>information in the second search.</p>
-<p>Performance<br>Show great improvements on depth &gt; 3 for games with small branching factors.<br>ab + scout Shows about average 10 to 20% of improvement than only ab.</p>
-<p>SCOUT favors “skinny” game trees, that are game trees with high depth-to-width ratios.<br>On depth = 5, it saves over 40% of time.<br>Maybe bad for games with a large branching factor.<br>Move ordering is very important. if the first branch is good, offers a great chance of pruning further branches.</p>
-<p>Null or Zero window search:<br>Using alpha-beta search with the window [m,m + 1]<br>result will be failed-high or failed-low.<br>Failed-high means the return value &gt; m + 1<br>    Equivalent to TEST(p; m;&gt;) is true<br>Failed-low means the return value &lt; m<br>    Equivalent to TEST(p; m;&gt;) is false<br>Using a searching window is better than using a single bound as in<br>SCOUT.</p>
-<p><img src=""alt="negascout algo"><br>depth &lt; 3 =&gt; no alpha-beta pruning =&gt; return value is exact value<br>research =&gt; do normal window a-b pruning</p>
-<p><img src=""alt="negamax scout algo"></p>
-<p>Refinements<br>When a subtree is re-searched, it is best to use information on the previous search to speed up the current search.<br>    Restart from the position that the value t is returned.<br>Order the moves in a priority list.</p>
-<p>binary valued game tree<br>2-player game tree with either 0 or 1 on the leaves<br>and-or tree: min -&gt; and, max -&gt; or<br>全部 child = 0 =&gt; 0<br>其中一個 child = 1 =&gt; 1</p>
-<p>A most proving node for a node u: a node if its value is 1, then the value of u is 1.<br>A most disproving node for a node u: a node if its value is 0, then the value of u is 0.</p>
-<p>proof(u): the minimum number nodes to visited to make u = 1<br>disproof(u): the minimum number nodes to visited to make u = 0</p>
-<p>If value(u) is unknown, then proof(u) is the cost of evaluating u<br>If value(u) is 1, then proof(u) = 0<br>If value(u) is 0, then proof(u) = ∞<br><img src=""alt="max min node"></p>
-<p>disproof number -&gt; reverse calculate method of proof number</p>
-<p><img src=""alt="Ex"></p>
-<p>Usage<br>find child u that have min{proof(root); disproof(root)}<br>if we try to <strong>prove</strong> it, then pick a child with the <strong>least proof number</strong> for a <strong>MAX node</strong>, and pick any node that has a chance to be proved for a MIN node<br>if we try to disprove it, then pick a child with the least disproof number for a MIN node, and pick any node that has a chance to be disproved for a MAX node</p>
-<p>used in open game tree or an endgame tree by known proof or disproof number</p>
-<p>PN search algorithm<br><img src=""alt="pn algo"></p>
-<p>Multi-value game tree<br><img src=""alt="multi"></p>
-<p>use binary search skill to set TEST value<br><img src=""alt="multi pn algo"></p>
-<h2 id="Chap08_Monte-Carlo_Game_Tree_Search">Chap08 Monte-Carlo Game Tree Search</h2><p>Monte-Carlo: Used in Go(圍棋)<br>Rule</p>
+<p><strong>Is there a way to search a tree approximately?</strong>  </p>
+<h3 id="SCOUT">SCOUT</h3><ul>
+<li>Invented by Judea Pearl in 1980</li>
+<li>first time: search approximately<ul>
+<li>if there is better value, search again</li>
+<li>first search can provide useful information in the second search </li>
+</ul>
+</li>
+<li>TEST whether Tb can return score &gt; v <img src="/img/TCG/test-algo.png" alt=""><ul>
+<li>if p is max node → success with only one subbranch &gt; v</li>
+<li>if p is min node → success with all subbranches &gt; v</li>
+<li>If success, then search Tb. else, <strong>no need to search Tb</strong></li>
+</ul>
+</li>
+<li>algorithm <img src="/img/TCG/scout-algo.png" alt=""><ul>
+<li>scout first branch and test other branch<ul>
+<li>if test success, update the value by scout this branch</li>
+</ul>
+</li>
+<li>recursive procedure<ul>
+<li>Every ancestor of you may initiate a TEST to visit you<ul>
+<li>will be visited at most d times(= depth)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Time Complexity  </p>
+<ul>
+<li><strong>not guarantee</strong>(but most of the time) that the visited nodes number are less than alpha-beta<ul>
+<li>may search a branch two times</li>
+<li>may pay many visits to a node that is cut off by alpha-beta</li>
+</ul>
+</li>
+<li>TEST: Ω(b^(d/2))<ul>
+<li>but has small argument and will be very small at the best situation <img src="/img/TCG/nodes-visited.png" alt="node visited"><ul>
+<li>if the first subbranch has the best value, then TEST scans the tree fast</li>
+<li>move ordering is very important</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Comparison<ul>
+<li>alpha-beta<ul>
+<li>cut off comes from bounds of search windows(by ancestors)</li>
+</ul>
+</li>
+<li>scout<ul>
+<li>cut off from previous branches’ score(by brothers)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Performance  </p>
+<ul>
+<li>SCOUT favors “skinny” game trees<ul>
+<li>Show great improvements on depth &gt; 3 for games with <strong>small branching factors</strong></li>
+<li>On depth = 5, it saves over 40% of time</li>
+</ul>
+</li>
+<li>AB + scout gets average 10~20% improvement than only AB</li>
+</ul>
+<p>Null(Zero) window search    </p>
+<ul>
+<li>Using alpha-beta search with the window [m,m + 1]<ul>
+<li>result will be failed-high or failed-low</li>
+</ul>
+</li>
+<li>Failed-high means return value &gt; m + 1<ul>
+<li>Equivalent to TEST(p; m;&gt;) is true</li>
+</ul>
+</li>
+<li>Failed-low means return value &lt; m<ul>
+<li>Equivalent to TEST(p; m;&gt;) is false</li>
+</ul>
+</li>
+<li>Using searching window is better than using a single bound in SCOUT</li>
+</ul>
+<p><img src="/img/TCG/nega-scout.png" alt="">    </p>
+<ul>
+<li>depth &lt; 3 → no alpha-beta pruning → return value is exact value(no need to search again)</li>
+<li>first-time search → do null window search(scout)</li>
+<li>research → do normal window a-b pruning</li>
+</ul>
+<p>Refinements  </p>
+<ul>
+<li>Use information from previous search<ul>
+<li>When a subtree is re-searched, restart from the position that the value is returned in first search</li>
+</ul>
+</li>
+<li>Change move ordering<ul>
+<li>Reorder the moves by priority list</li>
+</ul>
+</li>
+</ul>
+<h3 id="Proof_Number_Search">Proof Number Search</h3><p><img src="https://chessprogramming.wikispaces.com/Proof-number+search#Pseudo%20Code" alt="參考資料: chessprogramming: proof-number search"></p>
+<p>binary valued game tree    </p>
+<ul>
+<li><p>2-player game tree with either 0 or 1 on the leaves</p>
+<ul>
+<li>and-or tree: min → and, max → or</li>
+</ul>
+</li>
+<li><p>most proving node for node u</p>
+<ul>
+<li>node that if its value is 1, then the value of u is 1</li>
+</ul>
+</li>
+<li><p>most disproving node for node u</p>
+<ul>
+<li>node that if its value is 0, then the value of u is 0</li>
+</ul>
+</li>
+<li><p>proof(u): minimum number of nodes to visit to make u = 1</p>
+</li>
+<li>disproof(u): minimum number of nodes to visit to make u = 0</li>
+</ul>
+<p>If value(u) is unknown, then proof(u) is the cost of evaluating u  </p>
+<ul>
+<li>If value(u) is 1, then proof(u) = 0</li>
+<li>If value(u) is 0, then proof(u) = ∞</li>
+<li>proof number can be calculate by search childrens <img src="/img/TCG/proof-number.png" alt=""><ul>
+<li>disproof number → reverse calculate method of proof number</li>
+</ul>
+</li>
+</ul>
+<p>Usage  </p>
+<ul>
+<li>find child u that have min{proof(root); disproof(root)}</li>
+<li>if we try to <strong>prove</strong> it<ul>
+<li>pick a child with the <strong>least proof number</strong> for a <strong>MAX node</strong></li>
+<li>pick <strong>any node that has a chance to be proved</strong> for a <strong>MIN node</strong></li>
+</ul>
+</li>
+<li>if we try to <strong>disprove</strong> it<ul>
+<li>pick a child with the <strong>least disproof number</strong> for a <strong>MIN node</strong></li>
+<li>pick <strong>any node that has a chance to be disproved</strong> for a <strong>MAX node</strong></li>
+</ul>
+</li>
+<li>used in open game tree or an endgame tree because some proof or disproof number is known<ul>
+<li>1 → proved to win, 0 → proved to lose </li>
+<li>or used to achieve sub-goal in games</li>
+</ul>
+</li>
+</ul>
+<!-- why smallest number because proof need all 1? -->
+<p>Proof-Number search algorithm <img src="/img/TCG/pn-algo.png" alt="">  </p>
+<ol>
+<li>keep update number by bottom-up<ol>
+<li>compare proof number and disproof number of root</li>
+</ol>
+</li>
+<li>find the leaf to prove or disprove</li>
+</ol>
+<p>Multi-value game tree  </p>
+<ul>
+<li>value in [0, 1]</li>
+<li>$proof_v(u)$: the minimum number of leaves needed to visited to make u &gt;= v<ul>
+<li>proof(u) = $proof_1(u)$</li>
+</ul>
+</li>
+<li>$disproof_v(u)$: the minimum number of leaves needed to visited to make u &lt; v<ul>
+<li>disproof(u) = $disproof_1(u)$</li>
+</ul>
+</li>
+<li>use binary search to set upper bound of the value <img src="/img/TCG/multivalue-pn-algo.png" alt=""></li>
+</ul>
+<h2 id="Chap08_Monte-Carlo_Game_Tree_Search">Chap08 Monte-Carlo Game Tree Search</h2><h3 id="original_ideas">original ideas</h3><p>Algorithm $MCS_{pure}$ <img src="img/TCG/random-games.png" alt="">    </p>
+<ul>
+<li>For each possible next move<ul>
+<li>play this move and then play a lot of random games(play every moves as random)</li>
+<li>calculate average score</li>
+</ul>
+</li>
+<li><p>Choose move with best score</p>
+</li>
+<li><p>Original version: GOBBLE in 1993  </p>
+<ul>
+<li>Performance is not good compared to other Go programs(alpha-beta)</li>
+</ul>
+</li>
+<li>Enhanced versions<ul>
+<li>Adding the idea of minimax tree search</li>
+<li>Adding more domain knowledge</li>
+<li>Adding more searching techniques</li>
+<li>Building theoretical foundations from statistics, and on-line and off-line learning</li>
+<li>results<ul>
+<li>MoGo<ul>
+<li>Beat a professional human 8 dan(段) with a 8-stone handicap at January 2008</li>
+<li>Judged to be in a “professional level” for 9 x 9 Go in 2009</li>
+</ul>
+</li>
+<li>Zen<ul>
+<li>close to amateur 3-dan in 2011</li>
+<li>Beat a 9-dan professional master with handicaps at March 17, 2012<ul>
+<li>First game: Five stone handicap and won by 11 points</li>
+<li>Second game: four stones handicap and won by 20 points</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Disadvantage  </p>
+<ul>
+<li>average score search != minimax tree search<ul>
+<li>$MCS_{pure}$ prefer right branch, but it’s min value is low <img src="/img/TCG/minmax-and-avergae.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h3 id="First_Refinement:_Monte-Carlo_based_tree_search">First Refinement: Monte-Carlo based tree search</h3><p>Intuition   </p>
+<ul>
+<li>Best First tree growing<ul>
+<li>Expand one level of best leaf(which has largest score) <img src="/img/TCG/mct-ex2.png" alt=""></li>
+</ul>
+</li>
+<li>if number of simulations is not enough, it can’t be a good simulation<ul>
+<li>on a MIN node, if not enough children are probed for enough number of times, you may miss a very bad branch</li>
+<li>take <strong>simulation count</strong> into consideration</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/TCG/MCT.png" alt=""><br><img src="/img/TCG/mct-ex1.png"alt="">  </p>
+<h3 id="Second_Refinement:_UCT">Second Refinement: UCT</h3><ul>
+<li>Effcient sampling  <ul>
+<li>Original: equally distributed among all legal moves</li>
+<li>Biased sampling: sample some moves more often than others</li>
+</ul>
+</li>
+<li><p>Observations</p>
+<ul>
+<li>Some moves are bad and do not need further exploring<ul>
+<li>Need to consider extremely bad luck sitiation<ul>
+<li>e.g. often “randomly” choose bad move and get bad score</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="https://en.wikipedia.org/wiki/Multi-armed_bandit" target="_blank" rel="external">K-arm bandit problem</a>  </p>
+<ul>
+<li>Assume you have K slot machines each with a different payoff, i.e., expected value of returns ui, and an unknown distribution</li>
+<li>Assume you can bet on the machines N times, what is the best strategy to get the largest returns?</li>
+</ul>
+</li>
+<li>Ideas<ul>
+<li>Try each machine a few, but enough, times and record their returns<ul>
+<li>For the machines that currently have the best returns, play more often later</li>
+<li>For the machines that currently return poorly, give them a chance sometimes to check their distributions are really bad or not</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>UCB: Upper Confidence Bound <img src="img/TCG/UCB.png" alt="">  </p>
+<ul>
+<li>Meaning<ul>
+<li>For a MAX node, Wi is the number of win’s for the MAX player</li>
+<li><strong>For a MIN node, Wi is the number of win’s for the MIN player</strong></li>
+<li>When N is approaching logN, then UCB is nothing but the current winning rate plus a constant</li>
+<li>When N getting larger, UCB will approachthe real winning rate</li>
+</ul>
+</li>
+<li>Expand for the move with the highest UCB value</li>
+<li><strong>only compare UCB scores among children of a node</strong><ul>
+<li>It is meaningless to compare scores of nodes that are not siblings</li>
+</ul>
+</li>
+<li>Using argument c to keep a balance between<ul>
+<li>Exploitation: exploring the best move so far</li>
+<li>Exploration: exploring other moves to see if they can be proved to be better <img src="/img/TCG/ucb-ex1.png" alt=""></li>
+</ul>
+</li>
+<li>alternative<ul>
+<li>consider the variance of scores in each branch <img src="/img/TCG/UCB2.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>UCT: Upper Confidence Bound for Tree  </p>
+<ul>
+<li>Maintain the UCB value for each node in the game tree<ul>
+<li>Pick path such that each node in this path has a largest UCB score among all of its siblings</li>
+<li>Pick the leaf node in the path which has been visited more than a certain amount of times to expand</li>
+</ul>
+</li>
+</ul>
+<p>Usable when the “density of goals” is suffciently large  </p>
+<ul>
+<li>When there is only a unique goal, Monte-Carlo based simulation may not be useful</li>
+</ul>
+<p>new MCT algorithm(with UCT) <img src="/img/TCG/mct-uct.png" alt=""></p>
+<h4 id="Implementation_hints">Implementation hints</h4><p><img src="/img/TCG/uct-imp.png" alt=""><br><img src="/img/TCG/uct-imp2.png"alt=""><br><img src="/img/TCG/uct-imp3.png" alt=""></p>
+<h3 id="When_to_use_Monte-Carlo">When to use Monte-Carlo</h3><ul>
+<li>huge branching number </li>
+<li>cannot easily compute good evaluating function</li>
+<li>Mostly used in Go, Bridge(?)</li>
+</ul>
+<p>Rule of Go(圍棋)  </p>
 <ul>
 <li>Ko(打劫): 不能有重複盤面</li>
 <li>可以跳過，不能下自殺步</li>
 <li>Komi: 先手讓子</li>
 </ul>
-<p>Implementation</p>
+<p>Implementation  </p>
 <ul>
 <li>partition stones into strings(使用共同氣的子) by DFS</li>
-<li>know an empty intersection is an eye(check neighbors and limits)</li>
+<li>check empty intersection is an eye or not(check neighbors and limits)</li>
 </ul>
-<p>Property</p>
+<h3 id="Domain_independent_refinements">Domain independent refinements</h3><p>Main considerations   </p>
 <ul>
-<li>huge branching number </li>
-<li>cannot be easily compute good evaluating function </li>
+<li>Avoid doing un-needed computations</li>
+<li>Increase the speed of convergence</li>
+<li>Avoid early mis-judgement</li>
+<li>Avoid extreme bad cases</li>
 </ul>
-<p>original ideas<br>Algorithm MCSpure:<br>For each possible next move<br>    Play a large number of almost random games from a position to the end, and score them.<br>Evaluate a move by computing the average of the scores of the random games in which it had played.<br>    Play a move with the best score.<br><img src=""alt="random"></p>
-<h2 id="Chap09_Other_way_to_increase_performance">Chap09 Other way to increase performance</h2><h2 id="Reference">Reference</h2><p><a href="http://www.iis.sinica.edu.tw/~tshsu/tcg/" target="_blank" rel="external">TSHsu 講義</a></p>
+<p>Refinements  </p>
+<ul>
+<li>Progressive pruning  <ul>
+<li>Cut hopeless nodes early</li>
+</ul>
+</li>
+<li>All moves at first(AMAF)<ul>
+<li>Increase the speed of convergence</li>
+</ul>
+</li>
+<li>Node expansion<ul>
+<li>Grow only nodes with a potential</li>
+</ul>
+</li>
+<li>Temperature<ul>
+<li>Introduce randomness</li>
+</ul>
+</li>
+<li>Depth-i enhancement<ul>
+<li>With regard to Line 1, the initial phase, exhaustively enumerate all possibilities</li>
+</ul>
+</li>
+</ul>
+<h4 id="Progressive_pruning">Progressive pruning</h4><p>Each move has a mean value m and a standard deviation σ  </p>
+<ul>
+<li>Left expected outcome ml = m - rd * σ</li>
+<li><p>Right expected outcome mr = m + rd * σ</p>
+<ul>
+<li>rd is argument</li>
+</ul>
+</li>
+<li><p>A move M1 is <strong>statistically inferior</strong> to another move M2 if M1.mr &lt; M2.ml</p>
+</li>
+<li>Two moves M1 and M2 are <strong>statistically equal</strong> if M1.σ &lt; σe and M2.σ &lt; σe and no move is statistically inferior to the other<ul>
+<li>σe is argument which called standard deviation for equality</li>
+</ul>
+</li>
+</ul>
+<p>Remarks  </p>
+<ul>
+<li>only compare nodes that are of the same parent</li>
+<li>compare their raw scores not their UCB values<ul>
+<li>If you use UCB scores, then the mean and standard deviation of a move are those calculated only from its un-pruned children</li>
+</ul>
+</li>
+<li>prune statistically inferior moves after enough number of times of simulation</li>
+</ul>
+<p>This process is stopped when  </p>
+<ul>
+<li>there is only one move left</li>
+<li>the moves left are statistically equal</li>
+<li>a maximal threshold(like 10000 multiplied by the number of legal moves) of iterations is reached</li>
+</ul>
+<p>Two different pruning rules  </p>
+<ul>
+<li>Hard: a pruned move cannot be a candidate later on</li>
+<li>Soft: a move pruned at a given time <strong>can be a candidate later on</strong> if its value is no longer statistically inferior to a currently active move<ul>
+<li>Periodically check whether to reactive it</li>
+</ul>
+</li>
+</ul>
+<p>Arguments  </p>
+<ul>
+<li>Selection of rd <img src="/img/TCG/uct-result2.png" alt="">   <ul>
+<li>The greater rd is</li>
+<li>the less pruned the moves are</li>
+<li>the better the algorithm performs</li>
+<li>the slower at each play</li>
+</ul>
+</li>
+<li>Selection of σe <img src="/img/TCG/uct-result1.png" alt=""><ul>
+<li>The smaller σe is</li>
+<li>the fewer equalities there are</li>
+<li>the better the algorithm performs</li>
+<li>the slower at each play</li>
+</ul>
+</li>
+<li>rd plays an important role in the move pruning process</li>
+<li><p>σe is less sensitive</p>
+</li>
+<li><p>Another trick is progressive widening or progressive un-pruning</p>
+<ul>
+<li>A node is effective if enough simulations are done on it and its values are good</li>
+</ul>
+</li>
+<li>We can set threshold on whether to expand the best path, for exmaple<ul>
+<li>enough simulations are done</li>
+<li>score is good enough</li>
+</ul>
+</li>
+</ul>
+<h4 id="All_moves_at_first(AMAF)">All moves at first(AMAF)</h4><ul>
+<li>score is used for <strong>all moves the same player played in a random game</strong><ul>
+<li>in this example, after simulate r→v→y→u→w, w which  has parent v and u which has parent r will be updated, too <img src="/img/TCG/amaf.png" alt=""></li>
+</ul>
+</li>
+<li>Advantage<ul>
+<li>speeding up the experiments</li>
+</ul>
+</li>
+<li>Drawback<ul>
+<li>not the same move - move in early game is not equal to late game </li>
+<li>Recapturing<ul>
+<li>Order of moves is important for certain games(圍棋)</li>
+<li>Modification: if several moves are played at the same place because of captures, modify the statistics only for the player who played first </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Refinement: RAVE    </p>
+<ul>
+<li>Let v1(m) be the score of a move m without using AMAF</li>
+<li>Let v2(m) be the score of a move m with AMAF</li>
+<li>Observations<ul>
+<li>v1(m) is good when suffcient number of simulations are starting with m</li>
+<li>v2(m) is a <strong>good guess for the true score</strong> of the move m<ul>
+<li>when <strong>approaching the end of a game</strong></li>
+<li>when <strong>too few simulations starting with m</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Rapid Action Value Estimate (RAVE)  </p>
+<ul>
+<li>revised score $v3(m) = a \times v1(m) + (1-a) \times v2(m)$</li>
+<li>can dynamically change a as the game goes<ul>
+<li>For example: a = min{1, Nm/10000}, where Nm is simulation times start from m<ul>
+<li>This means when Nm reaches 10000, then no RAVE is used</li>
+</ul>
+</li>
+<li>Works out better than setting a = 0(i.e. pure AMAF)</li>
+</ul>
+</li>
+</ul>
+<h4 id="Node_expansion">Node expansion</h4><p>May decide to expand potentially good nodes judging from the<br>current statistics [Yajima et al 2011].<br> All ends: expand all possible children of a newly added node.<br> Visit count: delay the expansion of a node until it is visited a certain<br>number of times.<br> Transition probability: delay the expansion of a node until its \score”<br>or estimated visit count is high comparing to its siblings.<br>. Use the current value, variance and parent’s value to derive a good<br>estimation using statistical methods.<br>Expansion policy with some transition probability is much better<br>than the \all ends” or \pure visit count” policy.</p>
+<!-- ##Chap09 Other way to increase performance -->
+<h2 id="Reference">Reference</h2><p><a href="http://www.iis.sinica.edu.tw/~tshsu/tcg/" target="_blank" rel="external">TSHsu 講義</a></p>
 	  
 	</div>
 
@@ -1131,6 +1540,17 @@
 
 	<!-- categories -->
     
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/筆記/">筆記<span>13</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
 
 	<!-- tags -->
 	
@@ -1138,7 +1558,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/筆記/">筆記<span>9</span></a></li> <li><a href="/tags/電腦對局理論/">電腦對局理論<span>2</span></a></li>
+  <li><a href="/tags/artificial-intelligence/">artificial-intelligence<span>1</span></a></li> <li><a href="/tags/電腦對局理論/">電腦對局理論<span>2</span></a></li>
     </ul>
 	</div>
 		
@@ -1148,7 +1568,7 @@
 	
 	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
 	   <div id="toc" class="toc collapse in">
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Introduction"><span class="toc-article-text">Introduction</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#學習 AI 的用處"><span class="toc-article-text">學習 AI 的用處</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#為何學棋局"><span class="toc-article-text">為何學棋局</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Turing_test(圖靈測試)"><span class="toc-article-text">Turing test(圖靈測試)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#改變目的"><span class="toc-article-text">改變目的</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#重大突破"><span class="toc-article-text">重大突破</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#無關：核心知識"><span class="toc-article-text">無關：核心知識 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#分類"><span class="toc-article-text">分類</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap02_Basic_Search_Algorithms"><span class="toc-article-text">Chap02 Basic Search Algorithms</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#definition"><span class="toc-article-text">definition</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Brute-force_search"><span class="toc-article-text">Brute-force search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#pure_brute-force_search_program"><span class="toc-article-text">pure brute-force search program</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#無關：Random_Algorithm_應用"><span class="toc-article-text">無關：Random Algorithm 應用</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#intelligent_brute-force_search_algorithm"><span class="toc-article-text">intelligent brute-force search algorithm</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#BFS(Breadth-First_search)_Search"><span class="toc-article-text">BFS(Breadth-First search) Search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Disk_based_algorithm"><span class="toc-article-text">Disk based algorithm</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Disk_based_algorithms"><span class="toc-article-text">Disk based algorithms</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#DFS"><span class="toc-article-text">DFS</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#General_skills_to_improve_searching_algorithm"><span class="toc-article-text">General skills to improve searching algorithm</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Iterative-Deepening(ID)_逐層加深"><span class="toc-article-text">Iterative-Deepening(ID) 逐層加深</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Bi-directional_search"><span class="toc-article-text">Bi-directional search</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Heuristic(啟發式)_search"><span class="toc-article-text">Heuristic(啟發式) search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Heuristic_search_—_A*"><span class="toc-article-text">Heuristic search — A*</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#DFS_with_threshold"><span class="toc-article-text">DFS with threshold</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#IDA*_=_DFID_+_A*"><span class="toc-article-text">IDA* = DFID + A*</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#basic_thought_for_a_problem"><span class="toc-article-text">basic thought for a problem</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#algorithm 整理"><span class="toc-article-text">algorithm 整理</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03_Heuristic_Search_with_Pre-Computed_Databases"><span class="toc-article-text">Chap03 Heuristic Search with Pre-Computed Databases</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Non-additive_pattern_databases"><span class="toc-article-text">Non-additive pattern databases</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Basic_Thought"><span class="toc-article-text">Basic Thought</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Disjoint_pattern"><span class="toc-article-text">Disjoint pattern</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Result"><span class="toc-article-text">Result</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_04_Two-Player_Perfect_Information_Games_Introductions"><span class="toc-article-text">Chap 04 Two-Player Perfect Information Games Introductions</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Definition"><span class="toc-article-text">Definition</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Classification"><span class="toc-article-text">Classification</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Strategy-stealing_argument"><span class="toc-article-text">Strategy-stealing argument</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_05_Computer_chess_programming_by_Shannon"><span class="toc-article-text">Chap 05 Computer chess programming by Shannon</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Analysis"><span class="toc-article-text">Analysis</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Three_phases_of_chess"><span class="toc-article-text">Three phases of chess</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Evaluating_Function"><span class="toc-article-text">Evaluating Function</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_06_Alpha-Beta_Pruning"><span class="toc-article-text">Chap 06 Alpha-Beta Pruning</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Dewey_decimal_system"><span class="toc-article-text">Dewey decimal system</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Min-Max_method"><span class="toc-article-text">Min-Max method</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Nega-max_method"><span class="toc-article-text">Nega-max method</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Alpha-Beta_cut_off"><span class="toc-article-text">Alpha-Beta cut off</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Analysis_for_AB_pruning"><span class="toc-article-text">Analysis for AB pruning</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Variations_of_alpha-beta_search"><span class="toc-article-text">Variations of alpha-beta search</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Questions"><span class="toc-article-text">Questions</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Pruning_Techinique"><span class="toc-article-text">Pruning Techinique</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap07_Scout_and_Proof_Number_Search"><span class="toc-article-text">Chap07 Scout and Proof Number Search</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap08_Monte-Carlo_Game_Tree_Search"><span class="toc-article-text">Chap08 Monte-Carlo Game Tree Search</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap09_Other_way_to_increase_performance"><span class="toc-article-text">Chap09 Other way to increase performance</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Introduction"><span class="toc-article-text">Introduction</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#學習 AI 的用處"><span class="toc-article-text">學習 AI 的用處</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#為何學棋局"><span class="toc-article-text">為何學棋局</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Turing_test(圖靈測試)"><span class="toc-article-text">Turing test(圖靈測試)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#改變目的"><span class="toc-article-text">改變目的</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#重大突破"><span class="toc-article-text">重大突破</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#無關：核心知識"><span class="toc-article-text">無關：核心知識 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#分類"><span class="toc-article-text">分類</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap02_Basic_Search_Algorithms"><span class="toc-article-text">Chap02 Basic Search Algorithms</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#definition"><span class="toc-article-text">definition</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Brute-force_search"><span class="toc-article-text">Brute-force search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#pure_brute-force_search_program"><span class="toc-article-text">pure brute-force search program</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#無關：Random_Algorithm_應用"><span class="toc-article-text">無關：Random Algorithm 應用</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#intelligent_brute-force_search_algorithm"><span class="toc-article-text">intelligent brute-force search algorithm</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#BFS(Breadth-First_search)_Search"><span class="toc-article-text">BFS(Breadth-First search) Search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Disk_based_algorithm"><span class="toc-article-text">Disk based algorithm</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Disk_based_algorithms"><span class="toc-article-text">Disk based algorithms</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#DFS"><span class="toc-article-text">DFS</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#General_skills_to_improve_searching_algorithm"><span class="toc-article-text">General skills to improve searching algorithm</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Iterative-Deepening(ID)_逐層加深"><span class="toc-article-text">Iterative-Deepening(ID) 逐層加深</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Bi-directional_search"><span class="toc-article-text">Bi-directional search</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Heuristic(啟發式)_search"><span class="toc-article-text">Heuristic(啟發式) search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Heuristic_search_—_A*"><span class="toc-article-text">Heuristic search — A*</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#DFS_with_threshold"><span class="toc-article-text">DFS with threshold</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#IDA*_=_DFID_+_A*"><span class="toc-article-text">IDA* = DFID + A*</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#basic_thought_for_a_problem"><span class="toc-article-text">basic thought for a problem</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#algorithm 整理"><span class="toc-article-text">algorithm 整理</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03_Heuristic_Search_with_Pre-Computed_Databases"><span class="toc-article-text">Chap03 Heuristic Search with Pre-Computed Databases</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Non-additive_pattern_databases"><span class="toc-article-text">Non-additive pattern databases</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Basic_Thought"><span class="toc-article-text">Basic Thought</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Disjoint_pattern"><span class="toc-article-text">Disjoint pattern</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Result"><span class="toc-article-text">Result</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_04_Two-Player_Perfect_Information_Games_Introductions"><span class="toc-article-text">Chap 04 Two-Player Perfect Information Games Introductions</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Definition"><span class="toc-article-text">Definition</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Classification"><span class="toc-article-text">Classification</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Strategy-stealing_argument"><span class="toc-article-text">Strategy-stealing argument</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_05_Computer_chess_programming_by_Shannon"><span class="toc-article-text">Chap 05 Computer chess programming by Shannon</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Analysis"><span class="toc-article-text">Analysis</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Three_phases_of_chess"><span class="toc-article-text">Three phases of chess</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Evaluating_Function"><span class="toc-article-text">Evaluating Function</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_06_Alpha-Beta_Pruning"><span class="toc-article-text">Chap 06 Alpha-Beta Pruning</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Dewey_decimal_system"><span class="toc-article-text">Dewey decimal system</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Min-Max_method"><span class="toc-article-text">Min-Max method</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Nega-max_method"><span class="toc-article-text">Nega-max method</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Alpha-Beta_cut_off"><span class="toc-article-text">Alpha-Beta cut off</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Analysis_for_AB_pruning"><span class="toc-article-text">Analysis for AB pruning</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Variations_of_alpha-beta_search"><span class="toc-article-text">Variations of alpha-beta search</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Questions"><span class="toc-article-text">Questions</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Pruning_Techinique"><span class="toc-article-text">Pruning Techinique</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap07_Scout_and_Proof_Number_Search"><span class="toc-article-text">Chap07 Scout and Proof Number Search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#SCOUT"><span class="toc-article-text">SCOUT</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Proof_Number_Search"><span class="toc-article-text">Proof Number Search</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap08_Monte-Carlo_Game_Tree_Search"><span class="toc-article-text">Chap08 Monte-Carlo Game Tree Search</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#original_ideas"><span class="toc-article-text">original ideas</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#First_Refinement:_Monte-Carlo_based_tree_search"><span class="toc-article-text">First Refinement: Monte-Carlo based tree search</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Second_Refinement:_UCT"><span class="toc-article-text">Second Refinement: UCT</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Implementation_hints"><span class="toc-article-text">Implementation hints</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#When_to_use_Monte-Carlo"><span class="toc-article-text">When to use Monte-Carlo</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Domain_independent_refinements"><span class="toc-article-text">Domain independent refinements</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Progressive_pruning"><span class="toc-article-text">Progressive pruning</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#All_moves_at_first(AMAF)"><span class="toc-article-text">All moves at first(AMAF)</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Node_expansion"><span class="toc-article-text">Node expansion</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
 		</div>
 	
 	</div>

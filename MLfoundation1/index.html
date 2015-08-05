@@ -6,7 +6,7 @@
   <title>機器學習基石 (上) | QWERTY</title>
   <meta name="author" content="HCL">
   
-  <meta name="description" content="Introduction, Perceptron, types of learning, Feasibility of Learning, Training versus Testing, Theory of Generalization, VC Dimension, Noise and Error, Error Measure">
+  <meta name="description" content="Programming, Computer Science, Note">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/jquery-2.0.3.min.js" async></script>
 
   <!-- analytics -->
   
@@ -46,7 +46,7 @@
 
 
 
-  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js" async></script>
   <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
 
 </head>
@@ -115,11 +115,6 @@
 	<div class="col-md-9">
 	
 
-	
-		 <div class="alert alert-success description">
-			<i class="fa fa-info-circle"></i> <p>Introduction, Perceptron, types of learning, Feasibility of Learning, Training versus Testing, Theory of Generalization, VC Dimension, Noise and Error, Error Measure</p>
-			
-		</div> <!-- alert -->
 			
 
 	<!-- content -->
@@ -127,7 +122,7 @@
 	    <p><a href="https://www.coursera.org/course/ntumlone" target="_blank" rel="external">原版 </a> 的講義做得十分精美，可以很快了解</p>
 <h2 id="Chap01_Introduction">Chap01 Introduction</h2><p>課堂討論：學習的定義    </p>
 <ol>
-<li>從不會到會  </li>
+<li>從不會到會 </li>
 <li>從會到更進步、熟練</li>
 </ol>
 <p><img src="/img/ML/0FPIeqh.png" alt=""></p>
@@ -460,7 +455,7 @@
 </tr>
 </tbody>
 </table>
-<p>Growth Function $m_H$ = <strong>max number of dichotomies(max number of different outputs)</strong><br><img src="/img/ML/xc50yGO.png" alt=""><br>&lt;!- remove dependence — &gt;</p>
+<p>Growth Function $m_H$ = <strong>max number of dichotomies(max number of different outputs)</strong><br><img src="/img/ML/xc50yGO.png" alt="">  </p>
 <h3 id="Types_of_Growth_Function">Types of Growth Function</h3><ul>
 <li>Positive Rays <img src="/img/ML/vmoIwfN.png" alt=""><ul>
 <li>$m_H(N)$ = N + 1</li>
@@ -524,9 +519,9 @@
 <li>d_VC &lt; d+1 → d+2 can’t shatter<br>linear dependence restricts dichotomy <img src="/img/ML/linearrely.png" alt=""><br>if row &gt; column, it would cause linear dependence <img src="/img/ML/xd+2=all.png"alt=""><br>for any input, we can find some $a_n$ that makes an output can’t happen → no shatter <img src="/img/ML/geneag0.png" alt=""></li>
 </ol>
 <h3 id="freedom">freedom</h3><p>dimension, number of parameters, hypothesis quantity(M) → degrees of freedom<br>d_VC(H) = effitive binary degrees of freedom = powerfulness of H</p>
-<p>The more powerful it is (d_vc big), the more probability to get bad data <img src="/img/ML/dvcbigsmall.png" alt="D_vc"><br>question:<img src="/img/ML/Qhyperplane.png" alt=""><br>比 perceptron 少一個 parameter → d</p>
+<p>The more powerful it is (d_vc bigger), the more probability to get bad data <img src="/img/ML/dvcbigsmall.png" alt="D_vc"><br>question:<img src="/img/ML/Qhyperplane.png" alt=""><br>比 perceptron 少一個 parameter → d</p>
 <p>penalty for model complexity <img src="/img/ML/smalle.png" alt=""><br>model 愈強，Ein 愈小，和 Eout 誤差愈大 <img src="/img/ML/modelcomplexity.png"alt="">  </p>
-<p>number of data(N) should be 10000$d<em>{vc}$ in theory; 10$d</em>{vc}$  is enough in practice, because VC bound is loose <img src="/img/ML/nanddvc.png" alt=""> <img src="/img/ML/hoffedingloose.png"alt=""></p>
+<p>number of data(N) should be 10000 d_vc in theory; 10 d_vc is enough in practice, because VC bound is loose <img src="/img/ML/nanddvc.png" alt=""> <img src="/img/ML/hoffedingloose.png"alt=""></p>
 <p>question: <img src="/img/ML/q2.png" alt=""><br>all of above(increase power of model)</p>
 <h2 id="Chap08_Noise_and_Error">Chap08 Noise and Error</h2><ul>
 <li>Noise in y<ul>
@@ -539,59 +534,57 @@
 </li>
 <li>Would get probabilisic output y ≠ h(x) by given P(y|x)</li>
 </ul>
-<p>Does VC bound works in noise? If i.i.d.(Independent and identically distributed) <img src="/img/ML/iid.png" alt="">  </p>
-<p>predict ideal mini-target(high P(y|x), the output that has higher possibility) on often seen inputs(high P(x)) </p>
-<h3 id="Error_Measure">Error Measure</h3><ul>
-<li>out-of-sample(averaged unknown x)</li>
-<li>pointwise(evaluated each x point)</li>
-<li>classification(correct(1) or not(0), 0/1 error)</li>
-</ul>
-<p>Eout use expectation <img src="/img/ML/einout.png" alt="">  </p>
-<p>classification and regression use different error measure <img src="/img/ML/01andsquare.png" alt="">   </p>
+<p>Does VC bound works in noise? Yes, if i.i.d.(Independent and identically distributed) <img src="/img/ML/iid.png" alt=""><br>→ we can view as ‘ideal mini-target’ + noise<br>→ learning goal is to <strong>predict ideal mini-target(which is Y that has high P(Y|X) given X) on often seen inputs(X with high P(X))</strong> </p>
+<p>Eout use expectation instead of Σ , $err$ means pointwise error(only consider a point x) <img src="/img/ML/einout.png" alt="">  </p>
+<h3 id="Error_Measure">Error Measure</h3><p><img src="/img/ML/01andsquare.png" alt=""></p>
 <ul>
-<li>0/1 error<ul>
-<li>minimum flipping noise(錯誤的 output) </li>
+<li>classification(0/1 error)<ul>
+<li>minimum flipping noise(最少錯誤的 output) </li>
 <li>NP-hard to optimize</li>
 </ul>
 </li>
-<li>squared error<ul>
-<li>minimum gaussian noise</li>
+<li>regression use squared error<ul>
+<li>minimum gaussian noise(output 和正確答案的平方差最小)</li>
 </ul>
 </li>
 </ul>
-<p>Error is application/user dependent  </p>
+<p>Error is <strong>application/user dependent </strong> </p>
 <ul>
-<li>CIA fingerprint error<ul>
-<li>not allow 0 → 1 <img src="/img/ML/unbalancedata.png" alt=""></li>
-<li>error weight is not the same </li>
+<li>CIA fingerprint login error<ul>
+<li>not allow predict 0  to 1 <img src="/img/ML/unbalancedata.png" alt="">     </li>
 </ul>
 </li>
-<li>Supermarket fingerprint error<ul>
-<li>not want to 1 → 0 </li>
+<li>Supermarket member login error<ul>
+<li>not want to predict 1 to 0 </li>
 </ul>
 </li>
+<li>error weight is not the same!</li>
 </ul>
-<p>algorithm choosing  </p>
-<ul>
-<li>plausible(可用性)<ul>
-<li>0/1</li>
-<li>squared</li>
-</ul>
-</li>
-<li>friendly(較容易的演算法)    <ul>
-<li>close form solution(有公式解)</li>
-<li>convex objective function(local search? 可以滾下去的)</li>
-</ul>
-</li>
-<li><code>err hat</code> is key part of many algorithms</li>
-</ul>
-<p><img src="/img/ML/err-flow.png" alt=""></p>
-<p>pocket  </p>
+<p>Example: pocket  </p>
 <ul>
 <li>modify Ein to $E^w_{in}$(with weight)</li>
 <li>weight 愈高的錯誤愈容易被選來修正</li>
 </ul>
-<p>權重可以適用於許多演算法!</p>
+<p>權重可以套用在許多機器學習的演算法</p>
+<h3 id="algorithm_choosing">algorithm choosing</h3><p>Algorithmic Error Measures $\hat{err}$   </p>
+<ul>
+<li>True<ul>
+<li>error cannot be ignored or created</li>
+</ul>
+</li>
+<li>plausible(可用性)<ul>
+<li>0/1 error</li>
+<li>squared error</li>
+</ul>
+</li>
+<li>friendly(較容易的演算法)    <ul>
+<li>close form solution(有公式解，如 Chap09 的 linear regression)</li>
+<li>convex objective function(可以持續更新的，如 PLA)</li>
+</ul>
+</li>
+<li>$\hat{err}$ is key part of many algorithms</li>
+</ul>
+<p><img src="/img/ML/err-flow.png" alt=""></p>
 <h2 id="參考資料">參考資料</h2><p><a href="https://www.coursera.org/course/ntumlone" target="_blank" rel="external">Coursera 機器學習基石</a><br>C 老師上課講解</p>
 	  
 	</div>
@@ -650,7 +643,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/categories/筆記/">筆記<span>11</span></a></li>
+    <li><a href="/categories/筆記/">筆記<span>13</span></a></li>
   </li>
 
     </ul>
@@ -663,7 +656,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/機器學習/">機器學習<span>5</span></a></li>
+  <li><a href="/tags/machine-learning/">machine-learning<span>1</span></a></li>
     </ul>
 	</div>
 		
@@ -673,7 +666,7 @@
 	
 	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
 	   <div id="toc" class="toc collapse in">
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap01_Introduction"><span class="toc-article-text">Chap01 Introduction</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#key_eassence_of_ML"><span class="toc-article-text">key eassence of ML</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#ML 使用時機"><span class="toc-article-text">ML 使用時機</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#ML 應用"><span class="toc-article-text">ML 應用 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#formalize_the_learning_problem"><span class="toc-article-text">formalize the learning problem</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Differences"><span class="toc-article-text">Differences</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Machine_Learning_&_Data_Mining"><span class="toc-article-text">Machine Learning & Data Mining</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Machine_Learning_&_Artificial_Intelligence"><span class="toc-article-text">Machine Learning & Artificial Intelligence</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Machine_Learning_&_Statistics"><span class="toc-article-text">Machine Learning & Statistics</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_02_Perceptron(感知器)"><span class="toc-article-text">Chap 02 Perceptron(感知器)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#yes/no_question_by_grading"><span class="toc-article-text">yes/no question by grading</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#select_g_from_h"><span class="toc-article-text">select g from h</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Perception_Learning_Algorithm(PLA)"><span class="toc-article-text">Perception Learning Algorithm(PLA)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#linear_seperability"><span class="toc-article-text">linear seperability</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#PLA_Guarantee"><span class="toc-article-text">PLA Guarantee</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Pocket_Algorithm(a_little_modified_by_PLA)"><span class="toc-article-text">Pocket Algorithm(a little modified by PLA)</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03_types_of_learning"><span class="toc-article-text">Chap03 types of learning</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Output_Space"><span class="toc-article-text">Different Output Space</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Data_Label"><span class="toc-article-text">Different Data Label</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Protocol"><span class="toc-article-text">Different Protocol</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Input_Space"><span class="toc-article-text">Different Input Space</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_04_Feasibility_of_Learning"><span class="toc-article-text">Chap 04 Feasibility of Learning</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hoeffding’s_Inequality"><span class="toc-article-text">Hoeffding’s Inequality</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Ein_and_Eout"><span class="toc-article-text">Ein and Eout</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap05_Training_versus_Testing"><span class="toc-article-text">Chap05 Training versus Testing</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Types_of_Growth_Function"><span class="toc-article-text">Types of Growth Function</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Break_Point_of_H"><span class="toc-article-text">Break Point of H</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap06_Theory_of_Generalization"><span class="toc-article-text">Chap06 Theory of Generalization</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Bounding_function"><span class="toc-article-text">Bounding function</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Vapnik-Chervonenkis_(VC)_bound"><span class="toc-article-text">Vapnik-Chervonenkis (VC) bound</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_07_VC_Dimension"><span class="toc-article-text">Chap 07 VC Dimension</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#freedom"><span class="toc-article-text">freedom</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap08_Noise_and_Error"><span class="toc-article-text">Chap08 Noise and Error</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Error_Measure"><span class="toc-article-text">Error Measure</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#參考資料"><span class="toc-article-text">參考資料</span></a></li></ol>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap01_Introduction"><span class="toc-article-text">Chap01 Introduction</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#key_eassence_of_ML"><span class="toc-article-text">key eassence of ML</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#ML 使用時機"><span class="toc-article-text">ML 使用時機</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#ML 應用"><span class="toc-article-text">ML 應用 </span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#formalize_the_learning_problem"><span class="toc-article-text">formalize the learning problem</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Differences"><span class="toc-article-text">Differences</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Machine_Learning_&_Data_Mining"><span class="toc-article-text">Machine Learning & Data Mining</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Machine_Learning_&_Artificial_Intelligence"><span class="toc-article-text">Machine Learning & Artificial Intelligence</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Machine_Learning_&_Statistics"><span class="toc-article-text">Machine Learning & Statistics</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_02_Perceptron(感知器)"><span class="toc-article-text">Chap 02 Perceptron(感知器)</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#yes/no_question_by_grading"><span class="toc-article-text">yes/no question by grading</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#select_g_from_h"><span class="toc-article-text">select g from h</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Perception_Learning_Algorithm(PLA)"><span class="toc-article-text">Perception Learning Algorithm(PLA)</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#linear_seperability"><span class="toc-article-text">linear seperability</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#PLA_Guarantee"><span class="toc-article-text">PLA Guarantee</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Pocket_Algorithm(a_little_modified_by_PLA)"><span class="toc-article-text">Pocket Algorithm(a little modified by PLA)</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap03_types_of_learning"><span class="toc-article-text">Chap03 types of learning</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Output_Space"><span class="toc-article-text">Different Output Space</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Data_Label"><span class="toc-article-text">Different Data Label</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Protocol"><span class="toc-article-text">Different Protocol</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Different_Input_Space"><span class="toc-article-text">Different Input Space</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_04_Feasibility_of_Learning"><span class="toc-article-text">Chap 04 Feasibility of Learning</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hoeffding’s_Inequality"><span class="toc-article-text">Hoeffding’s Inequality</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Ein_and_Eout"><span class="toc-article-text">Ein and Eout</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap05_Training_versus_Testing"><span class="toc-article-text">Chap05 Training versus Testing</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Types_of_Growth_Function"><span class="toc-article-text">Types of Growth Function</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Break_Point_of_H"><span class="toc-article-text">Break Point of H</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap06_Theory_of_Generalization"><span class="toc-article-text">Chap06 Theory of Generalization</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Bounding_function"><span class="toc-article-text">Bounding function</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Vapnik-Chervonenkis_(VC)_bound"><span class="toc-article-text">Vapnik-Chervonenkis (VC) bound</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap_07_VC_Dimension"><span class="toc-article-text">Chap 07 VC Dimension</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#freedom"><span class="toc-article-text">freedom</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Chap08_Noise_and_Error"><span class="toc-article-text">Chap08 Noise and Error</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Error_Measure"><span class="toc-article-text">Error Measure</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#algorithm_choosing"><span class="toc-article-text">algorithm choosing</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#參考資料"><span class="toc-article-text">參考資料</span></a></li></ol>
 		</div>
 	
 	</div>

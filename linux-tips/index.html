@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-  <script src="/js/jquery-2.0.3.min.js"></script>
+  <script src="/js/jquery-2.0.3.min.js" async></script>
 
   <!-- analytics -->
   
@@ -46,7 +46,7 @@
 
 
 
-  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js"></script>
+  <script src="https://leancloud.cn/scripts/lib/av-0.4.6.min.js" async></script>
   <script>AV.initialize("j1wjgh5yjwypwyod6e73zq5pjr9bqgsjhlsnfi6fph67olbx", "lscxm6j2o23yn0vytcywijf1xzy0pwj826eey87aw6ndq9rf");</script>
 
 </head>
@@ -128,42 +128,41 @@
 
 或是
 <figure class="highlight puppet"><figcaption><span>[bash]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">service</span> <span class="constant">S</span>ERVICE_NAME <span class="literal">restart</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="在 tty 重新開啟 gnome">在 tty 重新開啟 gnome</h2><p>開啟 tty1</p>
-<blockquote>
-<p>Ctrl-Alt-F1</p>
-</blockquote>
-<p>重啟 gnome</p>
-<blockquote>
-<p>sudo service gdm restart</p>
-</blockquote>
+<h2 id="在 tty 重新開啟圖形介面">在 tty 重新開啟圖形介面 </h2><p> 開啟 tty1: <code>Ctrl-Alt-F1</code></p>
+<p>重啟 gnome<br><figure class="highlight puppet"><figcaption><span>[bash]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">service</span> gdm <span class="literal">restart</span></span><br></pre></td></tr></table></figure></p>
 <p>此時就會重新回到 gnome 登入畫面 <br> 在 gnome 沒有反應時十分有效</p>
-<h2 id="避免誤刪檔案 (rm_-rf)"> 避免誤刪檔案 (rm -rf)</h2><p><a href="http://serverfault.com/questions/337082/how-do-i-prevent-accidental-rm-rf" target="_blank" rel="external"> 原文</a></p>
-<p>使用 <code>safe-rm</code> 套件，可防止意外 (惡意) 刪除系統重要資料</p>
-<h2 id="Screen_配合_Emacs">Screen 配合 Emacs</h2><p><a href="http://lifegoo.pluskid.org/wiki/Screen.html" target="_blank" rel="external">教學 </a><br><a href="http://lagunawang.pixnet.net/blog/post/2836825-linux-screen%E6%8C%87%E4%BB%A4" target="_blank" rel="external"> 指令表</a></p>
-<p>因為 Emacs 的快捷鍵和 Screen 重複，要自己在 <code>.screenrc</code> 設定檔修改</p>
-<p>終端機指令<br>screen -list 可以列出你目前的所有 screen 會話(同時可有多個 screen)<br>screen -r [detached screen] 回復 detach 的 screen<br>screen -wipe 砍掉不要的 screen </p>
-<p>screen 內指令共同前綴 C-a<br>C-a c - 開新分頁<br>C-a n - 切換到下一個分頁<br>C-a p - 切換到前一個分頁<br>C-a C-a - 切換到最近用過的分頁<br>C-a [N] - 跳到編號 N 的分頁<br>C-a w - 列出開啟的分頁(簡短)<br>C-a “ - 列出所有的分頁提供切換<br>C-a k - 關閉目前分頁  </p>
-<p>C-a S - 將螢幕水平分割<br>C-a <tab> - 在分割的區域之間切換焦點</tab></p>
-<p>C-a C - 清除目前的分頁內容<br>C-a H - 儲存目前分頁記錄（檔名為 screenlog.n, n 為視窗號碼）<br>C-a x - 鎖定 screen，需要輸入使用者密碼<br>C-a d - Detach screen，暫時脫離 screen，程式會持續進行，你可以在重開終端機或重新登入後再連接到剛才的那個 screen (當然，重開機會不見)  </p>
-<p>C-a [- 編輯模式(操作和 vi 相似)  </p>
-<ul>
-<li>h, j, k, l 分別為向左，向下，向上，向右移動一格（或是一行）</li>
-<li>^ 與 $ 分別移到該行最左邊及最右邊的非空白字元</li>
-<li>w 以字為單位往前移動並移到字首</li>
-<li>b 以字為單位往後移動並移到字首</li>
-<li>e 以字為單位往前移動並移到字尾</li>
-<li>C-b 向上捲一頁</li>
-<li>C-f 向下捲一頁</li>
-<li>/ 與 ? 向下或向上尋找字串</li>
-<li>space 第一次按下到第二次按下的區域會被複製<ul>
-<li>C-a ] 貼上</li>
-</ul>
-</li>
-<li>非指令的輸入會離開編輯模式</li>
-</ul>
+<p>此外，圖形介面預設為 tty7: <code>Ctrl-Alt-F7</code></p>
+<h2 id="避免誤刪檔案 (rm_-rf)"> 避免誤刪檔案 (rm -rf)</h2><p> 使用 <a href="http://serverfault.com/questions/337082/how-do-i-prevent-accidental-rm-rf" target="_blank" rel="external">safe-rm</a> 套件，可防止意外 (惡意) 刪除系統重要資料</p>
 <!--
 
 // 我自己想看的
+
+
+## shell 常用指令
+
+[原文](http://lifegoo.pluskid.org/wiki/Linux.html#sec24)
+
+sed: 批量自動編輯 [sed 範例](http://puremonkey2010.blogspot.tw/2010/09/linux-sed.html)
+find 一個超級工具，通常配合 xargs 使用為其他程序提供參數。雖然名為 find ，但是事實上很少用於「查找文件」這個單純的任務上。
+locate/updatedb 快速查找文件的工具，使用 updatedb 建立索引，用 locate 來查找文件。雖然支持正則表達式，但是並不能像 Google Desktop Search 那樣能搜索文件內容，而只能搜索文件名，不過這已經很夠用了。通 常我自己的文件都歸類放好，很少出現找不到的情況，使用 locate 多是用 於定位某些系統文件而已，一般對內容並不關心。
+tar 最愛的文件打包工具。tarball 幾乎是 Linux 下發佈源代碼的標準格 式，而且配合 bz2 格式可以得到很高的壓縮比。
+less 作為分頁工具，less 比 more 更強大，翻頁、搜索等功能都非常實用 方便。
+wget 這是我見過的最穩定的下載工具，而且可以抓取整個網站，對於某些在線版的電子書下載起來非常方便
+lftp 我覺得最舒服的 ftp 客戶端，支持很多類似 bash 的操作，讓 ftp 操 作就像在操作本地文件一樣。他的配置文件在 ~/.lftp/rc ，我覺得最有用 的兩個配置選項是：
+    ftp:charset "GBK" 通常遠程 ftp 服務器都是 GBK 編碼的，這樣設置之 後可以解決亂碼問題。
+    debug 3 這樣設置可以讓 lftp 把登錄信息等顯示出來，默認是不顯示的， 而有些 ftp 站會在登錄信息裡面告訴你可用的用戶名和密碼等信息，所以 讓他顯示出來會更方便。
+rename 非常方便實用的文件重命名工具，可以使用 Perl 格式的正則表達式。 事實上，它通常就是一個 Perl 腳本。
+grep 這個算是一個非常著名的工具了吧，自然也非常實用。我最常用的幾個 選項是：
+    -C NUM 顯示出匹配行附近的 NUM 行上下文。
+    -n 顯示行號。 -H 顯示文件名。這兩個選項對於在一大堆文件裡面搜索東 西非常有用。
+    -o 只顯示匹配的部分，這對於從一大堆東西中提取某些特殊信息非常有用。
+    -v 反向匹配，即顯示不匹配的行。
+xsel 這個是非常方便的程序，但是要在 X 下使用，他的作用是和剪切板進行 交互。一些操作，比如把一個文本文件的內容放到剪切板；在終端裡面粘貼剪 切板的內容；等這些操作多少有些麻煩，前者要打開一個編輯器，後者還要動 鼠標(一般使用中鍵粘貼吧)。用 xsel 就少了這麼多麻煩。 xsel -b -i < file 就把 file 的內容拷貝到剪切板了。 wget `xsel -o` 也是很常用的， 因為剪切板裡面時常放了拷貝的 URL 了吧。不過，美中不足的地方是中文支 持還不行。
+fortune 隨機顯示一些有趣的言論，用於產生隨機的郵件簽名非常不錯。你 可以生成自己的 fortune 的數據庫，通常，我建立一個 ~/.fortune 目錄， 在裡面為每一個分類建立一個文件，文件的格式很簡單，以一個單行的 % 表 示分隔。文件編輯之後可以使用 strfile -r computer.txt computer.dat 來生成數據庫，然後使用 fortune ~/.fortune 來選擇自己定義的數據庫來 顯示。
+
+其他一些著名的工具我沒有提到，因為我幾乎沒有使用過它們：
+awk awk 通常和 sed 一起作為最常用的 shell 工具之一，不過我並不熟悉 awk ，也不準備去學習。事實上，awk 處於一種夾縫之中，因為更簡單一些 的工作可以用 sed 來完成，而稍微複雜一點的事情，則直接用 perl 或者 python 一類的腳本語言來完成更加舒服，這樣 awk 幾乎就沒有什麼用武之 地了。
+info info 作為 GNU 標準文檔格式，確實是非常不錯的一種文檔。不過通常 許多程序都不帶 info 文檔，在命令行裡面鍵入 info 則直接顯示 man 文檔。 而且，即使有 info 文檔，也通常是非常詳細，不是一下子就可以看完的， 所以，我通常是在 Emacs 裡面查看一些 info 文檔。
 
 ## 遞迴使用 optiPNG
 
@@ -171,17 +170,71 @@
 -->
 <h2 id="tar_壓縮">tar 壓縮</h2><p><em>.gz      gzip 程式壓縮的檔案  
 </em>.tar     tar 程式打包的資料，並沒有壓縮過<br>*.tar.gz  tar 程式打包的檔案，其中並且經過 gzip 的壓縮</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">tar [-zxcvfpP] filename  </span><br><span class="line">tar -N <span class="string">'yyyy/mm/dd'</span> [/path] -zcvf [target.tar.gz] [<span class="built_in">source</span>]</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">參數 | 用途 </span><br><span class="line">---|---</span><br><span class="line">-c | 執行壓縮</span><br><span class="line">-x | 執行解壓縮</span><br><span class="line">-z | 使用 gzip 壓縮 / 解壓縮(應對應.gz 的檔案)</span><br><span class="line">-t | 查看壓縮檔裡面的檔案 </span><br><span class="line">-v | 壓縮的過程中顯示檔案</span><br><span class="line"><span class="operator">-f</span> | 使用檔名，<span class="operator">-f</span> 之後要立即接檔名 </span><br><span class="line">-p | 使用原檔案的原來屬性（屬性不會依據使用者而變）  </span><br><span class="line">-P | 使用絕對路徑</span><br><span class="line">-N | 比後面接的日期(yyyy/mm/dd) 還要新的才會被打包進壓縮檔中  </span><br><span class="line">--exclude [FILE] | 不要將指定的檔案打包</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">tar -zcvf filename.tar.gz  /home/<span class="built_in">test</span>/*  <span class="comment"># 將 /home/test/ 這個目錄下的檔案全部打包並壓縮成為一個 filename.tar.gz 的檔案</span></span><br><span class="line">tar -zcvPf home.tar.gz /home <span class="comment"># 建立起來的壓縮檔內檔案為絕對路徑</span></span><br><span class="line">tar -N <span class="string">'2002/06/25'</span> -zcvf home.tar.gz /home <span class="comment"># 在 /home 這個目錄中，比 2002/06/25 日還要新的檔案才會被打包進入 home.tar.gz 這個檔案中</span></span><br><span class="line">tar -zcvf host.tar.gz / --exclude /mnt --exclude /proc <span class="comment"># 將根目錄除了 /mnt 及 /proc 的所有資料都打包</span></span><br></pre></td></tr></table></figure>
-<p>　<br>如果使用絕對路徑，解開的檔案一定會在該路徑(/home/test)，萬一別人也有 /home/test 這個目錄，他的檔案就會被覆蓋了<br>→ 如果以『絕對路徑』來建立打包檔案，預設會將 / 拿掉</p>
-<p>-p 是 permission 的意思，也就是『權限』啦！使用 -p 之後，被打包的檔案將不會依據使用者的身份來改變權限</p>
-<h2 id="Terminal 顏色">Terminal 顏色</h2><p><a href="http://nelson.pixnet.net/blog/post/23180780-%5B%E6%95%99%E5%AD%B8%5D-ubuntu-%E5%BA%95%E4%B8%8B%E8%AE%93%E7%B5%82%E7%AB%AF%E6%A9%9F%E4%BD%BF%E7%94%A8%E5%BD%A9%E8%89%B2%E6%8F%90%E7%A4%BA" target="_blank" rel="external">http://nelson.pixnet.net/blog/post/23180780-%5B%E6%95%99%E5%AD%B8%5D-ubuntu-%E5%BA%95%E4%B8%8B%E8%AE%93%E7%B5%82%E7%AB%AF%E6%A9%9F%E4%BD%BF%E7%94%A8%E5%BD%A9%E8%89%B2%E6%8F%90%E7%A4%BA</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar [-zxcvfpP] filename  </span><br><span class="line">tar -N <span class="string">'yyyy/mm/dd'</span> [/path] -zcvf [target.tar.gz] [<span class="built_in">source</span>]</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>執行壓縮</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>執行解壓縮</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>使用 gzip 壓縮 / 解壓縮(應對應.gz 的檔案)</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>查看壓縮檔裡面的檔案 </td>
+</tr>
+<tr>
+<td>-v</td>
+<td>壓縮的過程中顯示檔案</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>使用檔名，-f 之後要立即接檔名</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>使用原檔案的原來屬性（被打包的檔案將不會依據使用者的身份來改變權限）  </td>
+</tr>
+<tr>
+<td>-P</td>
+<td>使用絕對路徑</td>
+</tr>
+<tr>
+<td>-N</td>
+<td>比後面接的日期 (yyyy/mm/dd) 還要新的才會被打包進壓縮檔中  </td>
+</tr>
+<tr>
+<td>—exclude [FILE]</td>
+<td>不要將指定的檔案打包</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf filename.tar.gz  /home/<span class="built_in">test</span>/*  <span class="comment"># 將 /home/test/ 這個目錄下的檔案全部打包並壓縮成為一個 filename.tar.gz 的檔案</span></span><br><span class="line">tar -zcvPf home.tar.gz /home <span class="comment"># 建立起來的壓縮檔內檔案為絕對路徑</span></span><br><span class="line">tar -N <span class="string">'2002/06/25'</span> -zcvf home.tar.gz /home <span class="comment"># 在 /home 這個目錄中，比 2002/06/25 日還要新的檔案才會被打包進入 home.tar.gz 這個檔案中</span></span><br><span class="line">tar -zcvf host.tar.gz / --exclude /mnt --exclude /proc <span class="comment"># 將根目錄除了 /mnt 及 /proc 的所有資料都打包</span></span><br></pre></td></tr></table></figure>
+<p>　<br>如果使用絕對路徑，解開的檔案一定會和壓縮時的路徑一樣，萬一別人剛好有同名目錄，他的檔案就會被覆蓋了<br>→ 如果以『絕對路徑』來建立打包檔案，預設會將 / 拿掉，以策安全</p>
 <h2 id="清除垃圾筒">清除垃圾筒</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/.local/share/Trash/*</span><br></pre></td></tr></table></figure>
-<h2 id="移除 apt-get 的更新來源 (ppa)"> 移除 apt-get 的更新來源(ppa)</h2><p><a href="http://askubuntu.com/questions/307/how-can-ppas-be-removed" target="_blank" rel="external">http://askubuntu.com/questions/307/how-can-ppas-be-removed</a></p>
-<h2 id="open_gedit_without_terminal">open gedit without terminal</h2><p><a href="http://ubuntuforums.org/showthread.php?t=868471" target="_blank" rel="external">http://ubuntuforums.org/showthread.php?t=868471</a></p>
-<h2 id="shell 指令">shell 指令 </h2><p><a href="http://lifegoo.pluskid.org/wiki/Linux.html#sec24" target="_blank" rel="external"> 原文</a></p>
-<p>sed: 批量自動編輯 <a href="http://puremonkey2010.blogspot.tw/2010/09/linux-sed.html" target="_blank" rel="external">sed 範例</a><br>find 一個超級工具，通常配合 xargs 使用為其他程序提供參數。雖然名為 find ，但是事實上很少用於「查找文件」這個單純的任務上。<br>locate/updatedb 快速查找文件的工具，使用 updatedb 建立索引，用 locate 來查找文件。雖然支持正則表達式，但是並不能像 Google Desktop Search 那樣能搜索文件內容，而只能搜索文件名，不過這已經很夠用了。通 常我自己的文件都歸類放好，很少出現找不到的情況，使用 locate 多是用 於定位某些系統文件而已，一般對內容並不關心。<br>tar 最愛的文件打包工具。tarball 幾乎是 Linux 下發佈源代碼的標準格 式，而且配合 bz2 格式可以得到很高的壓縮比。<br>less 作為分頁工具，less 比 more 更強大，翻頁、搜索等功能都非常實用 方便。<br>wget 這是我見過的最穩定的下載工具，而且可以抓取整個網站，對於某些在線版的電子書下載起來非常方便<br>lftp 我覺得最舒服的 ftp 客戶端，支持很多類似 bash 的操作，讓 ftp 操 作就像在操作本地文件一樣。他的配置文件在 ~/.lftp/rc ，我覺得最有用 的兩個配置選項是：<br>    ftp:charset “GBK” 通常遠程 ftp 服務器都是 GBK 編碼的，這樣設置之 後可以解決亂碼問題。<br>    debug 3 這樣設置可以讓 lftp 把登錄信息等顯示出來，默認是不顯示的， 而有些 ftp 站會在登錄信息裡面告訴你可用的用戶名和密碼等信息，所以 讓他顯示出來會更方便。<br>rename 非常方便實用的文件重命名工具，可以使用 Perl 格式的正則表達式。 事實上，它通常就是一個 Perl 腳本。<br>grep 這個算是一個非常著名的工具了吧，自然也非常實用。我最常用的幾個 選項是：<br>    -C NUM 顯示出匹配行附近的 NUM 行上下文。<br>    -n 顯示行號。 -H 顯示文件名。這兩個選項對於在一大堆文件裡面搜索東 西非常有用。<br>    -o 只顯示匹配的部分，這對於從一大堆東西中提取某些特殊信息非常有用。<br>    -v 反向匹配，即顯示不匹配的行。<br>xsel 這個是非常方便的程序，但是要在 X 下使用，他的作用是和剪切板進行 交互。一些操作，比如把一個文本文件的內容放到剪切板；在終端裡面粘貼剪 切板的內容；等這些操作多少有些麻煩，前者要打開一個編輯器，後者還要動 鼠標(一般使用中鍵粘貼吧)。用 xsel 就少了這麼多麻煩。 xsel -b -i &lt; file 就把 file 的內容拷貝到剪切板了。 wget <code>xsel -o</code> 也是很常用的， 因為剪切板裡面時常放了拷貝的 URL 了吧。不過，美中不足的地方是中文支 持還不行。<br>fortune 隨機顯示一些有趣的言論，用於產生隨機的郵件簽名非常不錯。你 可以生成自己的 fortune 的數據庫，通常，我建立一個 ~/.fortune 目錄， 在裡面為每一個分類建立一個文件，文件的格式很簡單，以一個單行的 % 表 示分隔。文件編輯之後可以使用 strfile -r computer.txt computer.dat 來生成數據庫，然後使用 fortune ~/.fortune 來選擇自己定義的數據庫來 顯示。</p>
-<p>其他一些著名的工具我沒有提到，因為我幾乎沒有使用過它們：<br>awk awk 通常和 sed 一起作為最常用的 shell 工具之一，不過我並不熟悉 awk ，也不準備去學習。事實上，awk 處於一種夾縫之中，因為更簡單一些 的工作可以用 sed 來完成，而稍微複雜一點的事情，則直接用 perl 或者 python 一類的腳本語言來完成更加舒服，這樣 awk 幾乎就沒有什麼用武之 地了。<br>info info 作為 GNU 標準文檔格式，確實是非常不錯的一種文檔。不過通常 許多程序都不帶 info 文檔，在命令行裡面鍵入 info 則直接顯示 man 文檔。 而且，即使有 info 文檔，也通常是非常詳細，不是一下子就可以看完的， 所以，我通常是在 Emacs 裡面查看一些 info 文檔。</p>
-<h2 id="備份">備份 </h2><p> 已安裝的軟體清單<br><a href="http://askubuntu.com/questions/9135/how-to-backup-settings-and-list-of-installed-packages" target="_blank" rel="external">http://askubuntu.com/questions/9135/how-to-backup-settings-and-list-of-installed-packages</a></p>
+<h2 id="其他">其他</h2><ul>
+<li><a href="http://askubuntu.com/questions/9135/how-to-backup-settings-and-list-of-installed-packages" target="_blank" rel="external">備份已安裝的軟體清單</a> </li>
+<li><a href="http://nelson.pixnet.net/blog/post/23180780-%5B%E6%95%99%E5%AD%B8%5D-ubuntu-%E5%BA%95%E4%B8%8B%E8%AE%93%E7%B5%82%E7%AB%AF%E6%A9%9F%E4%BD%BF%E7%94%A8%E5%BD%A9%E8%89%B2%E6%8F%90%E7%A4%BA" target="_blank" rel="external">在~/.bashrc 中修改終端機顏色</a><ul>
+<li><code>force_prompt_color</code> 設為 true</li>
+</ul>
+</li>
+<li><a href="http://ubuntuforums.org/showthread.php?t=868471" target="_blank" rel="external">use command(like gedit) without occupying terminal</a><ul>
+<li><code>alt-f2</code> → <code>gedit</code></li>
+</ul>
+</li>
+</ul>
 	  
 	</div>
 
@@ -262,7 +315,7 @@
 	
 	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
 	   <div id="toc" class="toc collapse in">
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#VMware 錯誤：Error_while_powering_on:internal_error"><span class="toc-article-text">VMware 錯誤：Error while powering on:internal error</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#VMware 錯誤:_Error_while_opening_the_virtual_machine:_Taking_ownership_of_this_virtual_machine_failed"><span class="toc-article-text">VMware 錯誤: Error while opening the virtual machine: Taking ownership of this virtual machine failed</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#VMware 連線問題"><span class="toc-article-text">VMware 連線問題 </span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#重新啟動服務 (daemon)"><span class="toc-article-text"> 重新啟動服務 (daemon)</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#在 tty 重新開啟 gnome"><span class="toc-article-text">在 tty 重新開啟 gnome</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#避免誤刪檔案 (rm_-rf)"><span class="toc-article-text"> 避免誤刪檔案 (rm -rf)</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Screen_配合_Emacs"><span class="toc-article-text">Screen 配合 Emacs</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#tar_壓縮"><span class="toc-article-text">tar 壓縮</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Terminal 顏色"><span class="toc-article-text">Terminal 顏色</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#清除垃圾筒"><span class="toc-article-text">清除垃圾筒</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#移除 apt-get 的更新來源 (ppa)"><span class="toc-article-text"> 移除 apt-get 的更新來源(ppa)</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#open_gedit_without_terminal"><span class="toc-article-text">open gedit without terminal</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#shell 指令"><span class="toc-article-text">shell 指令 </span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#備份"><span class="toc-article-text">備份 </span></a></li></ol>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#VMware 錯誤：Error_while_powering_on:internal_error"><span class="toc-article-text">VMware 錯誤：Error while powering on:internal error</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#VMware 錯誤:_Error_while_opening_the_virtual_machine:_Taking_ownership_of_this_virtual_machine_failed"><span class="toc-article-text">VMware 錯誤: Error while opening the virtual machine: Taking ownership of this virtual machine failed</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#VMware 連線問題"><span class="toc-article-text">VMware 連線問題 </span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#重新啟動服務 (daemon)"><span class="toc-article-text"> 重新啟動服務 (daemon)</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#在 tty 重新開啟圖形介面"><span class="toc-article-text">在 tty 重新開啟圖形介面 </span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#避免誤刪檔案 (rm_-rf)"><span class="toc-article-text"> 避免誤刪檔案 (rm -rf)</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#tar_壓縮"><span class="toc-article-text">tar 壓縮</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#清除垃圾筒"><span class="toc-article-text">清除垃圾筒</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#其他"><span class="toc-article-text">其他</span></a></li></ol>
 		</div>
 	
 	</div>
